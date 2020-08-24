@@ -1,0 +1,38 @@
+;;;Verbs;;;
+
+;;Transitive;;
+
+arrow_v1 := v_np_le &
+ [ ORTH < "arrow" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_arrow_v_1_rel",
+            PHON.ONSET con ] ].
+
+sabo_v1 := v_np_le &
+ [ ORTH < "sabo" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_sabo_v_1_rel",
+            PHON.ONSET con ] ].
+
+;;;Adverbials;;;
+
+kaypo_a1 := aj_-_i_le &
+ [ ORTH < "kaypo" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_kaypo_a_1_rel",
+            PHON.ONSET con ] ].
+
+;agak_adv1 := av_-_dg-jo_le &
+; [ ORTH < "agak" >,
+;   SYNSEM [ LKEYS.KEYREL.PRED "_agak_rel",
+;            PHON.ONSET con ] ].
+
+agak_adv := av_-_i-vp_le &
+ [ ORTH < "agak" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_agak_a_1_rel",
+            PHON.ONSET con ] ].
+
+;;;Nouns;;;
+
+agaration_n1 := n_-_m_le &
+ [ ORTH < "agaration" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_agaration_n_1_rel",
+            PHON.ONSET con ] ].
+
