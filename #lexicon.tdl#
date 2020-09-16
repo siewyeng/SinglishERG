@@ -1,0 +1,4 @@
+arrow_v1 := v_np_le &
+ [ ORTH < "arrow" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_arrow_v_1_rel",
+            PHON.ONSET con ] ]

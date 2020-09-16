@@ -29,10 +29,23 @@ agak_adv := av_-_i-vp_le &
    SYNSEM [ LKEYS.KEYREL.PRED "_agak_a_1_rel",
             PHON.ONSET con ] ].
 
+already_asp_adv := av_-_already_le &
+ [ ORTH < "already" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_already_a_2_rel",
+            PHON.ONSET con ] ].
+
+beautiful_nocop := aj_nocop_i-prd_le &
+ [ ORTH < "beautiful" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_beautiful_a_5_rel",
+            PHON.ONSET con ] ].
+
+
+
 ;;;Nouns;;;
 
 agaration_n1 := n_-_m_le &
  [ ORTH < "agaration" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_agaration_n_1_rel",
             PHON.ONSET con ] ].
+
 
