@@ -10915,21 +10915,13 @@ CSY 21-8-2020 - removed MC na, to have it underspec
             CONT.RELS.LIST < #keyrel, ... > ],
     LKEYS.KEYREL #keyrel & [ LBL #ltop ] ].
 
-;CSY 13-11-2020 - version that does not inherit SUBJ < >
+; CSY 13-9-2020 - version that does not inherit SUBJ < >
+; CSY 16-9-2020 - removed the SPR portion (trial) to try to solve sb-hd_mc_c 
 basic_nocop_adj_lex_synsem := basic_nocop_adj_synsem_lex_or_phrase & abstr_lex_synsem &
   [ LOCAL [ ARG-S < #spr . #comps >,
             CAT [ HEAD adj_or_intadj,
-                  VAL [ SPR 
-                        < #spr & synsem_min &
-                          [ --MIN degree_rel,
-                            LOCAL
-                            [ CAT [ VAL [ SPR *olist*,
-                                          SPEC < [ LOCAL.CAT.HS-LEX #hslex ]>]],
-                              CONT.HOOK.LTOP #ltop ],
-                            NONLOC.SLASH 0-dlist ],
-			  anti_synsem_min &
-			  [ --MIN degree_rel ] >,
-                        COMPS #comps ],
+                  VAL [ SPR < #spr >,
+			COMPS #comps ],
                   HS-LEX #hslex ],
             CONT.RELS.LIST < #keyrel, ... > ],
     LKEYS.KEYREL #keyrel & [ LBL #ltop ] ].
@@ -11025,7 +11017,8 @@ CSY 21-8-2020 - removed MC na to allow for adj to head sentence
                                VAL [ SUBJ < >,
                                      SPR.FIRST synsem & 
 					  [ --MIN quant_or_deg_rel ],
-                                     COMPS < > ]],
+                                     COMPS < > ],
+			       MC + ],
                          CONJ cnil ],
                  --SIND #ind ] >,
             CONT.HOOK.XARG #ind ] ].
@@ -11260,6 +11253,7 @@ intrans_pred_adj_synsem := basic_adj_synsem & one_arg & isect_synsem &
 """
 CSY 31-08-2020 - added in MC +
 because predicative adjectives inherit from it
+CSY 19-9-2020 - removed MC + because it does not help it head sentences
 """
   [ LOCAL [ CAT [ HEAD adj &
                        [ PRD +,
@@ -11267,8 +11261,7 @@ because predicative adjectives inherit from it
                          MINORS.MIN adj_rel ],
                   VAL [ SPR.FIRST.LOCAL [ CAT.HEAD n_or_adv,
 					  CONT.HOOK.XARG #arg0 ],
-			COMPS < > ],
-		  MC + ],
+			COMPS < > ] ],
             CONT [ HOOK [ INDEX #arg0,
 			  XARG #ind ],
                    RELS <! relation !> ] ],
@@ -11285,8 +11278,7 @@ intrans_nocop_pred_adj_synsem := basic_nocop_adj_synsem & one_arg & isect_synsem
                          MINORS.MIN adj_rel ],
                   VAL [ SPR.FIRST.LOCAL [ CAT.HEAD n_or_adv,
 					  CONT.HOOK.XARG #arg0 ],
-			COMPS < > ],
-		  MC + ],
+			COMPS < > ] ],
             CONT [ HOOK [ INDEX #arg0,
 			  XARG #ind ],
                    RELS <! relation !> ] ],
@@ -11732,9 +11724,10 @@ adj_atrans_that_cp_synsem := adj_atrans_cp_fin_inf_synsem &
 ;; mother in head-spec rule, so *most beautiful* has same SPEC as *beautiful*,
 ;; which blocks *the most beautiful*, sadly.  
 ;;
-basic_norm_adj_word := nonc-h-nab &
+basic_norm_adj_word := nonc-hm-nab &
 """
 CSY 31-08-2020 - changed from nonc-hm-nab to nonc-h-nab take away mcna
+    19-9-2020 - changed back
 """
   [ SYNSEM [ LOCAL.CAT [ HEAD adj & [ MINORS.ALTMIN non_ellipt_rel ],
 			 VAL.SPR.FIRST synsem &
@@ -11743,14 +11736,23 @@ CSY 31-08-2020 - changed from nonc-hm-nab to nonc-h-nab take away mcna
 			 HS-LEX #hslex ],
 	     MODIFD notmod ] ].
 
+; CSY 19-9-2020 - new word type without the SPR information
+basic_nocop_norm_adj_word := nonc-hm-nab &
+  [ SYNSEM [ LOCAL.CAT [ HEAD adj & [ MINORS.ALTMIN non_ellipt_rel ] ],
+
+	     MODIFD notmod ] ].
+
 ; CSY 05-09-2020 - predicative adjective for sentences without copulas
-; CSY 13-9-2020 - changed the SYNSEM from intrans_pred_adj_synse
+;     13-9-2020 - changed the SYNSEM from intrans_pred_adj_synsem
+;     16-9-2020 - added in MC +
+;     19-9-2020 - to allow it to join in the sb-hd rule, MC has to be na
 aj_nocop_i-prd_le := basic_norm_adj_word &
   [ SYNSEM intrans_nocop_pred_adj_synsem & 
               [ LOCAL.CAT [ HEAD [ MINORS.MIN norm_adj_rel,
                                    MOD < anti_synsem_min > ],
-			    VAL [ SUBJ < [LOCAL.CAT [ HEAD noun,
+			    VAL [ SUBJ < [LOCAL.CAT [ HEAD supnoun,
 						      VAL.SPR < > ] ] > ],
+			    MC na,
                             POSTHD + ] ] ].
 
 ;; Hook for adding robust contraints on capitalization as in "European"
@@ -17120,13 +17122,21 @@ Intersective, VP-mod, no specifier
 		       VAL.SPR < unexpressed_min >,
 		       POSTHD + ] ].
 
+
+; CSY 19-9-2020 - MINORS.NORM is used for finer-grain control over which rules can apply
 av_-_already_le := av_-_i-vp_lexent &
 """
 CSY 31-08-2020 - introduced for 'already' the POSTHD + aspect marker
 supposedly MODs entire VP with the VAL.COMPS < >
+CSY 17-9-2020 - PRF + which prevents sentences like 'he eats already.'
+CSY 19-9-2020 - added MINORS.NORM norm_rel to prevent it from going through vp_mod_int_rule
+		which allows it to mod the VP before it gets its complement
 """
-  [ SYNSEM.LOCAL.CAT [ HEAD.MOD < [ LOCAL.CAT [ HEAD verb,
-						VAL.COMPS < > ] ] >,
+  [ SYNSEM.LOCAL.CAT [ HEAD [ MOD < [ LOCAL.CAT [ HEAD verb &
+						     [ TAM.ASPECT.PRF + ],
+						VAL [ SPR *olist*,
+						      COMPS < > ] ] ] >,
+			      MINORS.NORM norm_rel ],
 		       VAL.SPR < unexpressed_min >,
 		       POSTHD + ] ].
 
