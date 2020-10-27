@@ -33,7 +33,7 @@ rule-rels-path            := C-CONT RELS.
 
 ; parsing-roots := root_informal root_frag.
 ; good:
-parsing-roots := root_strict root_informal root_frag root_inffrag root_robust root_robust_frag.
+parsing-roots := root_strict root_informal root_lepak root_frag root_inffrag root_robust root_robust_frag.
 ;parsing-roots := root_strict root_informal root_frag root_inffrag root_bridge.
 ;parsing-roots := root_strict root_informal root_frag root_inffrag root_robust.
 ; demo:

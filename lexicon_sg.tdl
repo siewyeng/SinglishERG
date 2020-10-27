@@ -49,3 +49,5 @@ agaration_n1 := n_-_m_le &
             PHON.ONSET con ] ].
 
 
+;removed items
+already_adv3 := never_unify_le & [ ORTH < "_never_unify_" > ].

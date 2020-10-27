@@ -11746,14 +11746,19 @@ basic_nocop_norm_adj_word := nonc-hm-nab &
 ;     13-9-2020 - changed the SYNSEM from intrans_pred_adj_synsem
 ;     16-9-2020 - added in MC +
 ;     19-9-2020 - to allow it to join in the sb-hd rule, MC has to be na
+;     20-9-2020 - SPR of SUBJ changed to *olsit* from empty list
+; HEAD of the SUBJ is supnoun as it allows for modified NP
 aj_nocop_i-prd_le := basic_norm_adj_word &
   [ SYNSEM intrans_nocop_pred_adj_synsem & 
-              [ LOCAL.CAT [ HEAD [ MINORS.MIN norm_adj_rel,
-                                   MOD < anti_synsem_min > ],
-			    VAL [ SUBJ < [LOCAL.CAT [ HEAD supnoun,
-						      VAL.SPR < > ] ] > ],
-			    MC na,
-                            POSTHD + ] ] ].
+              [ LOCAL [ CAT [ HEAD [ MINORS.MIN norm_adj_rel,
+                                     MOD < anti_synsem_min > ],
+			      VAL [ SUBJ < [ --SIND #subjind & basic_non_expl,
+					     LOCAL.CAT [ HEAD supnoun,
+						      	 VAL.SPR *olist*] ] > ],
+			      MC na,
+                              POSTHD + ],
+            		CONT.HOOK [ LTOP #ltop,
+				    XARG #subjind ] ] ] ].
 
 ;; Hook for adding robust contraints on capitalization as in "European"
 norm_adj_word := basic_norm_adj_word.
