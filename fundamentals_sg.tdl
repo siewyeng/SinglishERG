@@ -1490,6 +1490,7 @@ inf_or_prp := non_pas & non_fin_non_bse.
 inf := inf_or_prp & bse_or_inf & fin_or_inf.
 prp := inf_or_prp & non_inf & pas_or_prp & bse_or_prp.
 
+
 inf_and := vform.
 inf_but := vform.
 inf_from := inf_or_prp.

@@ -105,6 +105,21 @@ bse_or_non3sg_verb := local &
                                         AGR #agr ] ] > ],
     AGR #agr ].
 
+;CSY 2-11-2020 for Singlish
+bse_or_fin_verb := local &
+  [ CAT [ HEAD [ VFORM fin_or_bse_or_imp,
+                 PRD -,
+		 TAM.ASPECT no_aspect,
+                 --ADDIN [ ;ADDPN -3s,
+			   ADDTAM indic_tam & [ TENSE present ] ] ],
+          POSTHD +,
+	  VAL.SUBJ < synsem & [ OPT -,
+                                LOCAL [ CAT.HEAD.CASE nom,
+                                        CONT nom-obj,
+                                        CONJ cnil,
+                                        AGR #agr ] ] > ],
+    AGR #agr ].
+
 ; Only used for unknown verbs
 bse_verb := non_fin_verb & bse_or_non3sg_verb &
   [ CAT.HEAD.VFORM bse ].

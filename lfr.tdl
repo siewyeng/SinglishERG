@@ -1,0 +1,231 @@
+;;; -*- Mode: tdl; Coding: utf-8; indent-tabs-mode: nil; -*-
+
+;;;
+;;; Copyright (c) 2009 -- 2018 Stephan Oepen (oe@ifi.uio.no);
+;;; copyright (c) 2009 -- 2018 Dan Flickinger (danf@stanford.edu);
+;;; see `LICENSE' for conditions.
+;;;
+
+;;;
+;;; upon completion of `lexical parsing' (i.e. application of lexical rules
+;;; until a fix-point is reached), we can now filter lexical entries.  there is
+;;; little point attempting to do that earlier (as PET used to in its original
+;;; `-default-les' mode, where generics were only activated where there seemed
+;;; to be `gaps' in the _initial_ lexical chart, i.e. after lexical lookup).
+;;;
+;;; the main problem in this approach is the interaction with orthographemics:
+;;; in the initial lexical chart, there will be an edge analysing |UPS| as the
+;;; plural or 3sg present tense form of the preposition |up|.  it is only once
+;;; lexical rules have been processed that we know such hypotheses have turned
+;;; out invalid.  thus, lexical filtering rules below operate on lexical edges,
+;;; lexical entries that have gone through any number of lexical rules, i.e.
+;;; everything that would ordinarily feed into syntactic rules.
+;;; 
+;;; initially, our strategy is conservative: whenever there is a native entry,
+;;; purge all generic entries in the same chart cell, unless there is a good
+;;; reason to keep some.  for now, only capitalization is considered a reason,
+;;; and even there (i.e. for generic names), certain types of native entries
+;;; will filter.
+;;;
+;;; both on tokens and signs, the `native' vs. `generic' distinction is made in
+;;; ONSET values: `con_or_voc' vs. `unk_onset'.
+;;;
+
+;;
+;; throw out generic whenever a native entry is available, unless the token is
+;; a named entity (which now includes names activated because of mixed case or
+;; non-sentence-initial capitalization).
+;;
+generic_non_ne+native_lfr := lexical_filtering_rule &
+[ +CONTEXT < [ SYNSEM.PHON.ONSET con_or_voc ] >,
+  +INPUT < [ SYNSEM.PHON.ONSET unk_onset, ORTH.CLASS non_ne ] >,
+  +OUTPUT < >,
+  +POSITION "I1@C1" ].
+;;
+;; a native name, however, should suppress generic names, even NE ones.  this
+;; is restricted to singular native names, since otherwise we get unwanted 
+;; blocking for acronyms like |EDS|, given the native name |Ed|.
+;; DPF 04-sept-09 - But we do want blocking for inherent plural proper names
+;; like |Giants|.  So on balance, it seems better to try manually listing
+;; the |EDS| instances, and make the blocking more aggressive.
+;; DPF 2012-09-18 - Hmm, this aggressive blocking also prevents e.g. 
+;; |the Four Roses bourbon| since there is already the proper name |Rose|.
+;; We can of course continue down the road of reducing the inventory of 
+;; manually listed proper names in the lexicon, which helps, but maybe there
+;; is a more robust solution.
+;;
+proper_ne+name_lfr := lexical_filtering_rule &
+[ +CONTEXT < [ SYNSEM [ PHON.ONSET con_or_voc,
+                        LOCAL [ CAT [ HEAD noun,
+			              VAL.COMPS *olist* ],
+                                CONJ cnil ],
+                        LKEYS.KEYREL.PRED abstr_named_rel ] ] >,
+  +INPUT < [ SYNSEM [ PHON.ONSET unk_onset,
+                      LKEYS.KEYREL.PRED named_rel ] ] >,
+  +OUTPUT  < >,
+  +POSITION "I1@C1" ].
+
+;;
+;; mass nouns (both native and generic) also suppress generic names, even 
+;; NE ones.  this reflects what dan calls the `tyranny of mass nouns', i.e. 
+;; the assumptions that there are no syntactic contexts where a proper name 
+;; would be needed for coverage (thus glossing over differences in the 
+;; associated semantics, for improved parsing efficiency).
+;; DPF 2011-10-23 - Unfortunately, this assumption is false, for example 
+;; with titles, as in |Ms. Rice disappeared.|  So let's try doing without
+;; this filtering rule, and see if we can cope with the increased but
+;; genuine ambiguity.
+;;
+#|
+mass_noun+name_lfr := lexical_filtering_rule &
+[ +CONTEXT < [ SYNSEM [ LOCAL [ CAT.HEAD noun,
+                                AGR [ PNG.PN 3s,
+                                      IND - ] ] ] ] >,
+  +INPUT < [ SYNSEM [ PHON.ONSET unk_onset,
+                      LKEYS.KEYREL.PRED named_rel ] ] >,
+  +OUTPUT  < >,
+  +POSITION "I1@C1" ].
+|#
+
+;;
+;; avoid analyzing currency symbols (like |US$|), which appear capitalized, as
+;; generic names
+;; DPF 2012-04-17 - The tokenizer is now separating the symbol from the
+;; preceding upper-case in e.g. |US$|, so this rule is no longer needed, and
+;; anyway it was misfiring on e.g. |Oprah Network| unless the +TRAIT constraint
+;; was added.  So comment out.
+;;
+;; _fix_me_
+;; we are currently getting duplicate analyses for |the USD arrived|, so maybe
+;; try to refine this rule appropriately and reenable it?      (31-oct-12; oe)
+;;
+#|
+currency+name_lfr := lexical_filtering_rule &
+[ +CONTEXT < [ SYNSEM [ PHON.ONSET con_or_voc,
+                        LOCAL.CAT.HEAD noun & 
+                                       [ MINORS.MIN mnp_symb_rel ] ],
+               TOKENS.FIRST.+TRAIT native_trait ] >,
+  +INPUT < [ SYNSEM [ PHON.ONSET unk_onset,
+                      LKEYS.KEYREL.PRED named_rel ] ] >,
+  +OUTPUT  < >,
+  +POSITION "I1@C1" ].
+|#
+
+;; 
+;; discard generic names (even NE ones) for |I|, a pronoun that is standardly
+;; capitalized.
+;;
+proper_ne+pronoun_lfr := lexical_filtering_rule &
+[ +CONTEXT < [ SYNSEM [ PHON.ONSET con_or_voc,
+                        LOCAL [ CAT.HEAD noun & [ CASE nom ],
+                                AGR.PNG.PN 1s,
+                                CONJ cnil ],
+                        LKEYS.KEYREL.PRED pron_rel ] ] >,
+  +INPUT < [ SYNSEM [ PHON.ONSET unk_onset,
+                      LKEYS.KEYREL.PRED named_rel ] ] >,
+  +OUTPUT  < >,
+  +POSITION "I1@C1" ].
+
+;;
+;; a named entity corresponding to a name kills a PoS-activated generic name
+;; (singular only, to avoid discarding a plural name given the presence of a 
+;; singular named entity), unless that is a named entity itself.
+;; DPF 2012-03-09 - Changed this from stamping singular on input to instead
+;; requiring a match of PN value, since we still want to filter a plural
+;; POS-activated proper given a plural named-entity proper.
+;;
+generic_name+ne_name_lfr := lexical_filtering_rule &
+[ +CONTEXT < [ SYNSEM [ PHON.ONSET unk_onset,
+                        LOCAL [ CAT.HEAD noun,
+                                AGR.PNG.PN #pn ] ],
+               ORTH.CLASS named_entity ] >,
+  +INPUT < [ SYNSEM [ PHON.ONSET unk_onset,
+                      LOCAL.AGR.PNG.PN #pn,
+                      LKEYS.KEYREL.PRED named_rel ],
+             ORTH.CLASS non_ne ] >,
+  +OUTPUT < >,
+  +POSITION "I1@C1" ].
+
+;;
+;; generic entries followed by punctuation will typically admit two readings,
+;; one of them including the punctuation marks as part of the generic, as e.g.
+;; in (sentence-final) |oe@yy.com.|  these are rarely (if ever) desirable, so
+;; delete edges whose tokens bear final punctuation if they have not undergone
+;; punctuation affixation rule(s).  and likewise for prefixing punctuation.
+;;
+;; DPF 09-nov-09 - These rules make reference to the FORM attribute, which
+;; is in ORTH, propagated from the generic lexeme's TOKENS...+FORM attribute,
+;; which is no longer visible at this stage, after lexical rules have applied.
+;; As Woodley P. points out, if we wanted to cope with multi-token generics,
+;; we should rather propagate into ORTH the +FORM of the first and the last 
+;; tokens, so left and right punctuation, respectively, would be on the 
+;; intended token of the MWE.  This revision should be straightforward if we
+;; ever implement generic MWEs: simply introduce two new features in `orthog'
+;; instead of the one feature `FORM', establish the relevant links in 
+;; `basic_word', then use them in revised versions of these two rules.
+;; DPF 2010-11-08 - Excluded forms such as |C.J.| from being stripped of
+;; the final period, since we want |C.J. Crupp| while still avoiding
+;; generation of |Kim. Abrams|.
+;; DPF 2017-10-29 - In order to treat quoted unknown words via the foreign-word
+;; rule (w_italics_dlr), as in |the "glimpy" cat|, we need to keep the quoted 
+;; tokens, so let's at least remove double quotes from the input here.
+;; DPF 2017-11-03 - But maybe we don't need these, since the POS tagger will 
+;; give us a generic entry for e.g. "glimpy" which then can undergo the 
+;; foreign-word rule.
+;;
+;; DPF 2020-03-14 - We may no longer need these rules, and they do harm for
+;; tokens such as |8(A)| where the right paren does not get split off initially
+#|
+generic_right_punct_lfr := lexical_filtering_rule &
+[ +CONTEXT < >,
+  +INPUT < [ ORTH [ CLASS regular_class, FORM ^[^.]+[^.][])}”",;\.!?-]$ ],
+             SYNSEM [ PHON.ONSET unk_onset,
+                      PUNCT.RPUNCT no_punct ] ] >,
+  +OUTPUT < > ].
+
+generic_left_punct_lfr := lexical_filtering_rule &
+[ +CONTEXT < >,
+  +INPUT < [ ORTH [ CLASS regular_class, FORM ^[[({“‘].+$ ],
+             SYNSEM [ PHON.ONSET unk_onset,
+                      PUNCT [ LPUNCT no_punct ] ] ] >,
+  +OUTPUT < > ].
+|#
+
+;; DPF 2018-04-09 - Special case rules for numerals, since they are no longer
+;; unk-onset (in order to get |*a 11-year stay|
+
+numeral_right_punct_lfr := lexical_filtering_rule &
+[ +CONTEXT < >,
+  +INPUT < [ ORTH [ CLASS card_or_dom_or_year_or_time_ne,
+                    FORM ^[0-9.,]+[])}”",;\.!?-]$ ],
+             SYNSEM [ PUNCT.RPUNCT no_punct ] ] >,
+  +OUTPUT < > ].
+
+numeral_left_punct_lfr := lexical_filtering_rule &
+[ +CONTEXT < >,
+  +INPUT < [ ORTH [ CLASS card_or_dom_or_year_or_time_ne,
+                    FORM ^[[({“‘].+$ ],
+             SYNSEM [ PUNCT [ LPUNCT no_punct,
+                              RCLSTR.RITAL - ] ] ] >,
+  +OUTPUT < > ].
+
+;; DPF 2017-11-10 - Similar discarding of signs with form including a left or 
+;; right italics mark, but not undergoing that italics rule
+;;
+generic_right_ital_lfr := lexical_filtering_rule &
+[ +CONTEXT < >,
+  +INPUT < [ ORTH [ CLASS regular_class, FORM ^.+/⌋[.?,]?$ ],
+             SYNSEM basic_lex_synsem &
+                    [ PHON.ONSET unk_onset,
+                      PUNCT [ RCLSTR.RITAL - ] ] ] >,
+  +OUTPUT < > ].
+
+generic_left_ital_lfr := lexical_filtering_rule &
+[ +CONTEXT < >,
+  +INPUT < [ ORTH [ CLASS regular_class, FORM ^⌊/.+$ ],
+             SYNSEM basic_lex_synsem &
+                    [ PHON.ONSET unk_onset,
+                      PUNCT [ LPUNCT no_punct,
+                              RCLSTR.LITAL - ] ] ] >,
+  +OUTPUT < > ].
+
