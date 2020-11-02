@@ -1092,7 +1092,7 @@ Conjnd V,VP, nonfin, no conjunctn
   [ RNAME ctvrn ].
 
 ; CSY 19-10-2020 - for Singlish
-j-j_nocop_crd_c := a_nocop_coord_phr &
+j-j_nocop_crd_c := a_nocop_coord_phr_fin &
 """
 Conjnd pred Adj, no preceding cop
 <ex>He smart and fast.

@@ -11269,7 +11269,6 @@ CSY 19-9-2020 - removed MC + because it does not help it head sentences
 
 ; CSY 13-08-2020 - to try to get find the source of the SUBJ dagify error
 ; changed PRED to -
-; does not work yet so far
 intrans_nocop_pred_adj_synsem := basic_nocop_adj_synsem & one_arg & isect_synsem &
                             norm_nocop_adj_synsem & basic_lex_synsem &
   [ LOCAL [ CAT [ HEAD adj &

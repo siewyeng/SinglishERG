@@ -9648,6 +9648,7 @@ basic_basic_verbal_coord_phr := gen_coord_phr &
 
 
 ; CSY 19-10-2020 - a parallel of the verbal coord rule to use of predicative (nocop) adj for Singlish
+; CSY 31-10-2020 - take away intrans_nocop_pred_adj_synsem from the rconj
 basic_basic_adj_coord_phr := gen_coord_phr &
   [ SYNSEM phr_synsem &
 	   [ LEX -,
@@ -9659,8 +9660,7 @@ basic_basic_adj_coord_phr := gen_coord_phr &
 				     MC #mc ],
 			       CONT.HOOK.LTOP #ltop ],
 		       NONLOC.SLASH.LIST *arglist* ],
-    RCONJ-DTR.SYNSEM intrans_nocop_pred_adj_synsem &
-		     [ LOCAL [ CAT [ HEAD adj,
+    RCONJ-DTR.SYNSEM [ LOCAL [ CAT [ HEAD adj,
 				     MC #mc ],
 			       CONT.HOOK.LTOP #ltop ],
 		       NONLOC.SLASH.LIST *arglist* ] ].
@@ -9813,7 +9813,11 @@ v_coord_phr := basic_v_coord_phr & verbal_coord_phr &
     RCONJ-DTR.SYNSEM.LOCAL.CAT.HEAD.VFORM #vform ].
 
 ; CSY 19-10-2020 - without the vform restrictions
-a_nocop_coord_phr := basic_a_coord_phr & nocop_adj_coord_phr.
+; CSY 31-10-2020 - add in HEAD adj, not sure if necessary
+a_nocop_coord_phr := basic_a_coord_phr & nocop_adj_coord_phr &
+  [ SYNSEM.LOCAL.CAT.HEAD adj,
+    LCONJ-DTR.SYNSEM.LOCAL.CAT.HEAD adj,
+    RCONJ-DTR.SYNSEM.LOCAL.CAT.HEAD adj ].
 
 x_onecomp_coord_phr := gen_coord_phr &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL [ CAT #cat,
@@ -9866,6 +9870,21 @@ basic_v_coord_phr_fin := basic_v_coord_phr &
 v_coord_phr_fin := basic_v_coord_phr_fin & v_coord_phr &
   [ SYNSEM.LOCAL.AGR.PNG #png,
     RCONJ-DTR.SYNSEM.LOCAL.AGR.PNG #png ].
+
+; CSY 31-10-2020 - for the nocop adj coord
+;basic_a_coord_phr_fin := basic_a_coord_phr &
+;  [ SYNSEM.LOCAL [ CAT.HEAD adj,
+;		   CONT.HOOK.INDEX.E #tam ],
+;    LCONJ-DTR.SYNSEM.LOCAL.CAT.HEAD adj,
+;    RCONJ-DTR.SYNSEM.LOCAL [ CAT.HEAD adj &
+;				      [ --ADDIN [ ADDTAM #rtam,
+;						  ADDPN #pn ] ],
+;			     AGR.PNG.PN #pn ] ].
+
+; CSY 31-10-2020 nocop_coord that inherits conj_event (no "top" or "middle")
+a_nocop_coord_phr_fin := a_nocop_coord_phr & basic_top_coord_event_rule &
+  [ SYNSEM.LOCAL.CAT.HEAD.MINORS.NORM norm_rel,
+    C-CONT.RELS <! !> ].
     
 ; Restrict to [PRD -] since predicative phrases are coordinated via
 ; distinct construction.
