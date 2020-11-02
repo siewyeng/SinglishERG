@@ -9881,9 +9881,11 @@ v_coord_phr_fin := basic_v_coord_phr_fin & v_coord_phr &
 ;						  ADDPN #pn ] ],
 ;			     AGR.PNG.PN #pn ] ].
 
-; CSY 31-10-2020 nocop_coord that inherits conj_event (no "top" or "middle")
+; CSY 31-10-2020 nocop_coord that prevents overgeneration
+; CSY 2-11-2020 add in COMPS <> to tak
 a_nocop_coord_phr_fin := a_nocop_coord_phr & basic_top_coord_event_rule &
-  [ SYNSEM.LOCAL.CAT.HEAD.MINORS.NORM norm_rel,
+  [ SYNSEM.LOCAL.CAT [ HEAD.MINORS.NORM norm_rel,
+		       VAL.COMPS < > ],
     C-CONT.RELS <! !> ].
     
 ; Restrict to [PRD -] since predicative phrases are coordinated via
