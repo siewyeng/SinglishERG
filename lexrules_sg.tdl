@@ -106,10 +106,11 @@ bse_or_non3sg_verb := local &
     AGR #agr ].
 
 ;CSY 2-11-2020 for Singlish
+;    8-11-2020 take away ASPECT to allow for sentences to have the perf 'already'
 bse_or_fin_verb := local &
   [ CAT [ HEAD [ VFORM fin_or_bse_or_imp,
                  PRD -,
-		 TAM.ASPECT no_aspect,
+		 ;TAM.ASPECT no_aspect,
                  --ADDIN [ ;ADDPN -3s,
 			   ADDTAM indic_tam & [ TENSE present ] ] ],
           POSTHD +,
