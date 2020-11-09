@@ -52,8 +52,10 @@ non_fin_verb := local &
 ;; so probably want to remove this constraint once parse ranking can carry the
 ;; load, given that there are also contexts where we want "Kim is, sleeping"
 ;;
+
+; CSY 9-11-2020 take away PRD + for Singlish, to allow "he eating"
 verb_participle_affix := local &
-  [ CAT [ HEAD verb & [ PRD + ],
+  [ CAT [ HEAD verb, ;& [ PRD + ],
 	  VAL.SUBJ < synsem &
 		     [ LOCAL.AGR #agr,
 		       NONLOC.SLASH 0-dlist ] >,
@@ -1643,11 +1645,11 @@ basic_attr_verb_part_lexrule := lex_rule_basic &
 	     ICONS <! !> ] ].
 
 ; CSY 13-9-2020 - rule to allow predicative adj to take subjects
-pred_adj_subj_lexrule:= lex_rule_basic &
+pred_adj_subj_lexrule:= norm_lex_rule & aj_nocop_i-prd_le &
   [ ORTH #orth,
-    SYNSEM.LOCAL.CAT.VAL.SUBJ #arg1,
+    SYNSEM.LOCAL.CAT.VAL.SUBJ < #arg1 & synsem_min >,
     DTR aj_-_i-prd_le & [ ORTH #orth,
-			  SYNSEM.LOCAL.CAT.HEAD.MOD #arg1 ] ].
+			  SYNSEM.LOCAL.CAT.HEAD.MOD < #arg1 & synsem_min > ] ].
 	
 
 ; DPF 22-may-09 - Had changed MOD..--MIN to nbar_or_num_rel for some
@@ -3222,7 +3224,7 @@ n_n-mini-ni_rule := noun_prefix_noninfl_rule &
 ;; rule to change PRD value of daughter from - to bool, in order to get intended
 ;; analysis of *the cat is unchanged*
 ;; DPF 2016-10-11 - To avoid spurious reordering of attrib and this rule for
-;; e.g. *unhappy* or *nonlinear*, tried to restrict dtr to exclude lex-rule.
+;; e.g. *py* or *nonlinear*, tried to restrict dtr to exclude lex-rule.
 ;; But this is wrong, since we want un- rule to apply to the result of passive,
 ;; as in *unintended*.  So let's try constraining dtr to be PRD +, forcing the
 ;; attrib-adj lexical rule to apply afterward.

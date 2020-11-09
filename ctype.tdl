@@ -410,6 +410,9 @@ lngp := ctype. ;; v_nger-pp_dlr
 lfw := ctype. ;; w_italics_dlr
 ljvb := unary_ctype. ;; robust
 ljvp := ctype. ;; v_j-nb-pas-tr_dlr
+
+; CSY 9-11-2020
+ljmc := ctype. ;; j_j-nocop_dlr
 lvns := ctype. ;; v_n3s-bse_ilr
 lco := ctype. ;; v_v-co_dlr
 lnco := ctype. ;; n_n-co_dlr

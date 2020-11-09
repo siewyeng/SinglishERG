@@ -11735,12 +11735,6 @@ CSY 31-08-2020 - changed from nonc-hm-nab to nonc-h-nab take away mcna
 			 HS-LEX #hslex ],
 	     MODIFD notmod ] ].
 
-; CSY 19-9-2020 - new word type without the SPR information
-basic_nocop_norm_adj_word := nonc-hm-nab &
-  [ SYNSEM [ LOCAL.CAT [ HEAD adj & [ MINORS.ALTMIN non_ellipt_rel ] ],
-
-	     MODIFD notmod ] ].
-
 ; CSY 05-09-2020 - predicative adjective for sentences without copulas
 ;     13-9-2020 - changed the SYNSEM from intrans_pred_adj_synsem
 ;     16-9-2020 - added in MC +
@@ -17152,7 +17146,8 @@ to be B has started sleeping
      9-11-2020 to add in inchoative aspect
 """
   [ SYNSEM.LOCAL.CAT [ HEAD [ MOD < [ LOCAL.CAT [ HEAD verb &
-						     [ TAM.ASPECT.PROGR + ],
+						     [ TAM.ASPECT inc_aspect &
+								  [ PROGR + ]],
 						VAL [ SPR *olist*,
 						      COMPS < >  ] ] ] >,
 
