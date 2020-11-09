@@ -105,9 +105,13 @@ bse_or_non3sg_verb := local &
                                         AGR #agr ] ] > ],
     AGR #agr ].
 
-;CSY 2-11-2020 for Singlish
-;    8-11-2020 take away ASPECT to allow for sentences to have the perf 'already'
+
 bse_or_fin_verb := local &
+"""
+CSY 2-11-2020 for Singlish, no inflection verbs (take away no_aspect)
+optional SUBJ, took away person number
+<ex>he eat already.
+"""
   [ CAT [ HEAD [ VFORM fin_or_bse_or_imp,
                  PRD -,
 		 ;TAM.ASPECT no_aspect,
@@ -124,23 +128,6 @@ bse_or_fin_verb := local &
 ; Only used for unknown verbs
 bse_verb := non_fin_verb & bse_or_non3sg_verb &
   [ CAT.HEAD.VFORM bse ].
-
-bse_singlish_verb := local &
-"""
-CSY 17-9-2020 for Singlish, no inflection verbs (take away no_aspect)
-optional SUBJ, took away person number
-<ex>he eat already.
-"""
-  [ CAT [ HEAD [ VFORM fin,
-                 PRD -,
-                 --ADDIN [ ADDTAM indic_tam & [ TENSE present ] ] ],
-          POSTHD +,
-	  VAL.SUBJ < synsem & [ OPT +,
-                                LOCAL [ CAT.HEAD.CASE nom,
-                                        CONT nom-obj,
-                                        CONJ cnil,
-                                        AGR #agr ] ] > ],
-    AGR #agr ].
 
 
 ; Since finite verbs can project relative clauses, we introduce [MOD < nbar >]

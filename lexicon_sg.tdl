@@ -29,9 +29,14 @@ agak_adv := av_-_i-vp_le &
    SYNSEM [ LKEYS.KEYREL.PRED "_agak_a_1_rel",
             PHON.ONSET con ] ].
 
-already_asp_adv := av_-_already_le &
+already_asp_adv := av_-_already-prf_le &
  [ ORTH < "already" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_already_a_2_rel",
+            PHON.ONSET con ] ].
+
+already_incho_adv := av_-_already-incho_le &
+ [ ORTH < "already" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_already_a_3_rel",
             PHON.ONSET con ] ].
 
 beautiful_nocop := aj_nocop_i-prd_le &

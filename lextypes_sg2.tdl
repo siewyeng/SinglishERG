@@ -17128,12 +17128,12 @@ Intersective, VP-mod, no specifier
 
 
 ; CSY 19-9-2020 - MINORS.NORM is used for finer-grain control over which rules can apply
-av_-_already_le := av_-_i-vp_lexent &
+av_-_already-prf_le := av_-_i-vp_lexent &
 """
 CSY 31-08-2020 - introduced for 'already' the POSTHD + aspect marker
 supposedly MODs entire VP with the VAL.COMPS < >
-CSY 17-9-2020 - PRF + which prevents sentences like 'he eats already.'
-CSY 19-9-2020 - added MINORS.NORM norm_rel to prevent it from going through vp_mod_int_rule
+    17-9-2020 - PRF + which prevents sentences like 'he eats already.'
+    19-9-2020 - added MINORS.NORM norm_rel to prevent it from going through vp_mod_int_rule
 		which allows it to mod the VP before it gets its complement
 """
   [ SYNSEM.LOCAL.CAT [ HEAD [ MOD < [ LOCAL.CAT [ HEAD verb &
@@ -17141,6 +17141,19 @@ CSY 19-9-2020 - added MINORS.NORM norm_rel to prevent it from going through vp_m
 						VAL [ SPR *olist*,
 						      COMPS < > ] ] ] >,
 			      MINORS.NORM norm_rel ],
+		       VAL.SPR < unexpressed_min >,
+		       POSTHD + ] ].
+
+; CSY 9-11-2020 test lex for inchoative already
+av_-_already-incho_le := av_-_i-vp_lexent &
+"""
+<ex>B sleeping already
+to be B has started sleeping
+     9-11-2020 to add in inchoative aspect
+"""
+  [ SYNSEM.LOCAL.CAT [ HEAD [ MOD < [ LOCAL.CAT [ HEAD verb &
+						     [ TAM.ASPECT.PROGR + ],
+						VAL [ SPR *olist* ] ] ] > ],
 		       VAL.SPR < unexpressed_min >,
 		       POSTHD + ] ].
 
