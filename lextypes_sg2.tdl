@@ -17135,12 +17135,12 @@ supposedly MODs entire VP with the VAL.COMPS < >
     17-9-2020 - PRF + which prevents sentences like 'he eats already.'
     19-9-2020 - added MINORS.NORM norm_rel to prevent it from going through vp_mod_int_rule
 		which allows it to mod the VP before it gets its complement
+    9-11-2020 - added PROGR - to verb to prevent "he eating already" from having a perfective reading
 """
   [ SYNSEM.LOCAL.CAT [ HEAD [ MOD < [ LOCAL.CAT [ HEAD verb &
-						     [ TAM.ASPECT.PRF + ],
-						VAL [ SPR *olist*,
-						      COMPS < > ] ] ] >,
-			      MINORS.NORM norm_rel ],
+						     [ TAM.ASPECT [ PRF +,
+								    PROGR - ] ],
+						VAL [ SPR *olist* ] ] ] > ],
 		       VAL.SPR < unexpressed_min >,
 		       POSTHD + ] ].
 
@@ -17153,7 +17153,10 @@ to be B has started sleeping
 """
   [ SYNSEM.LOCAL.CAT [ HEAD [ MOD < [ LOCAL.CAT [ HEAD verb &
 						     [ TAM.ASPECT.PROGR + ],
-						VAL [ SPR *olist* ] ] ] > ],
+						VAL [ SPR *olist*,
+						      COMPS < >  ] ] ] >,
+
+			      MINORS.NORM norm_rel ],
 		       VAL.SPR < unexpressed_min >,
 		       POSTHD + ] ].
 
