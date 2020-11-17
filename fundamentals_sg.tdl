@@ -1069,17 +1069,29 @@ basic_aspect := *avm*.
 aspect := basic_aspect &
   [ PRF luk,
     PROGR luk,
-    INC luk ].
+    INC luk,
+    EXP luk ].
 no_aspect := aspect &
   [ PRF -,
-    PROGR - ].
+    PROGR -,
+    INC -,
+    EXP - ].
 
 ; CSY 9-11-2020 for inchoative aspect
 ; <ex> he eating already
-: to mean he has started eating
+; to mean he has started eating
 inc_aspect := aspect &
   [ PRF -,
     INC + ].
+
+; CSY 17-11-2020 for experiential aspect
+; <ex> he ever have cat.
+; to mean he has had a cat before
+; In contrast to the perfect in English, this necessarily means that the event/state
+; is not true anymore
+exp_aspect := aspect &
+  [ PRF +,
+    EXP + ].
 
 
 real_tense := tense.

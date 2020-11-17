@@ -1647,6 +1647,7 @@ basic_attr_verb_part_lexrule := lex_rule_basic &
 ; CSY 13-9-2020 - rule to allow predicative adj to take subjects
 ;     10-9-2020 - change DTR from aj_-_i-prd_le to norm_adj_word (not sure if overgenerates)
 ;		  added SYNSEM intrans_pred_adj_synsem to DTR
+;     17-11-2020 - changed DTR from aj_-_i-prd_le to its supertype to prevent undergenerating
 pred_adj_subj_lexrule:= norm_lex_rule & aj_nocop_i-prd_le &
   [ ORTH #orth,
     SYNSEM.LOCAL.CAT.VAL.SUBJ < #arg1 & synsem_min >,

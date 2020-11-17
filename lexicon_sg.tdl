@@ -38,13 +38,16 @@ already_incho_adv := av_-_already-incho_le &
  [ ORTH < "already" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_already_a_3_rel",
             PHON.ONSET con ] ].
+; 17-11-2020 no need for this with the pred_adj_subj_lexrule
+;beautiful_nocop := aj_nocop_i-prd_le &
+; [ ORTH < "beautiful" >,
+;   SYNSEM [ LKEYS.KEYREL.PRED "_beautiful_a_2_rel",
+;            PHON.ONSET con ] ].
 
-beautiful_nocop := aj_nocop_i-prd_le &
- [ ORTH < "beautiful" >,
-   SYNSEM [ LKEYS.KEYREL.PRED "_beautiful_a_5_rel",
+ever_exp_adv := av_-_ever-exp_le &
+ [ ORTH < "ever" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_ever_a_2_rel",
             PHON.ONSET con ] ].
-
-
 
 ;;;Nouns;;;
 

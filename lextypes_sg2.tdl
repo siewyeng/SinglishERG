@@ -10934,7 +10934,7 @@ basic_adj_synsem := basic_adj_lex_synsem &
 		  VAL.SPR.FIRST [ LOCAL.CAT.HEAD.MINORS.ALTMIN #altmin ] ],
 	    CONT.HOOK.INDEX.E #tam ] ].
 
-;CSY 13-9-2020 - does not inherit SUBJ < >
+; CSY 13-9-2020 - does not inherit SUBJ < >
 basic_nocop_adj_synsem := basic_nocop_adj_lex_synsem &
   [ MODIFD.LPERIPH bool,
     LOCAL [ CAT [ HEAD adj_or_intadj &
@@ -11004,7 +11004,7 @@ CSY 21-8-2020 - removed MC na to allow for adj to head sentence
                  --SIND #ind ] >,
             CONT.HOOK.XARG #ind ] ].
 
-;CSY 13-9-2020 - does not inherit SUBJ < >
+; CSY 13-9-2020 - does not inherit SUBJ < >
 adj_nocop_synsem_lex_or_phrase := basic_nocop_adj_synsem_lex_or_phrase &
 """
 CSY 21-8-2020 - removed MC na to allow for adj to head sentence
@@ -11268,7 +11268,7 @@ CSY 19-9-2020 - removed MC + because it does not help it head sentences
     LKEYS.KEYREL.ARG1 #ind ].
 
 ; CSY 13-08-2020 - to try to get find the source of the SUBJ dagify error
-; changed PRED to -
+;    		   changed PRED to -
 intrans_nocop_pred_adj_synsem := basic_nocop_adj_synsem & one_arg & isect_synsem &
                             norm_nocop_adj_synsem & basic_lex_synsem &
   [ LOCAL [ CAT [ HEAD adj &
@@ -11735,11 +11735,13 @@ CSY 31-08-2020 - changed from nonc-hm-nab to nonc-h-nab take away mcna
 			 HS-LEX #hslex ],
 	     MODIFD notmod ] ].
 
+
 ; CSY 05-09-2020 - predicative adjective for sentences without copulas
 ;     13-9-2020 - changed the SYNSEM from intrans_pred_adj_synsem
 ;     16-9-2020 - added in MC +
 ;     19-9-2020 - to allow it to join in the sb-hd rule, MC has to be na
 ;     20-9-2020 - SPR of SUBJ changed to *olsit* from empty list
+;     17-11-2020 - added in SPR stuff (*olist*)
 ; HEAD of the SUBJ is supnoun as it allows for modified NP
 aj_nocop_i-prd_le := basic_norm_adj_word &
   [ SYNSEM intrans_nocop_pred_adj_synsem & 
@@ -17138,22 +17140,37 @@ supposedly MODs entire VP with the VAL.COMPS < >
 		       VAL.SPR < unexpressed_min >,
 		       POSTHD + ] ].
 
-; CSY 9-11-2020 test lex for inchoative already
+; CSY 9-11-2020 lex for inchoative already
 av_-_already-incho_le := av_-_i-vp_lexent &
 """
 <ex>B sleeping already
 to be B has started sleeping
-     9-11-2020 to add in inchoative aspect
 """
   [ SYNSEM.LOCAL.CAT [ HEAD [ MOD < [ LOCAL.CAT [ HEAD verb &
 						     [ TAM.ASPECT inc_aspect &
-								  [ PROGR + ]],
+								  [ PROGR + ] ],
 						VAL [ SPR *olist*,
 						      COMPS < >  ] ] ] >,
 
 			      MINORS.NORM norm_rel ],
 		       VAL.SPR < unexpressed_min >,
 		       POSTHD + ] ].
+
+; CSY 17-11-2020 test lex for inchoative already
+av_-_ever-exp_le := av_-_i-vp_lexent &
+"""
+<ex>B ever have cat.
+to mean B has had a cat before.
+"""
+  [ SYNSEM.LOCAL.CAT [ HEAD [ MOD < [ LOCAL.CAT [ HEAD verb &
+						     [ TAM.ASPECT exp_aspect &
+								  [ PROGR - ] ],
+						VAL [ SPR *olist*,
+						      COMPS < >  ] ] ] >,
+
+			      MINORS.NORM norm_rel ],
+		       VAL.SPR < unexpressed_min >,
+		       POSTHD - ] ].
 
 ; DPF 06-sept-07 - Add type to allow restrictions on which adverbs can take
 ; part in the v_mod rule which allows modifiers before NP complements.
