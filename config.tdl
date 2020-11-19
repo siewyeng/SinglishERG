@@ -42,7 +42,8 @@ parsing-roots := root_strict root_informal root_lepak root_frag root_inffrag roo
 ;generation-roots          := root_strict root_frag.
 ;generation-roots        := root_strict.
 ;; Use this one to exclude focus movement (non-WH topicalization)
-generation-roots        := root_gen_nofocus.
+; CSY 19-11-2020 add in root lepak for more generation
+generation-roots        := root_gen_nofocus root_lepak.
 
 semarg-type               := semarg.
 list-type                 := *list*.

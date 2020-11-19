@@ -1587,10 +1587,11 @@ head_filler_phrase_inf := head_filler_phrase & head_final_infl &
 ;; consider |Europe has many citizens, of whom five million __ live in Norway|
 ;; where the complement of-PP is extracted from the partitive subject.
 ;;
+; CSY 19-11-2020 took away *obllist* and in hd dtr removed SPR.REST to leave SPR
 basic_head_subj_phrase := head_nexus_rel_phrase & head_final_infl & phrasal &
 			  head_compositional &
   [ SYNSEM [ LOCAL [ CAT [ VAL [ COMPS < >,
-				 SPR #spr & *obllist*,
+				 SPR #spr; & *obllist*,
 				 SUBJ *olist* & < anti_synsem_min >,
 				 SPEC #spec,
 				 SPCMPS < > ] ],
@@ -1598,7 +1599,7 @@ basic_head_subj_phrase := head_nexus_rel_phrase & head_final_infl & phrasal &
 	     MODIFD.RPERIPH #rperiph,
              PUNCT.PNCTPR #ppair ],
     HD-DTR.SYNSEM [ LOCAL.CAT [ VAL [ COMPS < >,
-				      SPR.REST #spr,
+				      SPR #spr,
                                       SPEC #spec ],
                                 MC na ],
 		    MODIFD.RPERIPH #rperiph,
@@ -8660,7 +8661,6 @@ subjh_rule_decl := subjh_rule_basic & basic_decl_phrase.
 subjh_mc_rule := subjh_rule_decl & head_subj_phrase & clause &
 """
 CSY - changed verbal to v_or_a to allow adjectives to join with subjects for Singlish and commented out VFORM fin
-26-10-2020 - changed back for troubleshooting
 """
   [ SYNSEM [ LOCAL [ CAT [ HEAD v_or_a &
 				[ ;VFORM fin,
@@ -12139,9 +12139,11 @@ frag_pp_ind_rule := unary_frag_rule &
 ;; DPF 2012-04-07 - Re 05-Dec-03: But this blocks a fragment analysis for e.g.
 ;; |Strange that Kim wasn't here|, so remove this constraint.
 
+; CSY 19-11-2020 added in MC - to prevent a sentence from becoming a frag
 frag_adj_rule := unary_frag_rule &
   [ ARGS < [ SYNSEM.LOCAL [ CAT [ HEAD adj & [ MINORS.MIN norm_rel ],
-				  VAL.COMPS < > ],
+				  VAL.COMPS < >,
+				  MC na_or_- ],
 			    CONT.HOOK [ LTOP #lbl,
 					XARG #ind ] ] ] >,
     C-CONT [ HOOK.LTOP #lbl,

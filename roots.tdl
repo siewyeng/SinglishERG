@@ -33,12 +33,17 @@ Formal edited written English, ending with clause punctuation.
     ORTH root_orth ].
 
 ; CSY 20-09-2020 new root for singlish that allows adj as HEAD
+;     19-11-2020 add in nonfocus list and punct.rpunct so that root does not over generate
 root_lepak := phrase &
   [ INFLECTD +,
     SYNSEM basic_root_synsem &
-             [ LOCAL.CAT [ HEAD non_noun,
-			   MC + ] ],
+             [ LOCAL [ CAT [ HEAD non_noun,
+			     MC + ],
+		       CONT.ICONS.LIST *nonfocuslist* ],
+	       PUNCT.RPUNCT basic_clause_punct ],
     ORTH root_orth ].
+
+
 
 root_gen := phrase &
 """

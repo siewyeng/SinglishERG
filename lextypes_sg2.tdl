@@ -11741,7 +11741,7 @@ CSY 31-08-2020 - changed from nonc-hm-nab to nonc-h-nab take away mcna
 ;     16-9-2020 - added in MC +
 ;     19-9-2020 - to allow it to join in the sb-hd rule, MC has to be na
 ;     20-9-2020 - SPR of SUBJ changed to *olsit* from empty list
-;     17-11-2020 - added in SPR stuff (*olist*)
+;     17-11-2020 - 
 ; HEAD of the SUBJ is supnoun as it allows for modified NP
 aj_nocop_i-prd_le := basic_norm_adj_word &
   [ SYNSEM intrans_nocop_pred_adj_synsem & 
