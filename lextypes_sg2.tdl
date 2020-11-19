@@ -17140,13 +17140,15 @@ supposedly MODs entire VP with the VAL.COMPS < >
 		       VAL.SPR < unexpressed_min >,
 		       POSTHD + ] ].
 
-; CSY 9-11-2020 lex for inchoative already
+; CSY 9-11-2020 - lex for inchoative already
+;     19-11-2020 - took away MOD HEAD type so that it can modify adjectives
+;                  this matches the inchoative aspect of that change in state
 av_-_already-incho_le := av_-_i-vp_lexent &
 """
 <ex>B sleeping already
 to be B has started sleeping
 """
-  [ SYNSEM.LOCAL.CAT [ HEAD [ MOD < [ LOCAL.CAT [ HEAD verb &
+  [ SYNSEM.LOCAL.CAT [ HEAD [ MOD < [ LOCAL.CAT [ HEAD ;verb &
 						     [ TAM.ASPECT inc_aspect &
 								  [ PROGR + ] ],
 						VAL [ SPR *olist*,
@@ -17156,13 +17158,14 @@ to be B has started sleeping
 		       VAL.SPR < unexpressed_min >,
 		       POSTHD + ] ].
 
-; CSY 17-11-2020 test lex for inchoative already
+; CSY 17-11-2020 - test lex for experiential ever
+;     19-11-2020 - to allow for <ex> He already late, took away MOD HEAD verb
 av_-_ever-exp_le := av_-_i-vp_lexent &
 """
 <ex>B ever have cat.
 to mean B has had a cat before.
 """
-  [ SYNSEM.LOCAL.CAT [ HEAD [ MOD < [ LOCAL.CAT [ HEAD verb &
+  [ SYNSEM.LOCAL.CAT [ HEAD [ MOD < [ LOCAL.CAT [ HEAD ;verb &
 						     [ TAM.ASPECT exp_aspect &
 								  [ PROGR - ] ],
 						VAL [ SPR *olist*,
