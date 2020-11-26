@@ -21279,6 +21279,18 @@ Scop, 'not', modify PrdP
                                                      [ PRD + ],
                                                 VAL [ SUBJ < >,
 						      SPCMPS < > ] ] ] > ] ].
+
+; CSY 26-11-2020 - just to modify the Singlish nocop adj which have PRD -
+av_-_s-not-sg_le := adv_neg_lexent &
+"""
+Scop, 'not', modify PrdP         
+<ex>Kim not happy.
+"""
+  [ SYNSEM.LOCAL.CAT.HEAD adv_nonmob &
+                          [ MOD < [ LOCAL.CAT [ HEAD adj &
+                                                     [ PRD - ],
+                                                VAL [ SUBJ < #subj >,
+						      SPCMPS < > ] ] ] > ] ].
 ; for "non-" as in "non-intrusive"
 av_-_s-not-ap_le := adv_neg_lexent &
 """

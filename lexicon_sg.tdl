@@ -49,6 +49,11 @@ ever_exp_adv := av_-_ever-exp_le &
    SYNSEM [ LKEYS.KEYREL.PRED "_ever_a_2_rel",
             PHON.ONSET con ] ].
 
+not_prdp-sg := av_-_s-not-sg_le &
+ [ ORTH < "not" >,
+   SYNSEM [ LKEYS.KEYREL.PRED neg_rel,
+            PHON.ONSET con ] ].
+
 ;;;Nouns;;;
 
 agaration_n1 := n_-_m_le &
