@@ -1,0 +1,2227 @@
+;;; -*- Mode: tdl; Coding: utf-8; -*-
+;;;
+;;;  Copyright (c) 1994-2018
+;;;    Dan Flickinger, Rob Malouf, Emily M. Bender
+;;;    see LICENSE for conditions
+;;;
+;;;  constructions.tdl
+;;;
+;;;  The instances of phrases defined in syntax.tdl
+;;;
+;;;  Created: Ann Copestake, 30-Sept-97
+;;;
+;;; $Id: constructions.tdl 7479 2010-02-21 23:11:30Z danf $
+
+;;
+;;  Constructions
+
+sb-hd_mc_c := subjh_mc_rule &
+"""
+Head+subject, main clause        
+
+<ex>C arrived.                 
+"""
+  [ RNAME sbhd ].
+
+; Non-main-clause
+sb-hd_nmc_c := subjh_nonmc_rule &
+"""
+Hd+subject, embedded clause      
+
+<ex>B thought [C arrived].     
+"""
+  [ RNAME sbhn ].
+
+sb-hd_q_c := subjh_rule_wh_insitu &
+"""
+Hd+subj, in-situ WH              
+
+<ex>B ate what?                
+"""
+  [ RNAME sbhq ].
+
+hd-cmp_u_c := hcomp_rule &
+"""
+Hd+complement                    
+
+<ex>B [hired C].               
+"""
+  [ RNAME hcp ].
+
+hd-cmp_2_c := h2comp_rule &
+"""
+Hd+second complement             
+
+<ex>B [gave to C] E.           
+"""
+  [ RNAME hcp2 ].
+
+hd_optcmp_c := hoptcomp_rule &
+"""
+Head discharges optional compl   
+
+<ex>B [ate] already.           
+"""
+  [ RNAME hcpo ].
+
+hdn_optcmp_c := noptcomp_rule &
+"""
+NomHd discharges opt complement  
+
+<ex>The [picture] appeared.    
+"""
+  [ RNAME ncpo ].
+
+mrk-nh_evnt_c := hmark_e_phr_rule &
+"""
+Marker + event-based complement  
+
+<ex>B sang [and danced.]       
+"""
+  [ RNAME hmke ].
+
+mrk-nh_cl_c := hmark_s_phr_rule &
+"""
+Marker + clause                  
+
+<ex>B sang [and C danced.]     
+"""
+  [ RNAME hmkc ].
+
+mrk-nh_nom_c := hmark_nom_rule &
+"""
+Marker + NP                      
+
+<ex>Cats [and some dogs] ran.  
+"""
+  [ RNAME hmkn ].
+
+mrk-nh_n_c := hmark_nbar_rule &
+"""
+Marker + N-bar                   
+
+<ex>Every cat [and dog] ran.   
+"""
+  [ RNAME hmkb ].
+
+mrk-nh_atom_c := hmark_atomic_rule &
+"""
+Paired marker + phrase           
+
+<ex>[Both B] and C arrived.    
+"""
+  [ RNAME hmka ].
+
+hd_xcmp_c := extracomp_rule &
+"""
+Head extracts compl (to SLASH)   
+
+<ex>Who does B [admire] now?   
+"""
+  [ RNAME hcpx ].
+
+hd_xsb-fin_c := extrasubj_fin_rule &
+"""
+Extract subject from finite hd   
+
+<ex>Who do you think [went?]   
+"""
+  [ RNAME shxf ].
+
+sp-hd_n_c := hspec_rule &
+"""
+Hd+specifier, nonhd = sem hd     
+
+<ex>[Every cat] slept.         
+"""
+  [ RNAME sph ].
+
+sp-hd_hc_c := hspec_hc_rule &
+"""
+Hd+specifier, hd = sem hd        
+
+<ex>The [very old] cat slept.  
+"""
+  [ RNAME sphh ].
+
+sp-hd_hc-cmp_c := hspec_hc_cmp_rule &
+"""
+Hd+specifier w/comp, hd = sem hd 
+
+<ex>The [more ancient] cat than mine slept.  
+"""
+  [ RNAME sphc ].
+
+aj-hd_scp_c := adjh_s_rule &
+"""
+Hd+preceding scopal adjunct      
+
+<ex>Probably B won.            
+"""
+  [ RNAME mhs ].
+
+aj-hd_scp-xp_c := adjh_s_nopair_rule &
+"""
+Hd+prec.scop.adj, VP head        
+
+<ex>B [probably won].          
+"""
+  [ RNAME mhv ].
+
+aj-hd_scp-pr_c := adjh_s_prpnct_rule &
+"""
+Hd+pr.scop.adj, VP hd, prd pnct  
+
+<ex>If C loses, B wins.        
+"""
+  [ RNAME mhvp ].
+
+hd-aj_scp-pr_c := hadj_s_prpnct_nmc_rule &
+"""
+Hd+foll.scop.adjnct, paird pnct, not main clause
+
+<ex>B [wins, if C loses.]        
+"""
+  [ RNAME hms ].
+
+hd-aj_scp-pr-mc_c := hadj_s_prpnct_mc_rule &
+"""
+Hd+foll.scop.adjnct, paird pnct, main clause
+
+<ex>[B wins,][if C loses.]        
+"""
+  [ RNAME hmsm ].
+
+hd-aj_scp_c := hadj_s_nopair_rule &
+"""
+Hd+following scopal adjunct      
+
+<ex>B wins if C loses.         
+"""
+  [ RNAME hmsn ].
+
+hd-aj_scp-noclpnct_c := hadj_s_no_clpunct_rule &
+"""
+Hd+following scopal adjunct, comma-marked head, no paired final.
+
+<ex>B wins, if C loses
+"""
+  [ RNAME hmsn ].
+
+aj-hdn_norm_c := adj_n_rule &
+"""
+Nominal head + preceding adjnct  
+
+<ex>The [big cat] slept.       
+"""
+  [ RNAME mhn ].
+
+aj-hdn_crd-cma_c := adj_n_crd_comma_rule &
+"""
+Nominal head + preceding adjnct  
+
+<ex>The [big cat] slept.       
+"""
+  [ RNAME mhnc ].
+
+aj-hdn_adjn_c := adj_adjn_rule &
+"""
+NomHd+prec.adj, hd pre-modified  
+
+<ex>The [big old cat] slept.   
+"""
+  [ RNAME mhna ].
+
+aj-hd_int_c := adjh_i_rule &
+"""
+Hd+prec.intersective adjunct     
+
+<ex>B [quickly left].          
+"""
+  [ RNAME mhi ].
+
+aj-hd_int-inv_c := adjh_i_inv_rule &
+"""
+Hd+prec.int.adjnct, hd inverted  
+
+<ex>On Tuesday, can you stay?  
+"""
+  [ RNAME mhiv ].
+
+aj-hd_wh-sbj_c := adjh_i_whsbj_rule &
+"""
+Hd+prec.int.adjnct, hd wh-subj
+
+<ex>On Tuesday, who arrived?
+"""
+  [ RNAME mhiq ].
+
+hdn-aj_rc_c := hadj_i_relcl_npr_rule &
+"""
+NomHd+following relative clause  
+
+<ex>The [cat we chased] ran.   
+"""
+  [ RNAME hmrn ].
+
+hdn-aj_rc-pr_c := hadj_i_relcl_pr_rule &
+"""
+NomHd+foll.rel.cl, paired pnct   
+
+<ex>A [cat, which ran,] fell.  
+"""
+  [ RNAME hmrc ].
+
+hdn-aj_rc-asym_c := hadj_i_relcl_asympr_rule &
+"""
+NomHd+foll.rel.cl, asymmetric punct   
+
+<ex>A [cat, which ran] fell.  
+"""
+  [ RNAME hmra ].
+
+hdn-aj_rc-propr_c := hadj_i_relcl_proper_rule &
+"""
+NomHd+foll.rel.cl, proper name hd, parenthesized rel-cl
+
+<ex>Kim (called Browne) fell.  
+"""
+  [ RNAME hmrp ].
+
+hdn-aj_redrel_c := hadj_i_redrel_npr_rule &
+"""
+NomHd+foll.predicative phrase    
+
+<ex>A [cat in a tree] fell.    
+"""
+  [ RNAME hmpn ].
+
+hdn-aj_redrel-pr_c := hadj_i_redrel_pr_rule &
+"""
+NomHd+foll.prd.phr, paired pnct  
+
+<ex>A [cat, in a tree,] fell.  
+"""
+  [ RNAME hmpc ].
+
+hdn-aj_redrel-asym_c := hadj_i_redrel_asympr_rule &
+"""
+NomHd+foll.prd.phr, asymm pnct  
+
+<ex>A [cat, in a tree] fell.  
+"""
+  [ RNAME hmpa ].
+
+hdn-aj_title_c := hadj_i_title_rule &
+"""
+NomHd +post-head title phrase
+
+<ex>We admired Ellis island.
+"""
+  [ RNAME hmnt ].
+
+hd-aj_int-unsl_c := hadj_i_unsl_rule &
+"""
+Hd+foll.int.adjct, no gap        
+
+<ex>B [left quietly].          
+"""
+  [ RNAME hmiu ].
+
+hd-aj_int-sl_c := hadj_i_sl_rule &
+"""
+Hd+foll.int.adjct, gap in adj    
+
+<ex>That cafe, we [dined in].  
+"""
+  [ RNAME hmis ].
+
+hd-aj_vmod_c := v_mod_int_rule &
+"""
+Hd+foll.int.adjct, prec. NP cmp
+
+<ex>B [saw here] a big parade. 
+"""
+  [ RNAME vlmi ].
+
+hd-aj_vmod-s_c := v_mod_scop_rule &
+"""
+Hd+foll.scop.adjct, prec. NP cmp, verb and adj heads 
+
+<ex>B [saw here] a big parade. 
+"""
+  [ RNAME vlms ].
+
+hd-aj_vmod-s-n_c := v_mod_noun_scop_rule &
+"""
+Hd+foll.scop.adjct, prec. NP cmp, noun head only
+
+<ex>The [impression here] that we won
+"""
+  [ RNAME vlmns ].
+
+hd-aj_cmod_c := conj_mod_int_rule &
+"""
+Conj+foll.int.adjct, prec. NP cmp  
+
+<ex>B [and yesterday] C arose. 
+"""
+  [ RNAME clmi ].
+
+hd-aj_cmod-s_c := conj_mod_scop_rule &
+"""
+Conj+foll.scop.adjct, prec. NP cmp  
+
+<ex>B [and probably] C arose. 
+"""
+  [ RNAME clms ].
+
+pp-pp_mod_c := prep_mod_prep_rule &
+"""
+PP modifying PP
+
+<ex>In Paris near the Louvre stands a church.
+"""
+  [ RNAME ppmpp ].
+
+hd_xaj-int-vp_c := extradj_i_vp_rule &
+"""
+Extract int.adjunct from VP      
+
+<ex>Here we [stand.]           
+"""
+  [ RNAME hmxv ].
+
+hd_xaj-int-s_c := extradj_i_s_rule &
+"""
+Extract int.adjunct from S       
+
+<ex>When is he Kim?            
+"""
+  [ RNAME hmxs ].
+
+hd_xaj-crd-s_c := extradj_i_s_coord_rule &
+"""
+Extract adjunct from coord S     
+
+<ex>Now B arises and C arrives 
+"""
+  [ RNAME hmxc ].
+
+cl_rc-fin-nwh_c := fin_non_wh_rel_rule &
+"""
+Rel.clause from fin.S, no relpr  
+
+<ex>The cat [we chased] ran.   
+"""
+  [ RNAME rclf ].
+
+cl_rc-inf-nwh_c := inf_non_wh_rel_rule &
+"""
+Rel.cl. fr.infin VP, non-sb gap  
+
+<ex>People [to admire] sang.   
+"""
+  [ RNAME rcli ].
+
+cl_rc-inf-nwh-sb_c := inf_non_wh_subj_rel_rule &
+"""
+Rel.cl. from infin VP, subj gap  
+
+<ex>Dogs [to chase cats] run.  
+"""
+  [ RNAME rcls ].
+
+cl_rc-instr_c := instr_inf_non_wh_rel_rule &
+"""
+Rel.cl. fr.inf.VP,no gap, instr  
+
+<ex>Money [to buy lunch] fell. 
+"""
+  [ RNAME rcln ].
+
+cl_rc-fin-modgap_c := fin_modgap_rel_rule &
+"""
+Rel.cl. fr.fin.S,mod gap         
+
+<ex>The day [we arrived] fell. 
+"""
+  [ RNAME rcmf ].
+
+cl_rc-inf-modgap_c := inf_modgap_rel_rule &
+"""
+Rel.cl. fr.inf.S,mod gap         
+
+<ex>The day [to arrive] fell.  
+"""
+  [ RNAME rcmi ].
+
+vp_rc-redrel_c := red_rel_cl_rule &
+"""
+Rel.cl. from predicative VP      
+
+<ex>Dogs [chasing cats] bark.  
+"""
+  [ RNAME rclv ].
+
+vp_sbrd-prd-prp_c := subconj_prdp_prp_rule &
+"""
+Pred.subord phr from prp-VP      
+
+<ex>Kim arrived, [smiling.]    
+"""
+  [ RNAME scpr ].
+
+vp_sbrd-prd-pas_c := subconj_prdp_pas_rule &
+"""
+Pred.subord phr from passive VP  
+
+<ex>Kim arrived, [inspired.]   
+"""
+  [ RNAME scps ].
+
+vp_sbrd-prd-aj_c := subconj_prdp_adj_rule &
+"""
+Pred.subord phr from adjctv phr  
+
+<ex>Kim arrived, [very happy.] 
+"""
+  [ RNAME scpa ].
+
+vp_sbrd-prd-ell_c := subconj_prdp_ellip_rule &
+"""
+Pred.subord phr, modfs ellip.VP  
+
+<ex>Kim might, [given time.]   
+"""
+  [ RNAME scpe ].
+
+j_sbrd-pre_c := subconj_prdp_a_init_rule &
+"""
+Pred.subord phr fr.adj, prehead  
+
+<ex>[Unhappy,] we left.        
+"""
+  [ RNAME sca ].
+
+vp_sbrd-pre_c := subconj_prdp_v_init_rule &
+"""
+Pred.subord phr fr.VP, prehead   
+
+<ex>[Seeing Kim] they left.    
+"""
+  [ RNAME scv ].
+
+vp_sbrd-pre-lx_c := subconj_prdp_v_init_lex_rule &
+"""
+Pred.subord phr fr.lex VP, prehd 
+
+<ex>[Smiling,] Kim arose.      
+"""
+  [ SYNSEM.PUNCT.RPUNCT comma_punct,
+    RNAME scvl ].
+
+hdn_bnp_c := bare_np_rule &
+"""
+Bare noun phrase (no determiner) 
+
+<ex>[Cats] sleep.              
+"""
+  [ RNAME bnp ].
+
+hdn_bnp-prd_c := bare_np_prd_rule &
+"""
+Bare predicative noun phrase     
+
+<ex>B will be president.       
+"""
+  [ RNAME bnpp ].
+
+hdn_bnp-pn_c := proper_np_rule &
+"""
+Bare NP from proper name         
+
+<ex>[Browne] arrived.          
+"""
+  [ RNAME nppr ].
+
+; DPF 30-mar-10 - Moved constraint on SPR here from syntax.tdl, but maybe
+; it's not necessary? - FIX
+
+hdn_bnp-num_c := num_np_rule &
+"""
+Bare NP from number              
+
+<ex>[42] is even.              
+"""
+  [ ARGS < [ SYNSEM.LOCAL.CAT.VAL.SPR < canonical_synsem > ] >,
+    RNAME npnb ].
+
+hdn_bnp-qnt_c := bare_npq_rule &
+"""
+NP from already-quantified dtr   
+
+<ex>[Some in Paris] slept.     
+"""
+  [ RNAME npbq ].
+
+hdn_bnp-sg-nmod_c := detlesspp_np_nmod_rule &
+"""
+NP fr. detless bare sg N-N cpnd  
+
+<ex>It was at [eye level.]     
+"""
+  [ RNAME dnpn ].
+
+hdn_bnp-sg-jmod_c := detlesspp_np_jmod_rule &
+"""
+NP fr. detless bare sg adj+noun  
+
+<ex>It was at [close range.]   
+"""
+  [ RNAME dnpj ].
+
+hdn_bnp-sg-nomod_c := detlesspp_np_nomod_rule &
+"""
+NP fr. detless bare sg unmodfd   
+
+<ex>It was within [range.]     
+"""
+  [ RNAME dnpx ].
+
+hdn_bnp-vger_c := bare_vger_rule &
+"""
+NP from verbal gerund            
+
+<ex>Hiring them was easy.      
+"""
+  [ RNAME npvg ].
+
+np-hdn_cpd_c := np_n_cmpnd_rule &
+"""
+Compound from proper-name+noun   
+
+<ex>The [IBM report] arrived.  
+"""
+  [ RNAME npn ].
+
+np-hdn_cpd-pr_c := np_n_cmpnd_pr_rule &
+"""
+Compound, proper+noun, paird pnct
+
+<ex>The [Cupertino, Calif., company] arrived.  
+"""
+  [ RNAME nppn ].
+
+np-hdn_ttl-cpd_c := np_title_cmpnd_rule &
+"""
+Compound from title+proper-name  
+
+<ex>[Professor Browne] left.   
+"""
+  [ RNAME npnt ].
+
+np-hdn_ttl-cpd-pl_c := np_title_cmpnd_pl_rule &
+"""
+Compound from title+plural proper
+
+<ex>[Mssrs. B and C] left.     
+"""
+  [ RNAME nptp ].
+
+np-hdn_nme-cpd_c := np_name_cmpnd_rule &
+"""
+Compound from two proper names   
+
+<ex>[Pat Browne] left.         
+"""
+  [ RNAME npnm ].
+
+np-hdn_num-cpd_c := np_num_cmpnd_rule &
+"""
+Compound from noun+number        
+
+<ex>Do [problem 6] first.      
+"""
+  [ RNAME npno ].
+
+np-hdn_cty-cpd_c := np_city_state_rule &
+"""
+Compound from city+state names   
+
+<ex>[Portland, Oregon] grew.   
+"""
+  [ RNAME npcs ].
+
+n-hdn_cpd_c := noun_n_cmpnd_rule &
+"""
+Compound from two normal nouns   
+
+<ex>The [guard dog] barked.    
+"""
+  [ RNAME nnc ].
+
+n-hdn_j-n-cpd_c := noun_adjn_cmpnd_rule &
+"""
+Compound from noun+[adj+noun]    
+
+<ex>kitchen heavy appliance    
+"""
+  [ RNAME nanc ].
+
+n-hdn_cpd-pl_c := noun_n_cmpnd_pl_rule &
+"""
+Compound from two nouns where nonhead is plural
+
+<ex>The [systems analyst] slept. 
+"""
+  [ RNAME nncp ].
+
+; <ex>The [two-year and three-year notes] arrived.
+n-hdn_cpd-pl-mnp_c := noun_n_cmpnd_pl_mnp_rule &
+"""
+Compound from two nouns where nonhead is coord (uninflected)
+
+measure-NP
+"""
+  [ RNAME nncpm ].
+
+; <ex>The [$10 million, [three-year contract]] arrived.
+n-hdn_cpd-pl-nlx_c := noun_n_cmpnd_pl_nonlex_rule &
+"""
+Compound from two nouns where nonhead is plural and head is 
+
+already a compound.
+"""
+  [ RNAME nncpn ].
+
+n-v_j-cpd_c := n_v_cmpnd_rule &
+"""
+Compound from noun+prdverb       
+
+<ex>a [snow-covered] town      
+"""
+  [ RNAME nvc ].
+
+n-j_j-t-cpd_c := n_adj_cmpnd_rule &
+"""
+Compound from noun+trans-adj     
+
+<ex>a [dog-happy] town         
+"""
+  [ RNAME natc ].
+
+n-j_j-cpd_c := n_adj_intr_cmpnd_rule &
+"""
+Compound from noun+adj           
+
+<ex>a [dog-friendly] town      
+"""
+  [ RNAME naic ].
+
+mnp-vp_jp_c := mnp_vp_rule &
+"""
+Adj-phrase from meas-NP plus passive VP
+
+<ex>The unit is *20%-owned by IBM*.
+"""
+  [ RNAME mnvj ].
+
+j-v_j-cpd_c := adj_v_cmpnd_rule &
+"""
+Compound from adj+prdverb       
+
+<ex>a [angry-looking] cat
+"""
+  [ RNAME jvtoj ].
+
+j_n-ed_c := n-adj_rule &
+"""
+Adj-phr from adj + noun+ed       
+
+<ex>the [long eared] dog       
+"""
+  [ RNAME ntoj ].
+
+hdn-np_app-pr_c := appos_prpnct_rule &
+"""
+Appositive fr.two NPs, w/commas  
+
+<ex>[Joe, the plumber,] spoke. 
+"""
+  [ RNAME app ].
+
+hdn-np_app-r-pr_c := appos_prpnct_pnr_rule &
+"""
+Appositive, NP2 prop, w/commas   
+
+<ex>[the plumber, Joe,] spoke. 
+"""
+  [ RNAME appr ].
+
+hdn-np_app-num_c := appos_prpnct_num_rule &
+"""
+Appositive, NP2 number           
+
+<ex>[Joe, 22,] spoke.          
+"""
+  [ RNAME apnm ].
+
+hdn-np_app_c := appos_nopair_rule &
+"""
+Appositive NP from two NPs       
+
+<ex>[Joe the plumber] spoke.   
+"""
+  [ RNAME appn ].
+
+hdn-np_app-r_c := appos_nopair_pnr_rule &
+"""
+Appositive, NP2 prop, nopair     
+
+<ex>[The plumber Joe] spoke.   
+"""
+  [ RNAME apnr ].
+
+hdn-np_app-idf_c := appos_indef_rule &
+"""
+Appositive with indef.NP modifr  
+
+<ex>[Joe, a plumber,] spoke.   
+"""
+  [ RNAME appi ].
+
+hdn-np_app-idf-rbc_c := appos_indef_rbc_rule &
+"""
+Appositive with indef.NP modif, first comma-marked, second not
+
+<ex>[Joe, a plumber] spoke.   
+"""
+  [ RNAME apir ].
+
+hdn-np_app-idf-p_c := appos_indef_paren_rule &
+"""
+Appositive, indef.NP, parnthszd  
+
+<ex>[Joe (a plumber)] spoke.   
+"""
+  [ RNAME apip ].
+
+hdn-np_app-nbr_c := appos_nbar_rule &
+"""
+Appositive with N-bar modifier   
+
+<ex>Kim, president of the PTA  
+"""
+  [ RNAME apnb ].
+
+hdn-np_app-rbc_c := appos_rbc_rule &
+"""
+Appositive fr.two NPs, first comma-marked, second not
+
+<ex>[My friend, the plumber] spoke. 
+"""
+  [ RNAME appb ].
+
+hdn-np_app-pnr-rbc_c := appos_prop_rbc_rule &
+"""
+Appositive fr.two NPs, firstcomma-marked, second (proper) not
+
+<ex>[the plumber, Joe] spoke. 
+"""
+  [ RNAME appp ].
+
+hdn-np_app-mnp_c := appos_measnp_rule &
+"""
+Appositive fr.two NPs, meas-NPas second dtr
+
+<ex>[Bygdin 1:40000 arrived.]
+"""
+  [ RNAME appm ].
+
+hdn-np_app-dx_c := appos_deictic_rule &
+"""
+Appositive fr.two NPs, w/commas, second deictic
+
+<ex>[One door, that for pets,] stayed open.. 
+"""
+  [ RNAME appd ].
+
+np_adv_c := npadv_mod_rule &
+"""
+Modifier phrase from NP          
+
+<ex>B arrived [this week.]     
+"""
+  [ RNAME nadv ].
+
+np_adv-mnp_c := npadv_measnp_rule &
+"""
+Modifier phrase from measure NP  
+
+<ex>Markets fell [50 points.]  
+"""
+  [ RNAME nadvm ].
+
+hdn_np-num_c := num_noun_rule &
+"""
+NP from number                   
+
+<ex>[700 billion] is too much. 
+"""
+  [ RNAME numn ].
+
+n-n_num-seq_c := num_noun_seq_rule &
+"""
+NP from sequence of numbers      
+
+<ex>The number is [48 205 53.] 
+"""
+  [ RNAME nseq ].
+
+hdn_color_c := color_noun_rule &
+"""
+noun from color adjective        
+
+<ex>[Red] suits you.           
+"""
+  [ RNAME ncol ].
+
+flr-hd_nwh_c := filler_head_rule_non_wh_edgen_mc &
+"""
+Filler-head, non-wh filler       
+
+<ex>Kim, we should hire.       
+"""
+  [ RNAME fhne ].
+
+flr-hd_nwh-nmc_c := filler_head_rule_non_wh_edgen_nonmc &
+"""
+Filler-head, non-wh filler       
+
+<ex>Kim, we should hire.       
+"""
+  [ RNAME fhnen ].
+
+flr-hd_nwh-nc_c := filler_head_rule_non_wh_infgen_mc &
+"""
+Fill-head, non-wh, not NP, no comma, main clause
+
+<ex>Today we should arrive.        
+"""
+  [ RNAME fhni ].
+
+flr-hd_nwh-nc-nmc_c := filler_head_rule_non_wh_infgen_nonmc &
+"""
+Fill-head, non-wh, not NP, no comma, embedded clause
+
+<ex>He said today we should arrive.        
+"""
+  [ RNAME fhnin ].
+
+;; For fronted NPs, if no comma, then exclude imperative, to avoid spurious
+;; analysis of *you work*
+flr-hd_nwh-nc-np_c := filler_head_rule_non_wh_np_mc &
+"""
+Fill-head, non-wh, NP, no comma, main clause
+
+<ex>Kim we should hire.        
+"""
+  [ RNAME fhnn ].
+
+flr-hd_nwh-nc-np-nmc_c := filler_head_rule_non_wh_np_nonmc &
+"""
+Fill-head, non-wh, NP, no comma, embedded clause  
+
+<ex>We knew that this one we should hire.        
+"""
+  [ RNAME fhnnn ].
+
+flr-hd_nwh-inv_c := filler_head_rule_non_wh_inv_mc &
+"""
+Filler-head, non-wh filler, inverted, main clause
+
+<ex>Only yesterday did they finally arrive.
+"""
+  [ NH-DTR.SYNSEM.PUNCT.RPUNCT pair_or_no_punct,
+    RNAME fhnv ].
+
+flr-hd_nwh-inv-nmc_c := filler_head_rule_non_wh_inv_nonmc &
+"""
+Filler-head, non-wh filler, inverted, embedded clause
+
+<ex>He claimed that only yesterday did they finally arrive.
+"""
+  [ NH-DTR.SYNSEM.PUNCT.RPUNCT pair_or_no_punct,
+    RNAME fhnvn ].
+
+flr-hd_wh-mc_c := filler_head_rule_wh_root &
+"""
+Fill-head, wh non-subj, main cl  
+
+<ex>Who did they hire?         
+"""
+  [ RNAME fhw ].
+
+flr-hd_wh-mc-sb_c := filler_head_rule_wh_subj &
+"""
+Fill-head, wh subj, main cl      
+
+<ex>Who left?                  
+"""
+  [ RNAME fhs ].
+
+flr-hd_wh-nmc-fin_c := filler_head_rule_wh_nr_fin &
+"""
+Fill-head, wh, fin hd, embed cl  
+
+<ex>B wondered [who won.]      
+"""
+  [ RNAME fhf ].
+
+flr-hd_wh-nmc-inf_c := filler_head_rule_wh_nr_inf &
+"""
+Fill-head, wh, inf hd, embed cl  
+
+<ex>B knew [who to hire.]      
+"""
+  [ RNAME fhi ].
+
+flr-hd_rel-fin_c := filler_head_fin_np_rel_rule &
+"""
+Fill-head, finite, relative cls, NP gap
+
+<ex>people [who we admired]         
+"""
+  [ RNAME fhr ].
+
+flr-hd_rel-fin-pp_c := filler_head_fin_pp_rel_rule &
+"""
+Fill-head, finite, relative cls, PP gap
+
+<ex>people [with whom we traveled]         
+"""
+  [ RNAME fhrp ].
+
+flr-hd_rel-inf_c := filler_head_inf_rel_rule &
+"""
+Fill-head, inf, relative cls, PP gap
+
+<ex>people [on whom to rely]   
+"""
+  [ RNAME fhri ].
+
+hd-cl_fr-rel_c := free_rel_rule &
+"""
+Free relative clause             
+
+<ex>We run whenever Kim runs.  
+"""
+  [ RNAME frf ].
+
+hd-cl_fr-rel-ellip_c := free_rel_ellip_rule &
+"""
+Free relative clause with VP-ellipsis instead of gap
+
+<ex>We did what we could  
+"""
+  [ RNAME frfe ].
+
+vp-vp_crd-fin-t_c := vp_coord_fin_top_phr &
+"""
+Conjnd VP, fin, top              
+
+<ex>B [sees C and chases D.]   
+"""
+  [ RNAME ctvpf ].
+
+vp-vp_crd-fin-m_c := vp_coord_fin_mid_eg_phr &
+"""
+Conjnd VP, fin, mid              
+
+<ex>B rose, [sang, & chased D.]
+"""
+  [ RNAME cmvpf ].
+
+vp-vp_crd-fin-im_c := vp_coord_fin_mid_ig_phr &
+"""
+Conjnd VP, fin, mid, no comma    
+
+<ex>B rose [sang & chased D.]  
+"""
+  [ RNAME cmfpi ].
+
+vp-vp_crd-nfin-t_c := vp_coord_nonfin_top_phr &
+"""
+Conjnd VP, nonfin, top           
+
+<ex>B'll [see C and chase D.]  
+"""
+  [ RNAME ctvpn ].
+
+vp-vp_crd-nfin-m_c := vp_coord_nonfin_mid_eg_phr &
+"""
+Conjnd VP, nonfin, mid           
+
+<ex>B'll rise, [sing, & see D.]
+"""
+  [ RNAME cmvpn ].
+
+vp-vp_crd-nfin-im_c := vp_coord_nonfin_mid_ig_phr &
+"""
+Conjnd VP, nonfin, mid, no comma 
+
+<ex>B'll rise [sing & see D.]  
+"""
+  [ RNAME cmvpi ].
+
+v-v_crd-fin-ncj_c := v_coord_fin_top_noconj_phr &
+"""
+Conjnd V,VP, fin, no conjunctn   
+
+<ex>B [sees C, chases D.]      
+"""
+  [ RNAME ctvr ].
+
+v-v_crd-nfin-ncj_c := v_coord_nonfin_top_noconj_phr &
+"""
+Conjnd V,VP, nonfin, no conjunctn
+
+<ex>B will [see C, chase D.]   
+"""
+  [ RNAME ctvrn ].
+
+; CSY 19-10-2020 - for Singlish
+j-j_nocop_crd_c := a_nocop_coord_phr_fin &
+"""
+Conjnd pred Adj, no preceding cop
+<ex>He smart and fast.
+"""
+  [ RNAME ctaps ].
+
+cl-cl_crd-t_c := s_coord_top_phr &
+"""
+Conjoined clauses, non-int, top  
+
+<ex>B sang and C danced.       
+"""
+  [ RNAME cts ].
+
+cl-cl_crd-int-t_c := s_coord_int_top_phr &
+"""
+Conjnd clauses, interrog, top    
+
+<ex>Who sang and who danced?   
+"""
+  [ RNAME ctsq ].
+
+cl-cl_crd-m_c := s_coord_mid_eg_phr &
+"""
+Conjoined clauses, mid           
+
+<ex>B sang, [C ran, & D sat.]  
+"""
+  [ RNAME cmse ].
+
+cl-cl_crd-im_c := s_coord_mid_ig_phr &
+"""
+Conjoined clauses, no cma, mid   
+
+<ex>B sang, [C ran & D sat.]   
+"""
+  [ RNAME cmsi ].
+
+cl-cl_crd-rc-t_c := relcl_coord_top_phr &
+"""
+Conjoined relative clauses       
+
+<ex>people [who fly & who run] 
+"""
+  [ RNAME ctrt ].
+
+cl-cl_crd-ncj_c := s_coord_top_noconj_phr &
+"""
+Conjnd S, no conjunctn   
+
+<ex>[B sees C, E chases D.]      
+"""
+  [ RNAME ctsn ].
+
+pp-pp_crd-t_c := pp_coord_top_phr &
+"""
+Conjnd PP, top                   
+
+<ex>B is [in Paris and at work]
+"""
+  [ RNAME ctpp ].
+
+pp-pp_crd-m_c := pp_coord_mid_eg_phr &
+"""
+Conjnd PP, mid                   
+
+<ex>B's [here, in P, & at work]
+"""
+  [ RNAME cmpp ].
+
+pp-pp_crd-im_c := pp_coord_mid_ig_phr &
+"""
+Conjnd PP, mid, no comma         
+
+<ex>B's [here, in P & at work] 
+"""
+  [ RNAME cmppi ].
+
+pp-pp_crd-sel-t_c := pp_sel_coord_top_phr &
+"""
+Conjnd selected-for PP, top      
+
+<ex>B relies [on C and on D]   
+"""
+  [ RNAME ctps ].
+
+pp-pp_crd-sel-m_c := pp_sel_coord_mid_phr &
+"""
+Conjnd selected-for PP, mid      
+
+<ex>B relies [on C, on D, and on E]
+"""
+  [ RNAME cmps ].
+
+np-np_crd-t_c := np_coord_top_eg_rule &
+"""
+Conjoined noun phrases, top      
+
+<ex>[The cat and the dog] ran. 
+"""
+  [ RNAME ctnp ].
+
+np-np_crd-i-t_c := np_coord_top_ig1_rule &
+"""
+Conjoined accus-case pro and NP  
+
+<ex>[Me and Kim] left.         
+"""
+  [ RNAME ctnp1 ].
+
+np-np_crd-i2-t_c := np_coord_top_ig2_rule &
+"""
+Conjoined NP and accus-case pro  
+
+<ex>[Kim and me] left.         
+"""
+  [ RNAME ctnp2 ].
+
+np-np_crd-i3-t_c := np_coord_top_ig3_rule &
+"""
+Conjoined NP and nom-case pro    
+
+<ex>B saw [Kim and I].         
+"""
+  [ RNAME ctnp3 ].
+
+np-np_crd-m_c := np_coord_mid_eg_rule &
+"""
+Conjoined noun phrases, mid      
+
+<ex>Kim, [Pat, and Tom] ran.   
+"""
+  [ RNAME cmne ].
+
+np-np_crd-im_c := np_coord_mid_ig_rule &
+"""
+Conjoined NPs, no comma, mid     
+
+<ex>Kim, [Pat and Tom] ran.    
+"""
+  [ RNAME cmni ].
+
+np-np_crd-nc-m_c := np_coord_mid_noconj_rule &
+"""
+Conjoined NPs, no conj, mid     
+
+<ex>Buy books, [tapes, films.] 
+"""
+  [ RNAME cmnn ].
+
+n-n_crd-nc-m_c := nbar_coord_mid_noconj_rule &
+"""
+Conjoined nouns, no comma, mid   
+
+<ex>Buy a book, [tape, film.]  
+"""
+  [ RNAME cmnb ].
+
+np-np_crd-nc-t_c := np_coord_top_noconj_rule &
+"""
+Conjoined NPs, no comma, top     
+
+<ex>Buy [tapes, films.]        
+"""
+  [ RNAME ctnn ].
+
+n-n_crd-t_c := nbar_coord_top_1_nondiv_rule &
+"""
+Conjnd Ns, sym agr, nondiv, top  
+
+<ex>The [cat and dog] ran.     
+"""
+  [ RNAME ctn ].
+
+; <ex>How much sand and gravel arrives?
+n-n_crd-div-t_c := nbar_coord_top_1_div_samelex_rule &
+"""
+Conjnd Ns, sym agr, div, same-lex, top     
+
+<ex>The [cats and dogs] run.
+"""
+  [ RNAME ctnd ].
+
+n-n_crd-div-dll-t_c := nbar_coord_top_1_div_asymlex1_rule &
+"""
+Conjnd Ns, sym agr, div, diff-lex1, top (nonlex)
+
+<ex>The [[cats with tails] and dogs] run.
+"""
+  [ RNAME ctndl ].
+
+n-n_crd-div-dlr-t_c := nbar_coord_top_1_div_asymlex2_rule &
+"""
+Conjnd Ns, sym agr, div, diff-lex2, top (nonlex)
+
+<ex>The [dogs and [cats with tails]] run.
+"""
+  [ RNAME ctndr ].
+
+n-n_crd-mass-t_c := nbar_coord_top_1_mass_rule &
+"""
+Conjnd Ns, sym agr, mass, top, where number underspec
+
+<ex>The [sand and gravel] has/have arrived]
+"""
+  [ RNAME ctnm ].
+
+n-n_crd-3-t_c := nbar_coord_top_3_rule &
+"""
+Conjnd Ns, single referent, top  
+
+<ex>My [friend and guide] ran. 
+"""
+  [ RNAME ctn3 ].
+
+n-n_crd-m_c := nbar_coord_mid_eg_rule &
+"""
+Conjoined N-bars, mid            
+
+<ex>No cat, [dog, or rat] ran. 
+"""
+  [ RNAME cmen ].
+
+n-n_crd-im_c := nbar_coord_mid_ig_rule &
+"""
+Conjoined N-bars, no comma, mid  
+
+<ex>No cat, [dog or rat] ran.  
+"""
+  [ RNAME cmin ].
+
+n-n_crd-asym-t_c := nbar_coord_asym_top_rule &
+"""
+Conjnd Ns, asym agr, sg+pl, top  
+
+<ex>The [cat and dogs] ran.    
+"""
+  [ RNAME ctna ].
+
+n-n_crd-asym2-t_c := nbar_coord_asym_top_2_rule &
+"""
+Conjnd Ns, asym agr, pl+sg, top  
+
+<ex>The [cats and dog] ran.    
+"""
+  [ RNAME ctnb ].
+
+j-n_crd-t_c := adj_noun_coord_rule &
+"""
+Conjoined adjective + noun       
+
+<ex>[wooden and marble] stairs 
+"""
+  [ RNAME ctjn ].
+
+j-n_crd-m_c := adj_noun_coord_mid_rule &
+"""
+Mid-coord for conjoined adjective + noun       
+
+<ex>tall, [angry or monster] cat
+"""
+  [ RNAME cmjn ].
+
+n-j_crd-t_c := noun_adj_coord_rule &
+"""
+Conjoined noun +adjective        
+
+<ex>[marble and wooden] stairs 
+"""
+  [ RNAME ctnj ].
+
+n-j_crd-m_c := noun_adj_coord_mid_rule &
+"""
+Conjoined noun +adjective        
+
+<ex>[marble and wooden] stairs 
+"""
+  [ RNAME cmnj ].
+
+j-j_crd-att-t_c := adj_attr_coord_top_phr &
+"""
+Conjnd attrib adjectives, top    
+
+<ex>the [old and young] cats   
+"""
+  [ RNAME ctaa ].
+
+j-j_crd-att-m_c := adj_attr_coord_mid_eg_phr &
+"""
+Conjnd attrib adjectives, mid, only for "or"
+
+<ex>the [old, young, or angry] cats   
+"""
+  [ RNAME cmeaa ].
+
+j-j_crd-att-im_c := adj_attr_coord_mid_ig_phr &
+"""
+Conjnd attrib adjectives, no comma, mid, only for "or"
+
+<ex>the [old, young, or angry] cats   
+"""
+  [ RNAME cmiaa ].
+
+j-j_crd-prd-t_c := adj_pred_coord_top_phr &
+"""
+Conjnd pred adjs, top            
+
+<ex>B is [young and tall].     
+"""
+  [ RNAME ctap ].
+
+j-j_crd-prd-m_c := adj_pred_coord_mid_eg_phr &
+"""
+Conjnd pred adjs, mid            
+
+<ex>B is old, [big, and tall]. 
+"""
+  [ RNAME cmea ].
+
+j-j_crd-prd-im_c := adj_pred_coord_mid_ig_phr &
+"""
+Conjnd pred adjs, no comma, mid  
+
+<ex>B is old, [big and tall].  
+"""
+  [ RNAME cmia ].
+
+jpr-jpr_crd-t_c := ap_predp_coord_top_phr &
+"""
+Conjnd subord prd phr, adj, top  
+
+<ex>B ran, [happy but tired.]  
+"""
+  [ RNAME ctax ].
+
+jpr-jpr_crd-m_c := ap_predp_coord_mid_eg_phr &
+"""
+Conjnd subord prd phr, adj, mid  
+
+<ex>B ran, hot, [fit, and low] 
+"""
+  [ RNAME cmax ].
+
+jpr-jpr_crd-im_c := ap_predp_coord_mid_ig_phr &
+"""
+Conjnd sbrd phr, adj,no-cma, mid 
+
+<ex>B ran, hot, [fit and low.] 
+"""
+  [ RNAME cmay ].
+
+jpr-vpr_crd-t_c := vp_a-or-p_predp_coord_top_phr &
+"""
+Conjnd sbrd prd phr, adj,V, top  
+
+<ex>B ran, [happy and freed.]  
+"""
+  [ RNAME ctav ].
+
+jpr-vpr_crd-m_c := vp_a-or-p_predp_coord_mid_eg_phr &
+"""
+Conjnd sbrd prd phr, adj,V, mid  
+
+<ex>B ran, hot, [fit, and lit.]
+"""
+  [ RNAME cmav ].
+
+jpr-vpr_crd-im_c := vp_a-or-p_predp_coord_mid_ig_phr &
+"""
+Conjnd sbd phr, adj,V,no-cma, mid
+
+<ex>B ran, hot, [fit and lit.] 
+"""
+  [ RNAME cmaz ].
+
+vppr-vppr_crd-t_c := vp_predp_coord_top_phr &
+"""
+Conjnd subord prd phr, VP, top   
+
+<ex>B ran, [feared and loved.] 
+"""
+  [ RNAME ctvpx ].
+
+vppr-vppr_crd-m_c := vp_predp_coord_mid_eg_phr &
+"""
+Conjnd subord prd phr, VP, mid   
+
+<ex>B ran, torn, [bent, & cut] 
+"""
+  [ RNAME cmvpx ].
+
+vppr-vppr_crd-im_c := vp_predp_coord_mid_ig_phr &
+"""
+Conjnd sbrd phr, VP, no-cma, mid 
+
+<ex>B ran, torn, [bent & cut.] 
+"""
+  [ RNAME cmvpy ].
+
+ppr-ppr_crd-t_c := pp_predp_coord_top_phr &
+"""
+Conjnd sbrd prd phr, PP+XP, top  
+
+<ex>B ran, [in Rome but lost.] 
+"""
+  [ RNAME ctpx ].
+
+ppr-ppr_crd-m_c := pp_predp_coord_mid_eg_phr &
+"""
+Conjnd sbrd prd phr, PP+XP, mid  
+
+<ex>B ran, sad, [in R, & lost] 
+"""
+  [ RNAME cmpx ].
+
+ppr-ppr_crd-im_c := pp_predp_coord_mid_ig_phr &
+"""
+Conjnd sbrd PP+XP, no-cma, mid   
+
+<ex>B ran, sad, [in R & lost]  
+"""
+  [ RNAME cmpy ].
+
+hd_imp_c := imperative_mc_rule &
+"""
+Imperative clause from base VP   
+
+<ex>Hire Browne!               
+"""
+  [ RNAME imp ].
+
+hd_yesno_c := yesno_rule &
+"""
+Yes-no question from inverted S  
+
+<ex>Did B arrive?              
+"""
+  [ RNAME ync ].
+
+hd_inv-nwh_c := inv_decl_rule &
+"""
+Inverted non-wh declarative cls  
+
+<ex>Never [has B won here.]    
+"""
+  [ RNAME idc ].
+
+num-n_mnp_c := measure_np_rule &
+"""
+Measure NP from number+noun      
+
+<ex>A [two liter] jar broke.   
+"""
+  [ RNAME mnp ].
+
+num-n_mnp-ppof_c := measure_np_ppof_rule &
+"""
+Measure NP from number+noun, oblig pp-of complement
+
+<ex>many accounts, of which [two percent] are overdrawn
+"""
+  [ RNAME mnpo ].
+
+n-num_mnp_c := measure_np_symbol_rule &
+"""
+Measure NP from meas-symbol+num  
+
+<ex>We dislike [$6] fuel.      
+"""
+  [ RNAME mnps ].
+
+;; DPF 20-05-16 - Maybe redundant?
+;n_mnp_c := bare_measure_np_rule &
+; """
+; Measure NP from bare noun
+;
+; <ex>This road is [miles] long.
+; """
+;  [ RNAME mnpb ].
+
+mnp_deg_c := meas_np_degadv_attr_rule &
+"""
+Deg phrase fr meas NP, attrib    
+
+<ex>The [5 meter] tall tree fell.
+"""
+  [ RNAME mnda ].
+
+mnp_deg-bre_c := meas_np_degadv_bare_attr_rule &
+"""
+Deg phrase fr bare meas NP, attrib
+
+<ex>The *centuries*-old tree fell.
+"""
+  [ RNAME mndb ].
+
+mnp_deg-prd_c := meas_np_degadv_pred_rule &
+"""
+Deg phrase fr meas NP, predic    
+
+<ex>Trees are [5 meters] tall. 
+"""
+  [ RNAME mndp ].
+
+num_prt-nc_c := partitive_num_nocomp_rule &
+"""
+Partitive NP fr.number, no cmp   
+
+<ex>[Six] were sleeping.       
+"""
+  [ RNAME pnn ].
+
+num_prt-of_c := partitive_num_ppof_rule &
+"""
+Partitive fr.number, of_PP cmp   
+
+<ex>[Six] of them slept.       
+"""
+  [ RNAME pno ].
+
+num_prt-det-nc_c := partitive_intadj_nocomp_rule &
+"""
+Partitive fr.det+number, no cmp  
+
+<ex>[These six] slept.         
+"""
+  [ RNAME pnan ].
+
+num_prt-det-of_c := partitive_intadj_ppof_rule &
+"""
+Partitive fr.det+num, of-PP cmp  
+
+<ex>[The first of them] left.  
+"""
+  [ RNAME pnac ].
+
+aj_prt-det-nc_c := partitive_adj_lex_nocomp_rule &
+"""
+Partitive from lexical compar/superl adj, no complement        
+
+<ex>[The oldest] is empty.     
+"""
+  [ RNAME pan ].
+
+aj_prt-det-ncp_c := partitive_adj_phr_nocomp_rule &
+"""
+Partitive from phrasal adj, no complement
+
+<ex>[The most beautiful] is empty.     
+"""
+  [ RNAME panp ].
+
+aj_prt-det-of_c := partitive_adj_ppof_rule &
+"""
+Partitive fr. adj, of-PP cmp     
+
+<ex>[The oldest of these] is empty. 
+"""
+  [ RNAME pac ].
+
+cl_np-wh_c := np_cp_wh_rule &
+"""
+NP from WH clause                
+
+<ex>[What he saw] scared him.  
+"""
+  [ RNAME npsq ].
+
+vp_cp-sb_c := cp_subj_rule &
+"""
+VP requiring non-WH clausal subj 
+
+<ex>That B won [bothered C.]   
+"""
+  [ RNAME cpsb ].
+
+vp_cp-sb-inf_c := cp_subj_inf_rule &
+"""
+VP requiring non-WH inf.cls subj 
+
+<ex>For B to win [bothered C.] 
+"""
+  [ RNAME cpsi ].
+
+vp_np-ger_c := vgerund_rule &
+"""
+NP from verbal gerund            
+
+<ex>Winning money [pleased C.] 
+"""
+  [ RNAME vger ].
+
+vp_np-ger-intr_c := vgerund_intr_rule &
+"""
+NP from verbal gerund of intrans verb, with oblig subj
+
+<ex>Fido barking [pleased C.] 
+"""
+  [ RNAME vgri ].
+
+vp_np-ger-gap_c := vgerund_slash_rule &
+"""
+NP from verbal gerund containing a gap
+
+<ex>Winning money [pleased C.] 
+"""
+  [ RNAME vgrg ].
+
+np_prt-poss_c := partitive_np_rule &
+"""
+Partitive fr. possessive NP      
+
+<ex>[The cat's] is empty.      
+"""
+  [ RNAME npp ].
+
+np_voc-post_c := vocative_np_rule &
+"""
+Vocative modifier fr.NP, postmod 
+
+<ex>Where are we, [Kim?]       
+"""
+  [ RNAME npv ].
+
+np_voc-pre_c := vocative_np_lmod_rule &
+"""
+Vocative modifier, premod        
+
+<ex>[Kim,] where are we?       
+"""
+  [ RNAME npvl ].
+
+num_det_c := num_det_rule &
+"""
+Determiner from number           
+
+<ex>[Ten cats] slept.          
+"""
+  [ RNAME numd ].
+
+hd-hd_rnr_c := right_node_raise_vp_rule &
+"""
+Right-node raising, VP           
+
+<ex>B admires and relies on C  
+"""
+  [ RNAME rnrv ].
+
+hd-hd_rnr-nv_c := right_node_raise_nonvp_rule &
+"""
+Right-node raising, not VP       
+
+<ex>B is under or replaced by C
+"""
+  [ RNAME rnro ].
+
+hd-hd_rnr-nb_c := right_node_raise_nbar_rule &
+"""
+Right-node raising, Nbar         
+
+<ex>B has pictures and stories of C
+"""
+  [ RNAME rnrn ].
+
+np_frg_c := frag_np_rule &
+"""
+Fragment NP                      
+
+<ex>The cat.                   
+"""
+  [ RNAME frnp ].
+
+np_cnj-frg_c := frag_np_conj_rule &
+"""
+Fragment conj+NP                 
+
+<ex>And the cat.               
+"""
+  [ RNAME frnpc ].
+
+np_nb-frg_c := frag_nbar_rule &
+"""
+Fragment N-bar                   
+
+<ex>Angry cat.                 
+"""
+  [ RNAME frnb ].
+
+pp_frg_c := frag_pp_ind_rule &
+"""
+Fragment PP                      
+
+<ex>In Paris.                  
+"""
+  [ RNAME frpi ].
+
+
+j_frg_c := frag_adj_rule &
+"""
+Fragment adjective phrase        
+
+<ex>Angry at dogs.             
+"""
+  [ RNAME frj ].
+
+r_scp-frg_c := frag_adv_rule &
+"""
+Fragment scopal adverb phrase    
+
+<ex>Probably.                  
+"""
+  [ RNAME frr ].
+
+r_int-frg_c := frag_int_adv_rule &
+"""
+Fragment intersective adverb     
+
+<ex>Quietly.                   
+"""
+  [ RNAME frri ].
+
+r_dsc-frg_c := frag_dadv_rule &
+"""
+Fragment discourse adverb        
+
+<ex>Yes.                       
+"""
+  [ RNAME frrd ].
+
+r_cl-frg_c := frag_sent_adv_rule &
+"""
+Fragment clausal adverb          
+
+<ex>Because we left.           
+"""
+  [ RNAME frrc ].
+
+cl_cnj-frg_c := frag_sent_conj_rule &
+"""
+Fragment clause with conjunctn   
+
+<ex>And Kim stayed.            
+"""
+  [ RNAME frsc ].
+
+vp_fin-frg_c := frag_vp_fin_rule &
+"""
+Fragment finite VP               
+
+<ex>Chases cats.               
+"""
+  [ RNAME frvp ].
+
+vp_nfin-frg_c := frag_vp_nonfin_rule &
+"""
+Fragment nonfinite VP            
+
+<ex>To chase cats.             
+"""
+  [ RNAME frvn ].
+
+vp_bse-cop-frg_c := frag_vp_bse_cop_rule &
+"""
+Fragment non-imperative base copula VP, esp. for dictionary definitions
+
+<ex>Be raining.
+"""
+  [ RNAME frvc ].
+
+cl_cp-frg_c := frag_sbar_rule &
+"""
+Fragment embedded clause         
+
+<ex>That it chases cats.       
+"""
+  [ RNAME frsb ].
+
+cl_wh-nonfin-frg_c := frag_s_wh_nonfin_rule &
+"""
+Fragment embedded WH infinitival clause         
+
+<ex>How to use it
+"""
+  [ RNAME frsq ].
+
+cl_rel-frg_c := frag_relcl_rule &
+"""
+Fragment relative cluase         
+
+<ex>Which we assumed.          
+"""
+  [ RNAME frsr ].
+
+aj-np_frg_c := frag_l_mod_s_np_rule &
+"""
+Fragment scopal modifier + NP    
+
+<ex>Probably Browne.           
+"""
+  [ RNAME frln ].
+
+aj-np_int-frg_c := frag_l_mod_i_np_rule &
+"""
+Fragment intersctv modif + NP    
+
+<ex>On Tuesday, the cat.       
+"""
+  [ RNAME frli ].
+
+aj-pp_frg_c := frag_l_mod_scop_pp_rule &
+"""
+Fragment scopal modif + PP       
+
+<ex>Probably in Paris.         
+"""
+  [ RNAME frlp ].
+
+aj-pp_i-frg_c := frag_l_mod_isect_pp_rule &
+"""
+Fragment intersective modif + PP       
+
+<ex>Eventually in Paris.         
+"""
+  [ RNAME frlpi ].
+
+aj-r_frg_c := frag_l_mod_adv_rule &
+"""
+Fragment scopal mod + adverbial  
+
+<ex>Maybe, if we can.          
+"""
+  [ RNAME frla ].
+
+np-aj_frg_c := frag_r_mod_np_rule &
+"""
+Fragment NP + scopal modifier    
+
+<ex>The cats, probably.        
+"""
+  [ RNAME frrn ].
+
+np-aj_rorp-frg_c := frag_r_mod_np_i_rule &
+"""
+Fragment NP + PP or intsctv adv  
+
+<ex>Many problems afterwards.  
+"""
+  [ RNAME frni ].
+
+np-aj_j-frg_c := frag_r_mod_np_adj_rule &
+"""
+Fragment NP + adjective phrase   
+
+<ex>Pizza ready.               
+"""
+  [ RNAME frra ].
+
+nb-aj_frg_c := frag_r_mod_nbar_rule &
+"""
+Fragment N-bar + scopal modif    
+
+<ex>Cat : a feline.            
+"""
+  [ RNAME frrb ].
+
+pp-aj_frg_c := frag_r_mod_scop_pp_rule &
+"""
+Fragment PP + scopal modifier    
+
+<ex>In Paris before we left.   
+"""
+  [ RNAME frrs ].
+
+j-aj_frg_c := frag_r_mod_ap_rule &
+"""
+Fragment adjectv + scopal modif  
+
+<ex>Unhappy if they leave.     
+"""
+  [ RNAME frrj ].
+
+hdn-cl_prnth_c := paren_float_s_rule &
+"""
+NomHd + parenthetical clause     
+
+<ex>[Cats (they snore)] slept. 
+"""
+  [ RNAME pfls ].
+
+hdn-n_prnth_c := paren_float_nbar_rule &
+"""
+NomHd + parenthetical N-bar      
+
+<ex>[Some guy (democrat)] ran. 
+"""
+  [ RNAME pfln ].
+
+hdn-j_prnth_c := paren_float_adj_rule &
+"""
+NomHd + parenthetical adj
+
+<ex>[Some guy (tall)] ran. 
+"""
+  [ RNAME pflj ].
+
+hdn-cl_dsh_c := dash_float_s_rule &
+"""
+NomHd + dash-marked clause       
+
+<ex>[Cats - they snore - ] ran.
+"""
+  [ RNAME dfls ].
+
+np-prdp_vpmod_c := np_pred_post_rule &
+"""
+Modifier from pred.small clause, post-mod only  
+
+<ex>We ran, [Kim petrified].   
+"""
+  [ RNAME nppd ].
+
+np-prdp_vpmod-pre_c := np_pred_pre_rule &
+"""
+Modifier from pred.small clause, pre-mod only
+
+<ex>[Kim petrified], she ran,
+"""
+  [ RNAME nppdb ].
+
+np-prdp_vpmod-prn_c := np_pred_paren_rule &
+"""
+Modifier from predicative small clause, paren-marked 
+
+<ex>We ran (Kim petrified).   
+"""
+  [ RNAME nppd ].
+
+hd-pct_c := punct_marker_hinit_brk_rule &
+"""
+Head + punctuation token         
+
+<ex>B [arrived -] C left.      
+"""
+  [ RNAME pthi ].
+
+hd-pct_nobrk_c := punct_marker_hinit_nobrk_rule &
+  [ RNAME pthi ].
+
+pct-hd_c := punct_marker_hfinal_brk_rule &
+"""
+Punctuation token + head
+
+<ex>B arrived (today)
+"""
+  [ RNAME pthf ].
+
+pct-hd_nobrk_c := punct_marker_hfinal_nobrk_rule &
+  [ RNAME pthf ].
+
+cl-cl_runon_c := run_on_coord_rule &
+"""
+Run-on sentence w/two clauses    
+
+<ex>B arrived; C left.         
+"""
+  [ RNAME sns ].
+
+cl-cl_runon-cma_c := run_on_coord_comma_rule &
+"""
+Run-on sentence, comma-joined    
+
+<ex>B arrived, C left.         
+"""
+  [ RNAME snsc ].
+
+cl-np_runon_c := run_on_np_rule &
+"""
+Run-on sentence fr.clause + NP   
+
+<ex>B arrived; disaster.       
+"""
+  [ RNAME frsn ].
+
+cl-np_runon-prn_c := run_on_np_paren_rule &
+"""
+Run-on S fr.clause + parenth NP  
+
+<ex>B arrived (disaster).      
+"""
+  [ RNAME fsnp ].
+
+np-cl_numitem_c := npnum_s_rule &
+"""
+Num+sentence                     
+
+<ex>2. Browne arrived.         
+"""
+  [ RNAME nums ].
+
+np-cl_indef_c := npindef_s_rule &
+"""
+IndefNP+sentence                 
+
+<ex>A fool, Browne left.       
+"""
+  [ RNAME nis ].
+
+cl-rc_c := vp-final-relcl_phrase &
+"""
+VP-final relative clause         
+
+<ex>It rained, which surprised C.
+"""
+  [ RNAME src ].
+
+cl_adv_c := cl_adv_rule &
+"""
+Adverbial phrase from clause with clausal gap
+
+<ex>You will, I am sure, be happy.
+"""
+  [ RNAME advc ].
+
+np_indef-adv_c := npindef_adv_rule &
+"""
+Adverbial phrase from indefinite NP
+
+<ex>He arrived a rich man.
+"""
+  [ RNAME niv ].
+
+w-w_fw-seq-m_c := fw_seq_l_rule &
+"""
+Seq. of italic/foreign wds, mid  
+
+<ex>[amo amas] amat            
+"""
+  [ RNAME fsql ].
+
+; <ex>We admire ⌊/amat/⌋.
+w_fw_c := fw_w_rule &
+"""
+NP for single foreign or italicized word
+
+<ex>We admire "amat".
+"""
+  [ RNAME fsqw ].
+
+w-w_fw-seq-t_c := fw_seq_r_rule &
+"""
+NP fr.seq.of italic/foreign wds  
+
+<ex>[[amo amas] amat]          
+"""
+  [ RNAME fsqr ].
+;;
+;; Disabled in the LKB, by virtue of temporary expedient *parse-ignore-rules*
+;; (via lkb/noparse-rules.set).  The anti_ctype is used to force lowest 
+;; possible discharging of brackets in unary chains.
+;;
+;xp_brck-pr_c := paired_bracket_rule &
+;"""
+;Paired bracketed phrase          
+;
+;<ex>The \[sun-drenched\] cat   
+;"""
+;  [ RNAME xbrk ].
+;
+;xp_str-brck-pr_c := paired_strong_bracket_rule &
+;"""
+;Paired bracketed phrase          
+;
+;<ex>The ⌊(⌋ fluffy towel ⌊)⌋ rack   
+;"""
+;  [ RNAME anti_ctype ].
+
+#|
+;; Also disabled by default in lkb/noparse-rules.set
+;; But let's comment it out, since it appears to be expensive for ACE as well
+;;
+hdn_bnp-rbst_c := bare_np_sg_phrase_robust &
+"""
+Robust bare singular count NP    
+
+<ex>We saw cat running         
+"""
+  [ RNAME bnpr ].
+
+;; Similarly, this robust rule is normally commented out to avoid spurious
+;; analyses in edited text other than for e.g. dictionaries and cookbooks.
+;;
+hd_optcmp-mal_c := hoptcomp_mal_rule &
+"""
+Verb discharges obligatory but missing compl
+
+<ex>Devour quickly.
+"""
+  [ RNAME hcpr ].
+|#
+
+#|
+xp-xp_bridge_c := bridge_binary_phrase &
+"""
+Robust binary bridging rule      
+
+<ex>[We admire B] [admires C]  
+"""
+  [ RNAME xxbb ].
+
+xp_bridge_c := bridge_unary_phrase &
+"""
+Robust unary bridging rule       
+
+<ex>We admire B   [admires C]  
+"""
+  [ RNAME xxbu ].
+|#
+
+#|
+nom_bridge_c := bridge_n_phrase &
+  [ RNAME xxbn ].
+
+verb_bridge_c := bridge_v_phrase &
+  [ RNAME xxbv ].
+
+;ad_bridge_c := bridge_a_phrase &
+;  [ RNAME xxba ].
+|#
+
+; CSY 3-12-2020 for sg questions
+flr-hd_wh-mc := filler_head_rule_wh_mc &
+ [ RNAME fhw ].

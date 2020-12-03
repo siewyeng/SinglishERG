@@ -9162,20 +9162,33 @@ filler_head_rule_non_wh_np_nonmc := filler_head_rule_non_wh_np &
 
 ; CSY 3-12-2020 - take away INV + to allow sentences like
 ; <ex>what you want?
-filler_head_rule_wh_root := binary_rule_left_to_right & 
+filler_head_rule_wh_super := binary_rule_left_to_right & 
 			    head_filler_phrase_wh_fin & wh_interrog_fin & 
                             mc_fillhead_phrase &
   [ SYNSEM.LOCAL [ CAT [ ;HEAD.INV +,
                          VAL.SUBJ *olist* & < anti_synsem_min > ],
                    CONT.HOOK [ LTOP #hdtop,
                                INDEX #index ] ],
-    HD-DTR.SYNSEM.LOCAL [ CAT.MC na,
+    HD-DTR.SYNSEM.LOCAL [ CAT.MC luk,
                           CONT.HOOK [ LTOP #hdtop,
                                       INDEX #index ] ],
     NH-DTR.SYNSEM [ PUNCT.RPUNCT comma_or_pair_or_no_punct ],
     C-CONT [ RELS <! !>,
              HCONS <! !>,
 	     ICONS <! !> ] ].
+
+filler_head_rule_wh_root := filler_head_rule_wh_super &
+ [ SYNSEM.LOCAL.CAT.HEAD.INV +,
+   HD-DTR.SYNSEM.LOCAL.CAT.MC na ].
+
+; CSY 3-12-2020
+filler_head_rule_wh_mc := filler_head_rule_wh_super &
+"""
+<ex>What you want?
+"""
+ [ SYNSEM.LOCAL.CAT.HEAD.INV -,
+   HD-DTR.SYNSEM.LOCAL.CAT.MC luk ].
+
 
 ; DPF (21-Apr-98) To block use of fill_head_wh_subj in "Kim knows who Sandy 
 ; saw" added constraint that filler must be [CASE NOM].

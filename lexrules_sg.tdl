@@ -1648,12 +1648,16 @@ basic_attr_verb_part_lexrule := lex_rule_basic &
 ;     10-9-2020 - change DTR from aj_-_i-prd_le to norm_adj_word (not sure if overgenerates)
 ;		  added SYNSEM intrans_pred_adj_synsem to DTR
 ;     17-11-2020 - changed DTR from aj_-_i-prd_le to its supertype to prevent undergenerating
+;     3-12-2020 - added COMPS to the mother and hd daughter to ensure COMPS value is passed up,
+;                 prevents over-generation
 pred_adj_subj_lexrule:= norm_lex_rule & aj_nocop_i-prd_le &
   [ ORTH #orth,
-    SYNSEM.LOCAL.CAT.VAL.SUBJ < #arg1 & synsem_min >,
+    SYNSEM.LOCAL.CAT.VAL [ SUBJ < #arg1 & synsem_min >,
+			   COMPS #comps ],
     DTR norm_adj_word & [ ORTH #orth,
 			  SYNSEM norm_adj_synsem &
-				[ LOCAL.CAT.HEAD.MOD < #arg1 & synsem_min > ] ] ].
+				[ LOCAL.CAT [ HEAD.MOD < #arg1 & synsem_min >,
+					      VAL.COMPS #comps ] ] ] ].
 	
 
 ; DPF 22-may-09 - Had changed MOD..--MIN to nbar_or_num_rel for some
