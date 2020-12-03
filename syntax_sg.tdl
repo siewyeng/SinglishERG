@@ -1587,11 +1587,11 @@ head_filler_phrase_inf := head_filler_phrase & head_final_infl &
 ;; consider |Europe has many citizens, of whom five million __ live in Norway|
 ;; where the complement of-PP is extracted from the partitive subject.
 ;;
-; CSY 19-11-2020 took away *obllist* and in hd dtr removed SPR.REST to leave SPR
+; 19-11-2020 took away *obllist* and in hd dtr removed SPR.REST to leave SPR
 basic_head_subj_phrase := head_nexus_rel_phrase & head_final_infl & phrasal &
 			  head_compositional &
   [ SYNSEM [ LOCAL [ CAT [ VAL [ COMPS < >,
-				 SPR #spr; & *obllist*,
+				 SPR #spr,; & *obllist*,
 				 SUBJ *olist* & < anti_synsem_min >,
 				 SPEC #spec,
 				 SPCMPS < > ] ],
@@ -9160,10 +9160,12 @@ filler_head_rule_non_wh_np_mc := filler_head_rule_non_wh_np &
 filler_head_rule_non_wh_np_nonmc := filler_head_rule_non_wh_np &
   [ SYNSEM.LOCAL.CAT.MC - ].
 
+; CSY 3-12-2020 - take away INV + to allow sentences like
+; <ex>what you want?
 filler_head_rule_wh_root := binary_rule_left_to_right & 
 			    head_filler_phrase_wh_fin & wh_interrog_fin & 
                             mc_fillhead_phrase &
-  [ SYNSEM.LOCAL [ CAT [ HEAD.INV +,
+  [ SYNSEM.LOCAL [ CAT [ ;HEAD.INV +,
                          VAL.SUBJ *olist* & < anti_synsem_min > ],
                    CONT.HOOK [ LTOP #hdtop,
                                INDEX #index ] ],
@@ -12141,9 +12143,10 @@ frag_pp_ind_rule := unary_frag_rule &
 
 ; CSY 19-11-2020 added in MC - to prevent a sentence from becoming a frag
 frag_adj_rule := unary_frag_rule &
-  [ ARGS < [ SYNSEM.LOCAL [ CAT [ HEAD adj & [ MINORS.MIN norm_rel ],
+  [ ARGS < [ SYNSEM.LOCAL [ CAT [ HEAD adj & 
+				      [ MINORS.MIN norm_rel],
 				  VAL.COMPS < >,
-				  MC na_or_- ],
+				  MC na_or_-],
 			    CONT.HOOK [ LTOP #lbl,
 					XARG #ind ] ] ] >,
     C-CONT [ HOOK.LTOP #lbl,

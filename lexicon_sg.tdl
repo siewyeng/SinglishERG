@@ -46,7 +46,7 @@ already_incho_adv := av_-_already-incho_le &
 
 ever_exp_adv := av_-_ever-exp_le &
  [ ORTH < "ever" >,
-   SYNSEM [ LKEYS.KEYREL.PRED "_ever_a_2_rel",
+   SYNSEM [ LKEYS.KEYREL.PRED "_ever_a_1_rel",
             PHON.ONSET con ] ].
 
 not_prdp-sg := av_-_s-not-sg_le &
@@ -64,3 +64,6 @@ agaration_n1 := n_-_m_le &
 
 ;removed items
 already_adv3 := never_unify_le & [ ORTH < "_never_unify_" > ].
+
+; CSY 2-12-2020 - remove ever_adv1 cos it occurs at the same places as ever_exp_adv, seems like an overgeneration
+ever_adv1 := never_unify_le & [ ORTH < "_never_unify_" > ].
