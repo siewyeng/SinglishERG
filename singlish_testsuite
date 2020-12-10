@@ -409,7 +409,7 @@ Source: siew yeng
 Vetted: t
 Judgment: g
 Phenomena: {tense/aspect}
-He 		makan 	already.
+He makan already.
 'He has eaten.'
 #3sg.masc	eat	PERF
 
@@ -576,4 +576,18 @@ Judgment: u
 Phenomena: {aspect}
 The cat sleep ever.
 'The cat has ever slept.'
+
+Source: siew yeng
+Vetted: t
+Judgment: g
+Phenomena: {adj coord}
+The cat fat and pretty.
+'The cat is fat and pretty.'
+
+Source: siew yeng
+Vetted: t
+Judgment: g
+Phenomena: {adj coord}
+They fat and pretty.
+'They are fat and pretty.'
 

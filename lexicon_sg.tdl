@@ -12,6 +12,10 @@ sabo_v1 := v_np_le &
    SYNSEM [ LKEYS.KEYREL.PRED "_sabo_v_1_rel",
             PHON.ONSET con ] ].
 
+kacau_v1 := v_np_le &
+ [ ORTH < "kacau" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_kacau_v_1_rel",
+            PHON.ONSET con ] ].
 ;;;Adverbials;;;
 
 kaypo_a1 := aj_-_i_le &

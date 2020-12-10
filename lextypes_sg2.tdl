@@ -21285,6 +21285,7 @@ av_-_s-not-sg_le := adv_neg_lexent &
 """
 Scop, 'not', modify PrdP         
 <ex>Kim not happy.
+<nex> Kim is not happy.
 """
   [ SYNSEM.LOCAL.CAT.HEAD adv_nonmob &
                           [ MOD < [ LOCAL.CAT [ HEAD adj &
@@ -21382,18 +21383,20 @@ complementizer_word := noncr-h-nab &
 ; DPF 27-may-09 - Changed COMPS..PUNCT no_punct to lparen_or_dq_or_no_punct to 
 ; get *admit that kim "will arrive"* and *that {gene} therapies succeed*
 
-basic_two_place_compl_word := complementizer_word & 
+; CSY 10-12-2020 - change from HEAD verbal so that the subtype can take adj headed COMPS also
+;		 - and took away VFORM and put it in basic_two_place_compl_word
+basic_two_place_compl_word_super := complementizer_word & 
   [ SYNSEM 
     [ LOCAL 
       [ ARG-S #comps,
-        CAT [ HEAD [ VFORM #vform,
+        CAT [ HEAD [ ;VFORM #vform,
 		     MOD < anti_synsem_min > ],
               VAL [ COMPS #comps,
 		    SPR < >,
 		    KCMP canonical_synsem &
 			 [ --MIN #cmin,
-                           LOCAL [ CAT [ HEAD verbal &
-                                              [ VFORM #vform ],
+                           LOCAL [ CAT [; HEAD ;verbal &
+                                              ;[ VFORM #vform ],
                                          VAL [ COMPS < > ],
 					 MC na_or_- ],
                                    CONT.HOOK #hook ],
@@ -21402,25 +21405,40 @@ basic_two_place_compl_word := complementizer_word &
 	CONT.HOOK #hook ],
       LKEYS.--COMPKEY #cmin ] ].
 
+basic_two_place_compl_word := basic_two_place_compl_word_super &
+ [ SYNSEM.LOCAL.CAT [ HEAD.VFORM #vform,
+		      VAL.KCMP.LOCAL.CAT.HEAD verbal &
+					      [ VFORM #vform ] ] ]. 
+
+basic_two_place_compl_word_vadj := basic_two_place_compl_word_super &
+ [ SYNSEM.LOCAL.CAT.VAL.KCMP.LOCAL.CAT.HEAD v_or_a ]. 
+
 ; Instead of doing raising here by identifying whole synsems, only identify
 ; semantic indices, as with regular raising for verbs above.  This lets us get
 ; "I prefer that he be here early" treating the second (VP) complement of 
 ; "that" as a simple base-form VP, rather than some new morphological form.
 
-basic_sor_compl_word := basic_two_place_compl_word &
+; CSY 10-12-2020 - made this inherit from the SUPER one instead and it's not causing any problems 
+; 		   so far...
+basic_sor_compl_word := basic_two_place_compl_word_super &
   [ SYNSEM basic_one_arg & 
     [ LOCAL.CAT.VAL [ COMPS < #kcmp &
 			      [ LOCAL.CAT.VAL.SUBJ < anti_synsem_min > ] >,
 		      KCMP #kcmp ] ] ].
 
-norm_compl_word := basic_sor_compl_word &
+; CSY 10-12-2020 - to separate the COMPS into HEAD verb and HEAD verb or adj
+norm_compl_word_super := basic_sor_compl_word &
   [ SYNSEM.LOCAL.CAT [ HEAD comp & [ INV - ],
 		       VAL [ SUBJ < anti_synsem_min >,
-			     COMPS < [ LOCAL.CAT [ HEAD verb &
+			     COMPS < [ LOCAL.CAT [ HEAD v_or_a &
 						      [ TAM.TENSE real_tense ],
 						   MC - ] ] > ] ] ].
 
-sor_compl_word := norm_compl_word &
+norm_compl_word := norm_compl_word_super &
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL.CAT.HEAD verb ] > ].
+
+; CSY 10-12-2020 - changed it to inherit from supertype norm_compl_word_super to allow adj headed complements
+sor_compl_word := norm_compl_word_super &
   [ SYNSEM.LOCAL.CAT [ HEAD.TAM.MOOD #mood,
 		       VAL.COMPS < [ LOCAL [ CAT.HEAD [ --ADDIN [ ADDPN #pn,
 								  ADDTAM #tam ],
@@ -21428,16 +21446,16 @@ sor_compl_word := norm_compl_word &
 							    [ MOOD #mood ] ],
 					     AGR.PNG.PN #pn ] ] > ] ].
 
+; CSY 10-12-2020 - try remove , MINORS.MIN verb_aspect_rel ],
 cm_np-vp_that_le := sor_compl_word & 
 """
 Cmplzr, only 'that' (int mod)    
 <ex>B knew that we won.
 """
-  [ SYNSEM [ LOCAL [ CAT [ HEAD [ VFORM fin,
+  [ SYNSEM [ LOCAL [ CAT [ HEAD [ ; VFORM fin,
 				  TAM #tam & indic_tam,
 				  CASE nom,
-				  AUX -,
-				  MINORS.MIN verb_aspect_rel ],
+				  AUX - ],
 			   VAL.COMPS.FIRST.LOCAL.CAT.HEAD [ TAM #tam,
 							    CASE non_nom ],
 			   MC - ],

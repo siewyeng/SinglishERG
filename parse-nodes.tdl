@@ -282,8 +282,6 @@ s-frag := label &
     LNAME "S" ].
 
 ; CSY 25-09-2020 - add in new S to allow adj headed sentences to be labelled 'S'
-; <ex. He beautiful>
-
 ; CSY 9-10-2020 - PRD is a feature that marks for if something can follow a copula
 ; and not if something can head a clause
 s-singlish := label &
@@ -292,6 +290,7 @@ CSY 25-09-2020 - added MC + to prevent adj from being labelled as S
 5-10-2020 - add in PRD + so that it "beautiful or beautiful" will not be labelled as 'S'
 in 'It beautiful or beautiful'. BUT it does not work because the daughters are PRD bool
 9-10-2020 - changed to PRD - for the same reason
+<ex> He beautiful.
 """
   [ SYNSEM.LOCAL [ CAT [ HEAD adj &
 			      [ PRD - ],
@@ -299,6 +298,21 @@ in 'It beautiful or beautiful'. BUT it does not work because the daughters are P
                                 SPR *olist*,
                                 COMPS < > ],
 			 MC + ],
+		   CONJ cnil ],
+    INFLECTD +,
+    LNAME "S-adj" ].
+
+s-singlish_nmc := label &
+"""
+CSY 10-12-2020 - 
+<ex>I think that he beautiful
+"""
+  [ SYNSEM.LOCAL [ CAT [ HEAD adj,
+                         VAL  [ SUBJ *olist*,
+                                SPR *olist*,
+                                COMPS < > ],
+			 MC -,
+			 POSTHD + ],
 		   CONJ cnil ],
     INFLECTD +,
     LNAME "S-adj" ].
