@@ -338,11 +338,8 @@ non_rel_clause := basic_non_rel_clause & clause.
 ;; non-matric subj-head to have PRD + for verbal gerunds, as in 
 ;; |me arriving surprised him|.
 
+; CSY - changed HEAD basic_verb_or_frag to v_or_a for adj to head sentence
 basic_decl_phrase := basic_non_rel_clause & phrasal &
-"""
-CSY - changed HEAD basic_verb_or_frag to v_or_a for adj to head sentence
-26-10-2020 changed back for troubleshooting
-"""
   [ SYNSEM.LOCAL.CAT [ HEAD v_or_a &
                             [ INV - ],
                        MC bool ],
@@ -4218,8 +4215,10 @@ basic_generic_bare_np_phrase := basic_unary_phrase &
 		       LARG #nhand ] !>,
 	     ICONS <! !> ] ].
 
-generic_bare_np_phrase := basic_generic_bare_np_phrase &
-  [ SYNSEM.LOCAL.CAT.VAL.SPCMPS < > ].
+; CSY 29-12-2020 try removing [ SYNSEM.LOCAL.CAT.VAL.SPCMPS < > ] so that singular nouns can also 
+; become bare NPs
+generic_bare_np_phrase := basic_generic_bare_np_phrase.
+;  [ SYNSEM.LOCAL.CAT.VAL.SPCMPS < > ].
 
 ; DPF 21-sept-04 - Changed ARGS..SPR canonical_synsem to unexpressed_reg
 ; in order to prevent bare-nps where the determiner is obligatory, as in
@@ -8658,6 +8657,8 @@ subjh_rule_decl := subjh_rule_basic & basic_decl_phrase.
 ;; to block it.  Maybe just accept it, since we presumably want |nobody move| as
 ;; an imperative admitted via this rule.
 ;;
+
+; CSY 5-1-2020 - #tocheck: maybe VFORM fin is okay now that adj has vform 
 subjh_mc_rule := subjh_rule_decl & head_subj_phrase & clause &
 """
 CSY - changed verbal to v_or_a to allow adjectives to join with subjects for Singlish and commented out VFORM fin
@@ -8691,9 +8692,18 @@ CSY - changed verbal to v_or_a to allow adjectives to join with subjects for Sin
 ;; DPF 2017-04-03 - Generalized VFORM from fin_or_bse to fin_or_bse_or_prp
 ;; to allow verbal gerunds.
 ;;
+; CSY 10-12-2020 two nonmc rules: one for verb headed and one for adj headed clauses
+;     5-1-2020 - since adj now have vform, this can apply to both types of clauses
+;                there's no need for the special adj daughter
 subjh_nonmc_rule := subjh_rule_decl & head_subj_phrase &
   [ SYNSEM.LOCAL.CAT [ HEAD.VFORM fin_or_bse_or_prp,
 		       MC - ] ].
+
+;subjh_nonmc_rule := subjh_nonmc_rule_super &
+;  [ SYNSEM.LOCAL.CAT.HEAD.VFORM fin_or_bse_or_prp ].
+
+;subjh_adj_nonmc_rule := subjh_nonmc_rule_super &
+;  [ SYNSEM.LOCAL.CAT.HEAD adj ].
 
 subjh_rule_wh_insitu := binary_rule_right_to_left & head_subj_phrase & 
                         clause &
@@ -12155,11 +12165,12 @@ frag_pp_ind_rule := unary_frag_rule &
 ;; |Strange that Kim wasn't here|, so remove this constraint.
 
 ; CSY 19-11-2020 added in MC - to prevent a sentence from becoming a frag
+; 5-1-2020 change to MC na to prevent an adj headed NMC from becoming a frag
 frag_adj_rule := unary_frag_rule &
   [ ARGS < [ SYNSEM.LOCAL [ CAT [ HEAD adj & 
 				      [ MINORS.MIN norm_rel],
 				  VAL.COMPS < >,
-				  MC na_or_-],
+				  MC na ],
 			    CONT.HOOK [ LTOP #lbl,
 					XARG #ind ] ] ] >,
     C-CONT [ HOOK.LTOP #lbl,
@@ -12167,6 +12178,7 @@ frag_adj_rule := unary_frag_rule &
                                ARG #ind ],
              HCONS <! !>,
 	     ICONS <! !> ] ].
+
 
 frag_adv_rule := basic_unary_frag_rule &
   [ SYNSEM.LOCAL.CAT.VAL.SPR < >,

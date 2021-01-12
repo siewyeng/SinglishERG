@@ -305,9 +305,10 @@ in 'It beautiful or beautiful'. BUT it does not work because the daughters are P
 s-singlish_nmc := label &
 """
 CSY 10-12-2020 - 
-<ex>I think that he beautiful
+<ex>I think that he beautiful.
 """
-  [ SYNSEM.LOCAL [ CAT [ HEAD adj,
+  [ SYNSEM.LOCAL [ CAT [ HEAD adj &
+			      [ PRD - ],
                          VAL  [ SUBJ *olist*,
                                 SPR *olist*,
                                 COMPS < > ],

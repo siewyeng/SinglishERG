@@ -18,7 +18,7 @@
 ;;  Basic definitions and macros
 ;;
 
-:include "fundamentals_sg".
+:include "singlish/fundamentals_sg".
 
 ;;
 ;;  Lexical types (i.e., primitive word classes)
@@ -66,13 +66,13 @@
 ;;
 
 :include "syntax_sg".
-:include "ctype".
+:include "singlish/ctype".
 
 ;;
 ;;  Lexical rules
 ;;
 
-:include "lexrules_sg".
+:include "singlish/lexrules_sg".
 
 ;; Dependency annotation support for rule types
 
@@ -84,7 +84,7 @@
 
 :include "auxverbs".
 
-:include "letypes".
+:include "singlish/letypes_sg".
 
 :end :type.
 
@@ -114,8 +114,8 @@
 :end :instance.
 
 :begin :instance :status lex-rule.
-:include "inflr".
-:include "lexrinst".
+:include "singlish/inflr_sg".
+:include "singlish/lexrinst_sg".
 :include "lexrinst-tok".
 :end :instance.
 
@@ -124,7 +124,7 @@
 ;;
 
 :begin :instance.
-:include "parse-nodes".
+:include "singlish/parse-nodes".
 :end :instance.
 
 ;;
@@ -132,7 +132,7 @@
 ;;
 
 :begin :instance.
-:include "roots".
+:include "roots_sg".
 :end :instance.
 
 

@@ -429,12 +429,15 @@ lpcm := ctype. ;; w_comma_plr
 lpsc := ctype. ;; w_semicol_plr
 lvpp := ctype. ;; v_psp_olr
 lvprn := ctype. ;; v_prp-nf_olr
+; CSY 7-1-2020 - for prp to fin verb
+;lvpfin := ctype. ;; v_prp-fin_dlr 
 ljnp := ctype. ;; j_n-pre_odlr
 lvpf := ctype. ;; v_pas-p-t_odlr
 lnpl := ctype. ;; n_pl_olr
 lnpli := ctype. ;; n_pl-irreg_olr
 lnpln := ctype. ;; n_pl-irreg-noaff_olr
 lnsg := ctype. ;; n_sg_ilr
+lncn := ctype. ;; n_singlish_ilr
 lpcn := ctype. ;; det_prt-of-nagr_dlr
 lpre := ctype. ;; v_v-pre_dlr
 lenc := ctype. ;; j_enough-wc_dlr

@@ -509,6 +509,13 @@ The cat pretty.
 Source: siew yeng
 Vetted: t
 Judgment: g
+Phenomena: {copula omission, adjective}
+They pretty.
+'They are pretty.'
+
+Source: siew yeng
+Vetted: t
+Judgment: g
 Phenomena: {copula omission, negation}
 The cat not pretty.
 'The cat is not pretty.'
@@ -516,9 +523,23 @@ The cat not pretty.
 Source: siew yeng
 Vetted: t
 Judgment: g
-Phenomena: {copula omission, specifier}
+Phenomena: {copula omission, negation}
+They not pretty.
+'They are not pretty.'
+
+Source: siew yeng
+Vetted: t
+Judgment: g
+Phenomena: {copula omission, adverb}
 The cat very pretty.
 'The cat is very pretty.'
+
+Source: siew yeng
+Vetted: t
+Judgment: g
+Phenomena: {copula omission, adverb}
+They very pretty.
+'They are very pretty.'
 
 Source: siew yeng
 Vetted: t

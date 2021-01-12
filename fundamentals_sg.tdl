@@ -605,7 +605,8 @@ CSY 04-09-2020 - added vc_add for the purpose of allowing adj to head sentences
 """
 .
 ; For positive adjectives
-adj := basic_adj & n_or_a_or_det & p_adj_adv_or_comp &
+; 29-12-2020 CSY add in basic_adj as a supertype of adj
+adj := basic_adj & n_or_a_or_det & p_adj_adv_or_comp & basic_verb_or_adj_or_frag &
   [ CARDINAL - ].
 
 ; prep_or_modnp := p_or_adv.
@@ -679,9 +680,16 @@ n-ed := noun_adj & basic_nom_or_ttl & non_partn.
 ; For run-on sentences.
 verb_or_conj_or_frag := head.
 verb_or_conj-s := verb_or_conj_or_frag.
+
+; CSY 18-12-2020 - also for sentences and NMC for adjectives
+basic_verb_or_adj_or_frag := non_noun_or_frag & subst_or_adv_or_frag &
+ [ VFORM vform ].
+
 ; For no-copula and run-on sentences
-basic_verb_or_frag := non_noun_or_frag & verb_or_conj_or_frag &
-  [ VFORM vform ].
+;basic_verb_or_frag := non_noun_or_frag & verb_or_conj_or_frag &
+;  [ VFORM vform ].
+
+basic_verb_or_frag := basic_verb_or_adj_or_frag & verb_or_conj_or_frag.
 
 ; Enable exclusion of spurious ambiguity for gerund "not hiring Kim"
 verb_or_frag := basic_verb_or_frag.
@@ -705,11 +713,6 @@ addinfl := *avm* &
     ADDTAM tam_min ].
 
 vc_add := subst &
-"""
-CSY 04-09-2020 -changed subst to head for now
-		to allow adj to head sentences(?)
-CSY 25-09-2020 - changed back to subst, D
-"""
   [ --ADDIN addinfl ].
 
 ; DPF 24-jul-05 - Removed nominal as supertype of comp since we use a rule to
@@ -4709,6 +4712,17 @@ root_synsem := basic_root_synsem &
 	    CONJ cnil ],
     PUNCT.RPUNCT comma_or_clause_or_pair_or_no_punct &
 	         [ PSF #pred ] ].
+
+; CSY 16-12-2020 - root just for singlish adj headed constructions
+root_sg_synsem := basic_root_synsem &
+  [ LOCAL [ CAT [ HEAD adj & 
+		       [ TAM indic_tam ],
+		  MC + ],
+	    CONT.HOOK.INDEX.SF #pred,
+	    CONJ cnil ],
+    PUNCT.RPUNCT comma_or_clause_or_pair_or_no_punct &
+	         [ PSF #pred ] ].
+
 
 root_orth := orthog.
 

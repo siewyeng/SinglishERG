@@ -195,7 +195,16 @@ sing_noun := sing_or_plur_noun &
           VAL.SPR.FIRST.LOCAL.AGR [ PNG.PN 3s,
 				    DIV - ] ],
     CONT.HOOK.INDEX [ PNG png & [ PN 3s ],
-                      DIV - ] ]. 
+                      DIV - ] ].
+
+; CSY 29-12-2020 for the count nouns that don't need specifier in Singlish
+;                both DIV + but caused problems by allowing "much cat"
+singlish_count_noun := sing_or_plur_noun &
+  [ CAT [ HEAD noun_or_ttl,
+          VAL.SPR.FIRST.LOCAL.AGR [ PNG.PN 3,
+				    DIV bool ] ],
+    CONT.HOOK.INDEX [ PNG png & [ PN 3 ] ] ].
+
 
 ;; DPF 2020-05-17 - Don't need to stamp INDEX.DIV + here since it is already
 ;; thus constrained in almost all subtypes of basic_basic_mass_noun_synsem,
@@ -1645,19 +1654,33 @@ basic_attr_verb_part_lexrule := lex_rule_basic &
 	     ICONS <! !> ] ].
 
 ; CSY 13-9-2020 - rule to allow predicative adj to take subjects
-;     10-9-2020 - change DTR from aj_-_i-prd_le to norm_adj_word (not sure if overgenerates)
-;		  added SYNSEM intrans_pred_adj_synsem to DTR
-;     17-11-2020 - changed DTR from aj_-_i-prd_le to its supertype to prevent undergenerating
-;     3-12-2020 - added COMPS to the mother and hd daughter to ensure COMPS value is passed up,
-;                 prevents over-generation
+; 10-9-2020 - change DTR from aj_-_i-prd_le to norm_adj_word (not sure if overgenerates)
+; added SYNSEM intrans_pred_adj_synsem to DTR
+; 17-11-2020 - changed DTR from aj_-_i-prd_le to its supertype to prevent undergenerating
+; 3-12-2020 - added COMPS to the mother and hd daughter to ensure COMPS value is passed up,
+; prevents over-generation
+; 11-12-2020 - add nonloc and inherit semantics instead of syntax
+; 9-1-2021 - replaced DTR's SYNSEM norm_adj_synsem to try to allow it to apply to aj_pp_i-er_le
+; other adjs like 'happy' can go through the rule when the COMPS value is not passed up           
 pred_adj_subj_lexrule:= norm_lex_rule & aj_nocop_i-prd_le &
+; [ ORTH #orth,
+;    SYNSEM.LOCAL.CAT.VAL [ SUBJ < #arg1 & synsem_min >,
+;			   COMPS #comps ],
+;    DTR norm_adj_word & [ ORTH #orth,
+;			  SYNSEM norm_adj_synsem &
+;				[ LOCAL.CAT [ HEAD.MOD < #arg1 & synsem_min >,
+;					      VAL.COMPS #comps ] ] ] ].
   [ ORTH #orth,
-    SYNSEM.LOCAL.CAT.VAL [ SUBJ < #arg1 & synsem_min >,
+    SYNSEM.LOCAL.CAT.VAL [ SUBJ < synsem_min & [ LOCAL.CONT.HOOK.LTOP #ltop,
+					  	 NONLOC #nonloc ] >,
 			   COMPS #comps ],
     DTR norm_adj_word & [ ORTH #orth,
-			  SYNSEM norm_adj_synsem &
-				[ LOCAL.CAT [ HEAD.MOD < #arg1 & synsem_min >,
+			  SYNSEM adj_synsem &
+				[ LOCAL.CAT [ HEAD.MOD < [ LOCAL.CONT.HOOK.LTOP #ltop,
+							   NONLOC #nonloc & non-local_none ] >,
 					      VAL.COMPS #comps ] ] ] ].
+
+
 	
 
 ; DPF 22-may-09 - Had changed MOD..--MIN to nbar_or_num_rel for some
@@ -3335,6 +3358,10 @@ n_pl-cur_inflrule := basic_lex_rule_infl_affixed &
 n_sg-cur_inflrule := basic_lex_rule_infl_affixed &
   [ INFLECTD na_or_+ ].
 
+; CSY 29-12-2020 new inflectional rule for singlish nouns that have underspec number
+; and don't need SPR
+n_singlish_inflrule := lex_rule_infl_affixed.
+
 ;; DPF 2020-05-02 - Discharge weak brackets for multitoken lexical entries such 
 ;; as *Yahoo !* where the tokenizer has separated the suffixed character, and
 ;; for *HK $*, where a rule in tmr/split.tdl has added weak brackets to force
@@ -3381,3 +3408,20 @@ multitoken_3_bracket_rule := basic_multitoken_bracket_rule &
   [ ARGS < [ TOKENS.+LIST < [ ],
 			    [ +TRAIT.+RD bracket_nonnull ], 
 			    [ +TRAIT.+RD bracket_nonnull ] > ] > ].
+
+; CSY 7-1-2020 - rule for allowing Ving verbs to be finite
+;v_prp-to-fin_lexrule := norm_lex_rule &
+;"""
+;For the present participle to be finite
+;for sentences like "He admiring the cat" in Singlish
+;<ex>admiring
+;"""
+;  [ ORTH #orth,
+;    SYNSEM.LOCAL fin_verb &
+;		[ CAT.VAL.COMPS #comps ],
+;    DTR [ ORTH #orth,
+;	  SYNSEM norm_adj_synsem &
+;		[ LOCAL prp_verb & 
+;	  		CAT.VAL.COMPS #comps ] ] ].
+
+

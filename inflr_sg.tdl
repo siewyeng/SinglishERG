@@ -1,0 +1,385 @@
+;;; -*- Mode: tdl; Coding: utf-8; -*-
+
+%(letter-set (!c bdfgklmnprstz))
+%(letter-set (!s abcdefghijklmnopqrtuvwxyz05_/.))
+%(letter-set (!t bcdfghjklmnpqrstvwxyz))
+%(letter-set (!v aeiou))
+%(letter-set (!. abcdefghijklmnopqrstuvwxyzåøöáéíóúìµñßœæëïüÿäěʤàāēīōūABCDEFGHIJKLMNOPQRSTUVWXYZÅØÖÉÌ0Ä123456789[]\(\){}|>/_-…%`”"'’?!#+¦⌊⌋$£=σΩÅØµ™°º℃))
+%(letter-set (!p abcdefghijklmnopqrstuvwxyzåøöáéíóúìµñßœæëïüÿäěʤàāēīōūABCDEFGHIJKLMNOPQRSTUVWXYZÅØÖÉÌ0Ä123456789,.?\![]\(\){}|>/_-%”"'’#+¦⌊⌋$£=σΩÅØ®…™°º℃β*))
+%(letter-set (!q abcdefghijklmnopqrstuvwxyzåøöáéíóúìµñßœæëïüÿäěʤàāēīōūABCDEFGHIJKLMNOPQRSTUVWXYZÅØÖÉÌ0Ä123456789,.?\!\(\)[]{}|>:/_-%`”"'’#+¦⌊⌋$£=σΩ…µ™°º℃β))
+;; Same as q but without italic marker, to avoid right-ital rules applying 
+;; without having done left-ital when needed
+%(letter-set (!r abcdefghijklmnopqrstuvwxyzåøöáéíóúìµñßœæëïüÿäěʤàāēīōūABCDEFGHIJKLMNOPQRSTUVWXYZÅØÖÉÌ0Ä123456789,.?\!\(\)[]{}|>:/_-%`”"'’#+$£=σΩ…µ™°ºβ))
+%(letter-set (!f abcdefghijklmnopqrstuvwxyzåøöáéíóúìµñßœæëïüÿäěʤàāēīōūABCDEFGHIJKLMNOPQRSTUVWXYZÅØÖÉÌ0Ä123456789[]“"‘'`#+¦⌊⌋$£=\(\)[]{}|</_\-.,ÅØ½…µ™°ºβ))
+;; For semicolons, which can follow periods but not commas, as in |St.;|
+%(letter-set (!k abcdefghijklmnopqrstuvwxyzåøöáéíóúìµñßœæëïüÿäěʤàāēīōūABCDEFGHIJKLMNOPQRSTUVWXYZÅØÖÉÌ0Ä123456789.\![]\(\){}|>/_%”"'’#+¦⌊⌋$£=σΩÅØ®…™°ºβ*))
+%(letter-set (!b \!))
+
+
+;;; irregular words are stored in a separate file - irregs.tab
+;;; because the forms stored there are the values of affix
+;;; all the rules here should have the name `affix-type'_infl_rule
+
+n_pl_olr := 
+%suffix (!s !ss) (!ss !ssses) (es eses) (ss sses) (!ty !ties) (ch ches) (sh shes) (x xes) (z zes)
+"""
+Plural noun with *-s* suffix     
+<ex>cats                       
+"""
+n_pl_inflrule &
+[ ND-AFF +,
+  SYNSEM mass_or_count_synsem &
+         [ LOCAL plur_noun & [ AGR.PNG png-reg ] ],
+  RNAME lnpl ].
+
+n_pl-paren_olr := 
+%suffix (!s !s\(s\))
+"""
+Plural noun with *-s* suffix     
+<ex>cats                       
+"""
+n_pl_inflrule &
+[ ND-AFF +,
+  SYNSEM mass_or_count_synsem &
+         [ LOCAL plur_noun & [ AGR.PNG png-reg ] ],
+  RNAME lnpl ].
+
+
+n_pl-irreg_olr := 
+%suffix (xxirreg xxirreg)
+"""
+For *children, people, etc.*
+"""
+n_pl_inflrule &
+[ ND-AFF +,
+  SYNSEM mass_or_count_synsem &
+         [ LOCAL plur_noun & [ AGR.PNG png-irreg ] ],
+  RNAME lnpli ].
+
+
+;; DPF 2020-07-12 - NORM quantity_or_norm_rel sadly prevents these from being
+;; vocatives, as in "People, let's move!". And more generally, we want to accept
+;; "people mover", so we finally added a construction-specific feature --CPDNHD
+;; to enable lexical blocking for compounds.
+;;
+n_pl-irreg-noaff_olr :=
+%suffix (xxirreg xxirreg)
+"""
+For *fish, deer,* etc. where no change in form
+"""
+n_pl_inflrule &
+[ ND-AFF +,
+  SYNSEM mass_or_count_synsem &
+         [ LOCAL plur_noun & [ AGR.PNG png-irreg,
+			       CAT.HEAD.--BARE - ] ],
+  RNAME lnpln ].
+
+
+v_3s-fin_olr :=
+%suffix (!s !ss) (!ss !ssses) (ss sses) (!ty !ties) (ch ches) (sh shes) (x xes) (z zes)
+"""
+Third-singular present verb      
+<ex>admires                    
+"""
+v_3s-fin_inflrule &
+[ ND-AFF +,
+  SYNSEM.LOCAL third_sg_fin_verb,
+  RNAME lvsg ].
+
+
+v_psp_olr :=
+%suffix (* ed) (!ty !tied) (e ed) (!t!v!c !t!v!c!ced)
+"""
+Past participle verb              
+<ex>admired  
+"""
+v_psp_inflrule &
+[ ND-AFF +,
+  SYNSEM.LOCAL psp_verb,
+  RNAME lvpp ].
+
+v_pst_olr :=
+%suffix (* ed) (!ty !tied) (e ed) (!t!v!c !t!v!c!ced)
+"""
+Past tense verb                  
+<ex>admired                    
+"""
+v_pst_inflrule &
+[ ND-AFF +,
+  SYNSEM.LOCAL past_or_subj_verb,
+  RNAME lvpt ].
+
+
+v_prp_olr :=
+%suffix (* ing) (!t!v!c !t!v!c!cing) (e ing) (ee eeing) (ie ying)
+"""
+Present participle verb          
+<ex>admiring                   
+"""
+v_prp_inflrule &
+[ ND-AFF +,
+  SYNSEM.LOCAL prp_verb,
+  RNAME lvpr ].
+
+v_prp-nf_olr :=
+%suffix (* in) (!t!v!c !t!v!c!cin) (e in) (ee eein) (ie yin)
+"""
+Present participle verb,nonformal
+Non-standard variant for *tryin* and *tryin'*
+<ex>admirin
+"""
+v_prp-nf_inflrule &
+[ ND-AFF +,
+  SYNSEM.LOCAL prp_verb,
+  RNAME lvprn,
+  GENRE nonformal ].
+
+
+#|
+bse_verb_irule := lex_rule_infl_affixed &
+[ ND-AFF -,
+  ORTH #stem,
+  DTR  [ ORTH #stem ],
+  SYNSEM.LOCAL bse_verb,
+  RNAME lvbs ].
+
+non_third_sg_fin_verb_irule := lex_rule_infl_affixed &
+[ ND-AFF -,
+  ORTH #stem,
+  DTR  [ ORTH #stem ],
+  SYNSEM.LOCAL non_third_sg_fin_verb,
+  RNAME lvns ].
+|#
+
+; CSY - 2-11-2020 changed SYNSEM from bse_or_non3sg_verb 
+v_fin-bse_ilr := v_n3s-bse_inflrule &
+"""
+base form verb for all including 3sg      
+<ex> He admire 
+"""
+[ ND-AFF -,
+  ORTH #stem,
+  DTR  [ ORTH #stem ],
+  SYNSEM.LOCAL bse_or_fin_verb,
+  RNAME lvns ].
+
+;bse_singlish_ilr := lex_rule_infl_affixed &
+;"""
+;CSY 17-9-2020 for singlish, no inflection verbs
+;<ex>he eat already.
+;"""
+;[ ND-AFF -,
+;  ORTH #stem,
+;  DTR  [ ORTH #stem ],
+;  SYNSEM.LOCAL bse_singlish_verb,
+;  RNAME lvns ].
+
+; CSY 6-1-2020 - removed (not needed for Singlish) so that 
+;                the num is always underspec if the noun is in it's original form
+;n_sg_ilr := n_sg_inflrule &
+;"""
+;Singular noun                    
+;<ex>cat                        
+;"""
+;[ ND-AFF -,
+;  ORTH #stem,
+;  DTR  [ ORTH #stem ],
+;  SYNSEM count_noun_synsem & [ LOCAL sing_noun & [ AGR.PNG norm-png ] ],
+;  RNAME lnsg ].
+
+; CSY 29-12-2020 for nouns that underspec for number and don't need SPR
+;     5-1-2020 added in MIN nonpro so the rule cannot apply to pronouns?
+;              test: not sure if that is necessary
+n_singlish_ilr := n_singlish_inflrule &
+"""
+Underspec noun
+<ex>cat (no det)
+"""
+[ ND-AFF -,
+  ORTH #stem,
+  DTR  [ ORTH #stem,
+	 SYNSEM.LOCAL.CAT.HEAD.MINORS.MIN nonpro_rel ],
+  SYNSEM count_noun_synsem & [ LOCAL singlish_count_noun & [ AGR.PNG norm-png ] ],
+  RNAME lncn ].
+
+n_ms_ilr := n_ms_inflrule &
+"""
+Mass noun                        
+<ex>rice
+"""
+[ ND-AFF -,
+  ORTH #stem,
+  DTR  [ ORTH #stem ],
+  SYNSEM basic_basic_mass_noun_synsem & [ LOCAL mass_noun ],
+  RNAME lnms ].
+
+n_ms-cnt_ilr := n_ms-cnt_inflrule &
+"""
+Mass or count noun               
+<ex>[unknown noun]             
+"""
+[ ND-AFF -,
+  ORTH #stem,
+  DTR  [ ORTH #stem ],
+  SYNSEM basic_mass_or_count_synsem & [ LOCAL mass_count_noun ],
+  RNAME lnmc ].
+
+
+n_pl-cur_ilr := n_pl-cur_inflrule &
+"""
+Plural of currency noun: no *-s*
+<ex>the $2 book                
+"""
+[ ND-AFF -,
+  ORTH #stem,
+  DTR n_-_c-cur_le & [ ORTH #stem ],
+  SYNSEM.LOCAL plur_noun,
+  RNAME lnpn ].
+
+
+n_sg-cur_ilr := n_sg-cur_inflrule &
+"""
+Singular of currency noun: INFLECTD na_or_+
+<ex>the $1 book           
+
+Added rule so we can get *the $1 book* where N-N cmpnd rule
+excludes INFLECTD +.
+"""
+[ ND-AFF -,
+  ORTH #stem,
+  DTR n_-_c-cur_le & [ ORTH #stem ],
+  SYNSEM.LOCAL sing_noun & [ AGR.PNG png-unsp ],
+  RNAME lnsn ].
+
+v_pas_odlr :=
+%suffix (* ed) (!ty !tied) (e ed) (!t!v!c !t!v!c!ced) 
+"""
+Passive verb                     
+<ex>admired
+"""
+v_pas-norm_lexrule &
+  [ ND-AFF +,
+    DTR.SYNSEM trans_subst &
+               [ LOCAL [ CAT.VAL.COMPS [ FIRST [ LOCAL.CONT #objcont,
+                                                 --SIND #objind,
+                                                 NONLOC #ononloc ],
+                                         REST #comps ] ],
+                 LKEYS.KEYREL #keyrel ],
+    SYNSEM [ LOCAL [ CAT [ VAL [ SUBJ < [ LOCAL.CONT #objcont,
+					  --SIND #objind,
+					  NONLOC #ononloc ] >,
+				 COMPS.REST #comps ] ],
+                     CONT [ HOOK.XARG #objind ] ],
+             LKEYS.KEYREL #keyrel ],
+  RNAME lvpa ].
+
+v_pas-p_odlr :=
+%suffix (* ed) (!ty !tied) (e ed) (!t!v!c !t!v!c!ced) 
+"""
+Prepositional passive verb  
+<ex>referred to
+<ex>X was often referred to      
+"""
+prep_passive_verb_lexrule &
+[ ND-AFF +,
+  RNAME lvpe ].
+
+
+v_pas-p-p_odlr :=
+%suffix (* ed) (!ty !tied) (e ed) (!t!v!c !t!v!c!ced) 
+"""
+Particle + prepositional passive verb       
+<ex>done away with  
+<ex>X was done away with       
+<nex>
+"""
+ptcl_prep_passive_verb_lexrule &
+[ ND-AFF +,
+  RNAME lvppe ].
+
+
+v_pas-p-t_odlr :=
+%suffix (* ed) (!ty !tied) (e ed) (!t!v!c !t!v!c!ced) 
+"""
+Prep. passive of trans. verb     
+<ex>added to                   
+<ex>X has been added to
+"""
+prep_passive_trans_verb_lexrule &
+[ ND-AFF +,
+  RNAME lvpf ].
+
+v_pas-prt-t_odlr :=
+%suffix (* ed) (!ty !tied) (e ed) (!t!v!c !t!v!c!ced) 
+"""
+Passive of verb+sel_PP
+<ex>relied on                   
+"""
+prep_passive_ptcl_verb_lexrule &
+[ ND-AFF +,
+  RNAME lvpg ].
+
+
+v_pas-cp_odlr :=
+%suffix (* ed) (!ty !tied) (e ed) (!t!v!c !t!v!c!ced) 
+"""
+Passive of cp-complement verb    
+<ex>said                       
+<ex>it was believed (by many) that Sandy left
+"""
+v_pas-cp_lexrule &
+  [ ND-AFF +,
+    DTR.SYNSEM cp_passivable_verb &
+               [ LOCAL.CAT.VAL [ COMPS #comps,
+                                 KCMP #kcmp ] ],
+    SYNSEM passive_atrans_synsem &
+           [ LOCAL.CAT [ VAL [ COMPS.REST #comps,
+			       KCMP #kcmp ] ] ],
+    RNAME lvcp ].
+
+
+v_pas-dat_odlr :=
+%suffix (* ed) (!ty !tied) (e ed) (!t!v!c !t!v!c!ced)
+"""
+Passive of dative shift verb     
+<ex>given
+"""
+basic_passive_verb_lexrule &
+  [ ND-AFF +,
+    DTR [ SYNSEM basic_ditrans_subst &
+		 [ LOCAL [ CAT.VAL [ SUBJ < [ --SIND #subjind, 
+					      NONLOC #snonloc ] >,
+				     COMPS < [ LOCAL.CONT #objcont,
+					       --SIND #objind,
+					       NONLOC #ononloc ],
+					     #npcomp > ] ],
+		   LKEYS.KEYREL #keyrel ] ],
+    SYNSEM [ LOCAL [ CAT [ VAL [ SUBJ < [ LOCAL.CONT #objcont,
+					  --SIND #objind,
+					  NONLOC #ononloc ] >,
+				 COMPS < #npcomp,
+                                       synsem & 
+                                       [ LOCAL local &
+                                         [ CAT [ HEAD prep & 
+                                                   [ MINORS.MIN _by_p_cm_rel ],
+                                                 VAL [ SUBJ < >,
+                                                       SPR *olist*,
+                                                       COMPS < > ] ],
+                                           CONT.HOOK.INDEX #subjind ],
+                                         NONLOC #snonloc,
+                                         OPT + ] > ] ],
+		     CONT [ HOOK.XARG #objind ] ],
+             LKEYS.KEYREL #keyrel ],
+  RNAME lvdp ].
+
+; "X was made an example of"
+v_pas-np-p_odlr :=
+%suffix (* ed) (!ty !tied) (e ed) (!t!v!c !t!v!c!ced) 
+"""
+NP + prepositional passive verb       
+<ex>made an example of        
+<ex>X was made an example of
+"""
+np_prep_passive_verb_lexrule &
+[ ND-AFF +,
+  RNAME lvppn ].

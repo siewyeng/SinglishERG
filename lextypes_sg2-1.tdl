@@ -429,14 +429,6 @@ np_cat_acc := nomp_cat_acc & np_cat_acc_min & np_cat_nonnom &
 ;; blocking "one to three pm" as an NP complement, because it has a 
 ;; non-empty MOD.
 ;;
-
-; CSY 18-12-2020 - new type to allow for both adj and verbal heads
-; #testing removed all properties
-s_cat_unspec_sg := cat.; &
-;  [ HEAD adverbee,
-;    VAL [ SUBJ *olist*,
-;	  COMPS < > ] ].
-
 s_cat_unspec := cat &
   [ HEAD verbal,
     VAL [ SUBJ *olist*,
@@ -445,23 +437,11 @@ s_cat_unspec := cat &
 ;; DPF 2013-02-11 - Constrain MC to bool, in order to exclude relative
 ;; clauses, as in ecoc:2065708
 ;;
-
 basic_s_cat_v_c := s_cat_unspec &
   [ VAL.SPR *olist*,
     MC bool ].
 
-; CSY 18-12-2020 - type that does not inherit from s_cat_unspec
-basic_s_cat_sg_v_c := s_cat_unspec_sg &
-  [ VAL.SPR *olist*,
-    MC bool ].
-
 s_cat_v_c := basic_s_cat_v_c &
-  [ HEAD.INV -,
-    VAL.SUBJ *olist*,
-    MC - ].
-
-; CSY 18-12-2020 - type that allows for adj in addition to verbs
-s_cat_sg_v_c := basic_s_cat_sg_v_c &
   [ HEAD.INV -,
     VAL.SUBJ *olist*,
     MC - ].
@@ -1572,19 +1552,14 @@ nbar_subst := non_trans_subst & two_arg_subst &
                             LOCAL.CAT nbar_cat_min,
 			    NONLOC.SLASH 0-dlist ] > ].
 
-; CSY 18-12-2020 - supertype to allow for a split in the COMPS types
-; took away KCMP [ LOCAL.CAT.HEAD.TAM.TENSE real_tense ],
-basic_cp_intrans_subst_super := two_arg_subst &
-  [ LOCAL.CAT.VAL [ KCMP #comp,; &
-                         ;[ LOCAL.CAT.HEAD.TAM.TENSE real_tense ],
-		    COMPS < #comp &
-			    [ OPT - ] > ] ].
-
-basic_cp_intrans_subst := basic_cp_intrans_subst_super &
-  [ LOCAL.CAT.VAL.COMPS < [ LOCAL.CAT basic_s_cat_v_c ] > ].
-
-;basic_cp_intrans_subst_sg := basic_cp_intrans_subst_super &
-;  [ LOCAL.CAT.VAL.COMPS < [ LOCAL.CAT basic_s_cat_sg_v_c ] > ].
+basic_cp_intrans_subst := two_arg_subst &
+  [ LOCAL.CAT.VAL [ KCMP #comp &
+                         [ LOCAL.CAT.HEAD.TAM.TENSE real_tense ],
+                    COMPS < #comp & synsem &
+			    [ LOCAL [ CAT basic_s_cat_v_c,
+				      CONJ cnil ],
+                              NONLOC.REL 0-dlist,
+                              OPT - ] > ] ].
 
 ; Impose constraints stored in --ADDIN for base_or_non3sg verb
 ; Note that this has to allow for exceptional behavior for e.g.
@@ -1597,12 +1572,6 @@ cp_addin_tam_pn := synsem &
 
 cp_intrans_subst := basic_cp_intrans_subst & cp_addin_tam_pn &
   [ LOCAL.CAT.VAL.KCMP.LOCAL.CAT s_cat_v_c ].
-
-; CSY 18-12-2020 - sg version that allows for adj complements
-; #testing commented out for debugging
-cp_intrans_subst_sg := basic_cp_intrans_subst_super & cp_addin_tam_pn.; &
-;  [ LOCAL.CAT.VAL [ KCMP.LOCAL.CAT basic_s_cat_sg_v_c,
-;		    COMPS < [ LOCAL.CAT basic_s_cat_sg_v_c ] > ] ].
 
 ; For input to nom-gerund lexical rule
 basic_prep_intrans_subst := two_arg_subst.
@@ -3416,14 +3385,10 @@ obj_equi_vpslash_four_arg_verb := verb_synsem & tough_np_np_cp_subst &
 ; from both of its daughters, since the msg comes from the head if it's a
 ; complementizer, and from the non-head if the head is a verb.
 
-; CSY 19-12-2020 - create a supertype that accepts both verbal and adjectives
-basic_cp_prop+ques_verb_super := norm_basic_verb_synsem &
-  [ LOCAL [ CAT.VAL.KCMP [ ;LOCAL.CAT.HEAD adverbee,
+basic_cp_prop+ques_verb := norm_basic_verb_synsem &
+  [ LOCAL [ CAT.VAL.KCMP [ LOCAL.CAT.HEAD verbal,
                            OPT - ],
             CONT.RELS.LIST < relation, ... > ] ].
-
-basic_cp_prop+ques_verb := basic_cp_prop+ques_verb_super &
-  [ LOCAL.CAT.VAL.KCMP.LOCAL.CAT.HEAD verbal ].
 
 ;; DPF 2011-jun-11 - For all but the base-subjunctive-CP-taking verbs, 
 ;; add in the agreement constraints to distinguish base from non3sg verbs.
@@ -3470,14 +3435,10 @@ bse_cp_verb := basic_bse_cp_verb &
 ;; norm_cp_prop+ques_verb so we can allow instances of this type to also take
 ;; imperative complements, as in *Don't leave, he laughed*
 
-; CSY 18-12-2020 - change KCMP from s_cat_unspec and cp_intrans_subst to newly
-; created cp_intrans_subst_sg
-; allows for constructions <ex>Kim knows Abrams pretty.
-basic_cp_intrans_verb := basic_cp_prop+ques_verb_super & basic_cp_intrans_subst_super &
-			 basic_two_arg & arg12h_lt & verb_synsem & cp_addin_tam_pn &
-  [ LOCAL.CAT.VAL.KCMP [ LOCAL.CAT adverbee_cat &
-					  [ HEAD ;v_or_a &
-					  [ VFORM fin_or_imp,
+basic_cp_intrans_verb := norm_cp_prop+ques_verb & cp_intrans_subst & 
+			 basic_two_arg & arg12h_lt &
+  [ LOCAL.CAT.VAL.KCMP [ LOCAL.CAT s_cat_unspec &
+				   [ HEAD [ VFORM fin_or_imp,
 			                    TAM indic_tam ] ],
 			 --SIND.E.MOOD ind_or_modal_subj ] ].
 
@@ -3633,11 +3594,9 @@ basic_pp_cp_fin_verb := fin_cp_prop+ques_verb & pp_cp_subst & pp_cp_lt &
   [ LOCAL.CAT.VAL.COMPS < [ --SIND non_expl-ind ],
                           synsem > ].
 
-; CSY 16-12-2020 - to allow verbs that take CP to be headed by adj as well change CAT.VAL.COMPS
-;                  LOCAL.CAT.HEAD from verbal
 pp_cp_fin_prop_verb := basic_pp_cp_fin_verb &
   [ LOCAL [ CAT.VAL.COMPS < [ OPT + ],
-			    [ LOCAL.CAT.HEAD v_or_a,
+			    [ LOCAL.CAT.HEAD verbal,
 			      --SIND.SF prop ] >,
 	    CONT.RELS <! relation !> ] ].
 
@@ -5136,11 +5095,7 @@ noun_synsem := basic_noun_synsem & lex_synsem &
 
 mass_or_count_synsem := basic_noun_synsem.
 count_noun_synsem := mass_or_count_synsem &
-  [ LOCAL.CONT.HOOK.INDEX.IND + ].
-
-; CSY 29-12-2020 - new singlish count noun for underspec number
-singlish_count_noun_synsem := count_noun_synsem &
-  [ LOCAL.AGR.PNG.PN 3 ].
+  [ LOCAL.CONT.HOOK.INDEX.IND + ]. 
 
 ;;
 ;; Common nouns
@@ -5868,12 +5823,10 @@ basic_basic_intr_noun_word := nonc-hm & basic_noun_word &
 
 basic_intr_noun_word := basic_basic_intr_noun_word & noun_word.
 
-; 29-12-2020 added in OPT + for singular count nouns
 norm_intr_lex_entry := basic_intr_noun_word &
   [ SYNSEM noun_nocomp_synsem & 
 	  [ LOCAL.CAT.VAL.SPR < [ --MIN abstract_q_rel ] >,
             MODIFD notmod ] ].
-
 
 ;; DPF 2018-03-10 - Added LPERIPH na to prevent spurious compound analysis of
 ;; *house wine list* using noun_adjn compound rule.
@@ -11297,6 +11250,11 @@ pred_adj_synsem := basic_pred_adj_synsem & adj_unsp_ind_synsem & prd_synsem.
 ;;
 intrans_pred_adj_synsem := basic_adj_synsem & one_arg & isect_synsem &
                            norm_adj_synsem & basic_lex_synsem &
+"""
+CSY 31-08-2020 - added in MC +
+because predicative adjectives inherit from it
+CSY 19-9-2020 - removed MC + because it does not help it head sentences
+"""
   [ LOCAL [ CAT [ HEAD adj &
                        [ PRD +,
                          MOD < [ --SIND #ind & non_expl-ind ] >,
@@ -11311,8 +11269,6 @@ intrans_pred_adj_synsem := basic_adj_synsem & one_arg & isect_synsem &
 
 ; CSY 13-08-2020 - to try to get find the source of the SUBJ dagify error
 ;    		   changed PRED to -
-; 9-1-2021 - remove empty COMPS for the COMPS value of the adj to be passed up through the 
-; pred_adj_subj_lexrule instead.
 intrans_nocop_pred_adj_synsem := basic_nocop_adj_synsem & one_arg & isect_synsem &
                             norm_nocop_adj_synsem & basic_lex_synsem &
   [ LOCAL [ CAT [ HEAD adj &
@@ -11320,7 +11276,8 @@ intrans_nocop_pred_adj_synsem := basic_nocop_adj_synsem & one_arg & isect_synsem
                          MOD < [ --SIND #ind & non_expl-ind ] >,
                          MINORS.MIN adj_rel ],
                   VAL [ SPR.FIRST.LOCAL [ CAT.HEAD n_or_adv,
-					  CONT.HOOK.XARG #arg0 ] ] ],
+					  CONT.HOOK.XARG #arg0 ],
+			COMPS < > ] ],
             CONT [ HOOK [ INDEX #arg0,
 			  XARG #ind ],
                    RELS <! relation !> ] ],
@@ -11767,6 +11724,10 @@ adj_atrans_that_cp_synsem := adj_atrans_cp_fin_inf_synsem &
 ;; which blocks *the most beautiful*, sadly.  
 ;;
 basic_norm_adj_word := nonc-hm-nab &
+"""
+CSY 31-08-2020 - changed from nonc-hm-nab to nonc-h-nab take away mcna
+    19-9-2020 - changed back
+"""
   [ SYNSEM [ LOCAL.CAT [ HEAD adj & [ MINORS.ALTMIN non_ellipt_rel ],
 			 VAL.SPR.FIRST synsem &
 			      [ --MIN more_or_very_deg_rel,
@@ -18244,13 +18205,10 @@ Det, nnly 'what'
 ;;
 ;; det_word_sing &
 ;;
-
-; CSY 5-1-2020 ADDED AGR in SPEC
 basic_det_sg_nomod_lexent := abstr_det_word &
   [ SYNSEM basic_det_synsem &
 	   [ LOCAL 
-             [ CAT [ VAL [ SPEC < [ LOCAL.AGR.PNG.PN 3s,
-				     MODIFD #modif ] >,
+             [ CAT [ VAL [ SPEC < [ MODIFD #modif ] >,
 			   COMPS < > ] ],
                AGR [ PNG.PN 3s,
 		     DIV - ],
@@ -21462,7 +21420,6 @@ basic_two_place_compl_word_vadj := basic_two_place_compl_word_super &
 
 ; CSY 10-12-2020 - made this inherit from the SUPER one instead and it's not causing any problems 
 ; 		   so far...
-;     17-12-2020 - undoing change
 basic_sor_compl_word := basic_two_place_compl_word_super &
   [ SYNSEM basic_one_arg & 
     [ LOCAL.CAT.VAL [ COMPS < #kcmp &
@@ -21477,15 +21434,8 @@ norm_compl_word_super := basic_sor_compl_word &
 						      [ TAM.TENSE real_tense ],
 						   MC - ] ] > ] ] ].
 
-;norm_compl_word := norm_compl_word_super & 
-;  [ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL.CAT.HEAD verb ] > ].
-
-norm_compl_word := basic_sor_compl_word & basic_two_place_compl_word &
-  [ SYNSEM.LOCAL.CAT [ HEAD comp & [ INV - ],
-		       VAL [ SUBJ < anti_synsem_min >,
-			     COMPS < [ LOCAL.CAT [ HEAD verb &
-						      [ TAM.TENSE real_tense ],
-						   MC - ] ] > ] ] ].
+norm_compl_word := norm_compl_word_super &
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL.CAT.HEAD verb ] > ].
 
 ; CSY 10-12-2020 - changed it to inherit from supertype norm_compl_word_super to allow adj headed complements
 sor_compl_word := norm_compl_word_super &
@@ -21496,31 +21446,13 @@ sor_compl_word := norm_compl_word_super &
 							    [ MOOD #mood ] ],
 					     AGR.PNG.PN #pn ] ] > ] ].
 
-sor_compl_adj_word := norm_compl_word_super &
-  [ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL.CAT.HEAD adj ] > ].
-; TEST
-cm_np-eg_that_le := sor_compl_adj_word &
-  [ SYNSEM [ LOCAL [ CAT [ HEAD [ ;VFORM fin,
-				  TAM #tam & indic_tam,
-				  CASE nom,
-				  AUX - ,
-				  MINORS.MIN verb_aspect_rel ],
-			   VAL.COMPS.FIRST.LOCAL.CAT.HEAD [ TAM #tam,
-							    CASE non_nom ],
-			   MC - ],
-		     CONT [ HOOK.INDEX.SF prop,
-			    RELS <! !>,
-			    HCONS <! !>,
-			    ICONS <! !> ] ],
-	     LKEYS.KEYREL.PRED no_rel ] ].
-
-; CSY 10-12-2020 - try remove MINORS.MIN verb_aspect_rel ],
+; CSY 10-12-2020 - try remove , MINORS.MIN verb_aspect_rel ],
 cm_np-vp_that_le := sor_compl_word & 
 """
 Cmplzr, only 'that' (int mod)    
 <ex>B knew that we won.
 """
-  [ SYNSEM [ LOCAL [ CAT [ HEAD [ VFORM fin,
+  [ SYNSEM [ LOCAL [ CAT [ HEAD [ ; VFORM fin,
 				  TAM #tam & indic_tam,
 				  CASE nom,
 				  AUX - ],

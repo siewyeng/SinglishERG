@@ -65,6 +65,9 @@ agaration_n1 := n_-_m_le &
    SYNSEM [ LKEYS.KEYREL.PRED "_agaration_n_1_rel",
             PHON.ONSET con ] ].
 
+;that_test := cm_np-eg_that_le &
+; [ ORTH < "thatt" >,
+;   SYNSEM.PHON.ONSET con ].
 
 ;removed items
 already_adv3 := never_unify_le & [ ORTH < "_never_unify_" > ].
