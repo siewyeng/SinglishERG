@@ -1500,6 +1500,8 @@ fin_or_bse_or_imp := non_inf.
 fin_or_bse_or_part := vform.
 fin_or_bse_or_prp := fin_or_bse_or_part.
 fin_or_bse := fin_or_bse_or_imp & fin_or_bse_or_prp & non_prespart.
+; CSY 12-1-2021 - for main clauses that allow prp but not base
+fin_or_prp := fin_or_bse_or_prp & non_bse.
 bse_or_prp := non_fin & fin_or_bse_or_prp.
 bse := fin_or_bse_or_imp.
 ; Base morphology verbs can be either base or imperative, but not if negated.
@@ -1509,10 +1511,12 @@ fin_or_inf_or_imp := vform.
 fin_or_imp := fin_or_inf_or_imp & fin_or_bse_or_imp.
 imp_vform := bse & fin_or_imp.
 fin_or_inf := non_bse & fin_or_inf_or_imp.
-fin := fin_or_inf & fin_or_bse & fin_or_imp & fin_or_non_fin.
+; CSY 12-1-2021 - add in fin_or_prp
+fin := fin_or_inf & fin_or_bse & fin_or_imp & fin_or_non_fin & fin_or_prp.
 inf_or_prp := non_pas & non_fin_non_bse.
 inf := inf_or_prp & bse_or_inf & fin_or_inf.
-prp := inf_or_prp & non_inf & pas_or_prp & bse_or_prp.
+; CSY 12-1-2021 - add in fin_or_prp
+prp := inf_or_prp & non_inf & pas_or_prp & bse_or_prp & fin_or_prp.
 
 
 inf_and := vform.
