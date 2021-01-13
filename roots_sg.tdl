@@ -33,15 +33,18 @@ Formal edited written English, ending with clause punctuation.
     ORTH root_orth ].
 
 ; CSY 20-09-2020 new root for singlish that allows adj as HEAD
+;     25-11-2020 added in DIALECT
 root_lepak := phrase &
   [ INFLECTD +,
     SYNSEM basic_root_synsem &
              [ LOCAL [ CAT [ HEAD non_noun,
 			     MC + ] ] ],
-    ORTH root_orth ].
+    ORTH root_orth,
+    DIALECT sgp ].
 
 ; CSY 22-11-2020 a generating version of root_lepak
 ;		 added GENRE edited to get rid of weird reduplication of pronouns
+;     25-11-2020 added in DIALECT
 root_gen_lepak := phrase &
   [ INFLECTD +,
     SYNSEM basic_root_phr_synsem &
@@ -51,8 +54,8 @@ root_gen_lepak := phrase &
 		       CONT.ICONS.LIST *nonfocuslist* ],
 	       PUNCT.RPUNCT basic_clause_punct ],
     GENRE edited,
-    ORTH root_orth ].
-
+    ORTH root_orth,
+    DIALECT sgp ].
 
 
 root_gen := phrase &

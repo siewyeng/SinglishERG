@@ -63,11 +63,16 @@ not_prdp-sg := av_-_s-not-sg_le &
 agaration_n1 := n_-_m_le &
  [ ORTH < "agaration" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_agaration_n_1_rel",
-            PHON.ONSET con ] ].
+            PHON.ONSET voc ] ].
 
 ;that_test := cm_np-eg_that_le &
 ; [ ORTH < "thatt" >,
 ;   SYNSEM.PHON.ONSET con ].
+
+singlish_n1 := n_-_pn-sg_le &
+ [ ORTH < "Singlish" >,
+   SYNSEM [ LKEYS.KEYREL.CARG "Singlish",
+            PHON.ONSET con ] ].
 
 ;removed items
 already_adv3 := never_unify_le & [ ORTH < "_never_unify_" > ].

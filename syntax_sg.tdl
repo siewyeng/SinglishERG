@@ -351,6 +351,7 @@ basic_decl_phrase := basic_non_rel_clause & phrasal &
              HCONS <! !>,
 	     ICONS <! !> ] ].
 
+
 decl_phrase := basic_decl_phrase &
   [ SYNSEM.LOCAL.CAT.HEAD.PRD - ].
 
@@ -1494,6 +1495,8 @@ np_pred_phr := non_headed_phrase & binary_phrase &
 ;; DPF 2018-03-07 - Re 18-feb-08: We need to constrain the filler's SUBJ to
 ;; be *olist* in order to block |[admired him] arose|.
 
+; CSY 17-12-2020 - comment out HEAD verbal
+;     5-1-2020 - uncommented
 basic_head_filler_phrase := binary_punct_phrase & phrasal &
   [ SYNSEM [ LOCAL [ CAT [ VAL [ COMPS < >,
 				 SPCMPS < > ],
@@ -1506,7 +1509,7 @@ basic_head_filler_phrase := binary_punct_phrase & phrasal &
 					SUBJ *olist* ],
 			      CTXT.ACTIVATED + ],
 		      NONLOC.SLASH 0-dlist ] ],
-           [ SYNSEM [ LOCAL [ CAT [ HEAD verbal,
+           [ SYNSEM [ LOCAL [ CAT [; HEAD verbal,
                                     VAL.COMPS < > ],
                               CONT.HOOK [ INDEX.--TPC + ] ],
 		      NONLOC [ SLASH 1-dlist &
@@ -5780,8 +5783,10 @@ n_adj_cmpnd_phr := n_v-or-adj_cmpnd_phr &
 ;; right dtr, to avoid spurious ambig for |bell-ringing children|.
 ;; Let's see how it goes ...
 ;;
+
 n_adj_intr_cmpnd_phr := basic_n_v-or-adj_cmpnd_phr &
-  [ ARGS < [ ],
+  [ SYNSEM.LOCAL.CAT.MC -,
+    ARGS < [ ],
            [ SYNSEM.LOCAL.CAT [ HEAD adj,
 				VAL [ SPR *ocons*,
 				      COMPS < > ] ] ] >,
@@ -8658,13 +8663,19 @@ subjh_rule_decl := subjh_rule_basic & basic_decl_phrase.
 ;; an imperative admitted via this rule.
 ;;
 
-; CSY 5-1-2020 - #tocheck: maybe VFORM fin is okay now that adj has vform 
+; CSY - changed verbal to v_or_a to allow adjectives to join with subjects for Singlish and
+; commented out VFORM fin
+; CSY 5-1-2020 - uncommented VFORM as adj now has it
+;     6-1-2020 - changed VFORM from fin to fin_or_bse_or_prp 
 subjh_mc_rule := subjh_rule_decl & head_subj_phrase & clause &
 """
-CSY - changed verbal to v_or_a to allow adjectives to join with subjects for Singlish and commented out VFORM fin
+For sentences like
+<ex> The cat is pretty.
+<ex> The cat pretty.
+<ex> The cat sleeping.
 """
   [ SYNSEM [ LOCAL [ CAT [ HEAD v_or_a &
-				[ ;VFORM fin,
+				[ VFORM fin_or_prp,
                                   TAM indic_tam,
 				  PRD -,
 				  CASE non_nom ],
@@ -8692,6 +8703,7 @@ CSY - changed verbal to v_or_a to allow adjectives to join with subjects for Sin
 ;; DPF 2017-04-03 - Generalized VFORM from fin_or_bse to fin_or_bse_or_prp
 ;; to allow verbal gerunds.
 ;;
+
 ; CSY 10-12-2020 two nonmc rules: one for verb headed and one for adj headed clauses
 ;     5-1-2020 - since adj now have vform, this can apply to both types of clauses
 ;                there's no need for the special adj daughter
@@ -9336,10 +9348,14 @@ filler_head_rule_wh_nr_inf := binary_rule_left_to_right &
 ;; be |[which, though happy,] jumped], and if we had this, the commas would
 ;; likely be content.  So FIX to allow subord-phrase post-modifiers of rel pros.
 ;;
-filler_head_rel_rule := binary_rule_left_to_right & rel_cl & 
+
+; CSY 17-12-2020 - superset to create two branches for the verb and adjective COMPS
+; by removing HEAD verbal & [ VFORM #vform & fin_or_inf, from 2nd ARGS and VFORM from the mother
+;;    5-1-2020 - #totest uncomment the vform values
+filler_head_rel_super_rule := binary_rule_left_to_right & rel_cl & 
 			basic_head_filler_phrase & 
   [ INFLECTD +,
-    SYNSEM [ LOCAL [ CAT [ HEAD [ VFORM #vform,
+    SYNSEM [ LOCAL [ CAT [ HEAD [ ;VFORM #vform,
 				  TAM #tam,
 				  AUX #aux,
 				  INV #inv,
@@ -9361,7 +9377,7 @@ filler_head_rel_rule := binary_rule_left_to_right & rel_cl &
                       PUNCT [ RPUNCT rparen_or_comma_or_no_punct,
 			      PNCTPR ppair ] ] ],
 	   [ INFLECTD +,
-             SYNSEM [ LOCAL [ CAT [ HEAD verbal & [ VFORM #vform & fin_or_inf,
+             SYNSEM [ LOCAL [ CAT [ HEAD v_or_a & [ ;VFORM #vform & fin_or_inf,
                                                     TAM #tam,
                                                     AUX #aux,
                                                     INV #inv,
@@ -9382,6 +9398,22 @@ filler_head_rel_rule := binary_rule_left_to_right & rel_cl &
 	     HCONS <! !>,
 	     ICONS <! !> ] ].
 
+filler_head_rel_rule := filler_head_rel_super_rule &
+
+  [ SYNSEM.LOCAL.CAT.HEAD.VFORM #vform,
+    ARGS < [ INFLECTD na_or_+,
+	     SYNSEM [ LOCAL [ CAT.VAL.COMPS < >,
+                              CONJ cnil ],
+		      NONLOC [ QUE 0-dlist,
+                               REL 1-dlist &
+                                   [ LIST < [ INDEX #ind,
+					      XARG #xarg ] > ] ],
+                      PUNCT [ RPUNCT rparen_or_comma_or_no_punct,
+			      PNCTPR ppair ] ] ],
+	   [ INFLECTD +,
+             SYNSEM.LOCAL.CAT.HEAD verbal &
+				 [ VFORM #vform & fin_or_inf ] ] > ].  
+
 
 ; DPF 03-mar-06 - In order to block "*The book which to buy." while
 ; allowing "the book on which to rely" and "the book which he bought", divide
@@ -9397,12 +9429,22 @@ filler_head_rel_rule := binary_rule_left_to_right & rel_cl &
 ;; DPF 2018-05-28 - Also propagate ALTMIN from right dtr so we can choose to 
 ;; exclude elliptical relative clauses as post-VP modifiers
 ;;
+
 basic_filler_head_fin_rel_rule := filler_head_rel_rule &
   [ SYNSEM.LOCAL.CAT.HEAD.MINORS [ ALTMIN #altmin,
 				   NORM #norm ],
     ARGS < [ SYNSEM.LOCAL.CAT.HEAD.MINORS.NORM #norm ],
-	   [ SYNSEM.LOCAL.CAT [ HEAD verb & [ VFORM fin,
-					      MINORS.ALTMIN #altmin ],
+	   [ SYNSEM.LOCAL.CAT [ HEAD verbal & [ VFORM fin,
+					        MINORS.ALTMIN #altmin ],
+				VAL.SUBJ *olist* ] ] > ].
+
+; just for adj headed COMPS
+basic_filler_head_fin_rel_adj_rule := filler_head_rel_super_rule &
+  [ SYNSEM.LOCAL.CAT.HEAD.MINORS [ ALTMIN #altmin,
+				   NORM #norm ],
+    ARGS < [ SYNSEM.LOCAL.CAT.HEAD.MINORS.NORM #norm ],
+	   [ SYNSEM.LOCAL.CAT [ HEAD adj &
+					      [ MINORS.ALTMIN #altmin ],
 				VAL.SUBJ *olist* ] ] > ].
 
 ;; DPF 2016-09-05 - Also split finite rule into NP gap vs PP gap, since only 
@@ -9410,6 +9452,13 @@ basic_filler_head_fin_rel_rule := filler_head_rel_rule &
 ;; long-distance control in the do-be construction
 ;;
 filler_head_fin_np_rel_rule := basic_filler_head_fin_rel_rule &
+  [ SYNSEM.LOCAL.CAT.HEAD.MOD.FIRST.LOCAL.CONT.HOOK.XARG #xarg,
+    ARGS < [ SYNSEM.LOCAL.CAT.VAL.SPR *olist* ],
+	   [ SYNSEM.NONLOC.SLASH <! [ CAT.HEAD noun_or_nomger,
+				      CONT.HOOK.XARG #xarg ] !> ] > ].
+
+; CSY 17-12-2020 - rule for adj headed COMPS
+filler_head_fin_np_arel_rule := basic_filler_head_fin_rel_adj_rule &
   [ SYNSEM.LOCAL.CAT.HEAD.MOD.FIRST.LOCAL.CONT.HOOK.XARG #xarg,
     ARGS < [ SYNSEM.LOCAL.CAT.VAL.SPR *olist* ],
 	   [ SYNSEM.NONLOC.SLASH <! [ CAT.HEAD noun_or_nomger,
@@ -9680,7 +9729,7 @@ basic_basic_adj_coord_phr := gen_coord_phr &
              LOCAL.CAT [ HEAD adj,
 			 VAL.SPCMPS < >,
                          MC #mc ] ],
-    LCONJ-DTR.SYNSEM intrans_nocop_pred_adj_synsem &
+    LCONJ-DTR.SYNSEM nocop_pred_adj_synsem &
 		     [ LOCAL [ CAT [ HEAD adj,
 				     MC #mc ],
 			       CONT.HOOK.LTOP #ltop ],
@@ -12178,7 +12227,6 @@ frag_adj_rule := unary_frag_rule &
                                ARG #ind ],
              HCONS <! !>,
 	     ICONS <! !> ] ].
-
 
 frag_adv_rule := basic_unary_frag_rule &
   [ SYNSEM.LOCAL.CAT.VAL.SPR < >,

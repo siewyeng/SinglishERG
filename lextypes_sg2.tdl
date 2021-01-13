@@ -11313,7 +11313,9 @@ intrans_pred_adj_synsem := basic_adj_synsem & one_arg & isect_synsem &
 ;    		   changed PRED to -
 ; 9-1-2021 - remove empty COMPS for the COMPS value of the adj to be passed up through the 
 ; pred_adj_subj_lexrule instead.
-intrans_nocop_pred_adj_synsem := basic_nocop_adj_synsem & one_arg & isect_synsem &
+; 12-1-2021 - change name and remove one_arg, COMPS value comes from the daughter of pred_adj_subj
+; lexrule
+nocop_pred_adj_synsem := basic_nocop_adj_synsem & isect_synsem &
                             norm_nocop_adj_synsem & basic_lex_synsem &
   [ LOCAL [ CAT [ HEAD adj &
                        [ PRD -,
@@ -11783,7 +11785,7 @@ basic_norm_adj_word := nonc-hm-nab &
 ;     10-12-2020 - removed VAL.SPR *olist* of the SUBJ 
 ; HEAD of the SUBJ is supnoun as it allows for modified NP
 aj_nocop_i-prd_le := basic_norm_adj_word &
-  [ SYNSEM intrans_nocop_pred_adj_synsem & 
+  [ SYNSEM nocop_pred_adj_synsem & 
               [ LOCAL [ CAT [ HEAD [ MINORS.MIN norm_adj_rel,
                                      MOD < anti_synsem_min > ],
 			      VAL [ SUBJ < [ --SIND #subjind & basic_non_expl,
