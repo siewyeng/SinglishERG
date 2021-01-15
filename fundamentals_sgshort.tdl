@@ -1,0 +1,86 @@
+;;; -*- Mode: tdl; Coding: utf-8; -*-
+;;;
+;;;
+;;;  fundamentals_sg.tdl
+;;;
+;;;  Basic definitions of types for English grammar
+;;;  Additions to the Singlish branch of the English Resource Grammar
+;;;
+;;;  Rob Malouf, 3-Nov-1994
+;;;
+;;;  $Id: fundamentals.tdl 7479 2010-02-21 23:11:30Z danf $
+;;;  Chow Siew Yeng 2020, 2021
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+basic_adj := mobile & adj_or_intadj & vc_add
+"""
+CSY 04-09-2020 - added vc_add for the purpose of allowing adj to head sentences
+"""
+.
+
+; For positive adjectives
+; 29-12-2020 CSY add in basic_adj as a supertype of adj
+adj := basic_adj & n_or_a_or_det & p_adj_adv_or_comp & basic_verb_or_adj_or_frag &
+  [ CARDINAL - ].
+
+; CSY 18-12-2020 - include adj as something that has VFORM (from basic_adj_or_frag)
+basic_verb_or_adj_or_frag := non_noun_or_frag & subst_or_adv_or_frag &
+ [ VFORM vform ].
+
+basic_verb_or_frag := basic_verb_or_adj_or_frag & verb_or_conj_or_frag.
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; CONT types
+
+aspect := basic_aspect &
+  [ PRF luk,
+    PROGR luk,
+    INC luk,
+    EXP luk ].
+
+no_aspect := aspect &
+  [ PRF -,
+    PROGR -,
+    INC -,
+    EXP - ].
+
+; CSY 9-11-2020 for inchoative aspect
+; <ex> he eating already
+; to mean he has started eating
+inc_aspect := aspect &
+  [ PRF -,
+    INC + ].
+
+; CSY 17-11-2020 for experiential aspect
+; <ex> he ever have cat.
+; to mean he has had a cat before
+; In contrast to the perfect in English, this necessarily means that the event/state
+; is not true anymore
+exp_aspect := aspect &
+  [ PRF +,
+    EXP + ].
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; CASE and VFORM
+
+; CSY 12-1-2021 - for main clauses that allow prp but not base
+fin_or_prp := fin_or_bse_or_prp & non_bse.
+
+; CSY 12-1-2021 - add in fin_or_prp
+fin := fin_or_inf & fin_or_bse & fin_or_imp & fin_or_non_fin & fin_or_prp.
+
+; CSY 12-1-2021 - add in fin_or_prp
+prp := inf_or_prp & non_inf & pas_or_prp & bse_or_prp & fin_or_prp.
+
+; CSY 16-12-2020 - root just for singlish adj headed constructions
+root_sg_synsem := basic_root_synsem &
+  [ LOCAL [ CAT [ HEAD adj & 
+		       [ TAM indic_tam ],
+		  MC + ],
+	    CONT.HOOK.INDEX.SF #pred,
+	    CONJ cnil ],
+    PUNCT.RPUNCT comma_or_clause_or_pair_or_no_punct &
+	         [ PSF #pred ] ].

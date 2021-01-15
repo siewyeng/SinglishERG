@@ -612,3 +612,46 @@ Phenomena: {adj coord}
 They fat and pretty.
 'They are fat and pretty.'
 
+Source: siew yeng
+Vetted: t
+Judgment: g
+Phenomena: {clausal object, copula omission}
+They know the cat pretty.
+'They know the cat is pretty.'
+
+Source: siew yeng
+Vetted: t
+Judgment: g
+Phenomena: {clausal object, copula omission, bare noun}
+They know cat pretty.
+'They know (the) cat(s) is/are pretty.'
+
+Source: siew yeng
+Vetted: t
+Judgment: g
+Phenomena: {comp phrase, adj sent, bare noun}
+They know that cat pretty.
+'They know (the) cat(s) is/are pretty.'
+
+Source: siew yeng
+Vetted: t
+Judgment: g
+Phenomena: {copula omission, optcomp adj}
+The cat happy.
+'The cat is happy.'
+
+Source: siew yeng
+Vetted: t
+Judgment: g
+Phenomena: {wh-filler, copula omission}
+The cat who very happy is there.
+'The cat who is very is there.'
+
+Source: siew yeng
+Vetted: t
+Judgment: u
+Phenomena: {wh-filler, copula omission}
+The cat who is very happy pretty.
+'The cat who is very happy is pretty.'
+
+

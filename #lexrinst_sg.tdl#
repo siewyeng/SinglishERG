@@ -1,4 +1,5 @@
-;;; -*- Mode: tdl; Coding: utf-8; -*-
+;;; -*- Mode: tdl; Coding: utf-
+8; -*-
 ;;;
 ;;;  Copyright (c) 1994-2018
 ;;;    Dan Flickinger, Rob Malouf, Emily M. Bender
@@ -629,10 +630,18 @@ Ignored italics mark prefixed
 punct_drop_italright_rule &
  [ RNAME lpxdr ].
 
-; 9-11-2020 for Singlish
+; CSY 9-11-2020 for Singlish
 j_j-nocop_dlr := pred_adj_subj_lexrule &
 """
 <ex> He beautiful.
 """
  [ RNAME ljmc ].
 
+; CSY 8-1-2021 - for Singlish
+;v_prp-fin_dlr := v_prp-to-fin_lexrule &
+;"""
+;For the present participle to be finite
+;for sentences like "He admiring the cat" in Singlish
+;<ex>admiring
+;"""
+;  [ RNAME lvpfin ].

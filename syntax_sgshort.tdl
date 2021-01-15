@@ -1,0 +1,353 @@
+;;; -*- Mode: tdl; Coding: utf-8; -*-
+;;;
+;;;  Copyright (c) 1994-2018
+;;;    Dan Flickinger, Rob Malouf, Emily M. Bender
+;;;    see LICENSE for conditions
+;;;
+;;;  syntax.tdl
+;;;
+;;;  The grammar rules for English
+;;;  Additions to the Singlish branch of the English Resource Grammar
+;;;
+;;;  Created: Rob Malouf, 3-Nov-1994
+;;;
+;;;  $Id: syntax.tdl 7479 2010-02-21 23:11:30Z danf $
+;;;  Chow Siew Yeng 2020, 2021
+
+; CSY - changed HEAD basic_verb_or_frag to v_or_a for adj to head sentence
+basic_decl_phrase := basic_non_rel_clause & phrasal &
+  [ SYNSEM.LOCAL.CAT [ HEAD v_or_a &
+                            [ INV - ],
+                       MC bool ],
+    HD-DTR.SYNSEM.LOCAL.CONT.HOOK [ LTOP #hdtop,
+                                    INDEX #hdind ],
+    C-CONT [ HOOK [ LTOP #hdtop,
+                    INDEX #hdind ],
+             RELS <! !>,
+             HCONS <! !>,
+	     ICONS <! !> ] ].
+
+; CSY 17-12-2020 - comment out HEAD verbal
+basic_head_filler_phrase := binary_punct_phrase & phrasal &
+  [ SYNSEM [ LOCAL [ CAT [ VAL [ COMPS < >,
+				 SPCMPS < > ],
+			   POSTHD + ],
+		     CONJ cnil ],
+	     NONLOC.SLASH 0-dlist,
+             PUNCT.PNCTPR #ppair ],
+    ARGS < [ SYNSEM [ LOCAL #slash & local &
+			    [ CAT.VAL [ COMPS *olist*,
+					SUBJ *olist* ],
+			      CTXT.ACTIVATED + ],
+		      NONLOC.SLASH 0-dlist ] ],
+           [ SYNSEM [ LOCAL [ CAT [; HEAD verbal,
+                                    VAL.COMPS < > ],
+                              CONT.HOOK [ INDEX.--TPC + ] ],
+		      NONLOC [ SLASH 1-dlist &
+					[ LIST [ FIRST #slash,
+						 REST < > & #last ],
+					  LAST #last ],
+                               REL 0-dlist ],
+                      PUNCT [ LPUNCT lparen_or_dq_or_comma_or_no_punct,
+                              PNCTPR #ppair ] ] ] > ].
+
+; 19-11-2020 took away *obllist* from SPR and in hd dtr removed SPR.REST
+; so that the daughter can have an empty SPR
+; allows for Singlish sentences like <ex>he very pretty
+basic_head_subj_phrase := head_nexus_rel_phrase & head_final_infl & phrasal &
+			  head_compositional &
+  [ SYNSEM [ LOCAL [ CAT [ VAL [ COMPS < >,
+				 SPR #spr,; & *obllist*,
+				 SUBJ *olist* & < anti_synsem_min >,
+				 SPEC #spec,
+				 SPCMPS < > ] ],
+                     CONJ cnil & [ LCHEAD #lch ] ],
+	     MODIFD.RPERIPH #rperiph,
+             PUNCT.PNCTPR #ppair ],
+    HD-DTR.SYNSEM [ LOCAL.CAT [ VAL [ COMPS < >,
+				      SPR #spr,
+                                      SPEC #spec ],
+                                MC na ],
+		    MODIFD.RPERIPH #rperiph,
+                    PUNCT [ LPUNCT lital_or_pair_or_comma_or_no_punct,
+                            PNCTPR #ppair ] ],
+    NH-DTR.SYNSEM canonical_synsem &
+		 [ LOCAL [ CAT [ HEAD subst,
+				 VAL [ SUBJ *olist_or_prolist*,
+				       COMPS < >,
+				       SPR *olist* ] ],
+			   CONJ.LCHEAD #lch ],
+        	   NONLOC [ REL 0-dlist ],
+                   PUNCT [ LPUNCT lital_or_pair_or_comma_or_no_punct,
+                           RPUNCT comma_or_rbc_or_pair_or_no_punct ] ] ].
+
+; CSY 14-1-2021 - added in MC - to prevent adj headed sentences from being 
+; parsed as n-adj compounds
+n_adj_intr_cmpnd_phr := basic_n_v-or-adj_cmpnd_phr &
+  [ SYNSEM.LOCAL.CAT.MC -,
+    ARGS < [ ],
+           [ SYNSEM.LOCAL.CAT [ HEAD adj,
+				VAL [ SPR *ocons*,
+				      COMPS < > ] ] ] >,
+    C-CONT.RELS <! [ PRED compound_rel ], [ ] !> ].
+
+; CSY - changed verbal to v_or_a to allow adjectives to join with subjects for Singlish and
+; commented out VFORM fin
+; CSY 5-1-2020 - uncommented VFORM as adj now has it
+;     6-1-2020 - changed VFORM from fin to fin_or_bse_or_prp 
+subjh_mc_rule := subjh_rule_decl & head_subj_phrase & clause &
+"""
+For sentences like
+<ex> The cat is pretty.
+<ex> The cat pretty.
+<ex> The cat sleeping.
+"""
+  [ SYNSEM [ LOCAL [ CAT [ HEAD v_or_a &
+				[ VFORM fin_or_prp,
+                                  TAM indic_tam,
+				  PRD -,
+				  CASE non_nom ],
+			   VAL.SPR *olist*,
+                           MC + ],
+                     CONT.HOOK [ INDEX.SF #pred ] ],
+	     NONLOC.SLASH 0-dlist,
+             PUNCT.RPUNCT.PSF #pred ] ].
+
+; CSY 10-12-2020 two nonmc rules: one for verb headed and one for adj headed clauses
+;     5-1-2020 - since adj now have vform, this can apply to both types of clauses
+;                there's no need for the special adj daughter
+subjh_nonmc_rule := subjh_rule_decl & head_subj_phrase &
+  [ SYNSEM.LOCAL.CAT [ HEAD.VFORM fin_or_bse_or_prp,
+		       MC - ] ].
+
+; CSY 3-12-2020 - take away INV + to allow sentences like
+; <ex>what you want?
+filler_head_rule_wh_super := binary_rule_left_to_right & 
+			    head_filler_phrase_wh_fin & wh_interrog_fin & 
+                            mc_fillhead_phrase &
+  [ SYNSEM.LOCAL [ CAT [ ;HEAD.INV +,
+                         VAL.SUBJ *olist* & < anti_synsem_min > ],
+                   CONT.HOOK [ LTOP #hdtop,
+                               INDEX #index ] ],
+    HD-DTR.SYNSEM.LOCAL [ CAT.MC luk,
+                          CONT.HOOK [ LTOP #hdtop,
+                                      INDEX #index ] ],
+    NH-DTR.SYNSEM [ PUNCT.RPUNCT comma_or_pair_or_no_punct ],
+    C-CONT [ RELS <! !>,
+             HCONS <! !>,
+	     ICONS <! !> ] ].
+
+filler_head_rule_wh_root := filler_head_rule_wh_super &
+ [ SYNSEM.LOCAL.CAT.HEAD.INV +,
+   HD-DTR.SYNSEM.LOCAL.CAT.MC na ].
+
+; CSY 3-12-2020
+filler_head_rule_wh_mc := filler_head_rule_wh_super &
+"""
+<ex>What you want?
+"""
+ [ SYNSEM.LOCAL.CAT.HEAD.INV -,
+   HD-DTR.SYNSEM.LOCAL.CAT.MC luk ].
+
+; CSY 17-12-2020 - superset to create two branches for the verb and adjective COMPS
+; by removing HEAD verbal & [ VFORM #vform & fin_or_inf, from 2nd ARGS and VFORM from the mother
+;;    5-1-2020 - #totest uncomment the vform values
+filler_head_rel_super_rule := binary_rule_left_to_right & rel_cl & 
+			basic_head_filler_phrase & 
+  [ INFLECTD +,
+    SYNSEM [ LOCAL [ CAT [ HEAD [ ;VFORM #vform,
+				  TAM #tam,
+				  AUX #aux,
+				  INV #inv,
+				  PRD -,
+				  MOD < [ --SIND #ind ] >,
+				  --ADDIN #addin,
+				  MINORS.MIN #min ],
+			   VAL [ SUBJ < >,
+				 SPR < > ] ],
+		     AGR #agr ],
+             MODIFD.RPERIPH na_or_+ ],
+    ARGS < [ INFLECTD na_or_+,
+	     SYNSEM [ LOCAL [ CAT.VAL.COMPS < >,
+                              CONJ cnil ],
+		      NONLOC [ QUE 0-dlist,
+                               REL 1-dlist &
+                                   [ LIST < [ INDEX #ind,
+					      XARG #xarg ] > ] ],
+                      PUNCT [ RPUNCT rparen_or_comma_or_no_punct,
+			      PNCTPR ppair ] ] ],
+	   [ INFLECTD +,
+             SYNSEM [ LOCAL [ CAT [ HEAD v_or_a & [ ;VFORM #vform & fin_or_inf,
+                                                    TAM #tam,
+                                                    AUX #aux,
+                                                    INV #inv,
+						    --ADDIN #addin,
+                                                    MINORS.MIN #min ],
+				    VAL.SUBJ *olist_or_prolist*,
+				    MC - ],
+                              CONT.HOOK [ LTOP #ltop,
+                                          INDEX #event & [ SF prop-comm ] ],
+			      AGR #agr,
+			      CONJ cnil ],
+                      NONLOC [ QUE 0-dlist,
+                               REL 0-dlist,
+			       SLASH <! [ CONT.HOOK.XARG #xarg ] !> ] ] ] >,
+    C-CONT [ HOOK [ LTOP #ltop,
+                    INDEX #event ],
+	     RELS <! !>,
+	     HCONS <! !>,
+	     ICONS <! !> ] ].
+
+filler_head_rel_rule := filler_head_rel_super_rule &
+
+  [ SYNSEM.LOCAL.CAT.HEAD.VFORM #vform,
+    ARGS < [ INFLECTD na_or_+,
+	     SYNSEM [ LOCAL [ CAT.VAL.COMPS < >,
+                              CONJ cnil ],
+		      NONLOC [ QUE 0-dlist,
+                               REL 1-dlist &
+                                   [ LIST < [ INDEX #ind,
+					      XARG #xarg ] > ] ],
+                      PUNCT [ RPUNCT rparen_or_comma_or_no_punct,
+			      PNCTPR ppair ] ] ],
+	   [ INFLECTD +,
+             SYNSEM.LOCAL.CAT.HEAD verbal &
+				 [ VFORM #vform & fin_or_inf ] ] > ].  
+
+; just for adj headed COMPS
+basic_filler_head_fin_rel_adj_rule := filler_head_rel_super_rule &
+  [ SYNSEM.LOCAL.CAT.HEAD.MINORS [ ALTMIN #altmin,
+				   NORM #norm ],
+    ARGS < [ SYNSEM.LOCAL.CAT.HEAD.MINORS.NORM #norm ],
+	   [ SYNSEM.LOCAL.CAT [ HEAD adj &
+					      [ MINORS.ALTMIN #altmin ],
+				VAL.SUBJ *olist* ] ] > ].
+
+; CSY 17-12-2020 - rule for adj headed COMPS
+filler_head_fin_np_arel_rule := basic_filler_head_fin_rel_adj_rule &
+  [ SYNSEM.LOCAL.CAT.HEAD.MOD.FIRST.LOCAL.CONT.HOOK.XARG #xarg,
+    ARGS < [ SYNSEM.LOCAL.CAT.VAL.SPR *olist* ],
+	   [ SYNSEM.NONLOC.SLASH <! [ CAT.HEAD noun_or_nomger,
+				      CONT.HOOK.XARG #xarg ] !> ] > ].
+
+; CSY 19-10-2020 - a parallel of the verbal coord rule to use of predicative (nocop) adj for Singlish
+; CSY 31-10-2020 - take away intrans_nocop_pred_adj_synsem from the rconj
+;     12-1-2021 - removed intrans
+basic_basic_adj_coord_phr := gen_coord_phr &
+  [ SYNSEM phr_synsem &
+	   [ LEX -,
+             LOCAL.CAT [ HEAD adj,
+			 VAL.SPCMPS < >,
+                         MC #mc ] ],
+    LCONJ-DTR.SYNSEM nocop_pred_adj_synsem &
+		     [ LOCAL [ CAT [ HEAD adj,
+				     MC #mc ],
+			       CONT.HOOK.LTOP #ltop ],
+		       NONLOC.SLASH.LIST *arglist* ],
+    RCONJ-DTR.SYNSEM [ LOCAL [ CAT [ HEAD adj,
+				     MC #mc ],
+			       CONT.HOOK.LTOP #ltop ],
+		       NONLOC.SLASH.LIST *arglist* ] ].
+
+; CSY 19-10-2020 - nocop adj version
+basic_adj_nocop_coord_phr := basic_basic_adj_coord_phr &
+  [ SYNSEM.LOCAL.CAT.HEAD.PRD #prd,
+    LCONJ-DTR.SYNSEM.LOCAL.CAT.HEAD.PRD #prd,
+    RCONJ-DTR.SYNSEM.LOCAL.CAT.HEAD.PRD #prd ].
+
+; CSY 19-10-2020 - nocop adj version, to allow "she pretty and smart."
+nocop_adj_coord_phr := basic_adj_nocop_coord_phr & norm_coord_phr.
+
+; CSY 19-10-2020 to allow for coordination of nocop adj (Singlish)
+; modelled on basic_basic_v_coord_phr
+basic_basic_a_nocop_coord_phr := basic_basic_adj_coord_phr &
+  [ SYNSEM.LOCAL [ CAT [ HEAD [ MINORS #mins,
+                                --ADDIN #addin ],
+                         VAL [ SUBJ < synsem &
+				      [ LOCAL [ CAT #cat,
+						CONT.HOOK [ LTOP #ltop,
+							    INDEX #sind ],
+						AGR #agr ],
+					NONLOC #nonloc,
+					--SIND #sind,
+					--MIN #smin,
+					OPT #opt ] >,
+			       SPR #spr,
+			       SPEC #spec] ],
+                   CONT.HOOK [ LTOP #ltop,
+			       XARG #xarg ] ],
+    LCONJ-DTR.SYNSEM.LOCAL [ CAT [ HEAD [ --ADDIN #addin & [ ADDPN #pn ] ],
+                                   VAL [ SUBJ < synsem &
+					      [ LOCAL [ CAT #cat,
+							CONT.HOOK.INDEX #sind,
+							AGR #agr ],
+						NONLOC #nonloc,
+						--SIND #sind,
+						--MIN #smin,
+						OPT #opt ] >,
+					 SPR #spr,
+					 SPEC #spec ] ],
+                             CONT.HOOK [ XARG #xarg,
+                                         INDEX.SF #iforce ] ],
+    RCONJ-DTR.SYNSEM.LOCAL [ CAT [ HEAD [ MINORS #mins,
+					  --ADDIN.ADDPN #pn ],
+				   VAL [ SUBJ < synsem &
+					      [ LOCAL [ CAT #cat,
+							CONT.HOOK.INDEX #sind,
+							AGR #agr ],
+						NONLOC #nonloc,
+						--SIND #sind,
+						--MIN #smin,
+						OPT #opt ] >,
+					 SPR #spr,
+					 SPEC #spec ] ],
+			     CONT.HOOK [ XARG #xarg,
+                                         INDEX.SF #iforce ] ],
+    C-CONT [ HCONS <! !>,
+	     ICONS <! !> ] ].
+
+; CSY 19-10-2020 - For nocop adj coordination
+basic_a_coord_phr := basic_basic_a_nocop_coord_phr & basic_adj_nocop_coord_phr.
+
+; CSY 19-10-2020 - without the vform restrictions
+; CSY 31-10-2020 - add in HEAD adj, not sure if necessary
+; #totest whether the HEAD values are necessary
+a_nocop_coord_phr := basic_a_coord_phr & nocop_adj_coord_phr &
+  [ SYNSEM.LOCAL.CAT.HEAD adj,
+    LCONJ-DTR.SYNSEM.LOCAL.CAT.HEAD adj,
+    RCONJ-DTR.SYNSEM.LOCAL.CAT.HEAD adj ].
+
+
+; CSY 31-10-2020 - for the nocop adj coord
+;basic_a_coord_phr_fin := basic_a_coord_phr &
+;  [ SYNSEM.LOCAL [ CAT.HEAD adj,
+;		   CONT.HOOK.INDEX.E #tam ],
+;    LCONJ-DTR.SYNSEM.LOCAL.CAT.HEAD adj,
+;    RCONJ-DTR.SYNSEM.LOCAL [ CAT.HEAD adj &
+;				      [ --ADDIN [ ADDTAM #rtam,
+;						  ADDPN #pn ] ],
+;			     AGR.PNG.PN #pn ] ].
+
+; CSY 31-10-2020 nocop_coord that prevents overgeneration
+; CSY 2-11-2020 add in COMPS <> to tak
+a_nocop_coord_phr_fin := a_nocop_coord_phr & basic_top_coord_event_rule &
+  [ SYNSEM.LOCAL.CAT [ HEAD.MINORS.NORM norm_rel,
+		       VAL.COMPS < > ],
+    C-CONT.RELS <! !> ].
+
+; CSY 19-11-2020 added in MC - to prevent a sentence from becoming a frag
+; 5-1-2020 change to MC na to prevent an adj headed NMC from becoming a frag
+frag_adj_rule := unary_frag_rule &
+  [ ARGS < [ SYNSEM.LOCAL [ CAT [ HEAD adj & 
+				      [ MINORS.MIN norm_rel],
+				  VAL.COMPS < >,
+				  MC na ],
+			    CONT.HOOK [ LTOP #lbl,
+					XARG #ind ] ] ] >,
+    C-CONT [ HOOK.LTOP #lbl,
+             RELS.LIST.FIRST [ LBL #lbl,
+                               ARG #ind ],
+             HCONS <! !>,
+	     ICONS <! !> ] ].
+
+frag_r_mod_np_adj_rule := never_unify_rule.

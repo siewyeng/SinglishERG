@@ -1,0 +1,358 @@
+;;; -*- Mode: tdl; coding: utf-8; -*-
+;;;
+;;;  Copyright (c) 1994-2018
+;;;    Dan Flickinger, Rob Malouf, Emily M. Bender
+;;;    see LICENSE for conditions
+;;;
+;;;  lextypes_sgshort.tdl
+;;;  Additions/changes for the Singlish branch or ERG
+;;;
+;;;  Lexical types (i.e., word classes)
+;;;
+;;;  Rob Malouf, 3-Nov-1994
+;;;
+;;;  $Id: lextypes.tdl 7479 2010-02-21 23:11:30Z danf $
+;;;  Chow Siew Yeng 2020, 2021
+
+;:message "Lexical types".
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; LEXICAL DEFAULTS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+; CSY 18-12-2020 - new type to allow for both adj and verbal heads
+; #testing removed all properties
+s_cat_unspec_sg := cat.; &
+;  [ HEAD adverbee,
+;    VAL [ SUBJ *olist*,
+;	  COMPS < > ] ].
+
+; CSY 18-12-2020 - type that does not inherit from s_cat_unspec
+basic_s_cat_sg_v_c := s_cat_unspec_sg &
+  [ VAL.SPR *olist*,
+    MC bool ].
+
+; CSY 18-12-2020 - type that allows for adj in addition to verbs
+s_cat_sg_v_c := basic_s_cat_sg_v_c &
+  [ HEAD.INV -,
+    VAL.SUBJ *olist*,
+    MC - ].
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Val Types
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Valence types specify the number and type of subcategorized complements.
+
+; CSY 18-12-2020 - supertype to allow for a split in the COMPS types
+; took away KCMP [ LOCAL.CAT.HEAD.TAM.TENSE real_tense ],
+basic_cp_intrans_subst_super := two_arg_subst &
+  [ LOCAL.CAT.VAL [ KCMP #comp,; &
+                         ;[ LOCAL.CAT.HEAD.TAM.TENSE real_tense ],
+		    COMPS < #comp &
+			    [ OPT - ] > ] ].
+
+basic_cp_intrans_subst := basic_cp_intrans_subst_super &
+  [ LOCAL.CAT.VAL.COMPS < [ LOCAL.CAT basic_s_cat_v_c ] > ].
+
+;basic_cp_intrans_subst_sg := basic_cp_intrans_subst_super &
+;  [ LOCAL.CAT.VAL.COMPS < [ LOCAL.CAT basic_s_cat_sg_v_c ] > ].
+
+; CSY 18-12-2020 - sg version that allows for adj complements
+; #testing commented out for debugging
+cp_intrans_subst_sg := basic_cp_intrans_subst_super & cp_addin_tam_pn.; &
+;  [ LOCAL.CAT.VAL [ KCMP.LOCAL.CAT basic_s_cat_sg_v_c,
+;		    COMPS < [ LOCAL.CAT basic_s_cat_sg_v_c ] > ] ].
+
+; CSY 19-12-2020 - create a supertype that accepts both verbal and adjectives
+basic_cp_prop+ques_verb_super := norm_basic_verb_synsem &
+  [ LOCAL [ CAT.VAL.KCMP [ ;LOCAL.CAT.HEAD adverbee,
+                           OPT - ],
+            CONT.RELS.LIST < relation, ... > ] ].
+
+; CSY 18-12-2020 - change KCMP from s_cat_unspec and cp_intrans_subst to newly
+; created cp_intrans_subst_sg
+; allows for constructions <ex>Kim knows Abrams pretty.
+basic_cp_intrans_verb := basic_cp_prop+ques_verb_super & basic_cp_intrans_subst_super &
+			 basic_two_arg & arg12h_lt & verb_synsem & cp_addin_tam_pn &
+  [ LOCAL.CAT.VAL.KCMP [ LOCAL.CAT adverbee_cat &
+					  [ HEAD ;v_or_a &
+					  [ VFORM fin_or_imp,
+			                    TAM indic_tam ] ],
+			 --SIND.E.MOOD ind_or_modal_subj ] ].
+
+; CSY 16-12-2020 - to allow verbs that take CP to be headed by adj as well change CAT.VAL.COMPS
+;              LOCAL.CAT.HEAD from verbal
+; 15-1-2020 - COMPS changed to an empty list like in the updated ERG
+pp_cp_fin_prop_verb := basic_pp_cp_fin_verb &
+"""
+<ex>Kim knows the cat pretty.
+"""
+  [ LOCAL [ CAT.VAL.COMPS < [ ],
+			    [ LOCAL.CAT.HEAD v_or_a,
+			      --SIND.SF prop ] >,
+	    CONT.RELS <! relation !> ] ].
+
+; CSY 13-8-2020 - add in this new type of synsem which does not have the SUBJ < > feature
+; this should allow the adjective to take subjects for adj headed sentences
+; modelled on basic_adj_synsem_lex_or_phrase
+basic_nocop_adj_synsem_lex_or_phrase := canonical_lex_or_phrase_synsem &
+  [ LOCAL [ AGR #agr,
+            CAT [ HEAD [ MINORS.MIN basic_adj_rel ],
+		  VAL [ SPCMPS < > ] ],
+            CONT.HOOK [ INDEX non_conj_sement,
+			XARG #agr ] ] ].
+
+; CSY 13-9-2020 - version that does not inherit SUBJ < >
+; CSY 16-9-2020 - removed the SPR portion (trial) to try to solve sb-hd_mc_c 
+basic_nocop_adj_lex_synsem := basic_nocop_adj_synsem_lex_or_phrase & abstr_lex_synsem &
+  [ LOCAL [ ARG-S < #spr . #comps >,
+            CAT [ HEAD adj_or_intadj,
+                  VAL [ SPR < #spr >,
+			COMPS #comps ],
+                  HS-LEX #hslex ],
+            CONT.RELS.LIST < #keyrel, ... > ],
+    LKEYS.KEYREL #keyrel & [ LBL #ltop ] ].
+
+; CSY 13-9-2020 - does not inherit SUBJ < >
+basic_nocop_adj_synsem := basic_nocop_adj_lex_synsem &
+  [ MODIFD.LPERIPH bool,
+    LOCAL [ CAT [ HEAD adj_or_intadj &
+		       [ MINORS.ALTMIN #altmin,
+			 TAM #tam ],
+		  VAL.SPR.FIRST [ LOCAL.CAT.HEAD.MINORS.ALTMIN #altmin ] ],
+	    CONT.HOOK.INDEX.E #tam ] ].
+
+; CSY 13-9-2020 - does not inherit SUBJ < >
+adj_nocop_synsem_lex_or_phrase := basic_nocop_adj_synsem_lex_or_phrase &
+"""
+CSY 21-8-2020 - removed MC na to allow for adj to head sentence
+<ex>Kim pretty.
+"""
+  [ LOCAL [ CAT.HEAD.MOD
+             < synsem_min &
+               [ LOCAL [ CAT [ HEAD basic_nom_or_ttl &
+                                    [ POSS -,
+				      MINORS.ALTMIN non_pronoun_q_or_no_rel ],
+                               VAL [ SUBJ < >,
+                                     SPR.FIRST synsem & 
+					  [ --MIN quant_or_deg_rel ],
+                                     COMPS < > ],
+			       MC + ],
+                         CONJ cnil ],
+                 --SIND #ind ] >,
+            CONT.HOOK.XARG #ind ] ].
+
+;CSY 13-9-2020 - does not inherit SUBJ < >
+norm_nocop_adj_synsem := adj_nocop_synsem_lex_or_phrase &
+  [ LOCAL [ CAT.HEAD.TAM #tam,
+	    CONT.HOOK [ INDEX non_conj_event & [ E #tam ],
+			XARG basic_non_expl ] ] ].
+
+; CSY 13-08-2020 - to try to get find the source of the SUBJ dagify error
+;    		   changed PRED to -
+; 9-1-2021 - remove empty COMPS for the COMPS value of the adj to be passed up through the 
+; pred_adj_subj_lexrule instead.
+; 12-1-2021 - change name and remove one_arg, so that an adjective that has a COMPS can 
+; still undergo the pred_adj_subj rule. COMPS value comes from the daughter of pred_adj_subj
+; lexrule
+nocop_pred_adj_synsem := basic_nocop_adj_synsem & isect_synsem &
+                            norm_nocop_adj_synsem & basic_lex_synsem &
+  [ LOCAL [ CAT [ HEAD adj &
+                       [ PRD -,
+                         MOD < [ --SIND #ind & non_expl-ind ] >,
+                         MINORS.MIN adj_rel ],
+                  VAL [ SPR.FIRST.LOCAL [ CAT.HEAD n_or_adv,
+					  CONT.HOOK.XARG #arg0 ] ] ],
+            CONT [ HOOK [ INDEX #arg0,
+			  XARG #ind ],
+                   RELS <! relation !> ] ],
+    LKEYS.KEYREL.ARG1 #ind ].
+
+; CSY 05-09-2020 - predicative adjective for sentences without copulas
+;     13-9-2020 - changed the SYNSEM from intrans_pred_adj_synsem
+;     16-9-2020 - added in MC +
+;     19-9-2020 - to allow it to join in the sb-hd rule, MC has to be na
+;     20-9-2020 - SPR of SUBJ changed to *olist* from empty list
+;     10-12-2020 - removed VAL.SPR *olist* of the SUBJ 
+; HEAD of the SUBJ is supnoun as it allows for modified NP
+aj_nocop_i-prd_le := basic_norm_adj_word &
+  [ SYNSEM nocop_pred_adj_synsem & 
+              [ LOCAL [ CAT [ HEAD [ MINORS.MIN norm_adj_rel,
+                                     MOD < anti_synsem_min > ],
+			      VAL [ SUBJ < [ --SIND #subjind & basic_non_expl,
+					     LOCAL.CAT [ HEAD supnoun,
+						      	 VAL.SPR *olist*] ] > ],
+			      MC na,
+                              POSTHD + ],
+            		CONT.HOOK [ LTOP #ltop,
+				    XARG #subjind ] ] ] ].
+
+; CSY 19-9-2020 - MINORS.NORM is used for finer-grain control over which rules can apply
+av_-_already-prf_le := av_-_i-vp_lexent &
+"""
+CSY 31-08-2020 - introduced for 'already' the POSTHD + aspect marker
+supposedly MODs entire VP with the VAL.COMPS < >
+    17-9-2020 - PRF + which prevents sentences like 'he eats already.'
+    19-9-2020 - added MINORS.NORM norm_rel to prevent it from going through vp_mod_int_rule
+		which allows it to mod the VP before it gets its complement
+    9-11-2020 - added PROGR - to verb to prevent "he eating already" from having a perfective reading
+"""
+  [ SYNSEM.LOCAL.CAT [ HEAD [ MOD < [ LOCAL.CAT [ HEAD verb &
+						     [ TAM.ASPECT [ PRF +,
+								    PROGR - ] ],
+						VAL [ SPR *olist* ] ] ] > ],
+		       VAL.SPR < unexpressed_min >,
+		       POSTHD + ] ].
+
+; CSY 9-11-2020 - lex for inchoative already
+;     19-11-2020 - took away MOD HEAD type so that it can modify adjectives
+;                  this matches the inchoative aspect of that change in state
+av_-_already-incho_le := av_-_i-vp_lexent &
+"""
+<ex>B sleeping already
+to be B has started sleeping
+"""
+  [ SYNSEM.LOCAL.CAT [ HEAD [ MOD < [ LOCAL.CAT [ HEAD ;verb &
+						     [ TAM.ASPECT inc_aspect &
+								  [ PROGR + ] ],
+						VAL [ SPR *olist*,
+						      COMPS < >  ] ] ] >,
+
+			      MINORS.NORM norm_rel ],
+		       VAL.SPR < unexpressed_min >,
+		       POSTHD + ] ].
+
+; CSY 17-11-2020 - test lex for experiential ever
+;     19-11-2020 - to allow for <ex> He already late, took away MOD HEAD verb
+av_-_ever-exp_le := av_-_i-vp_lexent &
+"""
+<ex>B ever have cat.
+to mean B has had a cat before.
+"""
+  [ SYNSEM.LOCAL.CAT [ HEAD [ MOD < [ LOCAL.CAT [ HEAD ;verb &
+						     [ TAM.ASPECT exp_aspect &
+								  [ PROGR - ] ],
+						VAL [ SPR *olist*,
+						      COMPS < >  ] ] ] >,
+
+			      MINORS.NORM norm_rel ],
+		       VAL.SPR < unexpressed_min >,
+		       POSTHD - ] ].
+
+; CSY 5-1-2020 ADDED AGR in SPEC so that "a cat" cannot have a plural reading of cat
+; made necessary because of the singlish inflectional rule which leaves number underspecified
+basic_det_sg_nomod_lexent := abstr_det_word &
+  [ SYNSEM basic_det_synsem &
+	   [ LOCAL 
+             [ CAT [ VAL [ SPEC < [ LOCAL.AGR.PNG.PN 3s,
+				     MODIFD #modif ] >,
+			   COMPS < > ] ],
+               AGR [ PNG.PN 3s,
+		     DIV - ],
+               CONT [ HOOK.INDEX.IND +,
+		      RELS <! relation !>,
+                      HCONS <! qeq !>,
+		      ICONS <! !> ] ], 
+             MODIFD #modif ] ].
+
+; CSY 26-11-2020 - just to modify the Singlish nocop adj which have PRD -
+av_-_s-not-sg_le := adv_neg_lexent &
+"""
+Scop, 'not', modify PrdP         
+<ex>Kim not happy.
+<nex> Kim is not happy.
+"""
+  [ SYNSEM.LOCAL.CAT.HEAD adv_nonmob &
+                          [ MOD < [ LOCAL.CAT [ HEAD adj &
+                                                     [ PRD - ],
+                                                VAL [ SUBJ < #subj >,
+						      SPCMPS < > ] ] ] > ] ].
+
+; CSY 10-12-2020 - change from HEAD verbal so that the subtype can take adj headed COMPS also
+;		 - and took away VFORM and put it in basic_two_place_compl_word
+basic_two_place_compl_word_super := complementizer_word & 
+  [ SYNSEM 
+    [ LOCAL 
+      [ ARG-S #comps,
+        CAT [ HEAD [ ;VFORM #vform,
+		     MOD < anti_synsem_min > ],
+              VAL [ COMPS #comps,
+		    SPR < >,
+		    KCMP canonical_synsem &
+			 [ --MIN #cmin,
+                           LOCAL [ CAT [; HEAD ;verbal &
+                                              ;[ VFORM #vform ],
+                                         VAL [ COMPS < > ],
+					 MC na_or_- ],
+                                   CONT.HOOK #hook ],
+                           OPT -,
+                           PUNCT.LPUNCT lparen_or_dq_or_no_punct ] ] ],
+	CONT.HOOK #hook ],
+      LKEYS.--COMPKEY #cmin ] ].
+
+basic_two_place_compl_word := basic_two_place_compl_word_super &
+ [ SYNSEM.LOCAL.CAT [ HEAD.VFORM #vform,
+		      VAL.KCMP.LOCAL.CAT.HEAD verbal &
+					      [ VFORM #vform ] ] ]. 
+
+basic_two_place_compl_word_vadj := basic_two_place_compl_word_super &
+ [ SYNSEM.LOCAL.CAT.VAL.KCMP.LOCAL.CAT.HEAD v_or_a ]. 
+
+; CSY 10-12-2020 - made this inherit from the SUPER one instead and it's not causing any problems 
+; 		   so far...
+;     17-12-2020 - undoing change
+basic_sor_compl_word := basic_two_place_compl_word_super &
+  [ SYNSEM basic_one_arg & 
+    [ LOCAL.CAT.VAL [ COMPS < #kcmp &
+			      [ LOCAL.CAT.VAL.SUBJ < anti_synsem_min > ] >,
+		      KCMP #kcmp ] ] ].
+
+; CSY 10-12-2020 - to separate the COMPS into HEAD verb and HEAD verb or adj
+norm_compl_word_super := basic_sor_compl_word &
+  [ SYNSEM.LOCAL.CAT [ HEAD comp & [ INV - ],
+		       VAL [ SUBJ < anti_synsem_min >,
+			     COMPS < [ LOCAL.CAT [ HEAD v_or_a &
+						      [ TAM.TENSE real_tense ],
+						   MC - ] ] > ] ] ].
+
+;norm_compl_word := norm_compl_word_super & 
+;  [ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL.CAT.HEAD verb ] > ].
+
+norm_compl_word := basic_sor_compl_word & basic_two_place_compl_word &
+  [ SYNSEM.LOCAL.CAT [ HEAD comp & [ INV - ],
+		       VAL [ SUBJ < anti_synsem_min >,
+			     COMPS < [ LOCAL.CAT [ HEAD verb &
+						      [ TAM.TENSE real_tense ],
+						   MC - ] ] > ] ] ].
+
+; CSY 10-12-2020 - changed it to inherit from supertype norm_compl_word_super to allow adj headed complements
+sor_compl_word := norm_compl_word_super &
+  [ SYNSEM.LOCAL.CAT [ HEAD.TAM.MOOD #mood,
+		       VAL.COMPS < [ LOCAL [ CAT.HEAD [ --ADDIN [ ADDPN #pn,
+								  ADDTAM #tam ],
+							TAM #tam &
+							    [ MOOD #mood ] ],
+					     AGR.PNG.PN #pn ] ] > ] ].
+
+sor_compl_adj_word := norm_compl_word_super &
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL.CAT.HEAD adj ] > ].
+; TEST
+cm_np-eg_that_le := sor_compl_adj_word &
+  [ SYNSEM [ LOCAL [ CAT [ HEAD [ ;VFORM fin,
+				  TAM #tam & indic_tam,
+				  CASE nom,
+				  AUX - ,
+				  MINORS.MIN verb_aspect_rel ],
+			   VAL.COMPS.FIRST.LOCAL.CAT.HEAD [ TAM #tam,
+							    CASE non_nom ],
+			   MC - ],
+		     CONT [ HOOK.INDEX.SF prop,
+			    RELS <! !>,
+			    HCONS <! !>,
+			    ICONS <! !> ] ],
+	     LKEYS.KEYREL.PRED no_rel ] ].
+
+
+

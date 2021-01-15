@@ -1,0 +1,45 @@
+;;; -*- Mode: tdl; Coding: utf-8; -*-
+
+;bse_singlish_ilr := lex_rule_infl_affixed &
+;"""
+;CSY 17-9-2020 for singlish, no inflection verbs
+;<ex>he eat already.
+;"""
+;[ ND-AFF -,
+;  ORTH #stem,
+;  DTR  [ ORTH #stem ],
+;  SYNSEM.LOCAL bse_singlish_verb,
+;  RNAME lvns ].
+
+; CSY 6-1-2020 - removed (not needed for Singlish) so that 
+;                the num is always underspec if the noun is in it's original form
+n_sg_ilr := never_unify_rule.
+
+
+; CSY 29-12-2020 for nouns that underspec for number and don't need SPR
+;     5-1-2020 added in MIN nonpro so the rule cannot apply to pronouns?
+;              test: not sure if that is necessary
+n_singlish_ilr := n_singlish_inflrule &
+"""
+Underspec noun
+<ex>cat (no det)
+"""
+[ ND-AFF -,
+  ORTH #stem,
+  DTR  [ ORTH #stem,
+	 SYNSEM.LOCAL.CAT.HEAD.MINORS.MIN nonpro_rel ],
+  SYNSEM count_noun_synsem & [ LOCAL singlish_count_noun & [ AGR.PNG norm-png ] ],
+  RNAME lncn ].
+
+; CSY - 2-11-2020 changed SYNSEM from bse_or_non3sg_verb 
+v_fin-bse_ilr := v_n3s-bse_inflrule &
+"""
+base form verb for all including 3sg      
+<ex> He admire 
+"""
+[ ND-AFF -,
+  ORTH #stem,
+  DTR  [ ORTH #stem ],
+  SYNSEM.LOCAL bse_or_fin_verb,
+  RNAME lvns ].
+

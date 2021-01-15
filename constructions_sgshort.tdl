@@ -1,0 +1,30 @@
+;;; -*- Mode: tdl; Coding: utf-8; -*-
+;;;
+;;;  Copyright (c) 1994-2018
+;;;    Dan Flickinger, Rob Malouf, Emily M. Bender
+;;;    see LICENSE for conditions
+;;;
+;;;  constructions_sgshort.tdl
+;;;
+;;;  The instances of phrases defined in syntax.tdl
+;;;  Additions to the Singlish branch of the English Resource Grammar
+;;;
+;;;  Created: Ann Copestake, 30-Sept-97
+;;;
+;;; $Id: constructions.tdl 7479 2010-02-21 23:11:30Z danf $
+;;;  Chow Siew Yeng 2020, 2021
+
+;;
+;;  Constructions
+
+; CSY 19-10-2020 - for Singlish
+j-j_nocop_crd_c := a_nocop_coord_phr_fin &
+"""
+Conjnd pred Adj, no preceding cop
+<ex>He smart and fast.
+"""
+  [ RNAME ctaps ].
+
+; CSY 3-12-2020 for sg questions
+flr-hd_wh-mc := filler_head_rule_wh_mc &
+ [ RNAME fhw ].

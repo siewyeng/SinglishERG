@@ -1,0 +1,23 @@
+;;; -*- Mode: tdl; Coding: utf-8; -*-
+;;;
+;;;  Copyright (c) 1994-2018
+;;;    Dan Flickinger, Rob Malouf, Emily M. Bender
+;;;    see LICENSE for conditions
+;;;
+;;;  lexrinst.tdl
+;;;
+;;;  Instances of lexical rules defined in lexrules.tdl
+;;;  Additions to the Singlish branch of the English Resource Grammar
+;;;
+;;;  Created: Ann Copestake, 30-Sept-97
+;;;
+;;;  $Id: lexrinst.tdl 7043 2009-09-03 18:26:55Z oe $
+;;;  Chow Siew Yeng 2020, 2021
+
+
+; 9-11-2020 for Singlish
+j_j-nocop_dlr := pred_adj_subj_lexrule &
+"""
+<ex> He beautiful.
+"""
+ [ RNAME ljmc ].
