@@ -7,7 +7,7 @@ preprocessor              := "../rpp/tokenizer.rpp".
 preprocessor-modules      := ../rpp/xml.rpp ../rpp/ascii.rpp ../rpp/lgt.rpp ../rpp/quotes.rpp ../rpp/wiki.rpp ../rpp/gml.rpp ../rpp/html.rpp.
 generation-ignore-lexemes := "../lkb/nogen-lex.set".
 generation-ignore-rules   := "../lkb/nogen-rules.set".
-parse-node-labels         := "../parse-nodes.tdl".
+parse-node-labels         := "../singlish/parse-nodes_sg.tdl".
 generation-trigger-rules  := "../trigger.mtr".
 version                   := "../singlish/Version.lsp".
 

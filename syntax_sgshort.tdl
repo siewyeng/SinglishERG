@@ -336,7 +336,7 @@ a_nocop_coord_phr_fin := a_nocop_coord_phr & basic_top_coord_event_rule &
     C-CONT.RELS <! !> ].
 
 ; CSY 19-11-2020 added in MC - to prevent a sentence from becoming a frag
-; 5-1-2020 change to MC na to prevent an adj headed NMC from becoming a frag
+; 5-1-2021 change to MC na to prevent an adj headed NMC from becoming a frag
 frag_adj_rule := unary_frag_rule &
   [ ARGS < [ SYNSEM.LOCAL [ CAT [ HEAD adj & 
 				      [ MINORS.MIN norm_rel],
@@ -349,5 +349,18 @@ frag_adj_rule := unary_frag_rule &
                                ARG #ind ],
              HCONS <! !>,
 	     ICONS <! !> ] ].
+
+; CSY 19-1-2021 - add in HEAD verbal to prevent adj from undergoing this
+; or to verb cos it's narrower
+subconj_prdp_pas_phr := subconj_prdp_final_phr &
+  [ ARGS < [ SYNSEM [ LOCAL.CAT.HEAD verb &
+				   [ VFORM pas ],
+		      OPT + ] ] > ].
+
+; CSY 19-1-2021 - add in HEAD verbal to prevent adj from undergoing this
+subconj_prdp_prp_phr := subconj_prdp_final_phr &
+  [ ARGS < [ SYNSEM [ LOCAL.CAT.HEAD verb &
+   				   [ VFORM prp ],
+                      PUNCT.LPUNCT lparen_or_no_punct ] ] > ].
 
 frag_r_mod_np_adj_rule := never_unify_rule.
