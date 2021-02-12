@@ -4,3 +4,5 @@ ctaps := j-j. ;; j-j_nocop_crd_c
 ; CSY 9-11-2020
 ljmc := ctype. ;; j_j-nocop_dlr
 lncn := ctype. ;; n_singlish_ilr
+
+frnb := never_unify_rel. ;;; np_nb-frg_c

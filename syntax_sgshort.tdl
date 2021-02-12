@@ -233,13 +233,15 @@ filler_head_fin_np_arel_rule := basic_filler_head_fin_rel_adj_rule &
 ; CSY 19-10-2020 - a parallel of the verbal coord rule to use of predicative (nocop) adj for Singlish
 ; CSY 31-10-2020 - take away intrans_nocop_pred_adj_synsem from the rconj
 ;     12-1-2021 - removed intrans
+; 12-2-2021 - removed 'nocop_pred_adj_synsem' from LCONJ because this prevented the adj from 
+; going through necessary optcomp rule first
 basic_basic_adj_coord_phr := gen_coord_phr &
   [ SYNSEM phr_synsem &
 	   [ LEX -,
              LOCAL.CAT [ HEAD adj,
 			 VAL.SPCMPS < >,
                          MC #mc ] ],
-    LCONJ-DTR.SYNSEM nocop_pred_adj_synsem &
+    LCONJ-DTR.SYNSEM ;nocop_pred_adj_synsem &
 		     [ LOCAL [ CAT [ HEAD adj,
 				     MC #mc ],
 			       CONT.HOOK.LTOP #ltop ],
@@ -260,45 +262,24 @@ nocop_adj_coord_phr := basic_adj_nocop_coord_phr & norm_coord_phr.
 
 ; CSY 19-10-2020 to allow for coordination of nocop adj (Singlish)
 ; modelled on basic_basic_v_coord_phr
+; 9-2-2021 - change SUBJ of mother from synsem &... to inherit from left and right daughters
 basic_basic_a_nocop_coord_phr := basic_basic_adj_coord_phr &
   [ SYNSEM.LOCAL [ CAT [ HEAD [ MINORS #mins,
                                 --ADDIN #addin ],
-                         VAL [ SUBJ < synsem &
-				      [ LOCAL [ CAT #cat,
-						CONT.HOOK [ LTOP #ltop,
-							    INDEX #sind ],
-						AGR #agr ],
-					NONLOC #nonloc,
-					--SIND #sind,
-					--MIN #smin,
-					OPT #opt ] >,
+                         VAL [ SUBJ #subj,
 			       SPR #spr,
 			       SPEC #spec] ],
                    CONT.HOOK [ LTOP #ltop,
 			       XARG #xarg ] ],
     LCONJ-DTR.SYNSEM.LOCAL [ CAT [ HEAD [ --ADDIN #addin & [ ADDPN #pn ] ],
-                                   VAL [ SUBJ < synsem &
-					      [ LOCAL [ CAT #cat,
-							CONT.HOOK.INDEX #sind,
-							AGR #agr ],
-						NONLOC #nonloc,
-						--SIND #sind,
-						--MIN #smin,
-						OPT #opt ] >,
+                                   VAL [ SUBJ #subj,
 					 SPR #spr,
 					 SPEC #spec ] ],
                              CONT.HOOK [ XARG #xarg,
                                          INDEX.SF #iforce ] ],
     RCONJ-DTR.SYNSEM.LOCAL [ CAT [ HEAD [ MINORS #mins,
 					  --ADDIN.ADDPN #pn ],
-				   VAL [ SUBJ < synsem &
-					      [ LOCAL [ CAT #cat,
-							CONT.HOOK.INDEX #sind,
-							AGR #agr ],
-						NONLOC #nonloc,
-						--SIND #sind,
-						--MIN #smin,
-						OPT #opt ] >,
+				   VAL [ ;SUBJ #subj,
 					 SPR #spr,
 					 SPEC #spec ] ],
 			     CONT.HOOK [ XARG #xarg,
@@ -329,10 +310,16 @@ a_nocop_coord_phr := basic_a_coord_phr & nocop_adj_coord_phr &
 ;			     AGR.PNG.PN #pn ] ].
 
 ; CSY 31-10-2020 nocop_coord that prevents overgeneration
-; CSY 2-11-2020 add in COMPS <> to tak
+; CSY 2-11-2020 add in COMPS <>
+; 4-2-2021 take away COMPS < > and instead inherit COMPS from daughters 
 a_nocop_coord_phr_fin := a_nocop_coord_phr & basic_top_coord_event_rule &
-  [ SYNSEM.LOCAL.CAT [ HEAD.MINORS.NORM norm_rel,
-		       VAL.COMPS < > ],
+  [ SYNSEM [ LOCAL [ CAT [ HEAD.MINORS.NORM norm_rel,
+  			    VAL.COMPS #comps] ] ],
+    LCONJ-DTR.SYNSEM.LOCAL.CAT [ HEAD.PRD -,
+    				  VAL.COMPS #comps ],
+    RCONJ-DTR.SYNSEM.LOCAL.CAT [ HEAD.PRD -,
+    				  VAL.COMPS #comps ],
+    				  
     C-CONT.RELS <! !> ].
 
 ; CSY 19-11-2020 added in MC - to prevent a sentence from becoming a frag
@@ -350,6 +337,19 @@ frag_adj_rule := unary_frag_rule &
              HCONS <! !>,
 	     ICONS <! !> ] ].
 
+; 11-2-2021 - added in MC na for same reasons as above
+frag_np_rule := frag_nom_rule &
+  [ SYNSEM.LOCAL.CAT.VAL.SPR *olist*,
+    ARGS < [ SYNSEM.LOCAL [ CAT [ HEAD 
+				  [ CASE acc,
+				    MINORS.NORM quantity_or_norm_or_no_rel ] ],
+			    CONT.HOOK [ LTOP #ltop,
+					INDEX non_expl ],
+			    CONJ cnil ] ] >,
+    C-CONT [ RELS <! [ LBL #ltop ] !>,
+             HCONS <! !>,
+	     ICONS <! !> ] ].
+
 ; CSY 19-1-2021 - add in HEAD verbal to prevent adj from undergoing this
 ; or to verb cos it's narrower
 subconj_prdp_pas_phr := subconj_prdp_final_phr &
@@ -362,5 +362,18 @@ subconj_prdp_prp_phr := subconj_prdp_final_phr &
   [ ARGS < [ SYNSEM [ LOCAL.CAT.HEAD verb &
    				   [ VFORM prp ],
                       PUNCT.LPUNCT lparen_or_no_punct ] ] > ].
+
+;;; new version of adj nocop coord 
+;;; by modelling after adj_pred_coord instead of the verbal coord
+
+basic_adj_nocop_coord_phr2 := adj_coord_phr & basic_basic_adj_coord_phr.
+
+adj_nocop_coord_phr := norm_coord_phr & basic_top_coord_event_rule & basic_adj_nocop_coord_phr2 &
+  [ SYNSEM [ LEX -,
+             LOCAL.CAT.HEAD.PRD - ],
+    LCONJ-DTR.SYNSEM.LOCAL.CAT.HEAD.PRD -,
+    RCONJ-DTR.SYNSEM.LOCAL.CAT.HEAD.PRD - ].
+
+
 
 frag_r_mod_np_adj_rule := never_unify_rule.

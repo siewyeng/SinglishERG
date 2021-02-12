@@ -354,5 +354,12 @@ cm_np-eg_that_le := sor_compl_adj_word &
 			    ICONS <! !> ] ],
 	     LKEYS.KEYREL.PRED no_rel ] ].
 
-
-
+; 11-2-2021 ADD IN  prd + be default to stop normal adj from undergoing nocop coord
+aj_-_i-er_le := reg_intrans_adj &
+"""
+Adj (intersective), no comp, only -er comparative
+<ex>The big dog won.
+"""
+  [ SYNSEM.LOCAL.CAT.HEAD [ PRD +,
+  			     MINORS [ MIN norm_adj_rel,
+				   ALTMIN comp_or_meas_rel ] ] ].
