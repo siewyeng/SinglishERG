@@ -454,15 +454,15 @@ head_filler_rel_rule := binary_rule_right_to_left & rel_cl &
 	     
 ; 8-3-2021 for rel pronoun 'one'
 ; changed order of ARGS
-; changed HEAD of first ARGS
+; changed HEAD of first ARGS, added in MIN value for second ARGS
 basic_head_filler_fin_rel_rule := head_filler_rel_rule &
   [ SYNSEM.LOCAL.CAT.HEAD.MINORS [ ALTMIN #altmin,
 				   NORM #norm ],
     ARGS < [ SYNSEM.LOCAL.CAT [ HEAD v_or_a & [ VFORM fin,
-					         MINORS [ ALTMIN #altmin,
-					      		   MIN pron_nonlocal_one_rel ] ],
-				VAL.SUBJ *olist* ] ],
-	   [ SYNSEM.LOCAL.CAT.HEAD.MINORS.NORM #norm ] > ].
+					         MINORS.ALTMIN #altmin ],
+				 VAL.SUBJ *olist* ] ],
+	   [ SYNSEM.LOCAL.CAT.HEAD.MINORS [ NORM #norm,
+					     MIN pron_nonlocal_one_rel ] ] > ].
 
 ; 8-3-2021 for rel pronoun 'one'
 ; changed order of ARGS
