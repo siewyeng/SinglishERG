@@ -389,7 +389,8 @@ basic_n_rel_pro_sg_lexent := noncqs-hm & basic_pronoun_word &
                                     XARG #xarg ] > ] ] ].
 			
 ; 8-3-2021 for the relative pronoun 'one'
-; modeled on n_-_pr-rel-nwh_le
+; has POSTHD + but doesn't seem to make an impact
+; modeled on n_-_pr-rel-nwh_le but with different MIN
 n_-_pr-rel-one_le := basic_n_rel_pro_sg_lexent &
 """
 Relative pro at the end of the NP, only `one'
@@ -397,7 +398,7 @@ only takes predicates in base form
 <ex>Things  broke.
 """
   [ INFLECTD na,
-    SYNSEM.LOCAL [ CAT [ HEAD [ MINORS [ MIN pron_nonlocal_rel ],
+    SYNSEM.LOCAL [ CAT [ HEAD [ MINORS [ MIN pron_nonlocal_one_rel ],
 			         PRD -,
 			         MOD < > ],
 			  POSTHD + ],

@@ -459,7 +459,8 @@ basic_head_filler_fin_rel_rule := head_filler_rel_rule &
   [ SYNSEM.LOCAL.CAT.HEAD.MINORS [ ALTMIN #altmin,
 				   NORM #norm ],
     ARGS < [ SYNSEM.LOCAL.CAT [ HEAD v_or_a & [ VFORM fin,
-					      MINORS.ALTMIN #altmin ],
+					         MINORS [ ALTMIN #altmin,
+					      		   MIN pron_nonlocal_one_rel ] ],
 				VAL.SUBJ *olist* ] ],
 	   [ SYNSEM.LOCAL.CAT.HEAD.MINORS.NORM #norm ] > ].
 
@@ -473,11 +474,13 @@ head_filler_fin_np_rel_rule := basic_head_filler_fin_rel_rule &
 	    [ SYNSEM.LOCAL.CAT.VAL.SPR *olist* ] > ].
 	    
 
-; 9-3-2021 redefine this to only take a filler that is POSTHD-
+; 9-3-2021 redefine this to only take a filler that is POSTHD- (did not reduce trees :()
+; add in MIN pron_nonlocal_rel
 ; in order to prevent rel-pronoun 'one' from being part of this
 filler_head_fin_np_rel_rule := basic_filler_head_fin_rel_rule &
   [ SYNSEM.LOCAL.CAT.HEAD.MOD.FIRST.LOCAL.CONT.HOOK.XARG #xarg,
-    ARGS < [ SYNSEM.LOCAL.CAT [ VAL.SPR *olist*,
+    ARGS < [ SYNSEM.LOCAL.CAT [ HEAD.MINORS.MIN pron_nonlocal_rel,
+    				 VAL.SPR *olist*,
     				 POSTHD - ] ],
 	   [ SYNSEM.NONLOC.SLASH <! [ CAT.HEAD noun_or_nomger,
 				      CONT.HOOK.XARG #xarg ] !> ] > ].

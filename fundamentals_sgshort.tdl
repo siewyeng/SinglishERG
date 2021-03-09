@@ -85,3 +85,14 @@ root_sg_synsem := basic_root_synsem &
 	    CONJ cnil ],
     PUNCT.RPUNCT comma_or_clause_or_pair_or_no_punct &
 	         [ PSF #pred ] ].
+	
+; CSY 9-3-2021 create supertype to redefine pron_nonlocal_rel in order to separate it 
+; from the rel for relpro 'one'
+; for the filler head and head filler rules to call on diff MIN values         
+pron_nonlocal_super_rel := basic_pron_rel & nonpro_or_refl_or_num_rel & 
+		     	    nonpart_nom_rel.
+
+pron_nonlocal_rel := pron_nonlocal_super_rel.
+
+;CSY 9-3-2021 only for 'one'
+pron_nonlocal_one_rel := pron_nonlocal_super_rel.
