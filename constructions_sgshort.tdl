@@ -38,6 +38,15 @@ head-filler, non-wh, only 'one'
 """
   [ RNAME fhhf ].
 
+; 9-3-2021 for RC with relpro 'one' to become NP  
+hdn_onenp_c := one_np_rule &
+"""
+noun phrase with relative pronoun "one"
+<ex>[We like one] is this.
+'(the one that we like) is this.'
+""" 
+  [ RNAME onp ].
+
 ; get rid of this
 np_nb-frg_c := never_unify_rule.
 

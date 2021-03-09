@@ -485,5 +485,72 @@ filler_head_fin_np_rel_rule := basic_filler_head_fin_rel_rule &
 	   [ SYNSEM.NONLOC.SLASH <! [ CAT.HEAD noun_or_nomger,
 				      CONT.HOOK.XARG #xarg ] !> ] > ].
 
+; 9-3-2021 - a pumping rule that takes an RC with 'one' as the relpro and turns it into an NP
+; or N that can take spr 'the'
+; based on the basic_generic_bare_np_phrase
+; need to make sure it can take 'the'
+basic_pron_np_one_phrase := basic_unary_phrase &
+  [ INFLECTD #infl,
+    SYNSEM nonlex_or_lex_phr_synsem &
+           [ LOCAL [ CAT [ HEAD noun,
+             		    HC-LEX #hclex,
+                           VAL [ SUBJ < >,
+                                 COMPS < >,
+                                 SPR < synsem_min &
+				       [ --MIN just_only_deg_rel,
+                                         LOCAL [ CAT [ HEAD adv,
+						       VAL.SPR *unexplist* ],
+                                                 CONT.HOOK.LTOP #splbl ],
+                                         OPT + ] > ],
+                           MC na,
+			   NEGPOL - ],
+                     AGR ref-ind,
+                     CONJ #conj,
+		     CTXT #ctxt ],
+             NONLOC #nonloc,
+	     LEX #lex,
+             MODIFD.RPERIPH +,
+	     PUNCT #punct ],
+    ARGS < [ INFLECTD #infl,
+	     SYNSEM 
+             [ LOCAL [ CAT [ HEAD v_or_a,
+                             HC-LEX #hclex,
+                             VAL [ SUBJ < >,
+                                   COMPS < >,
+                                   SPR < > ] ],
+                       CONJ #conj & cnil,
+                       CONT [ HOOK [ LTOP #nhand,
+                                     INDEX #index ] ],
+		       CTXT #ctxt ],
+               LEX #lex,				     
+               NONLOC #nonloc,
+               PUNCT #punct & 
+		     [ LPUNCT lital_or_pair_or_comma_or_no_punct ] ],
+		ARGS < #args1, 
+			[ SYNSEM.LOCAL.CAT.HEAD.MINORS.MIN pron_nonlocal_one_rel ] > ] >,
+    ORTH [ FROM #from, TO #to ],
+    C-CONT [ HOOK [ INDEX #index ],
+             RELS <! [ LBL #splbl,
+                       PRED quant_rel,
+                       ARG0 #index,
+                       RSTR #rhand,
+		       CFROM #from, CTO #to ] !>,
+             HCONS <! qeq &
+		     [ HARG #rhand,
+		       LARG #nhand ] !>,
+	     ICONS <! !> ] ].
+
+; 9-3-2021 based on bare_np_phrase and reg_bare_np_phrase
+; took away ARGS
+one_np_phrase :=  basic_pron_np_one_phrase &
+  [ INFLECTED +,
+    SYNSEM [ LOCAL [ CAT [ HEAD.MINORS.ALTMIN implicit_q_rel,
+			   VAL.SPR < synsem > ],
+		     AGR.DIV + ] ] ].
+
+; 9-3-2021 rule to convert 'one' RC into NP
+; based on bare_np_rule
+one_np_rule := rule & one_np_phrase.
+
 
 frag_r_mod_np_adj_rule := never_unify_rule.
