@@ -374,6 +374,113 @@ adj_nocop_coord_phr := norm_coord_phr & basic_top_coord_event_rule & basic_adj_n
     LCONJ-DTR.SYNSEM.LOCAL.CAT.HEAD.PRD -,
     RCONJ-DTR.SYNSEM.LOCAL.CAT.HEAD.PRD - ].
 
+; 8-3-2021 for rel pn 'one'
+; changed POSTHD value from basic_head_filler_phrase
+; 9-3-2021 changed back...
+; order of arguments changed from basic_head_filler_phrase
+; change HEAD value of head daughter to from verbal
+basic_head_filler_sg_phrase := binary_punct_phrase & phrasal &
+  [ SYNSEM [ LOCAL [ CAT [ VAL [ COMPS < >,
+				 SPCMPS < > ],
+			   POSTHD + ],
+		     CONJ cnil ],
+	     NONLOC.SLASH 0-dlist,
+             PUNCT.PNCTPR #ppair ],
+    ARGS < [ SYNSEM [ LOCAL [ CAT [ HEAD v_or_a,
+                                    VAL.COMPS < > ],
+                              CONT.HOOK [ INDEX.--TPC + ] ],
+		      NONLOC [ SLASH 1-dlist &
+					[ LIST [ FIRST #slash,
+						 REST < > & #last ],
+					  LAST #last ],
+                               REL 0-dlist ],
+                      PUNCT [ LPUNCT lparen_or_dq_or_comma_or_no_punct,
+                              PNCTPR #ppair ] ] ],
+            [ SYNSEM [ LOCAL #slash & local &
+			    [ CAT.VAL [ COMPS *olist*,
+					SUBJ *olist* ],
+			      CTXT.ACTIVATED + ],
+		      NONLOC.SLASH 0-dlist ] ] > ].
+                              
+               
+; 8-3-2021 changed order of ARGS
+; 9-3-2021 changed from binary_rule_left_to_right
+; changed HEAD of first ARGS from verbal               
+head_filler_rel_rule := binary_rule_right_to_left & rel_cl & 
+			basic_head_filler_sg_phrase & 
+  [ INFLECTD +,
+    SYNSEM [ LOCAL [ CAT [ HEAD [ VFORM #vform,
+				  TAM #tam,
+				  AUX #aux,
+				  INV #inv,
+				  PRD -,
+				  MOD < [ --SIND #ind ] >,
+				  --ADDIN #addin,
+				  MINORS.MIN #min ],
+			   VAL [ SUBJ < >,
+				 SPR < > ] ],
+		     AGR #agr ],
+             MODIFD.RPERIPH na_or_+ ],
+    ARGS < [ INFLECTD +,
+             SYNSEM [ LOCAL [ CAT [ HEAD v_or_a & [ VFORM #vform & fin_or_inf,
+                                                    TAM #tam,
+                                                    AUX #aux,
+                                                    INV #inv,
+						    --ADDIN #addin,
+                                                    MINORS.MIN #min ],
+				    VAL.SUBJ *olist_or_prolist*,
+				    MC - ],
+                              CONT.HOOK [ LTOP #ltop,
+                                          INDEX #event & [ SF prop-comm ] ],
+			      AGR #agr,
+			      CONJ cnil ],
+                      NONLOC [ QUE 0-dlist,
+                               REL 0-dlist,
+			       SLASH <! [ CONT.HOOK.XARG #xarg ] !> ] ] ],
+	   [ INFLECTD na_or_+,
+	     SYNSEM [ LOCAL [ CAT.VAL.COMPS < >,
+                              CONJ cnil ],
+		      NONLOC [ QUE 0-dlist,
+                               REL 1-dlist &
+                                   [ LIST < [ INDEX #ind,
+					      XARG #xarg ] > ] ],
+                      PUNCT [ RPUNCT rparen_or_comma_or_no_punct,
+			      PNCTPR ppair ] ] ] >,
+    C-CONT [ HOOK [ LTOP #ltop,
+                    INDEX #event ],
+	     RELS <! !>,
+	     HCONS <! !>,
+	     ICONS <! !> ] ].
+	     
+; 8-3-2021 for rel pronoun 'one'
+; changed order of ARGS
+; changed HEAD of first ARGS
+basic_head_filler_fin_rel_rule := head_filler_rel_rule &
+  [ SYNSEM.LOCAL.CAT.HEAD.MINORS [ ALTMIN #altmin,
+				   NORM #norm ],
+    ARGS < [ SYNSEM.LOCAL.CAT [ HEAD v_or_a & [ VFORM fin,
+					      MINORS.ALTMIN #altmin ],
+				VAL.SUBJ *olist* ] ],
+	   [ SYNSEM.LOCAL.CAT.HEAD.MINORS.NORM #norm ] > ].
+
+; 8-3-2021 for rel pronoun 'one'
+; changed order of ARGS
+;;; #need to do something so that only 'one' can fill the gap
+head_filler_fin_np_rel_rule := basic_head_filler_fin_rel_rule &
+  [ SYNSEM.LOCAL.CAT.HEAD.MOD.FIRST.LOCAL.CONT.HOOK.XARG #xarg,
+    ARGS < [ SYNSEM.NONLOC.SLASH <! [ CAT.HEAD noun_or_nomger,
+				      CONT.HOOK.XARG #xarg ] !> ],
+	    [ SYNSEM.LOCAL.CAT.VAL.SPR *olist* ] > ].
+	    
+
+; 9-3-2021 redefine this to only take a filler that is POSTHD-
+; in order to prevent rel-pronoun 'one' from being part of this
+filler_head_fin_np_rel_rule := basic_filler_head_fin_rel_rule &
+  [ SYNSEM.LOCAL.CAT.HEAD.MOD.FIRST.LOCAL.CONT.HOOK.XARG #xarg,
+    ARGS < [ SYNSEM.LOCAL.CAT [ VAL.SPR *olist*,
+    				 POSTHD - ] ],
+	   [ SYNSEM.NONLOC.SLASH <! [ CAT.HEAD noun_or_nomger,
+				      CONT.HOOK.XARG #xarg ] !> ] > ].
 
 
 frag_r_mod_np_adj_rule := never_unify_rule.

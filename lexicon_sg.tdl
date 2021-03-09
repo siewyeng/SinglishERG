@@ -74,6 +74,10 @@ singlish_n1 := n_-_pn-sg_le &
    SYNSEM [ LKEYS.KEYREL.CARG "Singlish",
             PHON.ONSET con ] ].
 
+one_pr-rel := n_-_pr-rel-one_le &
+ [ ORTH < "onesg" >,
+   SYNSEM.PHON.ONSET con ].
+   
 ;removed items
 already_adv3 := never_unify_le & [ ORTH < "_never_unify_" > ].
 

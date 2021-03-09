@@ -9,6 +9,7 @@
 
 ; CSY 20-09-2020 new root for singlish that allows adj as HEAD
 ;     25-11-2020 added in DIALECT
+; 8-3-2020 change HEAD type from non_noun to reduce overgeneration (not sure if undergenerates now)
 root_lepak := phrase &
   [ INFLECTD +,
     SYNSEM basic_root_synsem &

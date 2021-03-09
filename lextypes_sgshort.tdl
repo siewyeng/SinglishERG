@@ -363,3 +363,43 @@ Adj (intersective), no comp, only -er comparative
   [ SYNSEM.LOCAL.CAT.HEAD [ PRD +,
   			     MINORS [ MIN norm_adj_rel,
 				   ALTMIN comp_or_meas_rel ] ] ].
+	
+; 8-3-2021 - for Singlish, only changed LPERIPH + to -		
+basic_n_rel_pro_sg_lexent := noncqs-hm & basic_pronoun_word & 
+  [ SYNSEM pronominal_synsem &
+	 [ LOCAL [ CAT [ HEAD.MINORS.ALTMIN pronoun_q_rel,
+			 VAL [ SUBJ < >,
+			       SPR < unexpressed & 
+				     [ OPT - ] >,
+			       COMPS < > ] ],
+                   AGR #index,
+		   CONT [ HOOK [ LTOP #hand,
+                                 INDEX #index & basic_non_expl,
+                                 XARG #xarg ],
+			  RELS <! !>,
+			  HCONS <! !>,
+			  ICONS <! !> ] ],
+	   MODIFD.RPERIPH +,
+           LKEYS [ KEYREL [ LBL #hand,
+                            PRED no_rel ],
+                   ALTKEYREL relation ],
+           NONLOC.REL 1-dlist &
+		         [ LIST < [ LTOP #hand,
+				    INDEX #index,
+                                    XARG #xarg ] > ] ] ].
+			
+; 8-3-2021 for the relative pronoun 'one'
+; modeled on n_-_pr-rel-nwh_le
+n_-_pr-rel-one_le := basic_n_rel_pro_sg_lexent &
+"""
+Relative pro at the end of the NP, only `one'
+only takes predicates in base form
+<ex>Things  broke.
+"""
+  [ INFLECTD na,
+    SYNSEM.LOCAL [ CAT [ HEAD [ MINORS [ MIN pron_nonlocal_rel ],
+			         PRD -,
+			         MOD < > ],
+			  POSTHD + ],
+		   CONT.HOOK.INDEX.SORT nominal-sort ] ].
+

@@ -46,7 +46,10 @@ optional SUBJ, took away person number
 ; CSY 29-12-2020 for the count nouns that don't need specifier in Singlish
 ; DIV value not specified. Even though this allows for unusual NPs like "much cats"
 ; This is also allowed in the ERG.
-singlish_count_noun := sing_or_plur_noun &
+; 2-3-2021 - add nonc-hm to prevent this from taking proper names
+; so that <ex>Abrams works does not undergo this, and end up with a BNP Abrams
+; preserve DIV bool instead of - because i want <ex>Many cat sleep.
+singlish_count_noun := sing_or_plur_noun & nonc-hm &
   [ CAT [ HEAD noun_or_ttl,
           VAL.SPR.FIRST.LOCAL.AGR [ PNG.PN 3,
 				    DIV bool ] ],

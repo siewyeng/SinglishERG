@@ -28,6 +28,15 @@ Conjnd pred Adj, no preceding cop
 ; CSY 3-12-2020 for sg questions
 flr-hd_wh-mc := filler_head_rule_wh_mc &
  [ RNAME fhw ].
+ 
+; 9-3-2021 for the new head filler rule with the filler at the back
+; only for 'one'
+hd-flr_rel-fin_c := head_filler_fin_np_rel_rule &
+"""
+head-filler, non-wh, only 'one'
+<ex>The person [we admire one]
+"""
+  [ RNAME fhhf ].
 
 ; get rid of this
 np_nb-frg_c := never_unify_rule.
@@ -35,3 +44,5 @@ np_nb-frg_c := never_unify_rule.
 ; CSY 7-8-2021 - remove rules that cause overgeneration in singlish sentences
 ; esp those with adj
 j_frg_c := never_unify_rule.
+
+

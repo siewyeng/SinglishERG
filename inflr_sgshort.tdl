@@ -19,6 +19,7 @@ n_sg_ilr := never_unify_rule.
 ; CSY 29-12-2020 for nouns that underspec for number and don't need SPR
 ;     5-1-2020 added in MIN nonpro so the rule cannot apply to pronouns?
 ;              test: not sure if that is necessary
+; 2-3-2021 - find a way to add nonc-hm into the input such that proper names cannot undergo this
 n_singlish_ilr := n_singlish_inflrule &
 """
 Underspec noun
@@ -27,6 +28,7 @@ Underspec noun
 [ ND-AFF -,
   ORTH #stem,
   DTR  [ ORTH #stem,
+	 SYNSEM.LOCAL nonc-hm,
 	 SYNSEM.LOCAL.CAT.HEAD.MINORS.MIN nonpro_rel ],
   SYNSEM count_noun_synsem & [ LOCAL singlish_count_noun & [ AGR.PNG norm-png ] ],
   RNAME lncn ].
