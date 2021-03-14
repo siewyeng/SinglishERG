@@ -378,7 +378,7 @@ adj_nocop_coord_phr := norm_coord_phr & basic_top_coord_event_rule & basic_adj_n
 ; changed POSTHD value from basic_head_filler_phrase
 ; 9-3-2021 changed back...
 ; order of arguments changed from basic_head_filler_phrase
-; change HEAD value of head daughter to from verbal
+; change HEAD value of head daughter from verbal
 basic_head_filler_sg_phrase := binary_punct_phrase & phrasal &
   [ SYNSEM [ LOCAL [ CAT [ VAL [ COMPS < >,
 				 SPCMPS < > ],
@@ -466,7 +466,6 @@ basic_head_filler_fin_rel_rule := head_filler_rel_rule &
 
 ; 8-3-2021 for rel pronoun 'one'
 ; changed order of ARGS
-;;; #need to do something so that only 'one' can fill the gap
 head_filler_fin_np_rel_rule := basic_head_filler_fin_rel_rule &
   [ SYNSEM.LOCAL.CAT.HEAD.MOD.FIRST.LOCAL.CONT.HOOK.XARG #xarg,
     ARGS < [ SYNSEM.NONLOC.SLASH <! [ CAT.HEAD noun_or_nomger,
@@ -488,11 +487,13 @@ filler_head_fin_np_rel_rule := basic_filler_head_fin_rel_rule &
 ; 9-3-2021 - a pumping rule that takes an RC with 'one' as the relpro and turns it into an NP
 ; or N that can take spr 'the'
 ; based on the basic_generic_bare_np_phrase
-; need to make sure it can take 'the'
+; introduced empty MOD to prevent a sentence like 'eat fish one is happy' from becoming aj-hd_scp_c
+;; #need to make sure it can take 'the'
 basic_pron_np_one_phrase := basic_unary_phrase &
   [ INFLECTD #infl,
     SYNSEM nonlex_or_lex_phr_synsem &
            [ LOCAL [ CAT [ HEAD noun,
+           		    HEAD.MOD < >,
              		    HC-LEX #hclex,
                            VAL [ SUBJ < >,
                                  COMPS < >,
@@ -517,7 +518,7 @@ basic_pron_np_one_phrase := basic_unary_phrase &
                              HC-LEX #hclex,
                              VAL [ SUBJ < >,
                                    COMPS < >,
-                                   SPR < > ] ],
+                                   SPR < > ] ],cd si	
                        CONJ #conj & cnil,
                        CONT [ HOOK [ LTOP #nhand,
                                      INDEX #index ] ],
@@ -529,12 +530,14 @@ basic_pron_np_one_phrase := basic_unary_phrase &
 		ARGS < #args1, 
 			[ SYNSEM.LOCAL.CAT.HEAD.MINORS.MIN pron_nonlocal_one_rel ] > ] >,
     ORTH [ FROM #from, TO #to ],
-    C-CONT [ HOOK [ INDEX #index ],
+    C-CONT [ HOOK [ INDEX #nindex ],
              RELS <! [ LBL #splbl,
                        PRED quant_rel,
                        ARG0 #index,
                        RSTR #rhand,
-		       CFROM #from, CTO #to ] !>,
+		       CFROM #from, CTO #to ],
+		       [ PRED generic_entity_rel,
+		         ARG0 #nindex ] !>,
              HCONS <! qeq &
 		     [ HARG #rhand,
 		       LARG #nhand ] !>,

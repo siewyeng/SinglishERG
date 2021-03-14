@@ -49,7 +49,8 @@ optional SUBJ, took away person number
 ; 2-3-2021 - add nonc-hm to prevent this from taking proper names
 ; so that <ex>Abrams works does not undergo this, and end up with a BNP Abrams
 ; preserve DIV bool instead of - because i want <ex>Many cat sleep.
-singlish_count_noun := sing_or_plur_noun & nonc-hm &
+; removed nonc-hm
+singlish_count_noun := sing_or_plur_noun &
   [ CAT [ HEAD noun_or_ttl,
           VAL.SPR.FIRST.LOCAL.AGR [ PNG.PN 3,
 				    DIV bool ] ],
@@ -84,7 +85,10 @@ pred_adj_subj_lexrule:= norm_lex_rule & aj_nocop_i-prd_le &
 
 ; CSY 29-12-2020 new inflectional rule for singlish nouns that have underspec number
 ; and don't need SPR
-n_singlish_inflrule := lex_rule_infl_affixed.
+; 9-3-2021 pass up minors for to make sure proper nouns get the bnp_pn rule only
+n_singlish_inflrule := lex_rule_infl_affixed &
+  [ SYNSEM.LOCAL.CAT.HEAD.MINORS #minors,
+    DTR.SYNSEM.LOCAL.CAT.HEAD.MINORS #minors ].
 
 ;;; commented out because instead of making this rule, changed the VFORM in subjh rule
 ;;; to the newly created fin_or_prp 
