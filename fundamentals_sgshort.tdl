@@ -67,8 +67,14 @@ exp_aspect := aspect &
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; CASE and VFORM
 
+; CSY 16-3-2021 for rel_cl which previously only took VFORM fin_or_inf
+fin_or_inf_or_prp := vform.
+
+fin_or_inf := fin_or_inf_or_prp & non_bse & fin_or_inf_or_imp.
+inf_or_prp := fin_or_inf_or_prp & non_pas & non_fin_non_bse.
+
 ; CSY 12-1-2021 - for main clauses that allow prp but not base
-fin_or_prp := fin_or_bse_or_prp & non_bse.
+fin_or_prp := fin_or_bse_or_prp & non_bse & fin_or_inf_or_prp.
 
 ; CSY 12-1-2021 - add in fin_or_prp
 fin := fin_or_inf & fin_or_bse & fin_or_imp & fin_or_non_fin & fin_or_prp.

@@ -374,6 +374,12 @@ adj_nocop_coord_phr := norm_coord_phr & basic_top_coord_event_rule & basic_adj_n
     LCONJ-DTR.SYNSEM.LOCAL.CAT.HEAD.PRD -,
     RCONJ-DTR.SYNSEM.LOCAL.CAT.HEAD.PRD - ].
 
+; 16-3-2021 redefine rel_cl so that it takes prp as well
+rel_cl := basic_rel_cl & clause & phrasal &
+  [ SYNSEM [ LOCAL.CAT.HEAD.VFORM fin_or_inf_or_prp,
+             NONLOC [ QUE 0-dlist,
+                      REL 0-dlist ] ] ].
+                      
 ; 8-3-2021 for rel pn 'one'
 ; changed POSTHD value from basic_head_filler_phrase
 ; 9-3-2021 changed back...
@@ -406,6 +412,7 @@ basic_head_filler_sg_phrase := binary_punct_phrase & phrasal &
 ; 8-3-2021 changed order of ARGS
 ; 9-3-2021 changed from binary_rule_left_to_right
 ; changed HEAD of first ARGS from verbal               
+; 16-3-2021 took away VFORM fin_or_inf
 head_filler_rel_rule := binary_rule_right_to_left & rel_cl & 
 			basic_head_filler_sg_phrase & 
   [ INFLECTD +,
@@ -422,7 +429,7 @@ head_filler_rel_rule := binary_rule_right_to_left & rel_cl &
 		     AGR #agr ],
              MODIFD.RPERIPH na_or_+ ],
     ARGS < [ INFLECTD +,
-             SYNSEM [ LOCAL [ CAT [ HEAD v_or_a & [ VFORM #vform & fin_or_inf,
+             SYNSEM [ LOCAL [ CAT [ HEAD v_or_a & [ VFORM #vform,; & fin_or_inf,
                                                     TAM #tam,
                                                     AUX #aux,
                                                     INV #inv,
@@ -455,10 +462,11 @@ head_filler_rel_rule := binary_rule_right_to_left & rel_cl &
 ; 8-3-2021 for rel pronoun 'one'
 ; changed order of ARGS
 ; changed HEAD of first ARGS, added in MIN value for second ARGS
+; 16-3-2021 changed VFORM from fin to allow sentences like "eating cake one is happy"
 basic_head_filler_fin_rel_rule := head_filler_rel_rule &
   [ SYNSEM.LOCAL.CAT.HEAD.MINORS [ ALTMIN #altmin,
 				   NORM #norm ],
-    ARGS < [ SYNSEM.LOCAL.CAT [ HEAD v_or_a & [ VFORM fin,
+    ARGS < [ SYNSEM.LOCAL.CAT [ HEAD v_or_a & [ VFORM fin_or_prp,
 					         MINORS.ALTMIN #altmin ],
 				 VAL.SUBJ *olist* ] ],
 	   [ SYNSEM.LOCAL.CAT.HEAD.MINORS [ NORM #norm,
@@ -487,13 +495,14 @@ filler_head_fin_np_rel_rule := basic_filler_head_fin_rel_rule &
 ; 9-3-2021 - a pumping rule that takes an RC with 'one' as the relpro and turns it into an NP
 ; or N that can take spr 'the'
 ; based on the basic_generic_bare_np_phrase
-; introduced empty MOD to prevent a sentence like 'eat fish one is happy' from becoming aj-hd_scp_c
+; introduced empty MOD to prevent a sentence like 'eat cake one is happy' 
+; from becoming aj-hd_scp_c
+; 16-3-2021 match the MOD of the ARGS to the generic entity that is introduced
 ;; #need to make sure it can take 'the'
 basic_pron_np_one_phrase := basic_unary_phrase &
   [ INFLECTD #infl,
     SYNSEM nonlex_or_lex_phr_synsem &
-           [ LOCAL [ CAT [ HEAD noun,
-           		    HEAD.MOD < >,
+           [ LOCAL [ CAT [ HEAD noun & [ MOD < > ],
              		    HC-LEX #hclex,
                            VAL [ SUBJ < >,
                                  COMPS < >,
@@ -514,11 +523,11 @@ basic_pron_np_one_phrase := basic_unary_phrase &
 	     PUNCT #punct ],
     ARGS < [ INFLECTD #infl,
 	     SYNSEM 
-             [ LOCAL [ CAT [ HEAD v_or_a,
+             [ LOCAL [ CAT [ HEAD v_or_a,; & [ MOD #nindex ],
                              HC-LEX #hclex,
                              VAL [ SUBJ < >,
                                    COMPS < >,
-                                   SPR < > ] ],cd si	
+                                   SPR < > ] ],
                        CONJ #conj & cnil,
                        CONT [ HOOK [ LTOP #nhand,
                                      INDEX #index ] ],
@@ -537,23 +546,81 @@ basic_pron_np_one_phrase := basic_unary_phrase &
                        RSTR #rhand,
 		       CFROM #from, CTO #to ],
 		       [ PRED generic_entity_rel,
-		         ARG0 #nindex ] !>,
+		         ARG0 #nindex & [ PNG.PN 3 ] ] !>,
              HCONS <! qeq &
 		     [ HARG #rhand,
 		       LARG #nhand ] !>,
 	     ICONS <! !> ] ].
 
+; 15-3-2021 - to add in a generic_entity_rel into the one phrase with the HOOK
+; based on basic_partitive_num_nocomp_phrase
+; added in PN 3 to prevent 'am' from agreeing with a one np
+;pron_np_one_phrase := basic_pron_np_one_phrase &
+;  [ C-CONT [ HOOK [ INDEX #nindex ],
+;  	     RELS < ! [ PRED generic_entity_rel,
+;  	     			ARG0 #nindex & [ PNG.PN 3 ] ] ! > ] ].
+
+; 15-3-2021 trying to make sure what the one RC mods is the generic_entity_rel that is introduced
+pron_np_one_phrase :=  basic_pron_np_one_phrase &
+  [ ARGS < [ SYNSEM.LOCAL.CAT.HEAD.MOD < [ --SIND #mod ] > ] >,
+    C-CONT.RELS <! [ PRED quant_rel ],
+    		     [ ARG0 #mod ] !> ].
+
 ; 9-3-2021 based on bare_np_phrase and reg_bare_np_phrase
 ; took away ARGS
-one_np_phrase :=  basic_pron_np_one_phrase &
+; 15-3-2021 added in PN 3 to stop 'am' from agreeing with this NP
+; add in MODIFD notmod to prevent it from underfoing npadv_mod_phrase
+one_np_phrase := pron_np_one_phrase &
   [ INFLECTED +,
     SYNSEM [ LOCAL [ CAT [ HEAD.MINORS.ALTMIN implicit_q_rel,
 			   VAL.SPR < synsem > ],
-		     AGR.DIV + ] ] ].
-
+		     AGR [ DIV +,
+		           PNG.PN 3 ] ],
+	     MODIFD notmod ] ].
+		           
 ; 9-3-2021 rule to convert 'one' RC into NP
 ; based on bare_np_rule
-one_np_rule := rule & one_np_phrase.
+one_np_rule := rule & one_np_phrase.	
+	          
+; 16-3-2021 for possessive Singlish 'one'
+; based on partitive_intadj_phrase but change SPR
+; and to change ARGS such that only the Singlish 'one' can fit in
+;partitive_intadj_one_phrase := basic_partitive_num_phrase &
+;  [ SYNSEM [ LOCAL [ CAT [ HEAD [ MINORS.ALTMIN explicit_q_rel,
+;				  CASE #case ],
+;                           VAL [ SPR < canonical_synsem &
+;				     [ LOCAL.CAT.HEAD noun & [ MINORS.MIN proper_q_rel ],
+;				       NONLOC.QUE #que,
+;				       OPT - ] >,
+;				 SPCMPS < > ],
+;			   HS-LEX - ],
+;		     CONT.HOOK.INDEX.PNG #png,
+;                     AGR #agr & [ PNG #png ] ],
+;             NONLOC.QUE #que,
+;	     MODIFD notmod ],
+;    ARGS < [ SYNSEM [ LOCAL [ CAT [ HEAD adj_or_intadj &
+;					 [ MOD < [ LOCAL.AGR #agr ] >,
+;					   MINORS.ALTMIN comp_or_superl_rel,
+;					   CASE #case ],
+;				    VAL [ SPEC < anti_synsem_min >,
+;					  SPR *anti_list* ] ],
+;			      CONT.HOOK.INDEX non_conj_event ],
+;		      MODIFD [ LPERIPH na_or_+ ] ] ] >,
+;    C-CONT [ HOOK.LTOP #nhand,
+;             RELS <! [ LBL #nhand ] !>,
+;	     HCONS <! !>,
+;	     ICONS <! !> ] ].
+	     
+	     
+; partitive_nocomp_phrase only for the Singlish 'one'
+;partitive_intadj_nocomp_phrase := partitive_intadj_one_phrase &
+;                                  basic_partitive_num_nocomp_phrase &
+;  [ SYNSEM.LOCAL [ CAT.HEAD.MINORS [ MIN part_nc_rel,
+;				     ALTMIN abstract_q_rel ],
+;		   CONT.HOOK.INDEX.SORT basic-entity-or-event ],
+;    ARGS < [ SYNSEM.LOCAL.CAT.HEAD intadj ] > ].
+
+
 
 
 frag_r_mod_np_adj_rule := never_unify_rule.
