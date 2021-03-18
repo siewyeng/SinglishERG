@@ -83,6 +83,23 @@ pred_adj_subj_lexrule:= norm_lex_rule & aj_nocop_i-prd_le &
 							   NONLOC #nonloc & non-local_none ] >,
 					      VAL.COMPS #comps ] ] ] ].
 
+; CSY 18-3-2021 - supertype of lex_rule_affixed that the prp_verb will inherit from
+; supertype without 0-dlist, so that VPs headed by prp verbs can undergo hd_xsb-finprp_c
+verb_participle_super_affix := local &
+  [ CAT [ HEAD verb & [ PRD + ],
+	  VAL.SUBJ < synsem &
+		     [ LOCAL.AGR #agr ] >,
+	  HC-LEX - ],
+    AGR #agr ].
+    
+verb_participle_affix := verb_participle_super_affix &
+  [ CAT.VAL.SUBJ < synsem & [ NONLOC.SLASH 0-dlist ] > ].
+  
+; 18-3-2021 new prp verb that inherits instead from verb_participle_super_affix
+prp_verb := non_fin_verb & verb_participle_super_affix &
+  [ CAT.HEAD [ VFORM prp,
+	       TAM.ASPECT [ PROGR + ] ] ].
+
 ; CSY 29-12-2020 new inflectional rule for singlish nouns that have underspec number
 ; and don't need SPR
 ; 9-3-2021 pass up minors for to make sure proper nouns get the bnp_pn rule only

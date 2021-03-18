@@ -34,6 +34,7 @@ flr-hd_wh-mc := filler_head_rule_wh_mc &
 hd-flr_rel-fin_c := head_filler_fin_np_rel_rule &
 """
 head-filler, non-wh, only 'one'
+
 <ex>The person [we admire one]
 """
   [ RNAME fhhf ].
@@ -42,10 +43,20 @@ head-filler, non-wh, only 'one'
 hdn_onenp_c := one_np_rule &
 """
 noun phrase with relative pronoun "one"
+
 <ex>[We like one] is this.
 '(the one that we like) is this.'
 """ 
   [ RNAME onp ].
+
+; 16-3-2021 to replace hd_xsb-fin_c
+hd_xsb-finprp_c := extrasubj_finorprp_rule &
+"""
+Extract subject from finite or prp head
+
+<ex>Who do you think [going]?
+"""
+  [ RNAME shxp ].
 
 ; get rid of this
 np_nb-frg_c := never_unify_rule.
@@ -53,5 +64,5 @@ np_nb-frg_c := never_unify_rule.
 ; CSY 7-8-2021 - remove rules that cause overgeneration in singlish sentences
 ; esp those with adj
 j_frg_c := never_unify_rule.
-
+hd_xsb-fin_c := never_unify_rule.
 

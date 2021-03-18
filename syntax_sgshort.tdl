@@ -94,7 +94,7 @@ n_adj_intr_cmpnd_phr := basic_n_v-or-adj_cmpnd_phr &
 ; CSY - changed verbal to v_or_a to allow adjectives to join with subjects for Singlish and
 ; commented out VFORM fin
 ; CSY 5-1-2020 - uncommented VFORM as adj now has it
-;     6-1-2020 - changed VFORM from fin to fin_or_bse_or_prp 
+;     6-1-2020 - changed VFORM from fin to fin_or_prp 
 subjh_mc_rule := subjh_rule_decl & head_subj_phrase & clause &
 """
 For sentences like
@@ -373,6 +373,48 @@ adj_nocop_coord_phr := norm_coord_phr & basic_top_coord_event_rule & basic_adj_n
              LOCAL.CAT.HEAD.PRD - ],
     LCONJ-DTR.SYNSEM.LOCAL.CAT.HEAD.PRD -,
     RCONJ-DTR.SYNSEM.LOCAL.CAT.HEAD.PRD - ].
+
+; 16-3-2021 a supertype to make a daughter that does not have VFORM fin_or_inf
+; 18-3-2021 take away PRD - from HD-DTR so that a prp VP can still undergo this
+; and become an RC
+extracted_subj_phrase_super := extracted_arg_phrase & clause &
+  [ SYNSEM [ LOCAL [ CAT [ HEAD.TAM indic_tam,
+                           VAL.SPR < >,
+                           MC - ],
+                     CONT.HOOK.INDEX.SF prop-or-ques ],
+	     NONLOC.SLASH #slash,
+	     LEX -,
+	     PUNCT #punct ],
+    HD-DTR.SYNSEM 
+             [ LOCAL.CAT [ HEAD verbal, ;& [ VFORM fin_or_inf,
+					   ;PRD - ],
+                           VAL [ SUBJ < gap &
+			                [ LOCAL arg-local &
+                                                [ CAT.HEAD.MINORS.MIN #min,
+                                                  CONT.HOOK [ INDEX #ind ] ],
+					  NONLOC.SLASH #slash,
+                                          --MIN #min,
+                                          --SIND #ind & non_expl ] >,
+                                 COMPS < > ],
+                           MC na ],
+	       PUNCT #punct ] ].
+
+; 16-3-2021 same as original  
+extracted_subj_phrase := extracted_subj_phrase_super &
+  [ HD-DTR.SYNSEM.LOCAL.CAT.HEAD.VFORM fin_or_inf ]. 
+
+; 16-3-2021 to allow prp VPs to undergo hd_xsb-fin_c
+; 18-3-2021 instead of inheriting from decl_phrase, inherit from supertype to avoid 
+; inheriting PRD -
+extracted_subj_phrase_finorprp := extracted_subj_phrase_super & basic_decl_phrase &
+  [ SYNSEM.LOCAL [ CAT [ HEAD.TAM indic_tam,
+                         VAL.SUBJ *anti_null* ],
+                   CONT [ HOOK.INDEX.SF prop-or-ques ] ],
+    HD-DTR.SYNSEM.LOCAL.CAT [ HEAD.VFORM fin_or_prp,
+                              VAL.SUBJ < expressed_non_canonical &
+					 [ LOCAL.CAT.HEAD.CASE nom ] > ] ].
+					 
+extrasubj_finorprp_rule := rule & extracted_subj_phrase_finorprp.
 
 ; 16-3-2021 redefine rel_cl so that it takes prp as well
 rel_cl := basic_rel_cl & clause & phrasal &
