@@ -612,9 +612,11 @@ pron_np_one_phrase :=  basic_pron_np_one_phrase &
 ; took away ARGS
 ; 15-3-2021 added in PN 3 to stop 'am' from agreeing with this NP
 ; add in MODIFD notmod to prevent it from underfoing npadv_mod_phrase
+; 18-3-2021 add in MINORS.MIN to prevent it from undergong npadv_measnp_rule
 one_np_phrase := pron_np_one_phrase &
   [ INFLECTED +,
-    SYNSEM [ LOCAL [ CAT [ HEAD.MINORS.ALTMIN implicit_q_rel,
+    SYNSEM [ LOCAL [ CAT [ HEAD.MINORS [ MIN norm_nom_rel,
+    					  ALTMIN implicit_q_rel ],
 			   VAL.SPR < synsem > ],
 		     AGR [ DIV +,
 		           PNG.PN 3 ] ],
