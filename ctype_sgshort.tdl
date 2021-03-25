@@ -8,6 +8,8 @@ onp := ctype. ;; hdn_onenp_c
 
 frnb := never_unify_rel. ;; np_nb-frg_c
 fhhf := flr-hd. ;; hd-flr_rel-fin_c
+fhfp := flr-hd. ;; flr-hd_rel-finprp_c
 
 shxf := never_unify_rel. ;; hd_xsb-fin_c
 shxp := unary_ctype. ;; hd_xsb-finprp_c
+fhr := never_unify_rel. ;; flr-hd_rel-fin_c

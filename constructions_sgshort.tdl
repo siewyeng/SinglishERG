@@ -57,6 +57,16 @@ Extract subject from finite or prp head
 <ex>Who do you think [going]?
 """
   [ RNAME shxp ].
+  
+; 25-3-2021 - to replace flr-hd_rel-fin_c
+flr-hd_rel-finprp_c := filler_head_finprp_np_rel_rule &
+"""
+<ex> The person [who eating cake] admires me.
+
+"""
+  [ RNAME fhfp ].
+  
+flr-hd_rel-fin_c := never_unify_rule. 
 
 ; get rid of this
 np_nb-frg_c := never_unify_rule.
