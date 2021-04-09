@@ -53,7 +53,7 @@ optional SUBJ, took away person number
 singlish_count_noun := sing_or_plur_noun &
   [ CAT [ HEAD noun_or_ttl,
           VAL.SPR.FIRST.LOCAL.AGR [ PNG.PN 3,
-				    DIV bool ] ],
+				    DIV - ] ],
     CONT.HOOK.INDEX [ PNG png & [ PN 3 ] ] ].
 
 ; CSY 13-9-2020 - rule to allow predicative adj to take subjects

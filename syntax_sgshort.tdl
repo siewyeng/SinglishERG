@@ -642,6 +642,7 @@ basic_one_np_spr_phrase := basic_unary_phrase &
 ; by making this require a SPR, and then another ilr above so it can be without the SPR
 ; just like mass nouns by taking away SPR HEAD adv and SPR --MIN just_only_deg_rel
 ; 24-3-2021 change SPR --MIN to be like regular count nouns
+; get the daughter with the right relpro using the MOD value of the dtr
 basic_pron_np_one_phrase := basic_unary_phrase &
   [ INFLECTD #infl,
     SYNSEM nonlex_or_lex_phr_synsem &
@@ -666,7 +667,8 @@ basic_pron_np_one_phrase := basic_unary_phrase &
 	     PUNCT #punct ],
     ARGS < [ INFLECTD #infl,
 	     SYNSEM 
-             [ LOCAL [ CAT [ HEAD v_or_a,; & [ MOD #nindex ],
+             [ LOCAL [ CAT [ HEAD v_or_a & 
+             			  [ MOD.FIRST.--SIND.PT onerelpro ],
                              HC-LEX #hclex,
                              VAL [ SUBJ < >,
                                    COMPS < >,
@@ -697,8 +699,10 @@ basic_pron_np_one_phrase := basic_unary_phrase &
 
 ; 15-3-2021 make sure what the one RC mods is the generic_entity_rel that is introduced
 ; by making the --SIND same as the ARG0 of the generic entity
+; 8-4-2021 added in synsem inside MOD to prevent flr-hd_wh-nmc-fin_c compounds from going through
+; this. eg 'who is hungry' with who1 instead of who2.
 pron_np_one_phrase :=  basic_pron_np_one_phrase &
-  [ ARGS < [ SYNSEM.LOCAL.CAT.HEAD.MOD < [ --SIND #mod ] > ] >,
+  [ ARGS < [ SYNSEM.LOCAL.CAT.HEAD.MOD < synsem & [ --SIND #mod ] > ] >,
     C-CONT.RELS <! [ PRED quant_rel ],
     		     [ ARG0 #mod ] !> ].
 
@@ -720,6 +724,24 @@ one_np_phrase := pron_np_one_phrase &
 ; 9-3-2021 rule to convert 'one' RC into NP
 ; based on bare_np_rule
 one_np_rule := rule & one_np_phrase.	
+
+; 9-4-2021 further specify the PT so that it won't be compatible with what is wanted for the
+; one_np_phrase
+filler_head_rule_wh_nr_fin := binary_rule_left_to_right & 
+			      head_filler_phrase_wh_fin & wh_interrog_fin &
+  [ SYNSEM.LOCAL [ CAT [ HEAD [ INV -,
+			         CASE nom_or_obliq ],
+                         VAL.SUBJ *anti_null*,
+		         MC - ],
+		    CONT.HOOK.INDEX.PT normrelpro ],
+    HD-DTR.SYNSEM.LOCAL [ CAT.MC -,
+                          CONT.HOOK.LTOP #hdtop ],
+    NH-DTR.SYNSEM [ PUNCT.RPUNCT comma_or_rbc_or_pair_or_no_punct ],
+    C-CONT [ HOOK.LTOP #hdtop,
+             RELS <! !>,
+             HCONS <! !>,
+	     ICONS <! !> ] ].
+
 	          
 ; 16-3-2021 for possessive Singlish 'one'
 ; based on partitive_intadj_phrase but change SPR

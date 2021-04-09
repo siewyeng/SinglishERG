@@ -65,6 +65,22 @@ exp_aspect := aspect &
     EXP + ].
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; 8-4-2021 - adding in subtypes of pronoun type to differentiate 
+; as it is one of the things that are passed up in an RC
+
+;for regular relative pronouns and the wh words that are not relpro
+; 9-4-2021 - add in nononepro as a supertype to the rest so that notpro inherits from it
+; for sp-hd_n_c
+normrelpro := prontype.
+notpro_or_refl := normrelpro & onerelpro.
+notpro_or_non_refl := normrelpro & onerelpro.
+
+;only for the singlish relative pronoun one
+onerelpro := prontype.
+
+;normrelpro := notpro.
+;onerelpro := notpro.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; CASE and VFORM
 
 ; CSY 16-3-2021 for rel_cl which previously only took VFORM fin_or_inf
@@ -72,7 +88,6 @@ fin_or_inf_or_prp := vform.
 
 fin_or_inf := fin_or_inf_or_prp & non_bse & fin_or_inf_or_imp.
 inf_or_prp := fin_or_inf_or_prp & non_pas & non_fin_non_bse.
-
 ; CSY 12-1-2021 - for main clauses that allow prp but not base
 fin_or_prp := fin_or_bse_or_prp & non_bse & fin_or_inf_or_prp.
 

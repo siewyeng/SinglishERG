@@ -391,16 +391,59 @@ basic_n_rel_pro_sg_lexent := noncqs-hm & basic_pronoun_word &
 ; 8-3-2021 for the relative pronoun 'one'
 ; has POSTHD + but doesn't seem to make an impact
 ; modeled on n_-_pr-rel-nwh_le but with different MIN
+; 8-4-2021 - add PT value that was newly created in order to distinguish the different RCs
+; since this value will be passed up and will not contradict the locality assumption
 n_-_pr-rel-one_le := basic_n_rel_pro_sg_lexent &
 """
 Relative pro at the end of the NP, only `one'
 only takes predicates in base form
-<ex>Things  broke.
+<ex>the person you like one is here.
 """
   [ INFLECTD na,
     SYNSEM.LOCAL [ CAT [ HEAD [ MINORS [ MIN pron_nonlocal_one_rel ],
 			         PRD -,
 			         MOD < > ],
 			  POSTHD + ],
-		   CONT.HOOK.INDEX.SORT nominal-sort ] ].
+		   CONT.HOOK.INDEX [ SORT nominal-sort,
+		   		      PT onerelpro ] ] ].
+
+; 8-4-2021 add in INDEX.PT value to distinguish different types of RCs  		      
+n_rel_pro_lexent := basic_n_rel_pro_lexent &
+  [ INFLECTD +,
+    SYNSEM.LOCAL [ CAT.HEAD [ MINORS.MIN pron_nonlocal_rel,
+			       MOD < > ],
+		    CONT.HOOK.INDEX.PT normrelpro ] ].
+
+; 8-4-2021 - add in the INDEX to this as well to prevent it from becoming a one NP phrase
+n_wh_pro_lexent := que_word & basic_pronoun_word &
+  [ SYNSEM ref_pro_synsem &
+	 [ LOCAL [ CAT [ HEAD.MINORS.MIN pron_nonlocal_rel,
+                         VAL [ SPR < unexpressed & 
+				     [ OPT -,
+				       --MIN deg_rel ] >,
+			       COMPS < [ OPT +,
+                                         --MIN wh_the_hell_rel,
+                                         LOCAL [ CAT.HEAD wh_adv,
+                                                 CONJ cnil ],
+                                         PUNCT.LPUNCT no_punct ] > ] ],
+                   AGR #index,
+                   CONT [ HOOK [ INDEX #index & 
+                   			[ PT normrelpro ],
+                                 XARG #nhand ],
+                          RELS <! [ LBL #nhand ],
+				  #altkeyrel &
+                                  [ PRED which_q_rel,
+                                    ARG0 #index,
+                                    RSTR #rhand ] !>,
+			  HCONS <! qeq &
+				    [ HARG #rhand,
+				      LARG #nhand ] !>,
+			  ICONS <! !> ] ],
+	   NONLOC.QUE 1-dlist &
+		         [ LIST < param > ],
+	   MODIFD notmod,
+	   LKEYS.ALTKEYREL #altkeyrel ] ].
+	   
+	   
+
 

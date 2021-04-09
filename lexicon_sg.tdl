@@ -78,6 +78,10 @@ one_pr-rel := n_-_pr-rel-one_le &
  [ ORTH < "onesg" >,
    SYNSEM.PHON.ONSET con ].
    
+;one_entity_n1 := n_poss_one_lexent &
+;  [ ORTH < "onesg" >,
+;    SYNSEM [ LKEYS.KEYREL.PRED "_one_n_2_rel",
+;    	     PHON.ONSET con ] ].
 ;removed items
 already_adv3 := never_unify_le & [ ORTH < "_never_unify_" > ].
 
