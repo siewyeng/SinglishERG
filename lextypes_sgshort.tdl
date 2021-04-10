@@ -412,7 +412,7 @@ n_rel_pro_lexent := basic_n_rel_pro_lexent &
   [ INFLECTD +,
     SYNSEM.LOCAL [ CAT.HEAD [ MINORS.MIN pron_nonlocal_rel,
 			       MOD < > ],
-		    CONT.HOOK.INDEX.PT normrelpro ] ].
+		    CONT.HOOK.INDEX.PT notpro_or_non_refl ] ].
 
 ; 8-4-2021 - add in the INDEX to this as well to prevent it from becoming a one NP phrase
 n_wh_pro_lexent := que_word & basic_pronoun_word &
@@ -428,7 +428,7 @@ n_wh_pro_lexent := que_word & basic_pronoun_word &
                                          PUNCT.LPUNCT no_punct ] > ] ],
                    AGR #index,
                    CONT [ HOOK [ INDEX #index & 
-                   			[ PT normrelpro ],
+                   			[ PT notpro_or_non_refl ],
                                  XARG #nhand ],
                           RELS <! [ LBL #nhand ],
 				  #altkeyrel &

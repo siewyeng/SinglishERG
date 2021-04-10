@@ -69,17 +69,20 @@ exp_aspect := aspect &
 ; as it is one of the things that are passed up in an RC
 
 ;for regular relative pronouns and the wh words that are not relpro
-; 9-4-2021 - add in nononepro as a supertype to the rest so that notpro inherits from it
+; 9-4-2021 - change hierarchy to make sure notpro has something in common with onerelpro
 ; for sp-hd_n_c
-normrelpro := prontype.
-notpro_or_refl := normrelpro & onerelpro.
-notpro_or_non_refl := normrelpro & onerelpro.
+;normrelpro := prontype.
+;notpro_or_refl := normrelpro & onerelpro.
+;notpro_or_non_refl := normrelpro & onerelpro.
 
 ;only for the singlish relative pronoun one
-onerelpro := prontype.
+;onerelpro := prontype.
 
-;normrelpro := notpro.
-;onerelpro := notpro.
+notpro_or_onerelpro := prontype.
+notpro := notpro_or_refl & notpro_or_non_refl & notpro_or_onerelpro.
+
+onerelpro := notpro_or_onerelpro.
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; CASE and VFORM
 

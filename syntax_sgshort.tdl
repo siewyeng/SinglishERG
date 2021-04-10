@@ -733,7 +733,7 @@ filler_head_rule_wh_nr_fin := binary_rule_left_to_right &
 			         CASE nom_or_obliq ],
                          VAL.SUBJ *anti_null*,
 		         MC - ],
-		    CONT.HOOK.INDEX.PT normrelpro ],
+		    CONT.HOOK.INDEX.PT notpro_or_non_refl ],
     HD-DTR.SYNSEM.LOCAL [ CAT.MC -,
                           CONT.HOOK.LTOP #hdtop ],
     NH-DTR.SYNSEM [ PUNCT.RPUNCT comma_or_rbc_or_pair_or_no_punct ],
@@ -742,6 +742,27 @@ filler_head_rule_wh_nr_fin := binary_rule_left_to_right &
              HCONS <! !>,
 	     ICONS <! !> ] ].
 
+; 10-4-2021 change PT from notpro to a supertype
+head_spec_phrase := basic_head_spec_phrase &
+  [ SYNSEM.LOCAL.CAT.VAL [ SPEC #spec,
+			   SUBJ *olist*,
+                           COMPS #spcmps,
+			   SPCMPS < > ],
+    HD-DTR [ INFLECTD +,
+             SYNSEM.LOCAL [ CAT [ VAL [ COMPS < >,
+					SPEC #spec ] ],
+			    CONT.HOOK.INDEX overt_non_expl-ind & [ PT notpro_or_onerelpro ],
+			    AGR #agr ] ],
+    NH-DTR [ INFLECTD +,
+             SYNSEM.LOCAL [ CAT [ HEAD det & [ MOD < > ],
+				  VAL [ SPR *olist*,
+					SPEC < synsem &
+					       [ LOCAL [ CAT.HEAD supnoun,
+							 AGR #agr ] ] >,
+					SPCMPS #spcmps ],
+				  MC na ],                                   
+			    CONT.HOOK #hook & [ INDEX individual_min ] ] ],
+    C-CONT.HOOK #hook ].
 	          
 ; 16-3-2021 for possessive Singlish 'one'
 ; based on partitive_intadj_phrase but change SPR
