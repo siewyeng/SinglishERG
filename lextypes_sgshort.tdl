@@ -526,6 +526,8 @@ np_trans_goloc_verb := np_trans_verb & ;twoarg_verb_synsem & two_arg_subst & go_
 
 ; the loc NP for 'go'
 ; made MIN place_norm_nom_rel but it seems like i need loc_nonsp_rel?!
+; took away VAL.SPR.FIRST unexpressed so that it can take SPR
+; for constructions like 'he go his school'
 n_-_place-nomod_le := noun_word &
 """
 Intransitive mass nouns that are locations
@@ -534,7 +536,7 @@ Intransitive mass nouns that are locations
   [ SYNSEM mass_noun_onearg_synsem &
 	   [ LOCAL [ CAT [ HEAD.MINORS [ MIN place_norm_nom_rel,
 					 NORM norm_rel ],
-			   VAL.SPR.FIRST unexpressed ],
+			   VAL.SPR.FIRST #unexpressed ],
 		     CONT.RELS <! reg_nom_relation !> ],
 	     MODIFD lmod & [ LPERIPH na_or_+,
 			     RPERIPH + ] ] ].
