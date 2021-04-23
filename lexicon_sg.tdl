@@ -94,6 +94,12 @@ school_nsing := n_-_place-nomod_le &
    SYNSEM [ LKEYS [ ALTKEYREL.PRED "place_n_rel",
    		    KEYREL.PRED "_school_n_1_rel" ],
             PHON.ONSET con ] ].
+            
+market_nsing := n_-_place-nomod_le &
+ [ ORTH < "market" >,
+   SYNSEM [ LKEYS [ ALTKEYREL.PRED "place_n_rel",
+   		    KEYREL.PRED "_market_n_1_rel" ],
+            PHON.ONSET con ] ].
 
 ;;;Removed Items;;;
 already_adv3 := never_unify_le & [ ORTH < "_never_unify_" > ].
