@@ -24,13 +24,15 @@ verb_participle_affix := local &
 	  HC-LEX - ],
     AGR #agr ].
 
+; 18-4-2021 - should the VFORM be changed to just fin #totest
 bse_or_fin_verb := local &
 """
 CSY 2-11-2020 for Singlish, no inflection verbs (take away no_aspect)
 optional SUBJ, took away person number
 <ex>he eat already.
 """
-  [ CAT [ HEAD [ VFORM fin_or_bse_or_imp,
+  [ CAT [ HEAD verb &
+  	       [ VFORM fin_or_bse_or_imp,
                  PRD -,
 		 ;TAM.ASPECT no_aspect,
                  --ADDIN [ ;ADDPN -3s,
@@ -42,6 +44,8 @@ optional SUBJ, took away person number
                                         CONJ cnil,
                                         AGR #agr ] ] > ],
     AGR #agr ].
+
+v_n3s-bse_inflrule := lex_rule_infl_affixed.
 
 ; CSY 29-12-2020 for the count nouns that don't need specifier in Singlish
 ; DIV value not specified. Even though this allows for unusual NPs like "much cats"
@@ -82,6 +86,20 @@ pred_adj_subj_lexrule:= norm_lex_rule & aj_nocop_i-prd_le &
 				[ LOCAL.CAT [ HEAD.MOD < [ LOCAL.CONT.HOOK.LTOP #ltop,
 							   NONLOC #nonloc & non-local_none ] >,
 					      VAL.COMPS #comps ] ] ] ].
+					      
+					      
+; 20-4-2021 - rule for converting pn into stuff that can take SPEC
+pn_spec_lexrule := norm_lex_rule & basic_n-spr_proper_phrase &
+  [ ORTH #orth,
+    SYNSEM.LOCAL.CAT [ HEAD #head,
+    			VAL [ COMPS #comps ] ],
+    DTR n_-_pn_le & [ ORTH #orth,
+			  SYNSEM [ LOCAL.CAT [ HEAD #head,
+			  			VAL.COMPS #comps ] ] ] ].
+			  			
+; 21-4-2021 to use the inflr for the possessive one
+; one_poss := sing_or_plur_noun &
+
 
 ; CSY 18-3-2021 - supertype of lex_rule_affixed that the prp_verb will inherit from
 ; supertype without 0-dlist, so that VPs headed by prp verbs can undergo hd_xsb-finprp_c

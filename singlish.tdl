@@ -90,7 +90,8 @@
 
 :include "auxverbs".
 
-:include "singlish/letypes_sg".
+:include "letypes".
+:include "singlish/letypes_sgshort".
 
 :end :type.
 

@@ -40,6 +40,19 @@ s_cat_sg_v_c := basic_s_cat_sg_v_c &
     MC - ].
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; SUBCATEGORIZATIONS -- synsems for verbs, adjectives, prepositions, nouns
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+super_nomod_synsem := lex_synsem &
+  [ LOCAL.CAT [ HEAD.MOD < >,
+		VAL.SUBJ < > ] ].
+	
+nomod_synsem := super_nomod_synsem.
+
+; 19-4-2021 - nomod synsem to identify poss one
+one_nomod_synsem := super_nomod_synsem.
+		
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Val Types
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -443,7 +456,86 @@ n_wh_pro_lexent := que_word & basic_pronoun_word &
 		         [ LIST < param > ],
 	   MODIFD notmod,
 	   LKEYS.ALTKEYREL #altkeyrel ] ].
-	   
-	   
 
+;18-4-2021 - another attempt at 'one' like in "my one" or "Kim one"
+; modelled after n_-_c_le (count nouns) and n_pp_c-nsnc-of_le and n_poss_pro_lexent
+; to insert the right RELS later
+; [NOT IN USE NOW COS I CAN'T MAKE IT WORK]
+basic_n_poss_one_lexent := nonc-hm & basic_noun_word &
+  [ SYNSEM nomod_synsem &
+  	   [ LOCAL [ CAT [ HEAD partn & [ MINORS [ MIN one_nom_rel,
+						   ALTMIN poss_rel ] ],
+                           VAL [ COMPS < >,
+                           	  SUBJ < >,
+				  SPR  < #spr & synsem &
+                                       [ --MIN named_np_rel,
+                                         OPT - ] >,
+				  SPEC < anti_synsem_min > ] ] ],
+	     LKEYS [ KEYREL #keyrel,
+                     ALTKEYREL #altkeyrel,
+                     ALT2KEYREL #alt2keyrel ],
+             NONLOC.QUE <! !>,
+	     MODIFD notmod ] ].
+
+; 19-4-2021 to add 'one' as a possible SPEC value
+; cannot just add SPEC to basic_n_proper_lexent 
+; because of noun_nocomp_synsem which inherits from ref_synsem
+basic_n-spr_proper_phrase := nonrs-hm &
+  [ SYNSEM [ LOCAL [ CAT [ HEAD.MINORS [ MIN named_np_rel,
+                                       ALTMIN abstract_q_rel ],
+                           VAL [ SPR < [ --MIN abstract_q_rel,
+                                         NONLOC.QUE #que ] >,
+                                 COMPS < >,
+                                 SPEC < synsem & [ OPT +,
+                                 	   --MIN one_nom_rel ] > ] ],
+                     CONT [ HOOK [ LTOP #ltop,
+                                   INDEX #index & nonconj_ref-ind ],
+                            RELS <! relation !>,
+                            HCONS <! !>,
+			    ICONS <! !> ],
+	             CONJ cnil,
+                     AGR #index ],
+             NONLOC.QUE #que,
+             LKEYS [ KEYREL named_nom_relation &
+                            [ PRED named_np_rel,
+                              LBL #ltop ],
+                     ALTKEYREL.PRED implicit_q_rel ] ] ].
+                     
+; 23-4-2021 - for 'go'. Without prep_rel as --MIN
+; and without [ ARG1 non_expl-ind ] in KEYREL
+basic_go_intrans_lt := arg1_subj_lt &
+  [ LOCAL [ CAT.VAL.COMPS 
+			< [ LOCAL [ CONT [ HOOK [ INDEX [ 
+                                                          --TPC #tpc ],
+                                                  XARG #index ] ] ] ],
+			  ... >,
+            CONT [ HOOK.INDEX #index & [ --TPC #tpc ],
+            	    RELS.LIST < #keyrel, ... >  ] ],
+    LKEYS.KEYREL #keyrel ].
+    
+go_intrans_lt := basic_go_intrans_lt &
+  [ LOCAL [ CAT.VAL.COMPS < [ LOCAL.CONT.HOOK.LTOP #ltop ], ... >,
+            CONT [ HOOK.LTOP #ltop,
+                   RELS <! relation !> ] ] ].
+    
+; 23-4-2021 - new lextype for 'go' that takes loc NP as COMPS
+; sort of based on prep_intrans_dir_verb. Want to get the loc part but NP instead of PP COMPS
+; arg1_subj_lt instead of prep_intrans_lt. (but may need to further specify links)
+np_trans_goloc_verb := np_trans_verb & ;twoarg_verb_synsem & two_arg_subst & go_intrans_lt &
+  [ LOCAL.CAT.VAL.COMPS < synsem & [ --MIN place_nom_rel ] > ].
+
+; the loc NP for 'go'
+; made MIN place_norm_nom_rel but it seems like i need loc_nonsp_rel?!
+n_-_place-nomod_le := noun_word &
+"""
+Intransitive mass nouns that are locations
+<ex>He go [school].
+"""
+  [ SYNSEM mass_noun_onearg_synsem &
+	   [ LOCAL [ CAT [ HEAD.MINORS [ MIN place_norm_nom_rel,
+					 NORM norm_rel ],
+			   VAL.SPR.FIRST unexpressed ],
+		     CONT.RELS <! reg_nom_relation !> ],
+	     MODIFD lmod & [ LPERIPH na_or_+,
+			     RPERIPH + ] ] ].
 

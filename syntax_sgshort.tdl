@@ -763,6 +763,33 @@ head_spec_phrase := basic_head_spec_phrase &
 				  MC na ],                                   
 			    CONT.HOOK #hook & [ INDEX individual_min ] ] ],
     C-CONT.HOOK #hook ].
+
+; 20-4-2021 just for the possessive 'one', change the NH-DTR from a det 
+; trying out with named NP rel for now. Should expand to certain possessive pn like "my" later   
+head_spec_one_phrase := basic_head_spec_phrase &
+  [ SYNSEM.LOCAL.CAT.VAL [ SPEC #spec,
+			   SUBJ *olist*,
+                           COMPS #spcmps,
+			   SPCMPS < > ],
+    HD-DTR [ INFLECTD +,
+             SYNSEM.LOCAL [ CAT [ HEAD.MINORS.MIN one_nom_rel,
+             			    VAL [ COMPS < >,
+					SPEC #spec ] ],
+			    CONT.HOOK.INDEX overt_non_expl-ind & [ PT notpro ],
+			    AGR #agr ] ],
+    NH-DTR [ INFLECTD +,
+             SYNSEM.LOCAL [ CAT [ HEAD noun & [ MOD < >,
+             					  MINORS.MIN named_np_rel ],
+				  VAL [ SPR *olist*,
+					SPEC < synsem &
+					       [ LOCAL [ CAT.HEAD supnoun,
+							 AGR #agr ] ] >,
+					SPCMPS #spcmps ],
+				  MC na ],                                   
+			    CONT.HOOK #hook & [ INDEX individual_min ] ] ],
+    C-CONT.HOOK #hook ].
+    
+hspec_one_rule := binary_rule_right_to_left & head_spec_phrase.
 	          
 ; 16-3-2021 for possessive Singlish 'one'
 ; based on partitive_intadj_phrase but change SPR
@@ -802,7 +829,77 @@ head_spec_phrase := basic_head_spec_phrase &
 ;		   CONT.HOOK.INDEX.SORT basic-entity-or-event ],
 ;    ARGS < [ SYNSEM.LOCAL.CAT.HEAD intadj ] > ].
 
-
-
+; 23-4-2021 - for locative NPs that can act as complements of 'go'
+; making a rule that is similar to npadv_mod but except I don't want it to become an adv/pp
+; so that I get sentences like 'he go school' but not 'he is school'
+;;;; not using anymore for now!
+basic_gonp_mod_phrase := basic_unary_phrase & phrasal &
+  [ SYNSEM [ LOCAL [ CAT [ HEAD #modnp &
+				[ MOD < [ LOCAL intersective_mod &
+					  [ CAT 
+                                            [ HEAD subst & 
+                                                   [ AUX - ],
+                                              VAL.COMPS < >,
+                                              MC #mc ],
+					    CONT.HOOK.INDEX #ind,
+                                            CONJ cnil ],
+					  --SIND #ind & non_expl &
+					     [ SORT basic-entity-or-event ] ] >,
+                                  TAM #tam,
+                                  MINORS.ALTMIN #altmin,
+                                  PRD #prd ],
+                           POSTHD +,
+			   VAL [ SUBJ < >,
+                                 COMPS #comps,
+				 SPCMPS < > ],
+			   MC #mc,
+			   NEGPOL #negpol ],
+		     CONT.HOOK [ INDEX [ SORT #sort ],
+                                 XARG #ind ],
+                     CONJ cnil,
+                     CTXT #ctxt ],
+             NONLOC #nonloc & [ REL 0-dlist,
+                                SLASH 0-dlist ],
+	     PUNCT #punct ],
+    ARGS < [ INFLECTD +,
+             SYNSEM [ LOCAL [ CAT [ HEAD basic_noun & 
+                                         [ MINORS.MIN #altmin,
+                                           PRD #prd,
+					   --BARE - ],
+                                    VAL [ SPR *olist*,
+                                          SUBJ *anti_list*,
+					  COMPS #comps & < > ],
+				    NEGPOL #negpol ],
+			      CONT.HOOK.INDEX #index & 
+				              [ SORT #sort ],
+			      CONJ cnil,
+                              CTXT #ctxt ],
+                      NONLOC #nonloc,
+		      PUNCT #punct ] ] >,
+    ORTH [ FROM #from, TO #to ],
+    C-CONT [ HOOK [ LTOP #khand,
+                    INDEX #arg0 ],
+	     RELS <! prep_relation &
+                     [ LBL #khand,
+                       PRED loc_nonsp_rel,
+                       ARG0 #arg0 & non_conj_event & [ E #tam ],
+                       ARG1 #ind & event_or_index,
+                       ARG2 #index,
+		       CFROM #from, CTO #to ] !>,
+	     HCONS <! !>,
+	     ICONS <! !> ],
+    INFLECTD + ].
+    
+gonp_mod_phrase := basic_gonp_mod_phrase &
+  [ SYNSEM [ LOCAL.CAT 
+	       [ HEAD [ MINORS.MIN loc_nonsp_rel,
+			MOD < [ LOCAL.CAT.VAL.SPR < synsem_min, ... > ] > ],
+		 VAL.SPR < anti_synsem_min > ],
+	     MODIFD notmod_or_lmod & [ LPERIPH na ] ],
+    ARGS < [ SYNSEM [ LOCAL.CAT.HEAD [ MINORS.MIN place_nom_rel,
+				       CASE real_case ],
+		      MODIFD hasmod & [ LPERIPH + ] ] ] > ].
+		      
+gomod_rule := rule & gonp_mod_phrase.
 
 frag_r_mod_np_adj_rule := never_unify_rule.

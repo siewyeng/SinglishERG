@@ -16,6 +16,12 @@ kacau_v1 := v_np_le &
  [ ORTH < "kacau" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_kacau_v_1_rel",
             PHON.ONSET con ] ].
+            
+go_vsing := v_np_dir_le &
+ [ ORTH < "go" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_go_v_1_rel",
+            PHON.ONSET con ] ].
+            
 ;;;Adverbials;;;
 
 kaypo_a1 := aj_-_i_le &
@@ -73,16 +79,23 @@ singlish_n1 := n_-_pn-sg_le &
  [ ORTH < "Singlish" >,
    SYNSEM [ LKEYS.KEYREL.CARG "Singlish",
             PHON.ONSET con ] ].
-
+            
 one_pr-rel := n_-_pr-rel-one_le &
  [ ORTH < "onesg" >,
    SYNSEM.PHON.ONSET con ].
    
-;one_entity_n1 := n_poss_one_lexent &
-;  [ ORTH < "onesg" >,
-;    SYNSEM [ LKEYS.KEYREL.PRED "_one_n_2_rel",
-;    	     PHON.ONSET con ] ].
-;removed items
+one_entity_n1 := basic_n_poss_one_lexent &
+  [ ORTH < "onesgg" >,
+    SYNSEM [ LKEYS.KEYREL.PRED thing_rel,
+    	     PHON.ONSET con ] ].
+    	    
+school_nsing := n_-_place-nomod_le &
+ [ ORTH < "school" >,
+   SYNSEM [ LKEYS [ ALTKEYREL.PRED "place_n_rel",
+   		    KEYREL.PRED "_school_n_1_rel" ],
+            PHON.ONSET con ] ].
+
+;;;Removed Items;;;
 already_adv3 := never_unify_le & [ ORTH < "_never_unify_" > ].
 
 ; CSY 2-12-2020 - remove ever_adv1 cos it occurs at the same places as ever_exp_adv, seems like an overgeneration

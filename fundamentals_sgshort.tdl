@@ -20,6 +20,9 @@ CSY 04-09-2020 - added vc_add for the purpose of allowing adj to head sentences
 """
 .
 
+; 21-4-2021 - add in new verbal_or_a (for subjh mc phrase)
+
+
 ; For positive adjectives
 ; 29-12-2020 CSY add in basic_adj as a supertype of adj
 adj := basic_adj & n_or_a_or_det & p_adj_adv_or_comp & basic_verb_or_adj_or_frag &
@@ -109,6 +112,9 @@ root_sg_synsem := basic_root_synsem &
 	    CONJ cnil ],
     PUNCT.RPUNCT comma_or_clause_or_pair_or_no_punct &
 	         [ PSF #pred ] ].
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; pred sorts
 	
 ; CSY 9-3-2021 create supertype to redefine pron_nonlocal_rel in order to separate it 
 ; from the rel for relpro 'one'
@@ -120,3 +126,17 @@ pron_nonlocal_rel := pron_nonlocal_super_rel.
 
 ;CSY 9-3-2021 only for 'one'
 pron_nonlocal_one_rel := pron_nonlocal_super_rel.
+
+; 19-4-2021 - also for 'one' but the possessive one
+super_reg_nom_rel := non_temp_nonpro_rel & reg_or_temp_nom_rel.
+reg_nom_rel := super_reg_nom_rel.
+one_nom_rel := super_reg_nom_rel.
+
+; 23-4-2021 for place nouns (but different from place_n_rel becuase that is used for adv
+; in this grammar). Split original norm_nom_rel into two parts. so that the place_nom_rel
+; can be used as the COMPS of 'go'
+place_norm_nom_rel := reg_nom_rel & non_temp_nbar_rel & norm_nom_or_place_rel.
+norm_nom_rel := place_norm_nom_rel.
+place_nom_rel := place_norm_nom_rel.
+
+

@@ -66,6 +66,27 @@ flr-hd_rel-finprp_c := filler_head_finprp_np_rel_rule &
 """
   [ RNAME fhfp ].
   
+; 20-4-2021 for the possessive one  
+;sp-hd_o_c := hspec_one_rule &
+;"""
+;Hd(only one)+specifier, nonhd = sem hd
+;or nonhd introduces sem hd(?)        
+;
+;<ex>The cake is [Kim one].  
+;"""
+;
+  [ RNAME spoh ].
+
+;np_gomod_c := gomod_rule &
+;"""
+;Modifier phrase for 'go' from loc NP          
+;
+;<ex>B go [market.]     
+;"""
+;  [ RNAME ngom ].
+  
+;;;;;;;;;;;;; the never unifies ;;;;;;;;;;;;;;;;;;
+  
 flr-hd_rel-fin_c := never_unify_rule. 
 
 ; get rid of this
