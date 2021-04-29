@@ -89,13 +89,16 @@ pred_adj_subj_lexrule:= norm_lex_rule & aj_nocop_i-prd_le &
 					      
 					      
 ; 20-4-2021 - rule for converting pn into stuff that can take SPEC
-pn_spec_lexrule := norm_lex_rule & basic_n-spr_proper_phrase &
-  [ ORTH #orth,
-    SYNSEM.LOCAL.CAT [ HEAD #head,
-    			VAL [ COMPS #comps ] ],
-    DTR n_-_pn_le & [ ORTH #orth,
-			  SYNSEM [ LOCAL.CAT [ HEAD #head,
-			  			VAL.COMPS #comps ] ] ] ].
+; 29-4-2021 -  remove "norm_lex_rule" from supertype cos it will become a det
+; in this pumping rule. and not use this anymore cos it's shouldn't be a lexrule
+; moved to syntax instead
+;pn_spec_lexrule := basic_pn-spr_phrase &
+;  [ ORTH #orth,
+;    SYNSEM.LOCAL.CAT [ HEAD det,
+;    			VAL [ COMPS #comps ] ],
+;    DTR n_-_pn_le & [ ORTH #orth,
+;			  SYNSEM [ LOCAL.CAT [ HEAD #head,
+;			  			VAL.COMPS #comps ] ] ] ].
 			  			
 ; 21-4-2021 to use the inflr for the possessive one
 ; one_poss := sing_or_plur_noun &

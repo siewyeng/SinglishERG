@@ -75,7 +75,15 @@ flr-hd_rel-finprp_c := filler_head_finprp_np_rel_rule &
 ;<ex>The cake is [Kim one].  
 ;"""
 ;
-  [ RNAME spoh ].
+;  [ RNAME spoh ].
+
+pn-sp_c := pn_spec_rule &
+"""
+Change proper noun into a det for poss one
+
+<ex>Kim one is going.
+"""
+  [ RNAME pnsp ].
 
 ;np_gomod_c := gomod_rule &
 ;"""

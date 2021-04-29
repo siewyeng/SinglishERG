@@ -51,7 +51,30 @@ nomod_synsem := super_nomod_synsem.
 
 ; 19-4-2021 - nomod synsem to identify poss one
 one_nomod_synsem := super_nomod_synsem.
-		
+
+; 29-4-2021 - to make the synsem type for poss one have more restrictions
+; based on basic_unsp_common_noun_synsem but without quant_rel
+; changed SPR value to LEX - (hopefully this does not spoil anything)
+one_nomod_poss_synsem := lex_synsem & basic_noun_synsem &
+  [ LOCAL [ ARG-S < #spr . #comps >,
+	    CAT [ HEAD.MINORS.ALTMIN #spmin,
+                  VAL [ SPR < #spr & synsem &
+                              [ --MIN #spmin,; & quant_rel,
+                                LOCAL.CAT [ HEAD det,
+                                            VAL [ SUBJ < >,
+                                                  SPR *olist* ] ],
+                                LEX -,
+				OPT - ] >,
+                        COMPS #comps,
+                        SPEC < anti_synsem_min > ] ] ] ].
+                     
+basic_one_noun_synsem := one_nomod_poss_synsem & noun_synsem.
+
+one_noun_nocomp_synsem := basic_one_noun_synsem & basic_one_arg &
+  [ LOCAL.CAT.VAL.COMPS < > ].
+
+one_nocomp_synsem := one_noun_nocomp_synsem & nonpro_nomod_onearg_synsem.
+  		
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Val Types
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -463,24 +486,30 @@ n_wh_pro_lexent := que_word & basic_pronoun_word &
 ; [NOT IN USE NOW COS I CAN'T MAKE IT WORK]
 basic_n_poss_one_lexent := nonc-hm & basic_noun_word &
   [ SYNSEM nomod_synsem &
-  	   [ LOCAL [ CAT [ HEAD partn & [ MINORS [ MIN one_nom_rel,
-						   ALTMIN poss_rel ] ],
+  	   [ LOCAL [ CAT [ HEAD noun & [ MINORS [ MIN one_poss_rel,
+						   ALTMIN #poss_rel ] ],
                            VAL [ COMPS < >,
                            	  SUBJ < >,
 				  SPR  < #spr & synsem &
-                                       [ --MIN named_np_rel,
-                                         OPT - ] >,
+                                       [ --MIN _pnspr_q_rel,
+                                         OPT -,
+                                         LEX #lex ] >,
 				  SPEC < anti_synsem_min > ] ] ],
 	     LKEYS [ KEYREL #keyrel,
                      ALTKEYREL #altkeyrel,
                      ALT2KEYREL #alt2keyrel ],
              NONLOC.QUE <! !>,
 	     MODIFD notmod ] ].
+	     
+;29-4-2021 - further specify values to prevent weird things like going through hd-hd_rnr-nb_c
+n_poss_one_lexent := basic_n_poss_one_lexent &
+  [ SYNSEM one_nocomp_synsem & [ LKEYS.KEYREL reg_nom_relation,
+  	     MODIFD.LPERIPH na ] ].
 
 ; 19-4-2021 to add 'one' as a possible SPEC value
 ; cannot just add SPEC to basic_n_proper_lexent 
 ; because of noun_nocomp_synsem which inherits from ref_synsem
-basic_n-spr_proper_phrase := nonrs-hm &
+basic_n-spr_proper_phrase := nonrs-hm & basic_noun_word &
   [ SYNSEM [ LOCAL [ CAT [ HEAD.MINORS [ MIN named_np_rel,
                                        ALTMIN abstract_q_rel ],
                            VAL [ SPR < [ --MIN abstract_q_rel,
@@ -500,6 +529,29 @@ basic_n-spr_proper_phrase := nonrs-hm &
                             [ PRED named_np_rel,
                               LBL #ltop ],
                      ALTKEYREL.PRED implicit_q_rel ] ] ].
+                     
+; 29-4-2021 for the pumping rule that takes a proper name and then changes it 
+; into a det that only takes the poss one as a SPEC
+basic_pn-spr_phrase := nonrs-hm &; basic_noun_word &
+  [ SYNSEM [ LOCAL [ CAT [ HEAD det & [ MINORS [ MIN #named_np_rel,
+                                       ALTMIN poss_rel ] ],
+                           VAL [ SPR < [ --MIN abstract_q_rel,
+                                         NONLOC.QUE #que ] >,
+                                 COMPS < >,
+                                 SPEC < synsem & [ OPT +,
+                                 	   --MIN one_nom_rel ] > ] ],
+                     CONT [ HOOK [ LTOP #ltop,
+                                   INDEX #index & nonconj_ref-ind ],
+                            RELS <! relation !>,
+                            HCONS <! !>,
+			    ICONS <! !> ],
+	             CONJ cnil,
+                     AGR #index ],
+             NONLOC.QUE #que,
+             LKEYS [ KEYREL named_nom_relation &
+                            [ PRED poss_rel,
+                              LBL #ltop ],
+                     ALTKEYREL.PRED implicit_q_rel ] ] ].               
                      
 ; 23-4-2021 - for 'go'. Without prep_rel as --MIN
 ; and without [ ARG1 non_expl-ind ] in KEYREL

@@ -23,9 +23,9 @@ j_j-nocop_dlr := pred_adj_subj_lexrule &
  [ RNAME ljmc ].
  
 ; 20-4-2021 for allowing proper nouns to take one as SPEC
-pn_spr_dlr := pn_spec_lexrule &
-"""
-converts the pn lexent into something with a SPEC value (not anti_synsem_min)
-<ex> Kim one is there.
-"""
- [ RNAME lpnc ].
+; pn_spr_dlr := pn_spec_lexrule &
+;"""
+;converts the pn lexent into something with a SPEC value (not anti_synsem_min)
+;<ex> Kim one is there.
+;"""
+; [ RNAME lpnc ].

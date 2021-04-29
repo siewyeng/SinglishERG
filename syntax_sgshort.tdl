@@ -899,6 +899,80 @@ gonp_mod_phrase := basic_gonp_mod_phrase &
     ARGS < [ SYNSEM [ LOCAL.CAT.HEAD [ MINORS.MIN place_nom_rel,
 				       CASE real_case ],
 		      MODIFD hasmod & [ LPERIPH + ] ] ] > ].
+;; for the possessive one
+; 19-4-2021 to add 'one' as a possible SPEC value
+; cannot just add SPEC to basic_n_proper_lexent 
+; because of noun_nocomp_synsem which inherits from ref_synsem
+basic_n-spr_proper_phrase := nonrs-hm & basic_noun_word &
+  [ SYNSEM [ LOCAL [ CAT [ HEAD det & [ MINORS [ MIN named_np_rel,
+                                       ALTMIN abstract_q_rel ] ],
+                           VAL [ SPR < [ --MIN abstract_q_rel,
+                                         NONLOC.QUE #que ] >,
+                                 COMPS < >,
+                                 SPEC < synsem & [ OPT +,
+                                 	   --MIN one_nom_rel ] > ] ],
+                     CONT [ HOOK [ LTOP #ltop,
+                                   INDEX #index & nonconj_ref-ind ],
+                            RELS <! relation !>,
+                            HCONS <! !>,
+			    ICONS <! !> ],
+	             CONJ cnil,
+                     AGR #index ],
+             NONLOC.QUE #que,
+             LKEYS [ KEYREL named_nom_relation &
+                            [ PRED named_np_rel,
+                              LBL #ltop ],
+                     ALTKEYREL.PRED implicit_q_rel ] ] ].
+                     
+; 29-4-2021 for the pumping rule that takes a proper name and then changes it 
+; into a det that only takes the poss one as a SPEC
+; based on npadv_mod_phrase. need to put in the RELS later
+; need to keep phrasal as the supertype even though this prevents it from going through the
+; hspec_rule because otherwise it can keep undergoing this rule
+		      
+basic_pn-spr_phrase := basic_unary_phrase & phrasal &
+  [ SYNSEM [ LOCAL [ CAT [ HEAD det & [ MINORS [ MIN #named_np_rel,
+                                       ALTMIN #altmin ] ],
+                           VAL [ COMPS < >,
+                                 SPEC < synsem & [ OPT -,
+                                 	   --MIN one_poss_rel ] > ] ],
+                     CONT.HOOK.INDEX #index & nonconj_ref-ind ],
+             NONLOC.QUE #que,
+             PUNCT #punct ],
+    ARGS < [ INFLECTD +,
+             SYNSEM [ LOCAL [ CAT [ HEAD basic_noun & 
+                                         [ MINORS.MIN #altmin,
+                                           PRD #prd,
+					   --BARE - ],
+                                    VAL [ SPR *olist*,
+                                          SUBJ *anti_list*,
+					  COMPS #comps & < > ],
+				    NEGPOL #negpol ],
+			      CONT.HOOK.INDEX #index & 
+				              [ SORT #sort ],
+			      CONJ cnil,
+                              CTXT #ctxt ],
+                      NONLOC #nonloc,
+		      PUNCT #punct ] ] > ].   		      
+
+; 29-4-2021 add in LEX + for the daughter so that it cannot undergo this rule again
+; take away MOD value of [ LOCAL.CAT.VAL.SPR < synsem_min, ... > ]
+; add in SPCMPS that is empty because of how head_spec_phrase works
+; to get rid of the sp-hd_n_c being the head of hd-cmp_u_c
+pn-spr_phrase := basic_pn-spr_phrase &
+  [ SYNSEM [ LOCAL.CAT 
+	       [ HEAD [ MINORS.MIN _pnspr_q_rel,
+			MOD < > ],
+		 VAL [ SPR < anti_synsem_min >,
+		 	SPCMPS < > ] ],
+	     MODIFD notmod_or_lmod & [ LPERIPH na ] ],
+    ARGS < [ SYNSEM [ LOCAL.CAT.HEAD [ MINORS.MIN named_np_rel ],
+		      LEX + ] ] > ].
+		      
+; 20-4-2021 - rule for converting pn into stuff that can take SPEC
+; 29-4-2021 -  remove "norm_lex_rule" from supertype cos it will become a det
+; in this pumping rule.
+pn_spec_rule := rule & pn-spr_phrase.
 		      
 gomod_rule := rule & gonp_mod_phrase.
 

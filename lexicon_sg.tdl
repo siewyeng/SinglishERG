@@ -84,7 +84,7 @@ one_pr-rel := n_-_pr-rel-one_le &
  [ ORTH < "onesg" >,
    SYNSEM.PHON.ONSET con ].
    
-one_entity_n1 := basic_n_poss_one_lexent &
+one_entity_n1 := n_poss_one_lexent &
   [ ORTH < "onesgg" >,
     SYNSEM [ LKEYS.KEYREL.PRED thing_rel,
     	     PHON.ONSET con ] ].
@@ -100,6 +100,11 @@ market_nsing := n_-_place-nomod_le &
    SYNSEM [ LKEYS [ ALTKEYREL.PRED "place_n_rel",
    		    KEYREL.PRED "_market_n_1_rel" ],
             PHON.ONSET con ] ].
+         
+dir_adv1 := p_np_i-nnm_le &
+ [ ORTH < "dir" >,
+   SYNSEM [ LKEYS.KEYREL.PRED dir_rel,
+            PHON.ONSET voc ] ].
 
 ;;;Removed Items;;;
 already_adv3 := never_unify_le & [ ORTH < "_never_unify_" > ].

@@ -138,5 +138,10 @@ one_nom_rel := super_reg_nom_rel.
 place_norm_nom_rel := reg_nom_rel & non_temp_nbar_rel & norm_nom_or_place_rel.
 norm_nom_rel := place_norm_nom_rel.
 place_nom_rel := place_norm_nom_rel.
+; 29-4-2021 - for the possessive 'one' so that it doesn't undergo the bnp rule
+one_poss_rel := place_norm_nom_rel.
 
+; 29-4-2021 for the proper noun after it becomes a det
+; sort of modelled after _the_q_rel, mostly so it cannot unify with compos_spec_rel
+_pnspr_q_rel := def_explicit_q_rel & dofw_or_poss_or_def_q_rel.
 
