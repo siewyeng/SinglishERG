@@ -17,10 +17,10 @@ kacau_v1 := v_np_le &
    SYNSEM [ LKEYS.KEYREL.PRED "_kacau_v_1_rel",
             PHON.ONSET con ] ].
             
-go_vsing := v_np_dir_le &
- [ ORTH < "go" >,
-   SYNSEM [ LKEYS.KEYREL.PRED "_go_v_1_rel",
-            PHON.ONSET con ] ].
+;go_vsing := v_np_dir_le &
+; [ ORTH < "go" >,
+;   SYNSEM [ LKEYS.KEYREL.PRED "_go_v_1_rel",
+;            PHON.ONSET con ] ].
             
 ;;;Adverbials;;;
 
@@ -86,21 +86,34 @@ one_pr-rel := n_-_pr-rel-one_le &
    
 one_entity_n1 := n_poss_one_lexent &
   [ ORTH < "onesgg" >,
-    SYNSEM [ LKEYS.KEYREL.PRED thing_rel,
+    SYNSEM [ ;LKEYS.KEYREL.PRED "_generic_entity_rel",
     	     PHON.ONSET con ] ].
     	    
-school_nsing := n_-_place-nomod_le &
+;school_nsing := n_-_place-nomod_le &
+; [ ORTH < "school" >,
+;   SYNSEM [ LKEYS [ ALTKEYREL.PRED "place_n_rel",
+;   		    KEYREL.PRED "_school_n_1_rel" ],
+;            PHON.ONSET con ] ].
+
+school_adv := n_-_ad-pl-nomod_le &
  [ ORTH < "school" >,
-   SYNSEM [ LKEYS [ ALTKEYREL.PRED "place_n_rel",
-   		    KEYREL.PRED "_school_n_1_rel" ],
+   SYNSEM [ LKEYS [ ALT2KEYREL.PRED _school_p_rel,
+                    KEYREL.PRED place_n_rel ],
             PHON.ONSET con ] ].
             
-market_nsing := n_-_place-nomod_le &
+market_adv := n_-_ad-pl-nomod_le &
  [ ORTH < "market" >,
-   SYNSEM [ LKEYS [ ALTKEYREL.PRED "place_n_rel",
-   		    KEYREL.PRED "_market_n_1_rel" ],
+   SYNSEM [ LKEYS [ ALT2KEYREL.PRED _market_p_rel,
+                    KEYREL.PRED place_n_rel ],
             PHON.ONSET con ] ].
-         
+            
+;market_nsing := n_-_place-nomod_le &
+; [ ORTH < "market" >,
+;   SYNSEM [ LKEYS [ ALTKEYREL.PRED "place_n_rel",
+;   		    KEYREL.PRED "_market_n_1_rel" ],
+;            PHON.ONSET con ] ].
+
+; test         
 dir_adv1 := p_np_i-nnm_le &
  [ ORTH < "dir" >,
    SYNSEM [ LKEYS.KEYREL.PRED dir_rel,

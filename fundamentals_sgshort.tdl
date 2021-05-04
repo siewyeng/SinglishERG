@@ -138,6 +138,13 @@ one_nom_rel := super_reg_nom_rel.
 place_norm_nom_rel := reg_nom_rel & non_temp_nbar_rel & norm_nom_or_place_rel.
 norm_nom_rel := place_norm_nom_rel.
 place_nom_rel := place_norm_nom_rel.
+;;; not used anymore because there will be no more new lextype for 'go'
+; but instead, all the special locative nouns will have a new type that allows it to undergo 
+; the npmod_adv rule
+
+_school_p_rel := dir_or_state_nontemp_rel.
+
+
 ; 29-4-2021 - for the possessive 'one' so that it doesn't undergo the bnp rule
 one_poss_rel := place_norm_nom_rel.
 

@@ -503,8 +503,21 @@ basic_n_poss_one_lexent := nonc-hm & basic_noun_word &
 	     
 ;29-4-2021 - further specify values to prevent weird things like going through hd-hd_rnr-nb_c
 n_poss_one_lexent := basic_n_poss_one_lexent &
-  [ SYNSEM one_nocomp_synsem & [ LKEYS.KEYREL reg_nom_relation,
-  	     MODIFD.LPERIPH na ] ].
+  [ SYNSEM one_nocomp_synsem & [ 
+  	     MODIFD.LPERIPH na,
+  	     LOCAL [ CAT [ HEAD.MINORS.ALTMIN #altmin,
+  	     		    VAL.SPR < [ LOCAL.CAT.HEAD.MINORS.MIN #altmin ] > ],
+  	     	      CONT [ HOOK.INDEX #index,
+  	     	             RELS <! #keyrel & [ PRED def_explicit_q_rel,
+                                       ARG0 #index,
+                                       RSTR #rhand ],
+                              #altkeyrel !>,
+		      HCONS <! qeq & [ HARG #rhand,
+                                       LARG #phand ] !>,
+		      ICONS <! !> ] ],
+  	     LKEYS [ KEYREL #reg_nom_relation,
+  	     	     ALTKEYREL [ LBL #phand,
+  	     	     		  ARG1 #index ] ] ] ].
 
 ; 19-4-2021 to add 'one' as a possible SPEC value
 ; cannot just add SPEC to basic_n_proper_lexent 

@@ -929,26 +929,29 @@ basic_n-spr_proper_phrase := nonrs-hm & basic_noun_word &
 ; based on npadv_mod_phrase. need to put in the RELS later
 ; need to keep phrasal as the supertype even though this prevents it from going through the
 ; hspec_rule because otherwise it can keep undergoing this rule
+; 30-4-2021 take away #altmin from daughter. Instead I want altmin to be poss_rel
 		      
 basic_pn-spr_phrase := basic_unary_phrase & phrasal &
   [ SYNSEM [ LOCAL [ CAT [ HEAD det & [ MINORS [ MIN #named_np_rel,
                                        ALTMIN #altmin ] ],
                            VAL [ COMPS < >,
                                  SPEC < synsem & [ OPT -,
-                                 	   --MIN one_poss_rel ] > ] ],
+                                 	   --MIN one_poss_rel,
+                                 	   LOCAL.CONT.HOOK.INDEX #index ] > ] ],
                      CONT.HOOK.INDEX #index & nonconj_ref-ind ],
-             NONLOC.QUE #que,
+             NONLOC [ REL #rel,
+                      QUE #que ],
              PUNCT #punct ],
     ARGS < [ INFLECTD +,
              SYNSEM [ LOCAL [ CAT [ HEAD basic_noun & 
-                                         [ MINORS.MIN #altmin,
+                                         [ ;MINORS.MIN #altmin,
                                            PRD #prd,
 					   --BARE - ],
                                     VAL [ SPR *olist*,
                                           SUBJ *anti_list*,
 					  COMPS #comps & < > ],
 				    NEGPOL #negpol ],
-			      CONT.HOOK.INDEX #index & 
+			      CONT.HOOK.INDEX #soindex & 
 				              [ SORT #sort ],
 			      CONJ cnil,
                               CTXT #ctxt ],
@@ -961,7 +964,9 @@ basic_pn-spr_phrase := basic_unary_phrase & phrasal &
 ; to get rid of the sp-hd_n_c being the head of hd-cmp_u_c
 pn-spr_phrase := basic_pn-spr_phrase &
   [ SYNSEM [ LOCAL.CAT 
-	       [ HEAD [ MINORS.MIN _pnspr_q_rel,
+	       [ HEAD [ POSS +,
+	       	 MINORS [ MIN _pnspr_q_rel,
+	       		  ALTMIN poss_rel ],
 			MOD < > ],
 		 VAL [ SPR < anti_synsem_min >,
 		 	SPCMPS < > ] ],
