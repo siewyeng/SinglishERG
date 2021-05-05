@@ -17,10 +17,10 @@
 ; I'm doing this instead of allowing more locative nouns to undergo np_adv_c
 ; because I want things like "I go school" but not "I am school" with the PP 'school'
 ; SYNSEM is a newly created lextype
-v_np_dir_le := main_verb  & 
-"""
-Cmps NP (loc)              
-<ex>B goes school.
-"""
-  [ SYNSEM np_trans_goloc_verb &
-	   [ LOCAL.CAT [ VAL.COMPS < [ OPT - ] > ] ] ].
+;v_np_dir_le := main_verb  & 
+;"""
+;Cmps NP (loc)              
+;<ex>B goes school.
+;"""
+;  [ SYNSEM np_trans_goloc_verb &
+;	   [ LOCAL.CAT [ VAL.COMPS < [ OPT - ] > ] ] ].

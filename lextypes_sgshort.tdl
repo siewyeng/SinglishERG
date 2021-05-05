@@ -483,7 +483,6 @@ n_wh_pro_lexent := que_word & basic_pronoun_word &
 ;18-4-2021 - another attempt at 'one' like in "my one" or "Kim one"
 ; modelled after n_-_c_le (count nouns) and n_pp_c-nsnc-of_le and n_poss_pro_lexent
 ; to insert the right RELS later
-; [NOT IN USE NOW COS I CAN'T MAKE IT WORK]
 basic_n_poss_one_lexent := nonc-hm & basic_noun_word &
   [ SYNSEM nomod_synsem &
   	   [ LOCAL [ CAT [ HEAD noun & [ MINORS [ MIN one_poss_rel,
@@ -511,6 +510,9 @@ n_poss_one_lexent := basic_n_poss_one_lexent &
   	     	             RELS <! #keyrel & [ PRED def_explicit_q_rel,
                                        ARG0 #index,
                                        RSTR #rhand ],
+                                       [ PRED generic_entity_rel,
+                                         ARG0 #index,
+                                         LBL #phand ],
                               #altkeyrel !>,
 		      HCONS <! qeq & [ HARG #rhand,
                                        LARG #phand ] !>,
@@ -519,90 +521,77 @@ n_poss_one_lexent := basic_n_poss_one_lexent &
   	     	     ALTKEYREL [ LBL #phand,
   	     	     		  ARG1 #index ] ] ] ].
 
-; 19-4-2021 to add 'one' as a possible SPEC value
-; cannot just add SPEC to basic_n_proper_lexent 
-; because of noun_nocomp_synsem which inherits from ref_synsem
-basic_n-spr_proper_phrase := nonrs-hm & basic_noun_word &
-  [ SYNSEM [ LOCAL [ CAT [ HEAD.MINORS [ MIN named_np_rel,
-                                       ALTMIN abstract_q_rel ],
-                           VAL [ SPR < [ --MIN abstract_q_rel,
-                                         NONLOC.QUE #que ] >,
-                                 COMPS < >,
-                                 SPEC < synsem & [ OPT +,
-                                 	   --MIN one_nom_rel ] > ] ],
-                     CONT [ HOOK [ LTOP #ltop,
-                                   INDEX #index & nonconj_ref-ind ],
-                            RELS <! relation !>,
-                            HCONS <! !>,
-			    ICONS <! !> ],
-	             CONJ cnil,
-                     AGR #index ],
-             NONLOC.QUE #que,
-             LKEYS [ KEYREL named_nom_relation &
-                            [ PRED named_np_rel,
-                              LBL #ltop ],
-                     ALTKEYREL.PRED implicit_q_rel ] ] ].
-                     
-; 29-4-2021 for the pumping rule that takes a proper name and then changes it 
-; into a det that only takes the poss one as a SPEC
-basic_pn-spr_phrase := nonrs-hm &; basic_noun_word &
-  [ SYNSEM [ LOCAL [ CAT [ HEAD det & [ MINORS [ MIN #named_np_rel,
-                                       ALTMIN poss_rel ] ],
-                           VAL [ SPR < [ --MIN abstract_q_rel,
-                                         NONLOC.QUE #que ] >,
-                                 COMPS < >,
-                                 SPEC < synsem & [ OPT +,
-                                 	   --MIN one_nom_rel ] > ] ],
-                     CONT [ HOOK [ LTOP #ltop,
-                                   INDEX #index & nonconj_ref-ind ],
-                            RELS <! relation !>,
-                            HCONS <! !>,
-			    ICONS <! !> ],
-	             CONJ cnil,
-                     AGR #index ],
-             NONLOC.QUE #que,
-             LKEYS [ KEYREL named_nom_relation &
-                            [ PRED poss_rel,
-                              LBL #ltop ],
-                     ALTKEYREL.PRED implicit_q_rel ] ] ].               
+
+                                 
                      
 ; 23-4-2021 - for 'go'. Without prep_rel as --MIN
 ; and without [ ARG1 non_expl-ind ] in KEYREL
-basic_go_intrans_lt := arg1_subj_lt &
-  [ LOCAL [ CAT.VAL.COMPS 
-			< [ LOCAL [ CONT [ HOOK [ INDEX [ 
-                                                          --TPC #tpc ],
-                                                  XARG #index ] ] ] ],
-			  ... >,
-            CONT [ HOOK.INDEX #index & [ --TPC #tpc ],
-            	    RELS.LIST < #keyrel, ... >  ] ],
-    LKEYS.KEYREL #keyrel ].
+;basic_go_intrans_lt := arg1_subj_lt &
+; [ LOCAL [ CAT.VAL.COMPS 
+;			< [ LOCAL [ CONT [ HOOK [ INDEX [ 
+;                                                          --TPC #tpc ],
+;                                                 XARG #index ] ] ] ],
+;			  ... >,
+;            CONT [ HOOK.INDEX #index & [ --TPC #tpc ],
+;            	    RELS.LIST < #keyrel, ... >  ] ],
+;    LKEYS.KEYREL #keyrel ].
     
-go_intrans_lt := basic_go_intrans_lt &
-  [ LOCAL [ CAT.VAL.COMPS < [ LOCAL.CONT.HOOK.LTOP #ltop ], ... >,
-            CONT [ HOOK.LTOP #ltop,
-                   RELS <! relation !> ] ] ].
+;go_intrans_lt := basic_go_intrans_lt &
+;  [ LOCAL [ CAT.VAL.COMPS < [ LOCAL.CONT.HOOK.LTOP #ltop ], ... >,
+;            CONT [ HOOK.LTOP #ltop,
+;                   RELS <! relation !> ] ] ].
     
 ; 23-4-2021 - new lextype for 'go' that takes loc NP as COMPS
 ; sort of based on prep_intrans_dir_verb. Want to get the loc part but NP instead of PP COMPS
 ; arg1_subj_lt instead of prep_intrans_lt. (but may need to further specify links)
-np_trans_goloc_verb := np_trans_verb & ;twoarg_verb_synsem & two_arg_subst & go_intrans_lt &
-  [ LOCAL.CAT.VAL.COMPS < synsem & [ --MIN place_nom_rel ] > ].
+;np_trans_goloc_verb := np_trans_verb & ;twoarg_verb_synsem & two_arg_subst & go_intrans_lt &
+;  [ LOCAL.CAT.VAL.COMPS < synsem & [ --MIN place_nom_rel ] > ].
 
 ; the loc NP for 'go'
 ; made MIN place_norm_nom_rel but it seems like i need loc_nonsp_rel?!
 ; took away VAL.SPR.FIRST unexpressed so that it can take SPR
 ; for constructions like 'he go his school'
-n_-_place-nomod_le := noun_word &
+;n_-_place-nomod_le := noun_word &
+;"""
+;Intransitive mass nouns that are locations
+;<ex>He go [school].
+;"""
+;  [ SYNSEM mass_noun_onearg_synsem &
+;	   [ LOCAL [ CAT [ HEAD.MINORS [ MIN place_norm_nom_rel,
+;					 NORM norm_rel ],
+;			   VAL.SPR.FIRST #unexpressed ],
+;		     CONT.RELS <! reg_nom_relation !> ],
+;	     MODIFD lmod & [ LPERIPH na_or_+,
+;			     RPERIPH + ] ] ].
+
+; 4-5-2021 making a supertype so that can separate n_pp_c-of_le for kinship terms
+; and for the rest. In order to do things like "Kim father" with the pn-spr			     
+n_pp_c-of_super_le := norm_noun_empty_ppcomp_word &
 """
-Intransitive mass nouns that are locations
-<ex>He go [school].
+Cn, PP-of                        
+<ex>B's the winner of the race
 """
-  [ SYNSEM mass_noun_onearg_synsem &
-	   [ LOCAL [ CAT [ HEAD.MINORS [ MIN place_norm_nom_rel,
-					 NORM norm_rel ],
-			   VAL.SPR.FIRST #unexpressed ],
-		     CONT.RELS <! reg_nom_relation !> ],
-	     MODIFD lmod & [ LPERIPH na_or_+,
-			     RPERIPH + ] ] ].
+  [ SYNSEM [ LOCAL.CAT.HEAD.MINORS.MIN #diadic_nom_rel,
+             LKEYS [ KEYREL reg_diadic_nom_relation,
+                     --COMPKEY _of_p_sel_rel ] ] ].	
+
+; 5-5-2021 changed to LEX luk to allow SPR to be LEX - <ex>Kim one
+; this adds ambiguity                     
+basic_unsp_common_noun_synsem := basic_noun_synsem & lex_synsem &
+  [ LOCAL [ ARG-S < #spr . #comps >,
+	    CAT [ HEAD.MINORS.ALTMIN #spmin,
+                  VAL [ SPR < #spr & synsem &
+                              [ --MIN #spmin & quant_rel,
+                                LOCAL.CAT [ HEAD det,
+                                            VAL [ SUBJ < >,
+                                                  SPR *olist* ] ],
+                                LEX luk,
+				OPT - ] >,
+                        COMPS #comps,
+                        SPEC < anti_synsem_min > ] ] ] ]. 	
+                     
+n_pp_c-of_le := n_pp_c-of_super_le &
+  [ SYNSEM.LOCAL.CAT.HEAD.MINORS.MIN diadic_nom_rel ].
+n_kinship-of_le := n_pp_c-of_super_le &
+  [ SYNSEM.LOCAL.CAT.HEAD.MINORS.MIN kinship_nom_rel ].
 

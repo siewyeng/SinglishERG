@@ -107,6 +107,11 @@ market_adv := n_-_ad-pl-nomod_le &
                     KEYREL.PRED place_n_rel ],
             PHON.ONSET con ] ].
             
+father_n1 := n_kinship-of_le &
+ [ ORTH < "father" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_father_n_of_rel",
+            PHON.ONSET con ] ].
+            
 ;market_nsing := n_-_place-nomod_le &
 ; [ ORTH < "market" >,
 ;   SYNSEM [ LKEYS [ ALTKEYREL.PRED "place_n_rel",

@@ -142,7 +142,10 @@ place_nom_rel := place_norm_nom_rel.
 ; but instead, all the special locative nouns will have a new type that allows it to undergo 
 ; the npmod_adv rule
 
+; 4-5-2021 - new rel types for 'market' and 'school' lexical entries that can become
+; npadv_mod. <ex>I go school
 _school_p_rel := dir_or_state_nontemp_rel.
+_market_p_rel := dir_or_state_nontemp_rel.
 
 
 ; 29-4-2021 - for the possessive 'one' so that it doesn't undergo the bnp rule
@@ -151,4 +154,9 @@ one_poss_rel := place_norm_nom_rel.
 ; 29-4-2021 for the proper noun after it becomes a det
 ; sort of modelled after _the_q_rel, mostly so it cannot unify with compos_spec_rel
 _pnspr_q_rel := def_explicit_q_rel & dofw_or_poss_or_def_q_rel.
+
+;4-5-2021 for kinship terms
+diadic_nom_super_rel := reg_diadic_nom_rel & norm_nom_rel.
+diadic_nom_rel := diadic_nom_super_rel.
+kinship_nom_rel := diadic_nom_super_rel.
 

@@ -930,14 +930,17 @@ basic_n-spr_proper_phrase := nonrs-hm & basic_noun_word &
 ; need to keep phrasal as the supertype even though this prevents it from going through the
 ; hspec_rule because otherwise it can keep undergoing this rule
 ; 30-4-2021 take away #altmin from daughter. Instead I want altmin to be poss_rel
-		      
+; 4-5-2021 take away --MIN in SPEC for now, so that this can branch into two
+; types of phrases, one with SPEC 'one' and the other SPEC a kinship term	
+; 5-5-2021 added in C-CONT and RELS values to get the right indexing and MRS	      
 basic_pn-spr_phrase := basic_unary_phrase & phrasal &
   [ SYNSEM [ LOCAL [ CAT [ HEAD det & [ MINORS [ MIN #named_np_rel,
                                        ALTMIN #altmin ] ],
                            VAL [ COMPS < >,
                                  SPEC < synsem & [ OPT -,
-                                 	   --MIN one_poss_rel,
-                                 	   LOCAL.CONT.HOOK.INDEX #index ] > ] ],
+                                 	   ;--MIN one_poss_rel,
+                                 	   LOCAL.CONT.HOOK.INDEX #arg1index,
+                                 	   LKEYS.ALTKEYREL.LBL #plbl ] > ] ],
                      CONT.HOOK.INDEX #index & nonconj_ref-ind ],
              NONLOC [ REL #rel,
                       QUE #que ],
@@ -951,33 +954,57 @@ basic_pn-spr_phrase := basic_unary_phrase & phrasal &
                                           SUBJ *anti_list*,
 					  COMPS #comps & < > ],
 				    NEGPOL #negpol ],
-			      CONT.HOOK.INDEX #soindex & 
+			      CONT.HOOK.INDEX #arg2index & 
 				              [ SORT #sort ],
 			      CONJ cnil,
                               CTXT #ctxt ],
                       NONLOC #nonloc,
-		      PUNCT #punct ] ] > ].   		      
+		      PUNCT #punct ] ] >,
+     C-CONT [ HOOK [ LTOP #ltop,
+                     INDEX #index & nonconj_ref-ind ],
+              RELS <! [ PRED poss_rel,
+     			 LBL #plbl,
+     			 ARG0.E [ TENSE no_tense,
+                        ASPECT no_aspect ],
+               	 ARG1 #arg1index & full_ref-ind,
+               	 ARG2 #arg2index ] !>,
+              HCONS <! !>,
+     	      ICONS <! !>  ] ].   		      
 
 ; 29-4-2021 add in LEX + for the daughter so that it cannot undergo this rule again
 ; take away MOD value of [ LOCAL.CAT.VAL.SPR < synsem_min, ... > ]
 ; add in SPCMPS that is empty because of how head_spec_phrase works
 ; to get rid of the sp-hd_n_c being the head of hd-cmp_u_c
-pn-spr_phrase := basic_pn-spr_phrase &
+pn-spr_one_phrase := basic_pn-spr_phrase &
   [ SYNSEM [ LOCAL.CAT 
 	       [ HEAD [ POSS +,
 	       	 MINORS [ MIN _pnspr_q_rel,
 	       		  ALTMIN poss_rel ],
 			MOD < > ],
 		 VAL [ SPR < anti_synsem_min >,
-		 	SPCMPS < > ] ],
+		 	SPCMPS < >,
+		 	SPEC < [ --MIN one_poss_rel ] > ] ],
 	     MODIFD notmod_or_lmod & [ LPERIPH na ] ],
     ARGS < [ SYNSEM [ LOCAL.CAT.HEAD [ MINORS.MIN named_np_rel ],
-		      LEX + ] ] > ].
+		      LEX luk ] ] > ].
 		      
+pn-spr_kin_phrase := basic_pn-spr_phrase &
+  [ SYNSEM [ LOCAL.CAT 
+	       [ HEAD [ POSS +,
+	       	 MINORS [ MIN _pnspr_q_rel,
+	       		  ALTMIN poss_rel ],
+			MOD < > ],
+		 VAL [ SPR < anti_synsem_min >,
+		 	SPCMPS < >,
+		 	SPEC < [ --MIN kinship_nom_rel ] > ] ],
+	     MODIFD notmod_or_lmod & [ LPERIPH na ] ],
+    ARGS < [ SYNSEM [ LOCAL.CAT.HEAD [ MINORS.MIN named_np_rel ],
+		      LEX luk ] ] > ].
 ; 20-4-2021 - rule for converting pn into stuff that can take SPEC
 ; 29-4-2021 -  remove "norm_lex_rule" from supertype cos it will become a det
 ; in this pumping rule.
-pn_spec_rule := rule & pn-spr_phrase.
+pn_spec_one_rule := rule & pn-spr_one_phrase.
+pn_spec_kin_rule := rule & pn-spr_kin_phrase.
 		      
 gomod_rule := rule & gonp_mod_phrase.
 
