@@ -642,7 +642,9 @@ basic_one_np_spr_phrase := basic_unary_phrase &
 ; by making this require a SPR, and then another ilr above so it can be without the SPR
 ; just like mass nouns by taking away SPR HEAD adv and SPR --MIN just_only_deg_rel
 ; 24-3-2021 change SPR --MIN to be like regular count nouns
-; get the daughter with the right relpro using the MOD value of the dtr
+; get the daughter with the right relpro using the MOD value of the dtr 
+; 17-5-2021 add in PT onerelpro into INDEX of head daughter 
+; to prevent other phrases from becoming this hdn_onenp_c (but does not work)
 basic_pron_np_one_phrase := basic_unary_phrase &
   [ INFLECTD #infl,
     SYNSEM nonlex_or_lex_phr_synsem &
@@ -675,7 +677,7 @@ basic_pron_np_one_phrase := basic_unary_phrase &
                                    SPR < > ] ],
                        CONJ #conj & cnil,
                        CONT [ HOOK [ LTOP #nhand,
-                                     INDEX #index ] ],
+                                     INDEX #index & [ PT onerelpro ] ] ],
 		       CTXT #ctxt ],
                LEX #lex,				     
                NONLOC #nonloc,

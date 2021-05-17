@@ -594,4 +594,30 @@ n_pp_c-of_le := n_pp_c-of_super_le &
   [ SYNSEM.LOCAL.CAT.HEAD.MINORS.MIN diadic_nom_rel ].
 n_kinship-of_le := n_pp_c-of_super_le &
   [ SYNSEM.LOCAL.CAT.HEAD.MINORS.MIN kinship_nom_rel ].
+  
+; 16-5-2021 for sentence final particles
+; modelled after basic_adv_int_vp_lexent
+; add in MOD LOCAL scopal_mod to prevent it from undegoing hd-aj_int-unsl_c
+basic_adv_s_lexent := basic_adverb_word &
+  [ SYNSEM.LOCAL.CAT.HEAD adv & 
+                          [ MINORS.MIN adv_rel,
+                            MOD < [ LOCAL scopal_mod &
+                            		[ CAT.HEAD v_or_g_or_a_or_p ],
+                                    MODIFD [ RPERIPH na_or_- ] ] > ] ].
+
+; 17-5-2021 add in SPR and SPEC < > for now to stop overgeneration
+; add in null SUBJ for MOD value (for now) before we figure out how to 
+; treat null subjects in Singlish                                    
+sfp_-_i-s_le := basic_adv_s_lexent & 
+"""
+sentence-final particle
+<ex> Stop it ah
+"""
+  [ SYNSEM.LOCAL.CAT [ HEAD.MOD < [ LOCAL.CAT.VAL [ COMPS < >,
+  						      SUBJ < > ] ] >,
+  			VAL [ SPEC < >,
+  			      SPR < >,
+  			      COMPS < >,
+  			      SUBJ < > ] ] ].
+
 

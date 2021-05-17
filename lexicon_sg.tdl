@@ -29,6 +29,11 @@ kaypo_a1 := aj_-_i_le &
    SYNSEM [ LKEYS.KEYREL.PRED "_kaypo_a_1_rel",
             PHON.ONSET con ] ].
 
+seow_a1 := aj_-_i_le &
+ [ ORTH < "seow" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_seow_a_1_rel",
+            PHON.ONSET con ] ].
+
 ;agak_adv1 := av_-_dg-jo_le &
 ; [ ORTH < "agak" >,
 ;   SYNSEM [ LKEYS.KEYREL.PRED "_agak_rel",
@@ -119,11 +124,17 @@ father_n1 := n_kinship-of_le &
 ;            PHON.ONSET con ] ].
 
 ; test         
-dir_adv1 := p_np_i-nnm_le &
- [ ORTH < "dir" >,
-   SYNSEM [ LKEYS.KEYREL.PRED dir_rel,
-            PHON.ONSET voc ] ].
+;dir_adv1 := p_np_i-nnm_le &
+; [ ORTH < "dir" >,
+;   SYNSEM [ LKEYS.KEYREL.PRED dir_rel,
+;            PHON.ONSET voc ] ].
 
+;;;Particles;;;
+ah_sfp := sfp_-_i-s_le &
+ [ ORTH < "ah" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_ah_particle_rel",
+            PHON.ONSET con ] ].
+            
 ;;;Removed Items;;;
 already_adv3 := never_unify_le & [ ORTH < "_never_unify_" > ].
 
