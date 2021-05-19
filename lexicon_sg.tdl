@@ -130,9 +130,9 @@ father_n1 := n_kinship-of_le &
 ;            PHON.ONSET voc ] ].
 
 ;;;Particles;;;
-ah_sfp := sfp_-_i-s_le &
- [ ORTH < "ah" >,
-   SYNSEM [ LKEYS.KEYREL.PRED "_ah_particle_rel",
+sia_sfp := sfp_-_i-s_le &
+ [ ORTH < "sia" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_sia_particle_rel",
             PHON.ONSET con ] ].
             
 ;;;Removed Items;;;

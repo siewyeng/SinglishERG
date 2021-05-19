@@ -601,8 +601,8 @@ n_kinship-of_le := n_pp_c-of_super_le &
 basic_adv_s_lexent := basic_adverb_word &
   [ SYNSEM.LOCAL.CAT.HEAD adv & 
                           [ MINORS.MIN adv_rel,
-                            MOD < [ LOCAL scopal_mod &
-                            		[ CAT.HEAD v_or_g_or_a_or_p ],
+                            MOD < [ LOCAL intersective_mod &
+                            		[ CAT.HEAD v_or_a ],
                                     MODIFD [ RPERIPH na_or_- ] ] > ] ].
 
 ; 17-5-2021 add in SPR and SPEC < > for now to stop overgeneration
@@ -614,7 +614,8 @@ sentence-final particle
 <ex> Stop it ah
 """
   [ SYNSEM.LOCAL.CAT [ HEAD.MOD < [ LOCAL.CAT.VAL [ COMPS < >,
-  						      SUBJ < > ] ] >,
+  						      SUBJ *olist*,
+  						      SPR *olist* ] ] >,
   			VAL [ SPEC < >,
   			      SPR < >,
   			      COMPS < >,
