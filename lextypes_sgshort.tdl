@@ -483,10 +483,10 @@ n_wh_pro_lexent := que_word & basic_pronoun_word &
 ;18-4-2021 - another attempt at 'one' like in "my one" or "Kim one"
 ; modelled after n_-_c_le (count nouns) and n_pp_c-nsnc-of_le and n_poss_pro_lexent
 ; to insert the right RELS later
+; 20-5-2021 removed all ALTKEYREL to get rid of extra RELS
 basic_n_poss_one_lexent := nonc-hm & basic_noun_word &
   [ SYNSEM nomod_synsem &
-  	   [ LOCAL [ CAT [ HEAD noun & [ MINORS [ MIN one_poss_rel,
-						   ALTMIN #poss_rel ] ],
+  	   [ LOCAL [ CAT [ HEAD noun & [ MINORS [ MIN one_poss_rel ] ],
                            VAL [ COMPS < >,
                            	  SUBJ < >,
 				  SPR  < #spr & synsem &
@@ -494,9 +494,7 @@ basic_n_poss_one_lexent := nonc-hm & basic_noun_word &
                                          OPT -,
                                          LEX #lex ] >,
 				  SPEC < anti_synsem_min > ] ] ],
-	     LKEYS [ KEYREL #keyrel,
-                     ALTKEYREL #altkeyrel,
-                     ALT2KEYREL #alt2keyrel ],
+	     LKEYS [ KEYREL #keyrel ],
              NONLOC.QUE <! !>,
 	     MODIFD notmod ] ].
 	     
@@ -512,14 +510,11 @@ n_poss_one_lexent := basic_n_poss_one_lexent &
                                        RSTR #rhand ],
                                        [ PRED generic_entity_rel,
                                          ARG0 #index,
-                                         LBL #phand ],
-                              #altkeyrel !>,
+                                         LBL #phand ] !>,
 		      HCONS <! qeq & [ HARG #rhand,
                                        LARG #phand ] !>,
 		      ICONS <! !> ] ],
-  	     LKEYS [ KEYREL #reg_nom_relation,
-  	     	     ALTKEYREL [ LBL #phand,
-  	     	     		  ARG1 #index ] ] ] ].
+  	     LKEYS [ KEYREL #reg_nom_relation ] ] ].
 
 
                                  
@@ -598,27 +593,49 @@ n_kinship-of_le := n_pp_c-of_super_le &
 ; 16-5-2021 for sentence final particles
 ; modelled after basic_adv_int_vp_lexent
 ; add in MOD LOCAL scopal_mod to prevent it from undegoing hd-aj_int-unsl_c
-basic_adv_s_lexent := basic_adverb_word &
-  [ SYNSEM.LOCAL.CAT.HEAD adv & 
-                          [ MINORS.MIN adv_rel,
-                            MOD < [ LOCAL intersective_mod &
-                            		[ CAT.HEAD v_or_a ],
-                                    MODIFD [ RPERIPH na_or_- ] ] > ] ].
+; changed to intersective_mod instead
+; 21-5-2021 change to be the head that takes a sentence as a complement
+
+; same as basic_adverb_word except without mcna
+basic_particle_word := noncrs-nab &
+   [ SYNSEM basic_lex_synsem &
+	    [ LOCAL.CONT [ HOOK.LTOP #ltop,
+			   RELS.LIST < #keyrel, ... > ],
+	      PUNCT.PNCTPR ppair,
+              LKEYS.KEYREL #keyrel & [ LBL #ltop ] ] ].
+              
+;basic_adv_s_lexent := basic_adverb_word &
+;  [ SYNSEM.LOCAL.CAT.HEAD adv & 
+;                          [ MINORS.MIN adv_rel,
+;                            MOD < [ LOCAL intersective_mod &
+;                            		[ CAT.HEAD v_or_a ],
+;                                    MODIFD [ RPERIPH na_or_- ] ] > ] ].
+
+; 23-5-2021 add in POSTHD + to prevent hd-aj_scp-xp_c with the sfp                                    
+basic_part_s_lexent := basic_particle_word &
+  [ SYNSEM.LOCAL.CAT [ HEAD basic_particle & 
+                           [ MINORS.MIN particle_rel ],
+                       POSTHD +,
+                       VAL.COMPS < [ LOCAL.CAT.HEAD v_or_a ] > ] ].                                    
 
 ; 17-5-2021 add in SPR and SPEC < > for now to stop overgeneration
-; add in null SUBJ for MOD value (for now) before we figure out how to 
-; treat null subjects in Singlish                                    
-sfp_-_i-s_le := basic_adv_s_lexent & 
+; add in olist SUBJ for MOD value (for now) before we figure out how to 
+; treat null subjects in Singlish                 
+; 23-5-2021 add in LEX - to prevent in from taking a word as COMPS? 
+; add in MOD anti_synsem_min to prevent it from taking cl_rc-inf-nwh_c
+; as a complement?                  
+sfp_-_i-s_le := basic_part_s_lexent & 
 """
 sentence-final particle
 <ex> Stop it ah
 """
-  [ SYNSEM.LOCAL.CAT [ HEAD.MOD < [ LOCAL.CAT.VAL [ COMPS < >,
-  						      SUBJ *olist*,
-  						      SPR *olist* ] ] >,
-  			VAL [ SPEC < >,
+  [ SYNSEM.LOCAL.CAT [ HEAD.MOD < anti_synsem_min >, 
+  		        VAL [ SPEC < >,
   			      SPR < >,
-  			      COMPS < >,
+  			      COMPS < [ LOCAL.CAT.VAL [ COMPS < >,
+  						      SUBJ *olist*,
+  						      SPR *olist* ],
+  					 LEX - ] >,
   			      SUBJ < > ] ] ].
 
 

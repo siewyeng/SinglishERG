@@ -25,7 +25,7 @@ root_lepak := phrase &
 root_gen_lepak := phrase &
   [ INFLECTD +,
     SYNSEM basic_root_phr_synsem &
-             [ LOCAL [ CAT [ HEAD v_or_a_or_p &
+             [ LOCAL [ CAT [ HEAD v_or_a_or_p_or_part &
 				[ TAM indic_tam ],
 			     MC + ],
 		       CONT.ICONS.LIST *nonfocuslist* ],

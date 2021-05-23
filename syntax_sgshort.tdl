@@ -645,6 +645,7 @@ basic_one_np_spr_phrase := basic_unary_phrase &
 ; get the daughter with the right relpro using the MOD value of the dtr 
 ; 17-5-2021 add in PT onerelpro into INDEX of head daughter 
 ; to prevent other phrases from becoming this hdn_onenp_c (but does not work)
+; 20-5-2021 add in HS-LEX in ARGS so that S formed via hd-aj_scp_c cannot undergo this
 basic_pron_np_one_phrase := basic_unary_phrase &
   [ INFLECTD #infl,
     SYNSEM nonlex_or_lex_phr_synsem &
@@ -672,6 +673,7 @@ basic_pron_np_one_phrase := basic_unary_phrase &
              [ LOCAL [ CAT [ HEAD v_or_a & 
              			  [ MOD.FIRST.--SIND.PT onerelpro ],
                              HC-LEX #hclex,
+                             HS-LEX +,
                              VAL [ SUBJ < >,
                                    COMPS < >,
                                    SPR < > ] ],
@@ -1002,6 +1004,72 @@ pn-spr_kin_phrase := basic_pn-spr_phrase &
 	     MODIFD notmod_or_lmod & [ LPERIPH na ] ],
     ARGS < [ SYNSEM [ LOCAL.CAT.HEAD [ MINORS.MIN named_np_rel ],
 		      LEX luk ] ] > ].
+		      
+; 23-5-2021 - comp_head for the opposite of hd-cmp_u_c but only for particles taking
+; sentences as complements
+basic_comp_or_marker_head_phrase := basic_binary_phrase &
+  [ SYNSEM canonical_synsem &
+	   [ LOCAL [ CAT [ MC #mc,
+			   VAL [ SUBJ #subj,
+				 SPR #spr,
+                                 SPEC #spec,
+                                 SPCMPS #spcomps ],
+			   NEGPOL #negpol ] ],
+	     MODIFD #modifd,
+             PUNCT.PNCTPR #ppair ],
+    ARGS < [ SYNSEM.PUNCT.PNCTPR #ppair ],
+    	   [ SYNSEM [ LOCAL [ CAT [ HEAD subst_or_func,
+				    MC #mc,
+				    VAL [ SUBJ #subj,
+					  SPR #spr,
+					  SPEC #spec,
+					  SPCMPS #spcomps ],
+				    NEGPOL #negpol ] ],
+		      MODIFD #modifd ] ] > ].
+
+comp_or_marker_head_phrase := basic_comp_or_marker_head_phrase &
+  [ SYNSEM.LOCAL [ CAT.VAL.COMPS #comps,
+		   CTXT #ctxt ],
+    ARGS < [ SYNSEM #synsem ], 
+    	   [ SYNSEM.LOCAL [ CAT.VAL.COMPS < #synsem . #comps >,
+	                    CTXT #ctxt ] ] > ].
+
+; 23-5-2021 almost the same as basic_head_comp_phrase but reversed 
+; and MC value of mother coindexed with that of NH-DTR		      
+basic_comp_head_phrase := basic_comp_or_marker_head_phrase & head_final &
+			  binary_punct_phrase & head_valence_phrase &
+			  head_compositional &
+  [ SYNSEM nonlex_synsem &
+           [ LOCAL [ CAT [ POSTHD #ph,
+                           HS-LEX #hslex,
+                           MC #mc ],
+		     CONJ cnil ],
+	     MODIFD #modifd,
+	     LEX #lex ],
+    INFLECTD #infl,
+    HD-DTR [ INFLECTD na_or_+ & #infl,
+             SYNSEM [ LOCAL [ CAT [ POSTHD #ph,
+				    HC-LEX #lex,
+				    HS-LEX #hslex ] ],
+		      MODIFD #modifd,
+                      PUNCT [ LPUNCT comma_or_hyphen_or_pair_or_no_punct,
+                              RPUNCT comma_or_rbc_or_colon_or_pair_or_no_punct,
+                              PNCTPR ppair ] ] ],
+    NH-DTR [ INFLECTD +,
+	     SYNSEM.LOCAL.CAT [ MC #mc,
+	     			 NH-LEX #lex ] ],
+    C-CONT [ RELS <! !>,
+	     HCONS <! !>,
+	     ICONS <! !> ] ].
+
+;limit the hd-dtr to only be particles	   	      
+comp_head_phrase := basic_comp_head_phrase & comp_or_marker_head_phrase &
+  [ HD-DTR [ SYNSEM.LOCAL.CAT.HEAD basic_particle &
+  				[ MINORS.MIN particle_rel ] ] ].
+
+; 23-5-2021 #totest whether the binary_rule_right_to_left should be used instead  				
+comph_rule := binary_rule_left_to_right & comp_head_phrase.  					      
+	      
 ; 20-4-2021 - rule for converting pn into stuff that can take SPEC
 ; 29-4-2021 -  remove "norm_lex_rule" from supertype cos it will become a det
 ; in this pumping rule.

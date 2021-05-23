@@ -112,6 +112,49 @@ root_sg_synsem := basic_root_synsem &
 	    CONJ cnil ],
     PUNCT.RPUNCT comma_or_clause_or_pair_or_no_punct &
 	         [ PSF #pred ] ].
+	         
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Head types
+
+; 20-5-2021 add new head type for the sentence final particles
+; have it under comp?
+n_or_p_or_v_or_adv_or_part := n_p_v_adv_adj_comp.
+n_or_p_or_v_or_adv := n_or_p_or_v_or_adv_or_part.
+;n_or_p_or_v := n_or_p_or_v_or_adv & subst.
+
+p_or_adv_or_dadv_or_part := head.
+;p_or_adv_or_dadv := p_or_adv_or_dadv_or_part.
+
+v_or_a_or_p_or_part := non_noun.
+v_or_a_or_p := v_or_a_or_p_or_part.
+verbal_or_a_or_p_or_part := non_noun.
+verbal_or_a_or_p := verbal_or_a_or_p_or_part.
+
+n_or_v_or_a_or_part := subst.
+n_or_v_or_a := n_or_v_or_a_or_part.
+n_or_v_or_part := n_or_v_or_a_or_part.
+
+v_or_g_or_a_or_p_or_part := subst.
+v_or_g_or_a_or_n_or_part := subst.
+v_or_g_or_a_or_n_or_p := subst.
+
+v_or_g_or_a_or_p := v_or_g_or_a_or_n_or_p & v_or_g_or_a_or_p_or_part.
+v_or_g_or_a_or_n := v_or_g_or_a_or_n_or_p & v_or_g_or_a_or_n_or_part.
+v_or_g_or_a_or_part := v_or_g_or_a_or_p_or_part & v_or_g_or_a_or_n_or_part.
+
+v_or_a_or_part := v_or_g_or_a_or_part & n_or_v_or_a_or_part & v_or_a_or_p_or_part.
+v_or_a := v_or_g_or_a & n_or_v_or_a & verbal_or_a_or_p & v_or_a_or_part.
+a_or_part := v_or_a_or_part.
+adj_or_intadj := v_or_a & a_or_p & adverbee & nominal_or_verbal &
+		 a_or_adv & intsort & a_or_part.
+
+
+
+basic_particle := a_or_part & mobile.
+; Does not inherit from comp_spec_abe because it cannot be the target of comp. deg. specifiers
+particle := basic_particle &
+  [ CARDINAL - ].
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; pred sorts
@@ -159,4 +202,7 @@ _pnspr_q_rel := def_explicit_q_rel & dofw_or_poss_or_def_q_rel.
 diadic_nom_super_rel := reg_diadic_nom_rel & norm_nom_rel.
 diadic_nom_rel := diadic_nom_super_rel.
 kinship_nom_rel := diadic_nom_super_rel.
+
+; 23-5-2021 add in particle_rel as a sister of adv_rel
+particle_rel := abstr_adv_dim_rel.
 
