@@ -970,6 +970,7 @@ pn-spr_kin_phrase := basic_pn-spr_phrase &
 		      
 ; 23-5-2021 - comp_head for the opposite of hd-cmp_u_c but only for particles taking
 ; sentences as complements
+; 31-5-2021 change to take MC value from non head daughter (the sentence)
 basic_comp_or_marker_head_phrase := basic_binary_phrase &
   [ SYNSEM canonical_synsem &
 	   [ LOCAL [ CAT [ MC #mc,
@@ -980,9 +981,9 @@ basic_comp_or_marker_head_phrase := basic_binary_phrase &
 			   NEGPOL #negpol ] ],
 	     MODIFD #modifd,
              PUNCT.PNCTPR #ppair ],
-    ARGS < [ SYNSEM.PUNCT.PNCTPR #ppair ],
+    ARGS < [ SYNSEM [ LOCAL.CAT.MC #mc,
+    		      PUNCT.PNCTPR #ppair ] ],
     	   [ SYNSEM [ LOCAL [ CAT [ HEAD subst_or_func,
-				    MC #mc,
 				    VAL [ SUBJ #subj,
 					  SPR #spr,
 					  SPEC #spec,

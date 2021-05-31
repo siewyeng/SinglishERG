@@ -597,10 +597,12 @@ n_kinship-of_le := n_pp_c-of_super_le &
 ; 21-5-2021 change to be the head that takes a sentence as a complement
 
 ; same as basic_adverb_word except without mcna
+; 31-5-2021 add in MC - to stop it from joining as the head in a hd-cmp
 basic_particle_word := noncrs-nab &
    [ SYNSEM basic_lex_synsem &
-	    [ LOCAL.CONT [ HOOK.LTOP #ltop,
-			   RELS.LIST < #keyrel, ... > ],
+	    [ LOCAL [ CONT [ HOOK.LTOP #ltop,
+			     RELS.LIST < #keyrel, ... > ],
+		       CAT.MC - ],
 	      PUNCT.PNCTPR ppair,
               LKEYS.KEYREL #keyrel & [ LBL #ltop ] ] ].
               
