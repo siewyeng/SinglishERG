@@ -40,6 +40,33 @@ in 'It beautiful or beautiful'. BUT it does not work because the daughters are P
     INFLECTD +,
     LNAME "Sⱼ" ].
 
+; 31-5-2021 - for particle headed sentences. to change label from XP
+s-particle := label &
+"""
+<ex> He is so beautiful sia.
+"""
+  [ SYNSEM.LOCAL [ CAT [ HEAD basic_particle &
+			      [ PRD - ],
+                         VAL  [ SUBJ *olist*,
+                                SPR *olist*,
+                                COMPS < > ],
+			 MC + ],
+		   CONJ cnil ],
+    INFLECTD +,
+    LNAME "Sₚₐᵣₜ" ].
+
+; 31-5-2021 - for particles to change label from FRG
+particle := label &
+"""
+<ex> He is so beautiful (sia).
+"""
+  [ SYNSEM.LOCAL [ CAT [ HEAD basic_particle &
+			      [ PRD - ],
+                         VAL  [ COMPS < synsem_min2 > ],],
+		   CONJ cnil ],
+    INFLECTD +,
+    LNAME "SFP" ].
+
 slash := meta &
   [ SYNSEM.NONLOC.SLASH 1-dlist &
 			   [ LIST < local_basic > ],
