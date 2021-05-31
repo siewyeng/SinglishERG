@@ -110,6 +110,14 @@ Change proper noun into a det for kinship terms
  """
    [ RNAME cph ].
   
+cmp-hd_sfpi_c := comph_sfpi_rule &
+"""
+Complement-head that is only used on particle1__rel particles 
+and particle-headed sentences 
+
+<ex>The person admires me lah hah. 
+"""
+  [ RNAME cphp ].  
 ;;;;;;;;;;;;; the never unifies ;;;;;;;;;;;;;;;;;;
   
 flr-hd_rel-fin_c := never_unify_rule. 

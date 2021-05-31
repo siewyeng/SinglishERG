@@ -590,44 +590,7 @@ filler_head_finprp_np_rel_rule := basic_filler_head_finprp_rel_rule &
     				 VAL.SPR *olist*,
     				 POSTHD - ] ],
 	   [ SYNSEM.NONLOC.SLASH <! [ CAT.HEAD noun_or_nomger,
-				      CONT.HOOK.XARG #xarg ] !> ] > ].
-
-; 22-3-2021 instead of going straight to the bare one np phrase,
-; add in the generic entity first while the phrase still requires the SPR
-; so now the one_np_rule will link to this instead
-basic_one_np_spr_phrase := basic_unary_phrase &
-  [ SYNSEM [ LOCAL [ CAT [ HEAD noun & [ MOD < > ],
-  			    VAL [ SUBJ < >,
-  			    	  COMPS < >,
-  			    	  SPR < [ LOCAL.AGR [ PNG.PN 3s,
-  						   DIV + ] ] > ],
-                           MC na,
-			    NEGPOL - ],
-                     AGR ref-ind,
-                     CONJ #conj,
-                     CONT.HOOK.INDEX conj_ref-ind,
-		      CTXT #ctxt ],
-             NONLOC #nonloc,
-	     LEX #lex,
-             MODIFD.RPERIPH +,
-	     PUNCT #punct ],
-    ARGS < [ SYNSEM.LOCAL.CAT [ HEAD v_or_a,
-    				 VAL [ SUBJ < >,
-    				       COMPS < > ] ],
-    	      ARGS < [ SYNSEM.LOCAL.CAT.HEAD v_or_a ], 
-			[ SYNSEM.LOCAL.CAT.HEAD.MINORS.MIN pron_nonlocal_one_rel ] > ] >,
-    C-CONT [ HOOK [ INDEX #nindex ],
-             RELS <! [ LBL #splbl,
-                       PRED quant_rel,
-                       ARG0 #index,
-                       RSTR #rhand,
-		       CFROM #from, CTO #to ],
-		       [ PRED generic_entity_rel,
-		         ARG0 #nindex & [ PNG.PN 3 ] ] !>,
-             HCONS <! qeq &
-		     [ HARG #rhand,
-		       LARG #nhand ] !>,
-	     ICONS <! !> ] ].			
+				      CONT.HOOK.XARG #xarg ] !> ] > ].		
 
 ; 9-3-2021 - a pumping rule that takes an RC with 'one' as the relpro and turns it into an NP
 ; or N that can take spr 'the'
@@ -1065,10 +1028,19 @@ basic_comp_head_phrase := basic_comp_or_marker_head_phrase & head_final &
 ;limit the hd-dtr to only be particles	   	      
 comp_head_phrase := basic_comp_head_phrase & comp_or_marker_head_phrase &
   [ HD-DTR [ SYNSEM.LOCAL.CAT.HEAD basic_particle &
-  				[ MINORS.MIN particle_rel ] ] ].
+  				[ MINORS.MIN particle_rel ] ],
+    NH-DTR.SYNSEM.LOCAL.CAT.HEAD v_or_a ].
+  				
+; 29-5-2021 - for the new cmp-hd that is only for particles taking other particle headed stuff
+comp_head_sfpi_phrase :=  basic_comp_head_phrase & comp_or_marker_head_phrase &
+  [ HD-DTR [ SYNSEM.LOCAL.CAT.HEAD basic_particle &
+  				[ MINORS.MIN particle1_rel ] ],
+    NH-DTR [ SYNSEM.LOCAL.CAT.HEAD basic_particle &
+  				[ MINORS.MIN particle2_super_rel ]] ].
 
 ; 23-5-2021 #totest whether the binary_rule_right_to_left should be used instead  				
-comph_rule := binary_rule_left_to_right & comp_head_phrase.  					      
+comph_rule := binary_rule_left_to_right & comp_head_phrase. 
+comph_sfpi_rule := binary_rule_left_to_right & comp_head_sfpi_phrase.  					      
 	      
 ; 20-4-2021 - rule for converting pn into stuff that can take SPEC
 ; 29-4-2021 -  remove "norm_lex_rule" from supertype cos it will become a det

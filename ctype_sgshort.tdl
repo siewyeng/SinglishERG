@@ -9,6 +9,7 @@ onp := ctype. ;; hdn_onenp_c
 ;ngom := unary_ctype. ;; np_gomod_c
 
 cph := ctype & [ -CTYPE- "CMP-HD" ]. ;; cmp-hd_u_c
+cphp := ctype & [ -CTYPE- "CMP-HD" ]. ;; cmp-hd_sfpi_c
 
 frnb := never_unify_rel. ;; np_nb-frg_c
 fhhf := flr-hd. ;; hd-flr_rel-fin_c

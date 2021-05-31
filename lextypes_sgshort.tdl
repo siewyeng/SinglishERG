@@ -611,12 +611,16 @@ basic_particle_word := noncrs-nab &
 ;                            		[ CAT.HEAD v_or_a ],
 ;                                    MODIFD [ RPERIPH na_or_- ] ] > ] ].
 
-; 23-5-2021 add in POSTHD + to prevent hd-aj_scp-xp_c with the sfp                                    
+; 23-5-2021 add in POSTHD + to prevent hd-aj_scp-xp_c with the sfp    
+; added MC - so that when there's something like "sia we swim" by hd-cmp, 
+; the root condition won't alllow it
+; 31-5-2021 take away v_or_a in COMPS to allow it to take particles also 
+; (specified by rule)                                
 basic_part_s_lexent := basic_particle_word &
   [ SYNSEM.LOCAL.CAT [ HEAD basic_particle & 
                            [ MINORS.MIN particle_rel ],
                        POSTHD +,
-                       VAL.COMPS < [ LOCAL.CAT.HEAD v_or_a ] > ] ].                                    
+                       VAL.COMPS < [ LOCAL.CAT.HEAD #v_or_a ] > ] ].                                    
 
 ; 17-5-2021 add in SPR and SPEC < > for now to stop overgeneration
 ; add in olist SUBJ for MOD value (for now) before we figure out how to 
@@ -637,5 +641,12 @@ sentence-final particle
   						      SPR *olist* ],
   					 LEX - ] >,
   			      SUBJ < > ] ] ].
-
+  			      
+; 30-5-2021 add in particles according to my hierarchy
+; where type 1 can take all the rest as COMPS, type 2 can only take type 3...
+sfp_type1_le := sfp_-_i-s_le &
+  [ SYNSEM.LOCAL.CAT.HEAD.MINORS.MIN particle1_rel ].
+  
+sfp_type2_le := sfp_-_i-s_le &
+  [ SYNSEM.LOCAL.CAT.HEAD.MINORS.MIN particle2_rel ].
 
