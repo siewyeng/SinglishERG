@@ -112,12 +112,30 @@ Change proper noun into a det for kinship terms
   
 cmp-hd_sfpi_c := comph_sfpi_rule &
 """
-Complement-head that is only used on particle1__rel particles 
+Complement-head that is only used on particle1_rel particles 
 and particle-headed sentences 
 
 <ex>The person admires me lah hah. 
 """
   [ RNAME cphp ].  
+  
+cmp-hd_sfp2b_c := comph_sfp2b_rule &
+"""
+Complement-head that is only used on particle2b_rel particles 
+and particle-headed sentences. Cannot be followed by sfpi
+
+<ex>The person admires me one sia. 
+"""
+  [ RNAME cphb ].  
+  
+cmp-hd_sfp2a_c := comph_sfp2a_rule &
+"""
+Complement-head that is only used on particle2a_rel particles 
+and particle-headed sentences. Can be followed by sfpi
+
+<ex>The person admires me one lah. 
+"""
+  [ RNAME cpha ]. 
 ;;;;;;;;;;;;; the never unifies ;;;;;;;;;;;;;;;;;;
   
 flr-hd_rel-fin_c := never_unify_rule. 

@@ -10,6 +10,8 @@ onp := ctype. ;; hdn_onenp_c
 
 cph := ctype & [ -CTYPE- "CMP-HD" ]. ;; cmp-hd_u_c
 cphp := ctype & [ -CTYPE- "CMP-HD" ]. ;; cmp-hd_sfpi_c
+cphb := ctype & [ -CTYPE- "CMP-HD" ]. ;; cmp-hd_sfp2b_c
+cpha := ctype & [ -CTYPE- "CMP-HD" ]. ;; cmp-hd_sfp2a_c
 
 frnb := never_unify_rel. ;; np_nb-frg_c
 fhhf := flr-hd. ;; hd-flr_rel-fin_c

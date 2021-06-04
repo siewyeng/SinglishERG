@@ -135,7 +135,7 @@ sia_sfp := sfp_type2b_le &
    SYNSEM [ LKEYS.KEYREL.PRED "_sia_particle_rel",
             PHON.ONSET con ] ].
             
-meh_55_sfp := sfp_type2b_le &
+meh_55_sfp := sfp_qtype2b_le &
  [ ORTH < "meh" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_meh_particle_rel",
             PHON.ONSET con ] ].            
@@ -150,7 +150,7 @@ hah2_sfp := sfp_type1_le &
    SYNSEM [ LKEYS.KEYREL.PRED "_hah2_particle_rel",
             PHON.ONSET con ] ].
             
-hor2_sfp := sfp_type1_le &
+hor2_sfp := sfp_qtype1_le &
  [ ORTH < "hor" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_hor2_particle_rel",
             PHON.ONSET con ] ].            
@@ -168,7 +168,12 @@ lah4_sfp := sfp_type2a_le &
 what_sfp := sfp_type2a_le &
  [ ORTH < "what" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_what_particle_rel",
-            PHON.ONSET con ] ].                       
+            PHON.ONSET con ] ].
+            
+one_sfp := sfp_type3_le &
+ [ ORTH < "onesg" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_one_particle_rel",
+            PHON.ONSET con ] ].                                       
             
 ;;;Removed Items;;;
 already_adv3 := never_unify_le & [ ORTH < "_never_unify_" > ].

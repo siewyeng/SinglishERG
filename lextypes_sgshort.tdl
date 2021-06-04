@@ -660,13 +660,22 @@ sentence-final particle
   			      
 ; 30-5-2021 add in particles according to my hierarchy
 ; where type 1 can take all the rest as COMPS, type 2 can only take type 3...
+
 sfp_type1_le := sfp_-_i-s_le &
   [ SYNSEM.LOCAL.CAT.HEAD.MINORS.MIN particle1_rel ].
+  
+sfp_qtype1_le := sfp_type1_le &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.SF ques ].   
   
 sfp_type2a_le := sfp_-_i-s_le &
   [ SYNSEM.LOCAL.CAT.HEAD.MINORS.MIN particle2_rel ].
   
 sfp_type2b_le := sfp_-_i-s_le &
   [ SYNSEM.LOCAL.CAT.HEAD.MINORS.MIN particle2b_rel ].
+  
+sfp_qtype2b_le := sfp_type2b_le &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.SF ques ].     
     
+sfp_type3_le := sfp_-_i-s_le &
+  [ SYNSEM.LOCAL.CAT.HEAD.MINORS.MIN particle3_rel ].    
 
