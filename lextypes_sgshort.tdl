@@ -598,13 +598,16 @@ n_kinship-of_le := n_pp_c-of_super_le &
 
 ; same as basic_adverb_word except without mcna
 ; 31-5-2021 add in MC - to stop it from joining as the head in a hd-cmp
+; and add in index of the sentence mapped to the particle
 basic_particle_word := noncrs-nab &
    [ SYNSEM basic_lex_synsem &
-	    [ LOCAL [ CONT [ HOOK.LTOP #ltop,
+	    [ LOCAL [ CONT [ HOOK [ LTOP #ltop,
+	    			     INDEX #index ],
 			     RELS.LIST < #keyrel, ... > ],
 		       CAT.MC - ],
 	      PUNCT.PNCTPR ppair,
-              LKEYS.KEYREL #keyrel & [ LBL #ltop ] ] ].
+              LKEYS.KEYREL #keyrel & [ LBL #ltop,
+              				ARG0 #index ] ] ].
               
 ;basic_adv_s_lexent := basic_adverb_word &
 ;  [ SYNSEM.LOCAL.CAT.HEAD adv & 
@@ -629,26 +632,41 @@ basic_part_s_lexent := basic_particle_word &
 ; treat null subjects in Singlish                 
 ; 23-5-2021 add in LEX - to prevent in from taking a word as COMPS? 
 ; add in MOD anti_synsem_min to prevent it from taking cl_rc-inf-nwh_c
-; as a complement?                  
+; as a complement?
+; 31-5-2021 for the semantics - add in RELS and TAM that is mostly linked
+; to the TAM of the COMPS. and ARG1 of particle that links to ARG0 of the COMPS                  
 sfp_-_i-s_le := basic_part_s_lexent & 
 """
 sentence-final particle
 <ex> Stop it ah
 """
-  [ SYNSEM.LOCAL.CAT [ HEAD.MOD < anti_synsem_min >, 
+  [ SYNSEM [ LOCAL [ CAT [ HEAD [ MOD < anti_synsem_min >,
+  				 TAM [ TENSE #tense,
+				       ASPECT #aspect,
+				       MOOD #ind_or_subj ] ],
   		        VAL [ SPEC < >,
   			      SPR < >,
-  			      COMPS < [ LOCAL.CAT.VAL [ COMPS < >,
-  						      SUBJ *olist*,
-  						      SPR *olist* ],
-  					 LEX - ] >,
-  			      SUBJ < > ] ] ].
+  			      COMPS < [ LOCAL.CAT [ VAL [ COMPS < >,
+  						             SUBJ *olist*,
+  						             SPR *olist* ],
+  						       HEAD.TAM [ TENSE #tense,
+					       	        ASPECT #aspect ] ],
+  					 LEX -,
+  					 OPT - ] >,
+  			      SUBJ < > ] ],
+  		    CONT [ HOOK.INDEX #index & [ E [ TENSE #tense,
+                                                     ASPECT #aspect ] ],
+  		    	   RELS <! relation !> ] ] ] ].
   			      
 ; 30-5-2021 add in particles according to my hierarchy
 ; where type 1 can take all the rest as COMPS, type 2 can only take type 3...
 sfp_type1_le := sfp_-_i-s_le &
   [ SYNSEM.LOCAL.CAT.HEAD.MINORS.MIN particle1_rel ].
   
-sfp_type2_le := sfp_-_i-s_le &
+sfp_type2a_le := sfp_-_i-s_le &
   [ SYNSEM.LOCAL.CAT.HEAD.MINORS.MIN particle2_rel ].
+  
+sfp_type2b_le := sfp_-_i-s_le &
+  [ SYNSEM.LOCAL.CAT.HEAD.MINORS.MIN particle2b_rel ].
+    
 

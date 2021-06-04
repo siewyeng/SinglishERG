@@ -207,6 +207,7 @@ kinship_nom_rel := diadic_nom_super_rel.
 particle_rel := abstr_adv_dim_rel.
 particle1_rel := particle_rel.
 particle2_super_rel := particle_rel.
+particle2b_rel := particle_rel.
 particle2_rel := particle2_super_rel.
 particle3_rel := particle2_super_rel.
 

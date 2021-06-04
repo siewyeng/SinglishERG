@@ -1026,7 +1026,9 @@ basic_comp_head_phrase := basic_comp_or_marker_head_phrase & head_final &
 	     HCONS <! !>,
 	     ICONS <! !> ] ].
 
-;limit the hd-dtr to only be particles	   	      
+;limit the hd-dtr to only be particles
+; ##maybe take out v_or_a and let it be a constraint for the particle
+; so that we can have the 'NP leh?' utterance	   	      
 comp_head_phrase := basic_comp_head_phrase & comp_or_marker_head_phrase &
   [ HD-DTR [ SYNSEM.LOCAL.CAT.HEAD basic_particle &
   				[ MINORS.MIN particle_rel ] ],
@@ -1039,9 +1041,16 @@ comp_head_sfpi_phrase :=  basic_comp_head_phrase & comp_or_marker_head_phrase &
     NH-DTR [ SYNSEM.LOCAL.CAT.HEAD basic_particle &
   				[ MINORS.MIN particle2_super_rel ]] ].
 
+comp_head_sfp2b_phrase :=  basic_comp_head_phrase & comp_or_marker_head_phrase &
+  [ HD-DTR [ SYNSEM.LOCAL.CAT.HEAD basic_particle &
+  				[ MINORS.MIN particle2b_rel ] ],
+    NH-DTR [ SYNSEM.LOCAL.CAT.HEAD basic_particle &
+  				[ MINORS.MIN particle3_rel ]] ].
+
 ; 23-5-2021 #totest whether the binary_rule_right_to_left should be used instead  				
 comph_rule := binary_rule_left_to_right & comp_head_phrase. 
-comph_sfpi_rule := binary_rule_left_to_right & comp_head_sfpi_phrase.  					      
+comph_sfpi_rule := binary_rule_left_to_right & comp_head_sfpi_phrase.  
+comph_sfp2b_rule := binary_rule_left_to_right & comp_head_sfp2b_phrase. 					      
 	      
 ; 20-4-2021 - rule for converting pn into stuff that can take SPEC
 ; 29-4-2021 -  remove "norm_lex_rule" from supertype cos it will become a det
