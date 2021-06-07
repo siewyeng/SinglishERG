@@ -130,47 +130,47 @@ father_n1 := n_kinship-of_le &
 ;            PHON.ONSET voc ] ].
 
 ;;;Particles;;;
-sia_sfp := sfp_type2b_le &
+sia_x_sfp := sfp_type2b_le &
  [ ORTH < "sia" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_sia_particle_rel",
             PHON.ONSET con ] ].
             
-meh_55_sfp := sfp_qtype2b_le &
+meh-55-_x_sfp := sfp_qtype2b_le &
  [ ORTH < "meh" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_meh_particle_rel",
             PHON.ONSET con ] ].            
 
-leh_55-21_sfp := sfp_type2b_le &
+leh-21-_x_sfp := sfp_type2b_le &
  [ ORTH < "leh" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_leh_particle_rel",
             PHON.ONSET con ] ].
             
-hah2_sfp := sfp_type1_le &
+hah2_x_sfp := sfp_type1_le &
  [ ORTH < "hah" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_hah2_particle_rel",
             PHON.ONSET con ] ].
             
-hor2_sfp := sfp_qtype1_le &
+hor2_x_sfp := sfp_qtype1_le &
  [ ORTH < "hor" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_hor2_particle_rel",
             PHON.ONSET con ] ].            
             
-ah2_sfp := sfp_type1_le &
+ah2_x_sfp := sfp_type1_le &
  [ ORTH < "ah" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_ah2_particle_rel",
             PHON.ONSET con ] ].
             
-lah4_sfp := sfp_type2a_le &
+lah4_x_sfp := sfp_type2a_le &
  [ ORTH < "lah" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_lah4_particle_rel",
             PHON.ONSET con ] ]. 
             
-what_sfp := sfp_type2a_le &
+what_x_sfp := sfp_type2a_le &
  [ ORTH < "what" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_what_particle_rel",
             PHON.ONSET con ] ].
             
-one_sfp := sfp_type3_le &
+one_x_sfp := sfp_type3_le &
  [ ORTH < "onesg" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_one_particle_rel",
             PHON.ONSET con ] ].                                       

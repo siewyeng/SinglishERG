@@ -668,3 +668,58 @@ Phenomena: {possesesive one}
 He one is the best.
 'His is the best.'
 
+Source: siew yeng
+Vetted: t
+Judgment: u
+Phenomena: {possesesive one}
+Him one is the best.
+'His is the best.'
+
+Source: siew yeng
+Vetted: t
+Judgment: g
+Phenomena: {particles}
+That cat pretty leh.
+'That cat is pretty.'
+
+Source: siew yeng
+Vetted: t
+Judgment: g
+Phenomena: {particles}
+That cat pretty leh hor?
+'That cat is pretty, isn't it?'
+
+Source: siew yeng
+Vetted: t
+Judgment: u
+Phenomena: {particles}
+That cat pretty leh one.
+'That cat is pretty.'
+
+Source: siew yeng
+Vetted: t
+Judgment: g
+Phenomena: {particles}
+That cat pretty one leh.
+'That cat is pretty.'
+
+Source: siew yeng
+Vetted: t
+Judgment: u
+Phenomena: {particles}
+That cat pretty hor leh?
+'That cat is pretty, isn't it?'
+
+Source: siew yeng
+Vetted: t
+Judgment: g
+Phenomena: {particles}
+That cat pretty meh?
+'Is that cat pretty.'
+
+Source: siew yeng
+Vetted: t
+Judgment: u
+Phenomena: {particles}
+That cat pretty meh leh.
+'That cat is pretty, isn't it?'
