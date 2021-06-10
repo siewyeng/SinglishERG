@@ -1098,6 +1098,47 @@ run_on_coord_comma_rule := basic_run_on_coord_rule &
 		      PUNCT.LPUNCT lparen_or_dq_or_comma_or_no_punct ],
    GENRE nonformal ].
 
+; 10-6-2021 exclude VFORM fin for radical pro drop
+;basic_prodrop_phrase := basic_unary_phrase &
+;  [ INFLECTD #infl,
+;    SYNSEM.LOCAL [ CAT [ HEAD.VFORM bse,
+;  			  VAL [ COMPS #comps,
+;  			  	SPR #spr,
+;  			  	SPEC #spec,
+;  			        SUBJ  < > ],
+;  			  MC #mc,
+;  			  HS-LEX #hs-lex ],
+;  		   CONT.HOOK.INDEX event,
+;  		   CONJ cnil,
+;  		   LEX #lex ],
+;    HD-DTR #head &
+;    	[ INFLECTD #infl,
+;             SYNSEM [ LOCAL [ CAT [ VAL [ SUBJ #subj,
+;					  SPR #spr,
+;                                          SPEC #spec,
+;					  COMPS #comps ],
+;                                    MC #mc,
+;                                    POSTHD #ph,
+;                                    HS-LEX #hslex ],
+;			      AGR #agr ],
+;		      LEX #lex,;
+;		      OPT #opt,
+;                      MODIFD #mod,
+;                      PUNCT #punct &
+;			    [ LPUNCT lital_or_pair_or_comma_or_no_punct ] ] ],
+;    C-CONT [ RELS <! !>,
+;	     HCONS <! !>,
+;	     ICONS <! !> ],
+ ;   ARGS < #head > ].
+;			    
+
+;prodrop_phrase := basic_prodrop_phrase &
+;  [ SYNSEM nonlex_synsem,
+ ; 	[ LOCAL [ CAT [ HEAD v_or_a &
+ ; 		  	      [ VFORM bse ] ] ] ],
+  ;  HD-DTR.SYNSEM.LOCAL.CAT.VAL.SUBJ < synsem_min > ].
+ 
+;prodrop_rule := rule & prodrop_phrase.
 
 ; 23-5-2021 #totest whether the binary_rule_right_to_left should be used instead  				
 comph_rule := binary_rule_left_to_right & comp_head_phrase. 

@@ -173,7 +173,17 @@ what_x_sfp := sfp_type2a_le &
 one_x_sfp := sfp_type3_le &
  [ ORTH < "onesg" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_one_particle_rel",
-            PHON.ONSET con ] ].                                       
+            PHON.ONSET con ] ].  
+            
+isit_x_sfp := sfp_qtype2b_le &
+ [ ORTH < "isit" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_isit_particle_rel",
+            PHON.ONSET con ] ].                                           
+            
+anot_x_sfp := sfp_qtype2b_le &
+ [ ORTH < "anot" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_anot_particle_rel",
+            PHON.ONSET con ] ].                  
             
 ;;;Removed Items;;;
 already_adv3 := never_unify_le & [ ORTH < "_never_unify_" > ].

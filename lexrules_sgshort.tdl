@@ -25,6 +25,7 @@ verb_participle_affix := local &
     AGR #agr ].
 
 ; 18-4-2021 - should the VFORM be changed to just fin #totest
+; 10-6-2021 chabnge subject OPT
 bse_or_fin_verb := local &
 """
 CSY 2-11-2020 for Singlish, no inflection verbs (take away no_aspect)
