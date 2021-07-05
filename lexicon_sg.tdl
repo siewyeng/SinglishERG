@@ -3,19 +3,36 @@
 ;;Transitive;;
 
 arrow_v1 := v_np_le &
+"""
+to 'nominate' someone, usually negative
+"""
  [ ORTH < "arrow" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_arrow_v_1_rel",
             PHON.ONSET con ] ].
 
 sabo_v1 := v_np_le &
+"""
+short for sabotage
+"""
  [ ORTH < "sabo" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_sabo_v_1_rel",
             PHON.ONSET con ] ].
 
 kacau_v1 := v_np_le &
+"""
+to disturb
+"""
  [ ORTH < "kacau" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_kacau_v_1_rel",
             PHON.ONSET con ] ].
+            
+kena_v1 := v_np_le &
+"""
+to be struck by or receive something unpleasant
+"""
+ [ ORTH < "kena" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_kena_v_1_rel",
+            PHON.ONSET con ] ].            
             
 ;go_vsing := v_np_dir_le &
 ; [ ORTH < "go" >,
