@@ -323,11 +323,12 @@ s-r2 := label &
                        VAL [ SUBJ < >,
                              COMPS < > ] ] ],
     LNAME "S" ].
+    
 
 s-frag := label &
   [ SYNSEM.LOCAL [ CAT.HEAD frag & [ MINORS.ALTMIN role_rel ],
                    CONJ lex-conj ],
-    LNAME "S" ].
+    LNAME "XP" ].
 
 
 ; For title nouns like in "professor smith"

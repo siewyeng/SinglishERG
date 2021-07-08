@@ -44,3 +44,17 @@ base form verb for all including 3sg
   SYNSEM.LOCAL bse_or_fin_verb,
   RNAME lvns ].
 
+; 8-7-2021 - added DIALECT us into this so that the specifically Singlish words will not
+; take the 3s -s suffix eg. *he sabos the plan.
+v_3s-fin_olr :=
+%suffix (!s !ss) (!ss !ssses) (ss sses) (!ty !ties) (ch ches) (sh shes) (x xes) (z zes)
+"""
+Third-singular present verb      
+<ex>admires                    
+"""
+v_3s-fin_inflrule &
+[ ND-AFF +,
+  SYNSEM.LOCAL third_sg_fin_verb,
+  DIALECT us,
+  RNAME lvsg ].
+

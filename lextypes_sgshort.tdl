@@ -689,3 +689,9 @@ sfp_type3_le := sfp_-_i-s_le &
 ditrans_verb := verb_synsem & ditrans_subst & ditrans_lt &
   [ LOCAL.CAT.VAL [ COMPS < synsem_min, synsem >,
   		     SUBJ < [OPT + ] > ] ].
+
+; 8-7-2021 supertype to add in the dialect value  		     
+singlish_lex := basic_word &
+[ DIALECT sgp ].
+
+v_np_le-sg := v_np_le & singlish_lex.
