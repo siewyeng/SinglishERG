@@ -24,3 +24,9 @@
 ;"""
 ;  [ SYNSEM np_trans_goloc_verb &
 ;	   [ LOCAL.CAT [ VAL.COMPS < [ OPT - ] > ] ] ].
+
+; 8-7-2021 supertype to add in the dialect value  		     
+singlish_le := sign &
+[ DIALECT sgp ].
+
+v_np_le-sg := v_np_le & singlish_le.

@@ -324,6 +324,11 @@ s-r2 := label &
                              COMPS < > ] ] ],
     LNAME "S" ].
     
+s-prodrop := label &
+  [ SYNSEM.LOCAL [ CAT.HEAD frag & [ MINORS.ALTMIN role_rel ],
+                   CONJ lex-conj ],
+    ARGS < [ SYNSEM.LOCAL.CAT.HEAD.VFORM bse ]>,
+    LNAME "S" ].
 
 s-frag := label &
   [ SYNSEM.LOCAL [ CAT.HEAD frag & [ MINORS.ALTMIN role_rel ],

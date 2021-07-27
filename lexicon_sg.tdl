@@ -2,7 +2,7 @@
 
 ;;Transitive;;
 
-arrow_v1 := v_np_le &
+arrow_v1 := v_np_le & singlish_le & 
 """
 to 'nominate' someone, usually negative
 """
@@ -11,16 +11,16 @@ to 'nominate' someone, usually negative
             PHON.ONSET con ],
    DIALECT sgp ].
 
-sabo_v1 := v_np_le & singlish_lex & 
+sabo_v1 := v_np_le & singlish_le & 
 """
 short for sabotage
 """
  [ ORTH < "sabo" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_sabo_v_1_rel",
-            PHON.ONSET con ],
+            PHON.ONSET con ]
      ].
 
-kacau_v1 := v_np_le & singlish_lex & 
+kacau_v1 := v_np_le & singlish_le & 
 """
 to disturb
 """
@@ -28,7 +28,7 @@ to disturb
    SYNSEM [ LKEYS.KEYREL.PRED "_kacau_v_1_rel",
             PHON.ONSET con ] ].
             
-kena_v1 := v_np_le & singlish_lex & 
+kena_v1 := v_np_le & singlish_le & 
 """
 to be struck by or receive something unpleasant
 """

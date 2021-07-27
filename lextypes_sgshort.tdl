@@ -691,7 +691,7 @@ ditrans_verb := verb_synsem & ditrans_subst & ditrans_lt &
   		     SUBJ < [OPT + ] > ] ].
 
 ; 8-7-2021 supertype to add in the dialect value  		     
-singlish_lex := basic_word &
-[ DIALECT sgp ].
-
-v_np_le-sg := v_np_le & singlish_lex.
+;singlish_lex := sign &
+;[ DIALECT sgp ].
+;;moved this to letypes to make it an instance instead
+; v_np_le-sg := v_np_le & singlish_lex.
