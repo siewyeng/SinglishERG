@@ -29,8 +29,12 @@ adj := basic_adj & n_or_a_or_det & p_adj_adv_or_comp & verb_or_adj_or_frag &
   [ CARDINAL - ].
 
 ; CSY 18-12-2020 - include adj as something that has VFORM (from basic_adj_or_frag)
+; 28-7-2021 add new feature of 3sginfl as a feature of things that head sentences
+; for the sake of distinguishing fragments from possible sentences (that do not have subj in
+; sentence which is permissable in Singlish)
 basic_verb_or_adj_or_frag := non_noun_or_frag & subst_or_adv_or_frag &
- [ VFORM vform ].
+ [ VFORM vform,
+   3SGINFL 3sginfl ].
 basic_verb_or_frag := basic_verb_or_adj_or_frag.
 
 ; 8-6-2021 to use this head value for runon sentences
@@ -121,6 +125,11 @@ root_sg_synsem := basic_root_synsem &
 	    CONJ cnil ],
     PUNCT.RPUNCT comma_or_clause_or_pair_or_no_punct &
 	         [ PSF #pred ] ].
+	         
+; 28-7-2021 something like VFORM but it is used only to mark the 3sg inflected verbs
+3sginfl := *sort*.
+3sg_plus := 3sginfl.
+3sg_unk := 3sginfl.
 	         
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Head types
@@ -219,4 +228,9 @@ particle2_super_rel := particle_rel.
 particle2b_rel := particle_rel.
 particle2_rel := particle2_super_rel.
 particle3_rel := particle2_super_rel.
+
+; 27-7-2021 for the new prodrop fragments
+unknown_super_rel := v_event_rel.
+unknown_rel := unknown_super_rel.
+unknown_sg_rel := unknown_super_rel.
 

@@ -46,8 +46,11 @@ optional SUBJ, took away person number
                                         AGR #agr ] ] > ],
     AGR #agr ].
 
-v_n3s-bse_inflrule := lex_rule_infl_affixed.
-
+; 30-7-2021 add in the change in 3SGINFL value so that verbs that pass through this can 
+; be distinguished from verbs that pass through v_3s-fin_inflrule
+v_n3s-bse_inflrule := lex_rule_infl_affixed &
+  [ SYNSEM.LOCAL.CAT.HEAD.3SGINFL 3sg_unk ].
+  
 ; CSY 29-12-2020 for the count nouns that don't need specifier in Singlish
 ; DIV value not specified. Even though this allows for unusual NPs like "much cats"
 ; This is also allowed in the ERG.
@@ -146,3 +149,92 @@ n_singlish_inflrule := lex_rule_infl_affixed &
 ;	  SYNSEM norm_adj_synsem &
 ;		[ LOCAL prp_verb & 
 ;	  		CAT.VAL.COMPS #comps ] ] ].
+
+; 28-7-2021 needs to change the 3sginfl value to 3sg_plus
+; but the basic_lex_rule_infl_affixed ensures that the daughter and mother have the
+; same SYNSEM values. 
+; 29-7-2021 - branch the basic_lex_rule into 2 and change one such that every part of SYNSEM except 3SGINFL is inherited
+basic_lex_rule_infl_affixed_super := basic_lex_rule_basic & word_or_infl_rule.
+basic_lex_rule_infl_affixed := basic_lex_rule_infl_affixed_super &
+  [ KEY-ARG #keyarg,   
+    SYNSEM #synsem,
+    ARGS < #dtr >,
+    DTR #dtr & word_or_nonpunct_rule &
+	       [ INFLECTD -,
+                 KEY-ARG #keyarg,   
+                 SYNSEM #synsem ],
+    C-CONT.RELS <! !> ].
+    
+basic_3sglex_rule_infl_affixed := basic_lex_rule_infl_affixed_super &
+  [ KEY-ARG #keyarg,   
+    SYNSEM [ LOCAL [ CONT #cont,
+    		     CAT [ HEAD [ MINORS #minors,
+    		     		   MOD #mod,
+    		     		   PRD #prd,
+    		     		   AUX #aux,
+    		     		   INV #inv,
+    		     		   TAM #tam,
+    		     		   CASE #case,
+    		     		   POSS #poss,
+    		     		   --ADDIN #addin,
+    		     		   VFORM #vform ],
+    		           VAL #val,
+    		     	   MC #mc,
+    		     	   POSTHD #posthd,
+    		     	   HC-LEX #hc-lex,
+    		     	   HS-LEX #hs-lex,
+    		     	   NEGPOL #negpol ],
+    		      AGR #agr,
+    		      ARG-S #arg-s,
+    		      CONJ #conj,
+    		      CTXT #ctxt ],
+    		LKEYS #lkeys,
+    		NONLOC #nonloc,
+    		OPT #opt,
+    		--SIND #sind,
+    		--MIN #min,
+    		LEX #lex,
+    		MODIFD #modifd,
+    		PHON #phon,
+    		PUNCT #punct ],
+    ARGS < #dtr >,
+    DTR #dtr & word_or_nonpunct_rule &
+	       [ INFLECTD -,
+                 KEY-ARG #keyarg,   
+                 SYNSEM [ LOCAL [ CONT #cont,
+    		     		  CAT [ HEAD [ MINORS #minors,
+    		     		   		MOD #mod,
+    		     		   		PRD #prd,
+    		     		   		AUX #aux,
+    		     		   		INV #inv,
+    		     		   		TAM #tam,
+    		     		   		CASE #case,
+    		     		   		POSS #poss,
+    		     		   		--ADDIN #addin,
+    		     		   		VFORM #vform ],
+    		           		VAL #val,
+    		     	   		MC #mc,
+    		     	   		POSTHD #posthd,
+    		     	   		HC-LEX #hc-lex,
+    		     	   		HS-LEX #hs-lex,
+    		     	   		NEGPOL #negpol ],
+    		      		AGR #agr,
+    		      		ARG-S #arg-s,
+    		      		CONJ #conj,
+    		      		CTXT #ctxt ],
+    			LKEYS #lkeys,
+    			NONLOC #nonloc,
+    			OPT #opt,
+    			--SIND #sind,
+    			--MIN #min,
+    			LEX #lex,
+    			MODIFD #modifd,
+    			PHON #phon,
+    			PUNCT #punct ] ],
+    C-CONT.RELS <! !> ].
+    
+3sglex_rule_infl_affixed := basic_3sglex_rule_infl_affixed &
+  [ INFLECTD + ].
+      
+v_3s-fin_inflrule := 3sglex_rule_infl_affixed &
+  [ SYNSEM.LOCAL.CAT.HEAD.3SGINFL 3sg_plus ].

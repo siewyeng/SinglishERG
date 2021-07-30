@@ -1132,6 +1132,19 @@ run_on_coord_comma_rule := basic_run_on_coord_rule &
  ;   ARGS < #head > ].
 ;			    
 
+; 30-7-2021 add in the passing up of 3SGINFL value in fragment rules
+frag_vp_fin_rule := frag_vp_rule &
+  [ SYNSEM.LOCAL.CAT.HEAD.3SGINFL #3sginfl,
+    ARGS < [ SYNSEM [ LOCAL [ CAT [ HEAD [ VFORM fin,
+					   TAM.TENSE real_tense,
+					   MINORS.ALTMIN basic_event_dim_rel,
+					   3SGINFL #3sginfl ],
+				    VAL.SUBJ.FIRST unexpressed_min ],
+			      CONT.HOOK #hook ],
+		      MODIFD notmod_or_rmod ] ] >,
+    C-CONT [ HOOK #hook & [ XARG.SORT entity ],
+             RELS <! !> ] ].
+             
 ;prodrop_phrase := basic_prodrop_phrase &
 ;  [ SYNSEM nonlex_synsem,
  ; 	[ LOCAL [ CAT [ HEAD v_or_a &

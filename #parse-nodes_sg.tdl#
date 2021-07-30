@@ -325,12 +325,11 @@ s-r2 := label &
     LNAME "S" ].
     
 ; 28-7-2021 remove first 
-; 31-7-2021 label that takes into account the 3SGINFL value
-s-nosubj := label &
-  [ SYNSEM.LOCAL [ CAT.HEAD frag & [ MINORS.ALTMIN role_rel,
-					3SGINFL 3sg_unk ],
-                   CONJ lex-conj ],
-    LNAME "S" ].
+;s-prodrop := label &
+;  [ SYNSEM.LOCAL [ CAT.HEAD frag & [ MINORS.ALTMIN role_rel ],
+;                   CONJ lex-conj ],
+;    ARGS < [ SYNSEM.LOCAL.CAT.HEAD.VFORM bse ]>,
+;    LNAME "S" ].
 
 s-frag := label &
   [ SYNSEM.LOCAL [ CAT.HEAD frag & [ MINORS.ALTMIN role_rel ],
