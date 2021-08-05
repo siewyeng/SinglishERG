@@ -88,6 +88,11 @@ not_prdp-sg := av_-_s-not-sg_le &
    SYNSEM [ LKEYS.KEYREL.PRED neg_rel,
             PHON.ONSET con ] ].
 
+; 5-8-2021 change le
+very := av_-_dg-very_le &
+ [ ORTH < "very" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_very_x_deg_rel",
+            PHON.ONSET con ] ].
 ;;;Nouns;;;
 
 agaration_n1 := n_-_m_le &

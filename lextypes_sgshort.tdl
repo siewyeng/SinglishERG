@@ -234,21 +234,26 @@ supposedly MODs entire VP with the VAL.COMPS < >
     19-9-2020 - added MINORS.NORM norm_rel to prevent it from going through vp_mod_int_rule
 		which allows it to mod the VP before it gets its complement
     9-11-2020 - added PROGR - to verb to prevent "he eating already" from having a perfective reading
+;    3-8-2021 - link LTOP because already_adv1 does that too. hopefully prevent 
+; "he is already hungry" with "is already" 
 """
-  [ SYNSEM.LOCAL.CAT [ HEAD [ MOD < [ LOCAL.CAT [ HEAD verb &
+  [ SYNSEM.LOCAL [ CAT [ HEAD [ MOD < [ LOCAL [ CAT [ HEAD verb &
 						     [ TAM.ASPECT [ PRF +,
 								    PROGR - ] ],
-						VAL [ SPR *olist* ] ] ] > ],
-		       VAL.SPR < unexpressed_min >,
-		       POSTHD + ] ].
+						     VAL [ SPR *olist* ] ],
+						CONT.HOOK.LTOP #ltop ] ] > ],
+		          VAL.SPR < unexpressed_min >,
+		          POSTHD + ],
+		    CONT.HOOK.LTOP #ltop ] ].
 
 ; CSY 9-11-2020 - lex for inchoative already
 ;     19-11-2020 - took away MOD HEAD type so that it can modify adjectives
 ;                  this matches the inchoative aspect of that change in state
 av_-_already-incho_le := av_-_i-vp_lexent &
 """
-<ex>B sleeping already
-to be B has started sleeping
+to mark state transition
+<ex>B hungry already
+to mean that B was not hungry before, but has entered the state of hungriness 
 """
   [ SYNSEM.LOCAL.CAT [ HEAD [ MOD < [ LOCAL.CAT [ HEAD ;verb &
 						     [ TAM.ASPECT inc_aspect &
@@ -695,3 +700,10 @@ ditrans_verb := verb_synsem & ditrans_subst & ditrans_lt &
 ;[ DIALECT sgp ].
 ;;moved this to letypes to make it an instance instead
 ; v_np_le-sg := v_np_le & singlish_lex.
+
+; 5-8-2021 add in SPCOMPS <> to reduce overgeneration in 'very very' sentences
+; by preventing 'very very' from taking a complement after going through sp-hd_hc_c
+av_-_dg-very_lexent := av_-_dg-v_lexent &
+  [ SYNSEM.LOCAL.CAT.VAL.SPCMPS < > ].
+  
+av_-_dg-very_le := av_-_dg-very_lexent.
