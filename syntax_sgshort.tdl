@@ -1028,10 +1028,12 @@ basic_comp_head_phrase := basic_comp_or_marker_head_phrase & head_final &
 
 ;limit the hd-dtr to only be particles
 ; ##maybe take out v_or_a and let it be a constraint for the particle
-; so that we can have the 'NP leh?' utterance	   	      
+; so that we can have the 'NP leh?' utterance	   
+; 11-8-2021 add in sentence final adverbs. try changing MIN from particle_rel
+; to mother abstr_adv_dim_rel
 comp_head_phrase := basic_comp_head_phrase & comp_or_marker_head_phrase &
-  [ HD-DTR [ SYNSEM.LOCAL.CAT.HEAD basic_particle &
-  				[ MINORS.MIN particle_rel ] ],
+  [ HD-DTR [ SYNSEM.LOCAL.CAT.HEAD basic_particle_or_sfa &
+  				[ MINORS.MIN abstr_adv_dim_rel ] ],
     NH-DTR.SYNSEM.LOCAL.CAT.HEAD v_or_a ].
   				
 ; 29-5-2021 - for the new cmp-hd that is only for particles taking other particle headed stuff

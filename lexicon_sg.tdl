@@ -63,15 +63,21 @@ agak_adv := av_-_i-vp_le &
    SYNSEM [ LKEYS.KEYREL.PRED "_agak_a_1_rel",
             PHON.ONSET con ] ].
 
-already_prf_adv := av_-_already-prf_le &
+;already_prf_adv := av_-_already-prf_le &
+; [ ORTH < "already" >,
+;   SYNSEM [ LKEYS.KEYREL.PRED "_already_a_2_rel",
+;            PHON.ONSET con ] ].
+
+; 11-8-2021 add in a generic state-transition already
+already_trans_sfa := sf_adverb_i-s_le &
  [ ORTH < "already" >,
-   SYNSEM [ LKEYS.KEYREL.PRED "_already_a_2_rel",
+   SYNSEM [ LKEYS.KEYREL.PRED "_already_sfa_1_rel",
             PHON.ONSET con ] ].
 
-already_incho_adv := av_-_already-incho_le &
- [ ORTH < "already" >,
-   SYNSEM [ LKEYS.KEYREL.PRED "_already_a_3_rel",
-            PHON.ONSET con ] ].
+;already_incho_adv := av_-_already-incho_le &
+; [ ORTH < "already" >,
+;   SYNSEM [ LKEYS.KEYREL.PRED "_already_a_3_rel",
+;            PHON.ONSET con ] ].
 ; 17-11-2020 no need for this with the pred_adj_subj_lexrule
 ;beautiful_nocop := aj_nocop_i-prd_le &
 ; [ ORTH < "beautiful" >,

@@ -167,8 +167,10 @@ adj_or_intadj := v_or_a & a_or_p & adverbee & nominal_or_verbal &
 		 a_or_adv & intsort & a_or_part.
 
 
-
-basic_particle := a_or_part & mobile.
+; 11-8-2021 add in sentence final adverbs
+basic_particle_or_sfa := a_or_part & mobile.
+basic_particle := basic_particle_or_sfa.
+basic_sfa := basic_particle_or_sfa.
 ; Does not inherit from comp_spec_abe because it cannot be the target of comp. deg. specifiers
 particle := basic_particle &
   [ CARDINAL - ].
@@ -223,11 +225,16 @@ kinship_nom_rel := diadic_nom_super_rel.
 
 ; 23-5-2021 add in particle_rel as a sister of adv_rel
 particle_rel := abstr_adv_dim_rel.
+; 11-8-2021 add in sfadverb_rel as sister of adv_rel instead of just using adv_rel to prevent it
+; from hd-aj_int-unsl? no change to sister of particle 3
+; sfadverb_rel := abstr_adv_dim_rel.
 particle1_rel := particle_rel.
 particle2_super_rel := particle_rel.
 particle2b_rel := particle_rel.
 particle2_rel := particle2_super_rel.
-particle3_rel := particle2_super_rel.
+particle3_sfadv_rel := particle2_super_rel.
+particle3_rel := particle3_sfadv_rel.
+sfadverb_rel := particle3_sfadv_rel.
 
 ; 27-7-2021 for the new prodrop fragments
 unknown_super_rel := v_event_rel.

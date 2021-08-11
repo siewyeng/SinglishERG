@@ -226,6 +226,7 @@ aj_nocop_i-prd_le := basic_norm_adj_word &
 				    XARG #subjind ] ] ] ].
 
 ; CSY 19-9-2020 - MINORS.NORM is used for finer-grain control over which rules can apply
+; 11-8-2021 not in use now. Changing it to a sentence-final adverb which heads everything
 av_-_already-prf_le := av_-_i-vp_lexent &
 """
 CSY 31-08-2020 - introduced for 'already' the POSTHD + aspect marker
@@ -249,6 +250,7 @@ supposedly MODs entire VP with the VAL.COMPS < >
 ; CSY 9-11-2020 - lex for inchoative already
 ;     19-11-2020 - took away MOD HEAD type so that it can modify adjectives
 ;                  this matches the inchoative aspect of that change in state
+; 11-8-2021 not in use now. Changing it to a sentence-final adverb which heads everything
 av_-_already-incho_le := av_-_i-vp_lexent &
 """
 to mark state transition
@@ -613,16 +615,11 @@ basic_particle_word := noncrs-nab &
 			     RELS.LIST < #keyrel, ... > ],
 		       CAT.MC - ],
 	      PUNCT.PNCTPR ppair,
+	      MODIFD.RPERIPH  +,
               LKEYS.KEYREL #keyrel & [ LBL #ltop,
               				ARG0 #index,
               				ARG1 #sindex ] ] ].
               
-;basic_adv_s_lexent := basic_adverb_word &
-;  [ SYNSEM.LOCAL.CAT.HEAD adv & 
-;                          [ MINORS.MIN adv_rel,
-;                            MOD < [ LOCAL intersective_mod &
-;                            		[ CAT.HEAD v_or_a ],
-;                                    MODIFD [ RPERIPH na_or_- ] ] > ] ].
 
 ; 23-5-2021 add in POSTHD + to prevent hd-aj_scp-xp_c with the sfp    
 ; added MC - so that when there's something like "sia we swim" by hd-cmp, 
@@ -707,3 +704,34 @@ av_-_dg-very_lexent := av_-_dg-v_lexent &
   [ SYNSEM.LOCAL.CAT.VAL.SPCMPS < > ].
   
 av_-_dg-very_le := av_-_dg-very_lexent.
+
+; 11-8-2021 changing 'already' into a sentence final adverb
+; cannot be an adjunct because if the sentence final 'only' is added into this grammar,
+; the order has to be fixed and adjuncts cannot do that.
+sf_adverb_word := basic_adverb_word &
+  [ SYNSEM.LOCAL.CAT [ HEAD basic_sfa & 
+                           [ MINORS.MIN adv_rel ],
+                       POSTHD +,
+                       VAL.COMPS < [ LOCAL.CAT.HEAD #v_or_a ] > ] ].
+
+; copy the same content as sfp_-_i-s_le to prevent overgeneration                       
+sf_adverb_i-s_le := sf_adverb_word &
+  [ SYNSEM [ LOCAL [ CAT [ HEAD [ MOD < anti_synsem_min >,
+  				 TAM [ TENSE #tense,
+				       ASPECT #aspect,
+				       MOOD #ind_or_subj ] ],
+  		        VAL [ SPEC < >,
+  			      SPR < >,
+  			      COMPS < [ LOCAL [ CAT [ VAL [ COMPS < >,
+  						             SUBJ *olist*,
+  						             SPR *olist* ],
+  						       HEAD.TAM [ TENSE #tense,
+					       	        ASPECT #aspect ] ],
+					         CONT.HOOK.INDEX #sentence ],
+  					 LEX -,
+  					 OPT - ] >,
+  			      SUBJ < > ] ],
+  		    CONT [ HOOK [ INDEX #index & [ E [ TENSE #tense,
+                                                     ASPECT #aspect ] ],
+                                  XARG #sentence ],
+  		    	   RELS <! relation !> ] ] ] ].                           

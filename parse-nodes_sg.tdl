@@ -45,7 +45,7 @@ s-particle := label &
 """
 <ex> He is so beautiful sia.
 """
-  [ SYNSEM.LOCAL [ CAT [ HEAD basic_particle &
+  [ SYNSEM.LOCAL [ CAT [ HEAD basic_particle_or_sfa &
 			      [ PRD - ],
                          VAL  [ SUBJ *olist*,
                                 SPR *olist*,
@@ -393,6 +393,13 @@ adv4-2 := label &
 		   CONJ atomic-conj ],
     INFLECTD +,
     LNAME "ADV-C" ].
+    
+; 11-8-2021 add in for sentence final adverbs like 'already' and possibly 'only'
+adv_sf := label &
+  [ SYNSEM.LOCAL [ CAT [ HEAD basic_sfa ],
+		   CONJ cnil ],
+    INFLECTD +,
+    LNAME "ADV-F" ].
 
 n := label &
   [ SYNSEM.LOCAL.CAT [ HEAD nominal,
