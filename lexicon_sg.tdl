@@ -147,11 +147,6 @@ father_n1 := n_kinship-of_le &
    SYNSEM [ LKEYS.KEYREL.PRED "_father_n_of_rel",
             PHON.ONSET con ] ].
             
-;market_nsing := n_-_place-nomod_le &
-; [ ORTH < "market" >,
-;   SYNSEM [ LKEYS [ ALTKEYREL.PRED "place_n_rel",
-;   		    KEYREL.PRED "_market_n_1_rel" ],
-;            PHON.ONSET con ] ].
 
 ; test         
 ;dir_adv1 := p_np_i-nnm_le &

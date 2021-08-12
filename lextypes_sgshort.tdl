@@ -710,7 +710,7 @@ av_-_dg-very_le := av_-_dg-very_lexent.
 ; the order has to be fixed and adjuncts cannot do that.
 sf_adverb_word := basic_adverb_word &
   [ SYNSEM.LOCAL.CAT [ HEAD basic_sfa & 
-                           [ MINORS.MIN adv_rel ],
+                           [ MINORS.MIN sfadverb_rel ],
                        POSTHD +,
                        VAL.COMPS < [ LOCAL.CAT.HEAD #v_or_a ] > ] ].
 

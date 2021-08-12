@@ -137,6 +137,15 @@ and particle-headed sentences. Can be followed by sfpi
 """
   [ RNAME cpha ]. 
   
+cmp-hd_sfp3_c := comph_sfp3_rule &
+"""
+Complement-head that is only used on particle3_rel particles 
+and sfadverb-headed sentences. Can be followed by sfp2
+
+<ex>The person eat already one. 
+"""
+  [ RNAME cpha ]. 
+  
 ;pro-drp_c := prodrop_rule &
 ;"""
 ;pronoun dropping
