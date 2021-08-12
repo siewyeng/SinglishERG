@@ -712,7 +712,7 @@ sf_adverb_word := basic_adverb_word &
   [ SYNSEM.LOCAL.CAT [ HEAD basic_sfa & 
                            [ MINORS.MIN sfadverb_rel ],
                        POSTHD +,
-                       VAL.COMPS < [ LOCAL.CAT.HEAD #v_or_a ] > ] ].
+                       VAL.COMPS < [ LOCAL.CAT.HEAD v_or_a ] > ] ].
 
 ; copy the same content as sfp_-_i-s_le to prevent overgeneration                       
 sf_adverb_i-s_le := sf_adverb_word &

@@ -87,6 +87,7 @@
 ;; Delimiters (strong and weak brackets)
 
 :include "delims".
+:include "singlish/delims_sg".
 
 :include "auxverbs".
 
