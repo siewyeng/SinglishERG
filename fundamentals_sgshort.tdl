@@ -55,26 +55,46 @@ basic_verb_or_frag := basic_verb_or_adj_or_frag & verb_or_conj_or_frag.
 aspect := basic_aspect &
   [ PRF luk,
     PROGR luk,
-    INC luk,
+    INCEP luk,
+    INCHO luk,
     EXP luk ].
 
 no_aspect := aspect &
   [ PRF -,
     PROGR -,
-    INC -,
+    INCEP -,
+    INCHO -,
     EXP - ].
 
 ; CSY 9-11-2020 for inchoative aspect
-; <ex> he eating already
-; to mean he has started eating
-inc_aspect := aspect &
+; <ex> he hungry already
+; to mean he has started eating durian
+incho_aspect := aspect &
   [ PRF -,
-    INC + ].
+    INCHO +,
+    INCEP - ].
+    
+; 19-8-2021 for inceptive aspect
+; <ex> it's raining already
+; to mean it has started raining. Not necessary with the progressive,
+; but only the inceptive interpretation of 'already' is possible 
+; when with the progressive aspect.s
+incep_aspect := aspect &
+  [ PRF -,
+    INCHO -,
+    INCEP + ].
+
+; 19-8-2021 for the completive aspect
+; <ex> He eat already.
+; to mean he has eaten. This is incompatible with the progressive    
+completive_aspect := aspect &
+  [ PRF +,
+    PROGR - ].
 
 ; CSY 17-11-2020 for experiential aspect
 ; <ex> he ever have cat.
 ; to mean he has had a cat before
-; In contrast to the perfect in English, this necessarily means that the event/state
+; In contrast to the perfect in English, this necessarily means that the proposition
 ; is not true anymore
 exp_aspect := aspect &
   [ PRF +,

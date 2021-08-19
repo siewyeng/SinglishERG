@@ -69,9 +69,9 @@ agak_adv := av_-_i-vp_le &
 ;            PHON.ONSET con ] ].
 
 ; 11-8-2021 add in a generic state-transition already
-already_trans_sfa := sf_adverb_i-s_le &
+already_compl_sfa := sf_adverb_compl_le &
  [ ORTH < "already" >,
-   SYNSEM [ LKEYS.KEYREL.PRED "_already_sfa_1_rel",
+   SYNSEM [ LKEYS.KEYREL.PRED "_already_sfa_compl_rel",
             PHON.ONSET con ] ].
 
 ;already_incho_adv := av_-_already-incho_le &

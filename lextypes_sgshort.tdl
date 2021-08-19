@@ -258,7 +258,7 @@ to mark state transition
 to mean that B was not hungry before, but has entered the state of hungriness 
 """
   [ SYNSEM.LOCAL.CAT [ HEAD [ MOD < [ LOCAL.CAT [ HEAD ;verb &
-						     [ TAM.ASPECT inc_aspect &
+						     [ TAM.ASPECT incho_aspect &
 								  [ PROGR + ] ],
 						VAL [ SPR *olist*,
 						      COMPS < >  ] ] ] >,
@@ -734,4 +734,11 @@ sf_adverb_i-s_le := sf_adverb_word &
   		    CONT [ HOOK [ INDEX #index & [ E [ TENSE #tense,
                                                      ASPECT #aspect ] ],
                                   XARG #sentence ],
-  		    	   RELS <! relation !> ] ] ] ].                           
+  		    	   RELS <! relation !> ] ] ] ].
+  		    	   
+sf_adverb_compl_le := sf_adverb_i-s_le &
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL.CAT.HEAD.TAM.ASPECT completive_aspect ] > ].		    	     
+
+; 12-8-2021 to add in the aspectual meaning of 'already'  		    	   
+; sf_already_i-s_le := sf_adverb_i-s_le &
+  		    	                            

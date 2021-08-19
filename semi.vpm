@@ -139,7 +139,7 @@ E.ASPECT.PROGR : PROG
   -       <> -
 
 ; for Singlish
-E.ASPECT.INC : INCHO
+E.ASPECT.INCHO : INCHO
   +       <> +
   -       <> -
   *       >> -
@@ -154,6 +154,14 @@ E.ASPECT.EXP : EXPER
   -       << *
   -       << [e]
 
+; for Singlish
+E.ASPECT.INCEP : INCEP
+  +       <> +
+  -       <> -
+  *       >> -
+  -       << *
+  -       << [e]
+  
 ;;
 ;; _fix_me_
 ;; we used to assume that an underspecified PROGR value meant non-progressive.
