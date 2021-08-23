@@ -102,13 +102,22 @@ Change proper noun into a det for kinship terms
 ;  [ RNAME ngom ].
   
 ; 23-5-2021 comp head rule just for sfp
- cmp-hd_u_c := comph_rule &
- """
+cmp-hd_u_c := comph_rule &
+"""
  Complement-head that is only used on particles and sentences
  
  <ex>The person admires me sia. 
  """
    [ RNAME cph ].
+   
+; 23-5-2021 comp head rule just for sfp
+cmp-mrkr_u_c := compm_rule &
+"""
+ Complement-head that is only used on particles and sentences
+ 
+ <ex>The person admires me sia. 
+ """
+   [ RNAME cpm ].
   
 cmp-hd_sfpi_c := comph_sfpi_rule &
 """
