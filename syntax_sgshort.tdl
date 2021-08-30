@@ -149,86 +149,21 @@ filler_head_rule_wh_mc := filler_head_rule_wh_super &
  [ SYNSEM.LOCAL.CAT.HEAD.INV -,
    HD-DTR.SYNSEM.LOCAL.CAT.MC luk ].
 
-; CSY 17-12-2020 - superset to create two branches for the verb and adjective COMPS
-; by removing HEAD verbal & [ VFORM #vform & fin_or_inf, from 2nd ARGS and VFORM from the mother
-;;    5-1-2020 - #totest uncomment the vform values
-filler_head_rel_super_rule := binary_rule_left_to_right & rel_cl & 
-			basic_head_filler_phrase & 
-  [ INFLECTD +,
-    SYNSEM [ LOCAL [ CAT [ HEAD [ ;VFORM #vform,
-				  TAM #tam,
-				  AUX #aux,
-				  INV #inv,
-				  PRD -,
-				  MOD < [ --SIND #ind ] >,
-				  --ADDIN #addin,
-				  MINORS.MIN #min ],
-			   VAL [ SUBJ < >,
-				 SPR < > ] ],
-		     AGR #agr ],
-             MODIFD.RPERIPH na_or_+ ],
-    ARGS < [ INFLECTD na_or_+,
-	     SYNSEM [ LOCAL [ CAT.VAL.COMPS < >,
-                              CONJ cnil ],
-		      NONLOC [ QUE 0-dlist,
-                               REL 1-dlist &
-                                   [ LIST < [ INDEX #ind,
-					      XARG #xarg ] > ] ],
-                      PUNCT [ RPUNCT rparen_or_comma_or_no_punct,
-			      PNCTPR ppair ] ] ],
-	   [ INFLECTD +,
-             SYNSEM [ LOCAL [ CAT [ HEAD v_or_a & [ ;VFORM #vform & fin_or_inf,
-                                                    TAM #tam,
-                                                    AUX #aux,
-                                                    INV #inv,
-						    --ADDIN #addin,
-                                                    MINORS.MIN #min ],
-				    VAL.SUBJ *olist_or_prolist*,
-				    MC - ],
-                              CONT.HOOK [ LTOP #ltop,
-                                          INDEX #event & [ SF prop-comm ] ],
-			      AGR #agr,
-			      CONJ cnil ],
-                      NONLOC [ QUE 0-dlist,
-                               REL 0-dlist,
-			       SLASH <! [ CONT.HOOK.XARG #xarg ] !> ] ] ] >,
-    C-CONT [ HOOK [ LTOP #ltop,
-                    INDEX #event ],
-	     RELS <! !>,
-	     HCONS <! !>,
-	     ICONS <! !> ] ].
-
-filler_head_rel_rule := filler_head_rel_super_rule &
-
-  [ SYNSEM.LOCAL.CAT.HEAD.VFORM #vform,
-    ARGS < [ INFLECTD na_or_+,
-	     SYNSEM [ LOCAL [ CAT.VAL.COMPS < >,
-                              CONJ cnil ],
-		      NONLOC [ QUE 0-dlist,
-                               REL 1-dlist &
-                                   [ LIST < [ INDEX #ind,
-					      XARG #xarg ] > ] ],
-                      PUNCT [ RPUNCT rparen_or_comma_or_no_punct,
-			      PNCTPR ppair ] ] ],
-	   [ INFLECTD +,
-             SYNSEM.LOCAL.CAT.HEAD verbal &
-				 [ VFORM #vform & fin_or_inf ] ] > ].  
-
 ; just for adj headed COMPS
-basic_filler_head_fin_rel_adj_rule := filler_head_rel_super_rule &
-  [ SYNSEM.LOCAL.CAT.HEAD.MINORS [ ALTMIN #altmin,
-				   NORM #norm ],
-    ARGS < [ SYNSEM.LOCAL.CAT.HEAD.MINORS.NORM #norm ],
-	   [ SYNSEM.LOCAL.CAT [ HEAD adj &
-					      [ MINORS.ALTMIN #altmin ],
-				VAL.SUBJ *olist* ] ] > ].
+;basic_filler_head_fin_rel_adj_rule := filler_head_rel_super_rule &
+;  [ SYNSEM.LOCAL.CAT.HEAD.MINORS [ ALTMIN #altmin,
+;				   NORM #norm ],
+;    ARGS < [ SYNSEM.LOCAL.CAT.HEAD.MINORS.NORM #norm ],
+;	   [ SYNSEM.LOCAL.CAT [ HEAD adj &
+;					      [ MINORS.ALTMIN #altmin ],
+;				VAL.SUBJ *olist* ] ] > ].
 
 ; CSY 17-12-2020 - rule for adj headed COMPS
-filler_head_fin_np_arel_rule := basic_filler_head_fin_rel_adj_rule &
-  [ SYNSEM.LOCAL.CAT.HEAD.MOD.FIRST.LOCAL.CONT.HOOK.XARG #xarg,
-    ARGS < [ SYNSEM.LOCAL.CAT.VAL.SPR *olist* ],
-	   [ SYNSEM.NONLOC.SLASH <! [ CAT.HEAD noun_or_nomger,
-				      CONT.HOOK.XARG #xarg ] !> ] > ].
+;filler_head_fin_np_arel_rule := basic_filler_head_fin_rel_adj_rule &
+;  [ SYNSEM.LOCAL.CAT.HEAD.MOD.FIRST.LOCAL.CONT.HOOK.XARG #xarg,
+;    ARGS < [ SYNSEM.LOCAL.CAT.VAL.SPR *olist* ],
+;	   [ SYNSEM.NONLOC.SLASH <! [ CAT.HEAD noun_or_nomger,
+;				      CONT.HOOK.XARG #xarg ] !> ] > ].
 
 ; CSY 19-10-2020 - a parallel of the verbal coord rule to use of predicative (nocop) adj for Singlish
 ; CSY 31-10-2020 - take away intrans_nocop_pred_adj_synsem from the rconj
@@ -269,7 +204,7 @@ basic_basic_a_nocop_coord_phr := basic_basic_adj_coord_phr &
                          VAL [ SUBJ #subj,
 			       SPR #spr,
 			       SPEC #spec] ],
-                   CONT.HOOK [ LTOP #ltop,
+                   CONT.HOOK [ ;LTOP #ltop,
 			       XARG #xarg ] ],
     LCONJ-DTR.SYNSEM.LOCAL [ CAT [ HEAD [ --ADDIN #addin & [ ADDPN #pn ] ],
                                    VAL [ SUBJ #subj,
@@ -522,6 +457,7 @@ head_filler_fin_np_rel_rule := basic_head_filler_fin_rel_rule &
 				      CONT.HOOK.XARG #xarg ] !> ],
 	    [ SYNSEM.LOCAL.CAT.VAL.SPR *olist* ] > ].
 
+; CSY 17-12-2020 - superset to create two branches for the verb and adjective COMPS
 ; filler head rule without VFORM limitations in the second ARGS
 filler_head_super_rel_rule := binary_rule_left_to_right & rel_cl & 
 			basic_head_filler_phrase & 
@@ -568,9 +504,11 @@ filler_head_super_rel_rule := binary_rule_left_to_right & rel_cl &
 	     RELS <! !>,
 	     HCONS <! !>,
 	     ICONS <! !> ] ].
-	     
+
+; 30-8-2021 changed #arg1 to the COMPS value to prevent non coindexing syntax error
+; in lkb	     
 filler_head_rel_rule := filler_head_super_rel_rule &
-  [ ARGS < #arg1, [ SYNSEM.LOCAL.CAT.HEAD.VFORM fin_or_inf ] > ].
+  [ ARGS < [ SYNSEM.LOCAL.CAT.VAL.COMPS < > ], [ SYNSEM.LOCAL.CAT.HEAD.VFORM fin_or_inf ] > ].
 
 basic_filler_head_finprp_rel_rule := filler_head_super_rel_rule &
   [ SYNSEM.LOCAL.CAT.HEAD.MINORS [ ALTMIN #altmin,
@@ -801,8 +739,7 @@ hspec_one_rule := binary_rule_right_to_left & head_spec_phrase.
 ; so that I get sentences like 'he go school' but not 'he is school'
 ;;;; not using anymore for now!
 basic_gonp_mod_phrase := basic_unary_phrase & phrasal &
-  [ SYNSEM [ LOCAL [ CAT [ HEAD #modnp &
-				[ MOD < [ LOCAL intersective_mod &
+  [ SYNSEM [ LOCAL [ CAT [ HEAD [ MOD < [ LOCAL intersective_mod &
 					  [ CAT 
                                             [ HEAD subst & 
                                                    [ AUX - ],
@@ -899,35 +836,30 @@ basic_n-spr_proper_phrase := nonrs-hm & basic_noun_word &
 ; 30-4-2021 take away #altmin from daughter. Instead I want altmin to be poss_rel
 ; 4-5-2021 take away --MIN in SPEC for now, so that this can branch into two
 ; types of phrases, one with SPEC 'one' and the other SPEC a kinship term	
-; 5-5-2021 added in C-CONT and RELS values to get the right indexing and MRS	      
+; 5-5-2021 added in C-CONT and RELS values to get the right indexing and MRS	     
+; 30-8-2021 removed #named_np_rel in MIN and #altmin
 basic_pn-spr_phrase := basic_unary_phrase & phrasal &
-  [ SYNSEM [ LOCAL [ CAT [ HEAD det & [ MINORS [ MIN #named_np_rel,
-                                       ALTMIN #altmin ] ],
+  [ SYNSEM [ LOCAL [ CAT [ HEAD det,
                            VAL [ COMPS < >,
                                  SPEC < synsem & [ OPT -,
                                  	   ;--MIN one_poss_rel,
                                  	   LOCAL.CONT.HOOK.INDEX #arg1index,
                                  	   LKEYS.ALTKEYREL.LBL #plbl ] > ] ],
                      CONT.HOOK.INDEX #index & nonconj_ref-ind ],
-             NONLOC [ REL #rel,
-                      QUE #que ],
              PUNCT #punct ],
     ARGS < [ INFLECTD +,
              SYNSEM [ LOCAL [ CAT [ HEAD basic_noun & 
                                          [ ;MINORS.MIN #altmin,
-                                           PRD #prd,
+                                           ;PRD #prd,
 					   --BARE - ],
                                     VAL [ SPR *olist*,
                                           SUBJ *anti_list*,
-					  COMPS #comps & < > ],
-				    NEGPOL #negpol ],
-			      CONT.HOOK.INDEX #arg2index & 
-				              [ SORT #sort ],
-			      CONJ cnil,
-                              CTXT #ctxt ],
-                      NONLOC #nonloc,
+					  COMPS < > ] ],
+			      CONT.HOOK.INDEX #arg2index,
+			      CONJ cnil ],
+                      ;NONLOC #nonloc,
 		      PUNCT #punct ] ] >,
-     C-CONT [ HOOK [ LTOP #ltop,
+     C-CONT [ HOOK [ ;LTOP #ltop,
                      INDEX #index & nonconj_ref-ind ],
               RELS <! [ PRED poss_rel,
      			 LBL #plbl,
@@ -1079,7 +1011,7 @@ basic_comp_head_phrase := basic_comp_or_marker_head_phrase & head_final &
 ; 12-8-2021 change HEAD and NH-DTR MIN value of sfp2 to include sfa 
 ; and add in new phrase for sfp3 to join to sfa
 comp_head_phrase := basic_comp_head_phrase & comp_or_marker_head_phrase &
-  [ HD-DTR [ SYNSEM.LOCAL.CAT.HEAD basic_particle &
+  [ HD-DTR [ SYNSEM.LOCAL.CAT.HEAD basic_particle_or_sfa &
   				[ MINORS.MIN abstr_adv_dim_rel ] ],
     NH-DTR.SYNSEM.LOCAL.CAT.HEAD v_or_a ].
   				

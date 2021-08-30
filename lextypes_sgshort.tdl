@@ -146,10 +146,9 @@ basic_nocop_adj_lex_synsem := basic_nocop_adj_synsem_lex_or_phrase & abstr_lex_s
   [ LOCAL [ ARG-S < #spr . #comps >,
             CAT [ HEAD adj_or_intadj,
                   VAL [ SPR < #spr >,
-			COMPS #comps ],
-                  HS-LEX #hslex ],
+			COMPS #comps ] ],
             CONT.RELS.LIST < #keyrel, ... > ],
-    LKEYS.KEYREL #keyrel & [ LBL #ltop ] ].
+    LKEYS.KEYREL #keyrel ].
 
 ; CSY 13-9-2020 - does not inherit SUBJ < >
 basic_nocop_adj_synsem := basic_nocop_adj_lex_synsem &
@@ -222,7 +221,7 @@ aj_nocop_i-prd_le := basic_norm_adj_word &
 						      	 VAL.SPR *olist*] ] > ],
 			      MC na,
                               POSTHD + ],
-            		CONT.HOOK [ LTOP #ltop,
+            		CONT.HOOK [ ;LTOP #ltop,
 				    XARG #subjind ] ] ] ].
 
 ; CSY 19-9-2020 - MINORS.NORM is used for finer-grain control over which rules can apply
@@ -310,7 +309,7 @@ Scop, 'not', modify PrdP
   [ SYNSEM.LOCAL.CAT.HEAD adv_nonmob &
                           [ MOD < [ LOCAL.CAT [ HEAD adj &
                                                      [ PRD - ],
-                                                VAL [ SUBJ < #subj >,
+                                                VAL [ ;SUBJ < #subj >,
 						      SPCMPS < > ] ] ] > ] ].
 
 ; CSY 10-12-2020 - change from HEAD verbal so that the subtype can take adj headed COMPS also
@@ -496,12 +495,10 @@ basic_n_poss_one_lexent := nonc-hm & basic_noun_word &
   	   [ LOCAL [ CAT [ HEAD noun & [ MINORS [ MIN one_poss_rel ] ],
                            VAL [ COMPS < >,
                            	  SUBJ < >,
-				  SPR  < #spr & synsem &
+				  SPR  < synsem &
                                        [ --MIN _pnspr_q_rel,
-                                         OPT -,
-                                         LEX #lex ] >,
+                                         OPT - ] >,
 				  SPEC < anti_synsem_min > ] ] ],
-	     LKEYS [ KEYREL #keyrel ],
              NONLOC.QUE <! !>,
 	     MODIFD notmod ] ].
 	     
@@ -512,7 +509,7 @@ n_poss_one_lexent := basic_n_poss_one_lexent &
   	     LOCAL [ CAT [ HEAD.MINORS.ALTMIN #altmin,
   	     		    VAL.SPR < [ LOCAL.CAT.HEAD.MINORS.MIN #altmin ] > ],
   	     	      CONT [ HOOK.INDEX #index,
-  	     	             RELS <! #keyrel & [ PRED def_explicit_q_rel,
+  	     	             RELS <! [ PRED def_explicit_q_rel,
                                        ARG0 #index,
                                        RSTR #rhand ],
                                        [ PRED generic_entity_rel,
@@ -520,8 +517,7 @@ n_poss_one_lexent := basic_n_poss_one_lexent &
                                          LBL #phand ] !>,
 		      HCONS <! qeq & [ HARG #rhand,
                                        LARG #phand ] !>,
-		      ICONS <! !> ] ],
-  	     LKEYS [ KEYREL #reg_nom_relation ] ] ].
+		      ICONS <! !> ] ] ] ].
 
 
                                  
@@ -573,7 +569,7 @@ n_pp_c-of_super_le := norm_noun_empty_ppcomp_word &
 Cn, PP-of                        
 <ex>B's the winner of the race
 """
-  [ SYNSEM [ LOCAL.CAT.HEAD.MINORS.MIN #diadic_nom_rel,
+  [ SYNSEM [ ;LOCAL.CAT.HEAD.MINORS.MIN diadic_nom_rel,
              LKEYS [ KEYREL reg_diadic_nom_relation,
                      --COMPKEY _of_p_sel_rel ] ] ].	
 
@@ -625,12 +621,12 @@ basic_particle_word := noncrs-nab &
 ; added MC - so that when there's something like "sia we swim" by hd-cmp, 
 ; the root condition won't alllow it
 ; 31-5-2021 take away v_or_a in COMPS to allow it to take particles also 
-; (specified by rule)                                
+; (specified by rule). 
+; The HEAD value of COMPS is instead specified in the lextype                                
 basic_part_s_lexent := basic_particle_word &
   [ SYNSEM.LOCAL.CAT [ HEAD basic_particle & 
                            [ MINORS.MIN particle_rel ],
-                       POSTHD +,
-                       VAL.COMPS < [ LOCAL.CAT.HEAD #v_or_a ] > ] ].                                    
+                       POSTHD + ] ].                                    
 
 ; 17-5-2021 add in SPR and SPEC < > for now to stop overgeneration
 ; add in olist SUBJ for MOD value (for now) before we figure out how to 
@@ -648,8 +644,7 @@ sentence-final particle
 """
   [ SYNSEM [ LOCAL [ CAT [ HEAD [ MOD < anti_synsem_min >,
   				 TAM [ TENSE #tense,
-				       ASPECT #aspect,
-				       MOOD #ind_or_subj ] ],
+				       ASPECT #aspect ] ],
   		        VAL [ SPEC < >,
   			      SPR < >,
   			      COMPS < [ LOCAL [ CAT [ VAL [ COMPS < >,
@@ -661,14 +656,13 @@ sentence-final particle
   					 LEX -,
   					 OPT - ] >,
   			      SUBJ < > ] ],
-  		    CONT [ HOOK [ INDEX #index & [ E [ TENSE #tense,
-                                                     ASPECT #aspect ] ],
+  		    CONT [ HOOK [ INDEX [ E [ TENSE #tense,
+                                              ASPECT #aspect ] ],
                                   XARG #sentence ],
   		    	   RELS <! relation !> ] ] ] ].
   			      
 ; 30-5-2021 add in particles according to my hierarchy
 ; where type 1 can take all the rest as COMPS, type 2 can only take type 3...
-
 sfp_type1_le := sfp_-_i-s_le &
   [ SYNSEM.LOCAL.CAT.HEAD.MINORS.MIN particle1_rel ].
   
@@ -718,8 +712,7 @@ sf_adverb_word := basic_adverb_word &
 sf_adverb_i-s_le := sf_adverb_word &
   [ SYNSEM [ LOCAL [ CAT [ HEAD [ MOD < anti_synsem_min >,
   				 TAM [ TENSE #tense,
-				       ASPECT #aspect,
-				       MOOD #ind_or_subj ] ],
+				       ASPECT #aspect ] ],
   		        VAL [ SPEC < >,
   			      SPR < >,
   			      COMPS < [ LOCAL [ CAT [ VAL [ COMPS < >,
@@ -731,7 +724,7 @@ sf_adverb_i-s_le := sf_adverb_word &
   					 LEX -,
   					 OPT - ] >,
   			      SUBJ < > ] ],
-  		    CONT [ HOOK [ INDEX #index & [ E [ TENSE #tense,
+  		    CONT [ HOOK [ INDEX [ E [ TENSE #tense,
                                                      ASPECT #aspect ] ],
                                   XARG #sentence ],
   		    	   RELS <! relation !> ] ] ] ].

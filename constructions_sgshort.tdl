@@ -110,14 +110,15 @@ cmp-hd_u_c := comph_rule &
  """
    [ RNAME cph ].
    
-; 23-5-2021 comp head rule just for sfp
-cmp-mrkr_u_c := compm_rule &
-"""
- Complement-head that is only used on particles and sentences
- 
- <ex>The person admires me sia. 
- """
-   [ RNAME cpm ].
+; 24-8-2021 using all the cmp hd rule for both sfa and sfp. comp marker can be used for
+; verbal attachments in the future maybe
+;cmp-mrkr_u_c := compm_rule &
+;"""
+; Complement-marker that is only used on adverbs markiing verbs where the verb remains the head
+; Probably to try in the future if analysis makes sense for this example.
+; <ex>The person finish already the homework. 
+; """
+;   [ RNAME cpm ].
   
 cmp-hd_sfpi_c := comph_sfpi_rule &
 """
