@@ -33,3 +33,10 @@ root_gen_lepak := phrase &
     GENRE edited,
     ORTH root_orth,
     DIALECT sgp ].
+    
+root_non_idiom := sign &
+"""
+Used to determine on which candidate root edges to not apply the idiom checks
+(for efficiency)
+"""
+  [ IDIOM - ].

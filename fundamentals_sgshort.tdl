@@ -32,10 +32,9 @@ adj := basic_adj & n_or_a_or_det & p_adj_adv_or_comp & verb_or_adj_or_frag &
 ; 28-7-2021 add new feature of 3sginfl as a feature of things that head sentences
 ; for the sake of distinguishing fragments from possible sentences (that do not have subj in
 ; sentence which is permissable in Singlish)
-basic_verb_or_adj_or_frag := non_noun_or_frag & subst_or_adv_or_frag &
+basic_verb_or_adj_or_frag := non_noun_or_frag & ;subst_or_adv_or_frag &
  [ VFORM vform,
    3SGINFL 3sginfl ].
-basic_verb_or_frag := basic_verb_or_adj_or_frag.
 
 ; 8-6-2021 to use this head value for runon sentences
 verb_or_conj_or_adj_or_frag := head.
@@ -192,8 +191,10 @@ basic_particle_or_sfa := a_or_part & mobile.
 basic_particle := basic_particle_or_sfa.
 basic_sfa := basic_particle_or_sfa.
 ; Does not inherit from comp_spec_abe because it cannot be the target of comp. deg. specifiers
-particle := basic_particle &
-  [ CARDINAL - ].
+; 31-8-2021 removed CARDINAL from particle because it does not inherit from intsort
+particle := basic_particle. 
+;&
+;  [ CARDINAL - ].
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

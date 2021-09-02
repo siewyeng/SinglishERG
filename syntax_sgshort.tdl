@@ -459,58 +459,16 @@ head_filler_fin_np_rel_rule := basic_head_filler_fin_rel_rule &
 
 ; CSY 17-12-2020 - superset to create two branches for the verb and adjective COMPS
 ; filler head rule without VFORM limitations in the second ARGS
-filler_head_super_rel_rule := binary_rule_left_to_right & rel_cl & 
-			basic_head_filler_phrase & 
-  [ INFLECTD +,
-    SYNSEM [ LOCAL [ CAT [ HEAD [ VFORM #vform,
-				  TAM #tam,
-				  AUX #aux,
-				  INV #inv,
-				  PRD -,
-				  MOD < [ --SIND #ind ] >,
-				  --ADDIN #addin,
-				  MINORS.MIN #min ],
-			   VAL [ SUBJ < >,
-				 SPR < > ] ],
-		     AGR #agr ],
-             MODIFD.RPERIPH na_or_+ ],
-    ARGS < [ INFLECTD na_or_+,
-	     SYNSEM [ LOCAL [ CAT.VAL.COMPS < >,
-                              CONJ cnil ],
-		      NONLOC [ QUE 0-dlist,
-                               REL 1-dlist &
-                                   [ LIST < [ INDEX #ind,
-					      XARG #xarg ] > ] ],
-                      PUNCT [ RPUNCT rparen_or_comma_or_no_punct,
-			      PNCTPR ppair ] ] ],
-	   [ INFLECTD +,
-             SYNSEM [ LOCAL [ CAT [ HEAD verbal & [ VFORM #vform, ; & fin_or_inf,
-                                                    TAM #tam,
-                                                    AUX #aux,
-                                                    INV #inv,
-						    --ADDIN #addin,
-                                                    MINORS.MIN #min ],
-				    VAL.SUBJ *olist_or_prolist*,
-				    MC - ],
-                              CONT.HOOK [ LTOP #ltop,
-                                          INDEX #event & [ SF prop-comm ] ],
-			      AGR #agr,
-			      CONJ cnil ],
-                      NONLOC [ QUE 0-dlist,
-                               REL 0-dlist,
-			       SLASH <! [ CONT.HOOK.XARG #xarg ] !> ] ] ] >,
-    C-CONT [ HOOK [ LTOP #ltop,
-                    INDEX #event ],
-	     RELS <! !>,
-	     HCONS <! !>,
-	     ICONS <! !> ] ].
+; parallel to the filler_head_rel_rule
+
 
 ; 30-8-2021 changed #arg1 to the COMPS value to prevent non coindexing syntax error
-; in lkb	     
-filler_head_rel_rule := filler_head_super_rel_rule &
-  [ ARGS < [ SYNSEM.LOCAL.CAT.VAL.COMPS < > ], [ SYNSEM.LOCAL.CAT.HEAD.VFORM fin_or_inf ] > ].
+; in lkb
+; removed this as the filler_head_super_rel_rule was removed	     
+;filler_head_rel_rule := filler_head_super_rel_rule &
+;  [ ARGS < [ SYNSEM.LOCAL.CAT.VAL.COMPS < > ], [ SYNSEM.LOCAL.CAT.HEAD.VFORM fin_or_inf ] > ].
 
-basic_filler_head_finprp_rel_rule := filler_head_super_rel_rule &
+basic_filler_head_finprp_rel_rule := filler_head_rel_rule &
   [ SYNSEM.LOCAL.CAT.HEAD.MINORS [ ALTMIN #altmin,
 				   NORM #norm ],
     ARGS < [ SYNSEM.LOCAL.CAT.HEAD.MINORS.NORM #norm ],

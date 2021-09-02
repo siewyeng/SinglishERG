@@ -62,7 +62,7 @@ particle := label &
 """
   [ SYNSEM.LOCAL [ CAT [ HEAD basic_particle &
 			      [ PRD - ],
-                         VAL  [ COMPS < synsem_min2 > ],],
+                         VAL  [ COMPS < synsem_min2 > ]],
 		   CONJ cnil ],
     INFLECTD +,
     LNAME "SFP" ].
