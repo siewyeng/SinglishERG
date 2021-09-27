@@ -85,13 +85,13 @@ Change proper noun into a det for poss one
 """
   [ RNAME pnsp ].
 
-pn-sp_k_c := pn_spec_kin_rule &
-"""
-Change proper noun into a det for kinship terms
-
-<ex>Kim father is going.
-"""
-  [ RNAME pnsk ].
+;pn-sp_k_c := pn_spec_kin_rule &
+;"""
+;Change proper noun into a det for kinship terms
+;
+;<ex>Kim father is going.
+;"""
+;  [ RNAME pnsk ].
 
 ;np_gomod_c := gomod_rule &
 ;"""

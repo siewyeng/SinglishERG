@@ -22,7 +22,7 @@ fhfp := flr-hd. ;; flr-hd_rel-finprp_c
 shxp := unary_ctype. ;; hd_xsb-finprp_c
 ;fhr := never_unify_rel. ;; flr-hd_rel-fin_c
 pnsp := unary_ctype. ;; pn-sp_o_c
-pnsk := unary_ctype. ;; pn-sp_k_c
+;pnsk := unary_ctype. ;; pn-sp_k_c
 
 ; pdp := ctype & [ -CTYPE- "PR-DRP" ]. ;; pro-drp_c
 

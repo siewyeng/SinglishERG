@@ -48,10 +48,16 @@ kaypo_a1 := aj_-_i_le &
    SYNSEM [ LKEYS.KEYREL.PRED "_kaypo_a_1_rel",
             PHON.ONSET con ] ].
 
-seow_a1 := aj_-_i_le &
- [ ORTH < "seow" >,
-   SYNSEM [ LKEYS.KEYREL.PRED "_seow_a_1_rel",
+siao_a1 := aj_-_i_le &
+ [ ORTH < "siao" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_siao_a_1_rel",
             PHON.ONSET con ] ].
+            
+atas_a1 := aj_-_i_le &
+ [ ORTH < "atas" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_atas_a_1_rel",
+            PHON.ONSET con ] ].
+            
 
 ;agak_adv1 := av_-_dg-jo_le &
 ; [ ORTH < "agak" >,
@@ -87,11 +93,6 @@ already_incho_sfa := sf_adverb_incho_le &
 ;already_incho_adv := av_-_already-incho_le &
 ; [ ORTH < "already" >,
 ;   SYNSEM [ LKEYS.KEYREL.PRED "_already_a_3_rel",
-;            PHON.ONSET con ] ].
-; 17-11-2020 no need for this with the pred_adj_subj_lexrule
-;beautiful_nocop := aj_nocop_i-prd_le &
-; [ ORTH < "beautiful" >,
-;   SYNSEM [ LKEYS.KEYREL.PRED "_beautiful_a_2_rel",
 ;            PHON.ONSET con ] ].
 
 ever_exp_adv := av_-_ever-exp_le &
@@ -221,7 +222,7 @@ anot_x_sfp := sfp_qtype2b_le &
             PHON.ONSET con ] ].                  
             
 ;;;Removed Items;;;
-already_adv3 := never_unify_le & [ ORTH < "_never_unify_" > ].
+;already_adv3 := never_unify_le & [ ORTH < "_never_unify_" > ].
 
 ; CSY 2-12-2020 - remove ever_adv1 cos it occurs at the same places as ever_exp_adv, seems like an overgeneration
 ever_adv1 := never_unify_le & [ ORTH < "_never_unify_" > ].

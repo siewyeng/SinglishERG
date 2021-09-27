@@ -103,6 +103,12 @@ exp_aspect := aspect &
   [ PRF +,
     EXP + ].
 
+past_tam := past_or_subj_tam & indic_tam & 
+ [ TENSE past,
+   ASPECT aspect &
+  [ PROGR -,
+    INCHO -,
+    INCEP - ] ].
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; 8-4-2021 - adding in subtypes of pronoun type to differentiate 
 ; as it is one of the things that are passed up in an RC
