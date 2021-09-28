@@ -853,7 +853,9 @@ pn-spr_one_phrase := basic_pn-spr_phrase &
 				MOD < > ],
 		 	VAL [ SPR < anti_synsem_min >,
 		 		SPCMPS < >,
-		 		SPEC < [ --MIN one_poss_rel ] > ] ],
+		 		SPEC < [ --MIN one_poss_rel,
+		 			 LOCAL.CONT.HOOK [ INDEX #possarg1,
+		 			 		    LTOP #posslbl ] ] > ] ],
 		 	CONT [ RELS <! #rels1, #relsnamed,
 		 			abstract_quant_relation & 
 		 				   [ PRED def_explicit_q_rel,

@@ -503,16 +503,15 @@ basic_n_poss_one_lexent := nonc-hm & basic_noun_word &
 	     MODIFD notmod ] ].
 	     
 ;29-4-2021 - further specify values to prevent weird things like going through hd-hd_rnr-nb_c
+; 26-9-2021 added INDEX.SORT value based on partitive_intadj_nocomp_phrase
 n_poss_one_lexent := basic_n_poss_one_lexent &
   [ SYNSEM one_nocomp_synsem & [ 
   	     MODIFD.LPERIPH na,
   	     LOCAL [ CAT [ HEAD.MINORS.ALTMIN #altmin,
   	     		    VAL.SPR < [ LOCAL.CAT.HEAD.MINORS.MIN #altmin ] > ],
-  	     	      CONT [ HOOK.INDEX #index,
-  	     	             RELS <! [ PRED def_explicit_q_rel,
-                                       ARG0 #index,
-                                       RSTR #rhand ],
-                                       [ PRED generic_entity_rel,
+  	     	      CONT [ HOOK [ INDEX #index & [ SORT basic-entity-or-event ],
+  	     	      		     LTOP #phand ],
+  	     	             RELS <! [ PRED generic_entity_rel,
                                          ARG0 #index,
                                          LBL #phand ] !>,
 		      HCONS <! qeq & [ HARG #rhand,
@@ -592,6 +591,17 @@ n_pp_c-of_le := n_pp_c-of_super_le &
   [ SYNSEM.LOCAL.CAT.HEAD.MINORS.MIN diadic_nom_rel ].
 n_kinship-of_le := n_pp_c-of_super_le &
   [ SYNSEM.LOCAL.CAT.HEAD.MINORS.MIN kinship_nom_rel ].
+  
+; 28-9-2021 change subconj_synsem for 'if' constructions and the like from HEAD 'verb' 
+; to be able to take adj headed COMPS 
+; <ex> He will come if he happy.
+subconj_synsem := subconj_cp_synsem & 
+  [ LOCAL.CAT.VAL.COMPS < [ LOCAL [ CAT s_cat_unspec & 
+					[ HEAD v_or_a & [ VFORM fin ],
+					  MC - ],
+				    CONT.HOOK.INDEX.SF prop-or-comm ],
+			    --SIND.E.TENSE real_tense ] > ].
+     			    
   
 ; 16-5-2021 for sentence final particles
 ; modelled after basic_adv_int_vp_lexent
