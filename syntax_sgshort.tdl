@@ -362,8 +362,12 @@ rel_cl := basic_rel_cl & clause & phrasal &
 ; 9-3-2021 changed back...
 ; order of arguments changed from basic_head_filler_phrase
 ; change HEAD value of head daughter from verbal
+; 29-9-2021 aded in ORTH constraints to prevent this from unnecessarily going through
+; xp_brckt-pr_c
 basic_head_filler_sg_phrase := binary_punct_phrase & phrasal &
-  [ SYNSEM [ LOCAL [ CAT [ VAL [ COMPS < >,
+  [ ORTH [ LB #lb,
+  	   RB #rb ],
+    SYNSEM [ LOCAL [ CAT [ VAL [ COMPS < >,
 				 SPCMPS < > ],
 			   POSTHD + ],
 		     CONJ cnil ],
@@ -378,12 +382,14 @@ basic_head_filler_sg_phrase := binary_punct_phrase & phrasal &
 					  LAST #last ],
                                REL 0-dlist ],
                       PUNCT [ LPUNCT lparen_or_dq_or_comma_or_no_punct,
-                              PNCTPR #ppair ] ] ],
+                              PNCTPR #ppair ] ],
+              ORTH.LB #lb ],
             [ SYNSEM [ LOCAL #slash & local &
 			    [ CAT.VAL [ COMPS *olist*,
 					SUBJ *olist* ],
 			      CTXT.ACTIVATED + ],
-		      NONLOC.SLASH 0-dlist ] ] > ].
+		      NONLOC.SLASH 0-dlist ] ] >,
+	      ORTH.RB #rb ].
                               
                
 ; 8-3-2021 changed order of ARGS
@@ -562,8 +568,8 @@ basic_pron_np_one_phrase := basic_unary_phrase &
 
 ; 15-3-2021 make sure what the one RC mods is the generic_entity_rel that is introduced
 ; by making the --SIND same as the ARG0 of the generic entity
-; 8-4-2021 added in synsem inside MOD to prevent flr-hd_wh-nmc-fin_c compounds from going through
-; this. eg 'who is hungry' with who1 instead of who2.
+; 8-4-2021 added in synsem inside MOD to prevent flr-hd_wh-nmc-fin_c compounds from going 
+; through this. eg 'who is hungry' with who1 instead of who2.
 pron_np_one_phrase :=  basic_pron_np_one_phrase &
   [ ARGS < [ SYNSEM.LOCAL.CAT.HEAD.MOD < synsem & [ --SIND #mod ] > ] >,
     C-CONT.RELS <! [ PRED quant_rel ],

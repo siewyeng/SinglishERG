@@ -504,6 +504,9 @@ basic_n_poss_one_lexent := nonc-hm & basic_noun_word &
 	     
 ;29-4-2021 - further specify values to prevent weird things like going through hd-hd_rnr-nb_c
 ; 26-9-2021 added INDEX.SORT value based on partitive_intadj_nocomp_phrase
+; 28-9-2021 removed extra def_explicit_q_rel from RELS
+; <ex> Kim one is here. 
+; as opposed to "Kim's one"
 n_poss_one_lexent := basic_n_poss_one_lexent &
   [ SYNSEM one_nocomp_synsem & [ 
   	     MODIFD.LPERIPH na,
@@ -597,7 +600,7 @@ n_kinship-of_le := n_pp_c-of_super_le &
 ; <ex> He will come if he happy.
 subconj_synsem := subconj_cp_synsem & 
   [ LOCAL.CAT.VAL.COMPS < [ LOCAL [ CAT s_cat_unspec & 
-					[ HEAD v_or_a & [ VFORM fin ],
+					[ HEAD v_or_a & [ VFORM fin_or_imp ],
 					  MC - ],
 				    CONT.HOOK.INDEX.SF prop-or-comm ],
 			    --SIND.E.TENSE real_tense ] > ].
