@@ -741,9 +741,11 @@ sf_adverb_i-s_le := sf_adverb_word &
                                                      ASPECT #aspect ] ],
                                   XARG #sentence ],
   		    	   RELS <! relation !> ] ] ] ].
-  		    	   
+
+; add in past tense constraint  		    	   
 sf_adverb_compl_le := sf_adverb_i-s_le &
-  [ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL.CAT.HEAD.TAM.ASPECT completive_aspect ] > ].	
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL.CAT.HEAD.TAM [ TENSE past,
+  							  ASPECT completive_aspect ] ] > ].	
   
 sf_adverb_incep_le := sf_adverb_i-s_le &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL.CAT.HEAD.TAM.ASPECT incep_aspect ] > ].
