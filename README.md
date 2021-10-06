@@ -1,6 +1,6 @@
 # SinglishERG
 
-A branch of the English Resource Grammar (ERG) that is used for Singlish.
+A branch of the English Resource Grammar (ERG) that is used for Singlish. Created as a Master's Research project.
 
 These are the files that have been changed since they have been cloned from the ERG trunk.
 Refer to config and singlish.tdl to see which files are in use.
@@ -16,3 +16,11 @@ To compile this grammar using ace:
 * move 'singlish.tdl' out to the trunk level
 * with the terminal at trunk directory, use the config file from singlish and compile grammar
 * * eg. 'ace -G singlish.dat -g singlish/config.tdl'
+
+To check the semantics:
+* echo "sentence" | ace -g [grammar].dat -Tfq
+
+And to generate in another grammar:
+* echo "sentence" | ace -g [grammar1].dat -Tfq | ace -g [grammar2].dat -e
+
+
