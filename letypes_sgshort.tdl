@@ -30,3 +30,5 @@ singlish_le := sign &
 [ DIALECT sgp ].
 
 v_np_le-sg := v_np_le & singlish_le.
+v_prd_seq-val-sg := v_prd_seq-va_le & singlish_le.
+v_np*-sg := v_np*_le & singlish_le.

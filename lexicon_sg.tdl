@@ -2,6 +2,26 @@
 
 ;;Transitive;;
 
+agak_v1 := v_np*_le & singlish_le & 
+"""
+to estimate
+<ex> agak the water enough or not.
+"""
+ [ ORTH < "agak" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_agak_v_1_rel",
+            PHON.ONSET con ],
+   DIALECT sgp ].
+   
+;agak-agak_v1 := v_np*_le & singlish_le & 
+;"""
+;to estimate (same as agak)
+;<ex> I just agak agak only.
+;"""
+; [ ORTH < "agak","agak" >,
+;   SYNSEM [ LKEYS.KEYREL.PRED "_agak_v_1_rel",
+;            PHON.ONSET con ],
+;   DIALECT sgp ].
+
 arrow_v1 := v_np_le & singlish_le & 
 """
 to 'nominate' someone, usually negative
@@ -31,11 +51,34 @@ to disturb
 kena_v1 := v_np_le & singlish_le & 
 """
 to be struck by or receive something unpleasant
+<ex> They kena bad luck.
 """
  [ ORTH < "kena" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_kena_v_1_rel",
-            PHON.ONSET con ] ].            
+            PHON.ONSET con ] ].               
             
+kena_prd_va_v1 := v_prd_seq-va_le & singlish_le & 
+"""
+to be struck by or receive something unpleasant
+<ex> They kena scolded.
+'They got scolded'
+"""
+ [ ORTH < "kena" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_kena_v_state_rel",
+            PHON.ONSET con ] ].                        
+
+tahan_v1 := v_np*_le & singlish_le & 
+"""
+to tolerate someone/something
+very commonly used with the negator 'buay'
+<ex> I really buay tahan that person.
+'I really cannot stand that person'
+"""
+ [ ORTH < "tahan" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_tahan_v_1_rel",
+            PHON.ONSET con ],
+   DIALECT sgp ].
+               
 ;go_vsing := v_np_dir_le &
 ; [ ORTH < "go" >,
 ;   SYNSEM [ LKEYS.KEYREL.PRED "_go_v_1_rel",
@@ -49,22 +92,46 @@ kaypo_a1 := aj_-_i_le &
             PHON.ONSET con ] ].
 
 siao_a1 := aj_-_i_le &
+"""
+meaning crazy
+"""
  [ ORTH < "siao" >,
-   SYNSEM [ LKEYS.KEYREL.PRED "_siao_a_1_rel",
+   SYNSEM [ LKEYS.KEYREL.PRED "_crazy_a_1_rel",
             PHON.ONSET con ] ].
             
 atas_a1 := aj_-_i_le &
+"""
+literally means high
+used to describe someone/thing sophisticated, or of a high class
+also used to mean snobbish
+"""
  [ ORTH < "atas" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_atas_a_1_rel",
             PHON.ONSET con ] ].
             
+goondu_a1 := aj_-_i_le &
+"""
+originally fat (tamil) or hard (malay)
+used to describe someone as stupid
+"""
+ [ ORTH < "goondu" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_stupid_a_1_rel",
+            PHON.ONSET con ] ].
+            
+botak_a1 := aj_-_i_le &
+"""
+bald
+"""
+ [ ORTH < "botak" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_bald_a_1_rel",
+            PHON.ONSET con ] ].
 
-;agak_adv1 := av_-_dg-jo_le &
-; [ ORTH < "agak" >,
-;   SYNSEM [ LKEYS.KEYREL.PRED "_agak_rel",
-;            PHON.ONSET con ] ].
 
 agak_adv := av_-_i-vp_le &
+"""
+roughly
+<ex>I agak understand lah
+"""
  [ ORTH < "agak" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_agak_a_1_rel",
             PHON.ONSET con ] ].
@@ -113,8 +180,20 @@ very := av_-_dg-very_le &
 ;;;Nouns;;;
 
 agaration_n1 := n_-_m_le &
+"""
+nominalised version of "agak"
+"""
  [ ORTH < "agaration" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_agaration_n_1_rel",
+            PHON.ONSET voc ] ].
+
+ang-moh_n1 := n_-_c_le &
+"""
+literally: red hair (hokkien)
+used to refer to Caucasians
+"""
+ [ ORTH < "ang","moh" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_ang-moh_n_1_rel",
             PHON.ONSET voc ] ].
 
 ;that_test := cm_np-eg_that_le &

@@ -138,6 +138,10 @@ E.ASPECT.PROGR : PROG
   +       <> +
   -       <> -
 
+;; when we want to generate standard english sentences from Singlish ones, 
+;; these three aspects will have to be gone in the generation.
+;; put the line "  *       >> !" on the top row of each.
+;; otherwise to generate Singlish, put * >> - on the third row
 ; for Singlish
 E.ASPECT.INCHO : INCHO
   +       <> +
@@ -158,7 +162,7 @@ E.ASPECT.EXP : EXPER
 E.ASPECT.INCEP : INCEP
   +       <> +
   -       <> -
-  *       >> -
+  *       >> -  
   -       << *
   -       << [e]
   
