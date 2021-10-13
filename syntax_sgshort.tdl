@@ -54,6 +54,10 @@ basic_head_filler_phrase := binary_punct_phrase & phrasal &
 ; 19-11-2020 took away *obllist* from SPR and in hd dtr removed SPR.REST
 ; so that the daughter can have an empty SPR
 ; allows for Singlish sentences like <ex>he very pretty
+; 12-10-2021 added back SPR.REST as the previous change prevented 'and'
+; from taking a subject head main clause due to the SPR restriction.
+; <ex> he swims and he dances.
+; the Singlish adj sentence is still permitted
 basic_head_subj_phrase := head_nexus_rel_phrase & head_final_infl & phrasal &
 			  head_compositional &
   [ SYNSEM [ LOCAL [ CAT [ VAL [ COMPS < >,
@@ -65,7 +69,7 @@ basic_head_subj_phrase := head_nexus_rel_phrase & head_final_infl & phrasal &
 	     MODIFD.RPERIPH #rperiph,
              PUNCT.PNCTPR #ppair ],
     HD-DTR.SYNSEM [ LOCAL.CAT [ VAL [ COMPS < >,
-				      SPR #spr,
+				      SPR.REST #spr,
                                       SPEC #spec ],
                                 MC na ],
 		    MODIFD.RPERIPH #rperiph,

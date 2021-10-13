@@ -137,34 +137,6 @@ E.MOOD : MOOD
 E.ASPECT.PROGR : PROG
   +       <> +
   -       <> -
-
-;; when we want to generate standard english sentences from Singlish ones, 
-;; these three aspects will have to be gone in the generation.
-;; put the line "  *       >> !" on the top row of each.
-;; otherwise to generate Singlish, put * >> - on the third row
-; for Singlish
-E.ASPECT.INCHO : INCHO
-  +       <> +
-  -       <> -
-  *       >> -
-  -       << *
-  -       << [e]
-
-; for Singlish
-E.ASPECT.EXP : EXPER
-  +       <> +
-  -       <> -
-  *       >> -
-  -       << *
-  -       << [e]
-
-; for Singlish
-E.ASPECT.INCEP : INCEP
-  +       <> +
-  -       <> -
-  *       >> -  
-  -       << *
-  -       << [e]
   
 ;;
 ;; _fix_me_
@@ -197,6 +169,37 @@ E.ASPECT.PRF : PERF
   +       <> +
   -       <> -
   *       >> -
+  -       << *
+  -       << [e]
+  
+;; when we want to generate standard english sentences from Singlish ones, 
+;; these three aspects will have to be gone in the generation.
+;; put the line "  *       >> !" on the top row of each.
+;; otherwise to generate Singlish, put * >> - on the third row
+; for Singlish
+E.ASPECT.INCHO : INCHO
+  *       >> !
+  +       <> +
+  -       <> -
+;  *       >> -
+  -       << *
+  -       << [e]
+
+; for Singlish
+E.ASPECT.EXP : EXPER
+  *       >> !
+  +       <> +
+  -       <> -
+;  *       >> -
+  -       << *
+  -       << [e]
+
+; for Singlish
+E.ASPECT.INCEP : INCEP
+  *       >> !
+  +       <> +
+  -       <> -
+;  *       >> -  
   -       << *
   -       << [e]
 
