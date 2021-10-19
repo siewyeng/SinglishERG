@@ -517,8 +517,8 @@ n_poss_one_lexent := basic_n_poss_one_lexent &
   	     	             RELS <! [ PRED generic_entity_rel,
                                          ARG0 #index,
                                          LBL #phand ] !>,
-		      HCONS <! qeq & [ HARG #rhand,
-                                       LARG #phand ] !>,
+		      ;HCONS <! qeq & [ HARG #rhand,
+                      ;                 LARG #phand ] !>,
 		      ICONS <! !> ] ] ] ].
 
 
@@ -675,12 +675,17 @@ sentence-final particle
   		    	   RELS <! relation !> ] ] ] ].
   			      
 ; 30-5-2021 add in particles according to my hierarchy
-; where type 1 can take all the rest as COMPS, type 2 can only take type 3...
+; where type 1 can take all the rest as COMPS, type 2 can only take type 3 
+; and type 3 can only take S
 sfp_type1_le := sfp_-_i-s_le &
   [ SYNSEM.LOCAL.CAT.HEAD.MINORS.MIN particle1_rel ].
-  
+
+; used for hor2
+; <ex> you like ice cream hor?
+; 19-10-2021 add SF restriction for COMPS  
 sfp_qtype1_le := sfp_type1_le &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.SF ques ].   
+  [ SYNSEM.LOCAL [ CAT.VAL.COMPS < [ LOCAL.CONT.HOOK.INDEX.SF prop ] >, 
+  		   CONT.HOOK.INDEX.SF ques ] ].   
   
 sfp_type2a_le := sfp_-_i-s_le &
   [ SYNSEM.LOCAL.CAT.HEAD.MINORS.MIN particle2_rel ].
