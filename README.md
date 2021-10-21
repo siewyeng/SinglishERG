@@ -22,5 +22,8 @@ To check the semantics:
 
 And to generate in another grammar:
 * echo "sentence" | ace -g [grammar1].dat -Tfq | ace -g [grammar2].dat -e
+* cat [mrs] | ace -g [grammar2].dat -e
+* to change the generation root, add "-r [root]" to the command
+* and add "--disable-subsumption-test" for easier generation
 
 
