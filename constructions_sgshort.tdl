@@ -163,6 +163,15 @@ and sfadverb-headed sentences. Can be followed by sfp2
 ;<ex>want to eat. 
 ;"""
 ;  [ RNAME pdp ]. 
+
+; 20-10-2021 for nouns after going through singlish infl
+; so that they don't need specifiers
+hdn_bnp-unsp_c := bare_np_unspec_rule &
+"""
+<ex> Cat sleeps.
+for common noun cat
+"""
+  [ RNAME bnun ].
   
 ;;;;;;;;;;;;; the never unifies ;;;;;;;;;;;;;;;;;;
   

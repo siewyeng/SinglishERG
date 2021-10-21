@@ -14,6 +14,8 @@ cphb := ctype & [ -CTYPE- "CMP-HD" ]. ;; cmp-hd_sfp2b_c
 cpha := ctype & [ -CTYPE- "CMP-HD" ]. ;; cmp-hd_sfp2a_c
 cpm := ctype & [ -CTYPE- "CMP-MRKR" ]. ;; cmp-mrkr_u_c
 
+bnun := unary_ctype. ;; hdn_bnp-unsp_c
+
 ;frnb := never_unify_rel. ;; np_nb-frg_c
 fhhf := flr-hd. ;; hd-flr_rel-fin_c
 fhfp := flr-hd. ;; flr-hd_rel-finprp_c

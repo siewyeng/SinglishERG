@@ -849,7 +849,7 @@ pn-spr_one_phrase_original := basic_pn-spr_phrase &
     ARGS < [ SYNSEM [ LOCAL.CAT.HEAD [ MINORS.MIN named_np_rel ],
 		      LEX luk ] ] > ].
 		      
-pn-spr_one_phrase := basic_pn-spr_phrase &
+pn-spr_one_phrase-edit := basic_pn-spr_phrase &
   [ SYNSEM [ LOCAL [ CAT 
 	       	[ HEAD [ POSS +,
 	       	 	MINORS [ MIN _pnspr_q_rel,
@@ -890,6 +890,42 @@ pn-spr_one_phrase := basic_pn-spr_phrase &
 			      	 	HCONS <! !> ] ],
 		      LEX luk ] ] > ].		      
 
+pn-spr_one_phrase := basic_pn-spr_phrase &
+  [ SYNSEM [ LOCAL [ CAT 
+	       	[ HEAD [ POSS +,
+	       	 	MINORS [ MIN _pnspr_q_rel,
+	       		  	ALTMIN poss_rel ],
+				MOD < > ],
+		 	VAL [ SPR < anti_synsem_min >,
+		 		SPCMPS < >,
+		 		SPEC < [ --MIN one_poss_rel,
+		 			 LOCAL.CONT.HOOK [ INDEX #possarg1,
+		 			 		    LTOP #posslbl ] ] > ] ] ],
+	     MODIFD notmod_or_lmod & [ LPERIPH na ] ],
+   C-CONT [ RELS <! abstract_quant_relation & 
+		      [ PRED def_explicit_q_rel,
+		 	ARG0 #possarg1,
+		 	CFROM #from,
+		 	CTO #to,
+		 	RSTR #rstr3 ], 
+		 prep_relation & [ PRED poss_rel,
+		 		LBL #posslbl,
+		 		ARG0.E [ TENSE no_tense,
+			        ASPECT no_aspect ],
+		 		ARG1 #possarg1,
+		 		ARG2 #possarg2,
+		 		CFROM #from,
+		 		CTO #to ] !>,
+		 HOOK [ INDEX #possarg1,
+		 	XARG #possarg2 ],
+		 HCONS <! qeq & [ HARG #rstr3,
+		 		 LARG #posslbl ] !> ],
+	     
+    ARGS < [ SYNSEM [ LOCAL [ CAT.HEAD [ MINORS.MIN named_np_rel ],
+    				CONT.RELS <! #rels1 & [ PRED proper_q_rel,
+    							 ARG0 #possarg2 ], 
+			      		     #relsnamed !> ],
+		      LEX luk ] ] > ].		      
 ; 27-9-2021 probably will abandon this in favour of overgenerating and 
 ; maybe allowing a proper noun to undergo this with all nouns		      
 pn-spr_kin_phrase := basic_pn-spr_phrase &
@@ -1090,6 +1126,33 @@ run_on_coord_comma_rule := basic_run_on_coord_rule &
 		      PUNCT.LPUNCT lparen_or_dq_or_comma_or_no_punct ],
    GENRE nonformal ].
 
+
+; 21-10-2021 changed udef_q_rel to udef_a_q_rel so that when generating 
+; from singlish.dat to english.dat, <ex>cat sleeps can generate "a cat sleeps"
+; somehow it is not able to take def_udef_a_q_rel to generate "the cat sleeps"
+reg_bare_np_phrase-sg := norm_bare_np_phrase &
+  [ INFLECTD +,
+    SYNSEM [ LOCAL [ CAT [ HEAD.MINORS.ALTMIN implicit_q_rel,
+			   VAL.SPR < synsem > ],
+		     AGR.DIV #div ],
+             MODIFD #modif ],
+    ARGS < [ INFLECTD +,
+             SYNSEM [ LOCAL [ AGR.DIV #div,
+                              CAT.VAL.SPR.FIRST synsem ],
+		      MODIFD #modif ] ] >,
+    C-CONT.RELS <! [ PRED udef_a_q_rel, ARG0 ref-ind ] !> ].
+
+; 20-10-2021 add in new barenp just for bare nouns that are underspecified for number
+; <ex> he ate apple.
+; for number to remain underspecified   
+bare_np_underspec_phrase := reg_bare_np_phrase-sg &
+  [ SYNSEM.LOCAL.AGR #agr & [ DIV + ],
+    ARGS < [ SYNSEM [ LOCAL [ CAT [ HEAD noun_or_nomger,
+				    VAL.SPR [ FIRST [ OPT -,
+						      LOCAL.AGR.DIV - ],
+					      REST *olist* ] ],
+			      AGR #agr ] ] ] > ].
+
 ; 10-6-2021 exclude VFORM fin for radical pro drop
 ;basic_prodrop_phrase := basic_unary_phrase &
 ;  [ INFLECTD #infl,
@@ -1161,5 +1224,6 @@ pn_spec_one_rule := rule & pn-spr_one_phrase.
 ; pn_spec_kin_rule := rule & pn-spr_kin_phrase.
 		      
 gomod_rule := rule & gonp_mod_phrase.
+bare_np_unspec_rule := rule & bare_np_underspec_phrase.
 
 frag_r_mod_np_adj_rule := never_unify_rule.

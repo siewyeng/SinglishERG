@@ -270,8 +270,11 @@ hor2_x_sfp := sfp_qtype1_le &
  [ ORTH < "hor" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_hor2_particle_rel",
             PHON.ONSET con ] ].            
-            
+           
 ah2_x_sfp := sfp_type1_le &
+"""
+ah with a rising tone
+"""
  [ ORTH < "ah" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_ah2_particle_rel",
             PHON.ONSET con ] ].
