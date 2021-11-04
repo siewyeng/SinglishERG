@@ -17,6 +17,7 @@
 ;;
 ;;  Constructions
 
+
 ; CSY 19-10-2020 - for Singlish
 j-j_nocop_crd_c := a_nocop_coord_phr_fin &
 """
@@ -172,7 +173,18 @@ hdn_bnp-unsp_c := bare_np_unspec_rule &
 for common noun cat
 """
   [ RNAME bnun ].
-  
+
+#|  
+; 2-11-2021 new rule test
+; #test for predicative adj without copula
+nocop_c := nocop_pred_lexrule &
+"""
+Converts pred adj (after passing through subj rule) 
+into a finite VP
+<ex> They happy
+"""
+  [ RNAME pradj ].
+|#
 ;;;;;;;;;;;;; the never unifies ;;;;;;;;;;;;;;;;;;
   
 flr-hd_rel-fin_c := never_unify_rule. 

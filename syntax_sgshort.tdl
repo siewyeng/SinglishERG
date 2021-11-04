@@ -1140,7 +1140,7 @@ reg_bare_np_phrase-sg := norm_bare_np_phrase &
              SYNSEM [ LOCAL [ AGR.DIV #div,
                               CAT.VAL.SPR.FIRST synsem ],
 		      MODIFD #modif ] ] >,
-    C-CONT.RELS <! [ PRED udef_a_q_rel, ARG0 ref-ind ] !> ].
+    C-CONT.RELS <! [ PRED def_udef_a_q_rel, ARG0 ref-ind ] !> ].
 
 ; 20-10-2021 add in new barenp just for bare nouns that are underspecified for number
 ; <ex> he ate apple.

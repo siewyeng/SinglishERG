@@ -217,7 +217,8 @@ aj_nocop_i-prd_le := basic_norm_adj_word &
               [ LOCAL [ CAT [ HEAD [ MINORS.MIN norm_adj_rel,
                                      MOD < anti_synsem_min > ],
 			      VAL [ SUBJ < [ --SIND #subjind & basic_non_expl,
-					     LOCAL.CAT [ HEAD supnoun,
+					     LOCAL.CAT [ HEAD supnoun &
+					     			[ CASE nom ],
 						      	 VAL.SPR *olist*] ] > ],
 			      MC na,
                               POSTHD + ],

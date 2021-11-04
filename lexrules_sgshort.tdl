@@ -92,6 +92,30 @@ pred_adj_subj_lexrule:= norm_lex_rule & aj_nocop_i-prd_le &
 							   NONLOC #nonloc & non-local_none ] >,
 					      VAL.COMPS #comps ] ] ] ].
 					      
+; 2-11-2021 #test to try to implement the pumping rule for pred adj to fin VP
+; so that adjectives can be without VFORM and sentences like <ex>They very happy
+; can parse
+nocop_pred_lexrule:= norm_lex_rule &      
+  [ ORTH #orth,
+   SYNSEM.LOCAL [ CAT [ HEAD verbal &
+   			   [ VFORM fin,
+   			     PRD - ],
+   		        VAL [ SPR < anti_synsem_min >,
+   		        	SUBJ < synsem_min & [ --SIND #subjind & basic_non_expl,
+					     	  LOCAL [ CAT [ HEAD supnoun,
+						      	 	VAL.SPR *olist*],
+						          CONT.HOOK.LTOP #ltop ],
+					  	 NONLOC #nonloc ] > ] ],
+   		  CONT #cont &
+   		  	[ HOOK.XARG #subjind ] ],
+   DTR norm_adj_word & [ ORTH #orth,
+   			  SYNSEM adj_synsem & 
+   			  	[ LOCAL [ CAT [ HEAD adj &
+   			  			  [ PRD +,
+   			  			    MOD < [ LOCAL.CONT.HOOK.LTOP #ltop,
+							   NONLOC #nonloc & non-local_none ] > ],
+   			  		       VAL [ COMPS < > ] ],
+   			  		  CONT #cont ] ] ] ].
 					      
 ; 20-4-2021 - rule for converting pn into stuff that can take SPEC
 ; 29-4-2021 -  remove "norm_lex_rule" from supertype cos it will become a det
