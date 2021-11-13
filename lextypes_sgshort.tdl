@@ -142,13 +142,25 @@ basic_nocop_adj_synsem_lex_or_phrase := canonical_lex_or_phrase_synsem &
 
 ; CSY 13-9-2020 - version that does not inherit SUBJ < >
 ; CSY 16-9-2020 - removed the SPR portion (trial) to try to solve sb-hd_mc_c 
+;13-11-2021 to ensure that the SPR has two elements, one with synsem and anti synsem
+; SPR values copied from basic_adj_lex_synsem
 basic_nocop_adj_lex_synsem := basic_nocop_adj_synsem_lex_or_phrase & abstr_lex_synsem &
   [ LOCAL [ ARG-S < #spr . #comps >,
             CAT [ HEAD adj_or_intadj,
-                  VAL [ SPR < #spr >,
-			COMPS #comps ] ],
+                  VAL [ SPR < #spr & synsem_min &
+                          [ --MIN degree_rel,
+                            LOCAL
+                            [ CAT [ VAL [ SPR *olist*,
+                                          SPEC < [ LOCAL.CAT.HS-LEX #hslex ]>],
+                                    MC na ],
+                              CONT.HOOK.LTOP #ltop ],
+                            NONLOC.SLASH 0-dlist ],
+			  anti_synsem_min &
+			  [ --MIN degree_rel ] >,
+			COMPS #comps ],
+		   HS-LEX #hslex ],
             CONT.RELS.LIST < #keyrel, ... > ],
-    LKEYS.KEYREL #keyrel ].
+    LKEYS.KEYREL #keyrel & [ LBL #ltop ]].
 
 ; CSY 13-9-2020 - does not inherit SUBJ < >
 basic_nocop_adj_synsem := basic_nocop_adj_lex_synsem &
@@ -192,8 +204,11 @@ norm_nocop_adj_synsem := adj_nocop_synsem_lex_or_phrase &
 ; 12-1-2021 - change name and remove one_arg, so that an adjective that has a COMPS can 
 ; still undergo the pred_adj_subj rule. COMPS value comes from the daughter of pred_adj_subj
 ; lexrule
+; 13-11-2021 change SPR.FIRST from LOCAL[ CAT.HEAD n_or_adv ...etc
+; because this prevented adv "very [adj]" from joining with the subject
+; the SPR of the AP to join with subj has to be something like *cons* and not *null* 
 nocop_pred_adj_synsem := basic_nocop_adj_synsem & isect_synsem &
-                            norm_nocop_adj_synsem & basic_lex_synsem &
+                            norm_nocop_adj_synsem & basic_lex_synsem & 
   [ LOCAL [ CAT [ HEAD adj &
                        [ PRD -,
                          MOD < [ --SIND #ind & non_expl-ind ] >,

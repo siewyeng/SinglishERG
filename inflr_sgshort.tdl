@@ -36,7 +36,7 @@ Underspec noun
 v_fin-bse_ilr := v_n3s-bse_inflrule &
 """
 base form verb for all including 3sg      
-<ex> He admire 
+<ex> He admire...
 """
 [ ND-AFF -,
   ORTH #stem,

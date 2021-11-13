@@ -87,8 +87,13 @@ very commonly used with the negator 'buay'
             
 ;;;Adverbials;;;
 
-kaypo_a1 := aj_-_i_le &
- [ ORTH < "kaypo" >,
+kaypoh_a1 := aj_-_i_le &
+"""
+Busybody, used a bit like a verb also
+<ex> He always kaypoh one.
+<ex> Don't kaypoh so much.
+"""
+ [ ORTH < "kaypoh" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_kaypo_a_1_rel",
             PHON.ONSET con ] ].
 
@@ -177,6 +182,14 @@ not_prdp-sg := av_-_s-not-sg_le &
 very := av_-_dg-very_le &
  [ ORTH < "very" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_very_x_deg_rel",
+            PHON.ONSET con ] ].
+            
+sibei := av_-_dg-very_le &
+"""
+used as an intensifier (rude)
+"""
+ [ ORTH < "sibei" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_sibei_x_deg_rel",
             PHON.ONSET con ] ].
 ;;;Nouns;;;
 
