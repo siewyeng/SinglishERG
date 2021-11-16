@@ -21,7 +21,7 @@ irregular-forms 	  := ../irregs.tab.
 
 quickcheck-code           := "../ace/ace-erg-qc.txt".
 
-post-model-path           := "english-postagger.hmm".
+post-model-path           := "../ace/english-postagger.hmm".
 
 ;;; grammar internal properties
 orth-path                 := ORTH.
