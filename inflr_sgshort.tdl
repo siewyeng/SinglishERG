@@ -44,8 +44,12 @@ base form verb for all including 3sg
   SYNSEM.LOCAL bse_or_fin_verb,
   RNAME lvns ].
 
+; remove this to avoid overgeneration
+v_n3s-bse_ilr := never_unify_rule.
+
 ; 8-7-2021 - added DIALECT us into this so that the specifically Singlish words will not
 ; take the 3s -s suffix eg. *he sabos the plan.
+; #temporary. Judgement may differ for among speakers
 v_3s-fin_olr :=
 %suffix (!s !ss) (!ss !ssses) (ss sses) (!ty !ties) (ch ches) (sh shes) (x xes) (z zes)
 """

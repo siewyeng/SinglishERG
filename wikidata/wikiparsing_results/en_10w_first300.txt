@@ -1,0 +1,2366 @@
+###parse 118/138
+
+SENT: Cher cher! 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop ]
+RELS: < [ unknown<0:10> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg ] ]
+ [ udef_q<0:10> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]
+ [ compound<0:10> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<0:4> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]
+ [ named<0:4> LBL: h14 CARG: "Cher" ARG0: x10 ]
+ [ _cher/NN_u_unknown<5:9> LBL: h8 ARG0: x4 ] >
+HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 >
+ICONS: < > ]
+
+
+SENT: Can I go to the loo? 
+[ LTOP: h0
+INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ _can_v_modal<0:3> LBL: h1 ARG0: e2 ARG1: h4 ]
+ [ pron<4:5> LBL: h5 ARG0: x3 [ x PERS: 1 NUM: sg IND: + PT: std ] ]
+ [ pronoun_q<4:5> LBL: h6 ARG0: x3 RSTR: h7 BODY: h8 ]
+ [ _go_v_1<6:8> LBL: h9 ARG0: e10 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x3 ]
+ [ _to_p_dir<9:11> LBL: h9 ARG0: e11 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e10 ARG2: x12 [ x PERS: 3 NUM: sg ] ]
+ [ _the_q<12:15> LBL: h13 ARG0: x12 RSTR: h14 BODY: h15 ]
+ [ _loo/NN_u_unknown<16:19> LBL: h16 ARG0: x12 ] >
+HCONS: < h0 qeq h1 h4 qeq h9 h7 qeq h5 h14 qeq h16 >
+ICONS: < > ]
+
+
+SKIP: Go lah go lah!
+
+
+SENT: WHO DID THAT? 
+[ LTOP: h0
+INDEX: e2 [ e SF: ques TENSE: past MOOD: indicative PROG: - PERF: - ]
+RELS: < [ person<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg ] ]
+ [ which_q<0:3> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ]
+ [ _do_v_1<4:7> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x8 [ x PERS: 3 NUM: sg GEND: n ] ]
+ [ generic_entity<8:12> LBL: h9 ARG0: x8 ]
+ [ _that_q_dem<8:12> LBL: h10 ARG0: x8 RSTR: h11 BODY: h12 ] >
+HCONS: < h0 qeq h1 h6 qeq h4 h11 qeq h9 >
+ICONS: < > ]
+
+
+SKIP: Cher cher, him! I saw!
+
+
+SKIP: I suppose it was a lot better than being addressed as ‘cher, but at the time I kept wishing I had ended up in a junior college instead.
+
+
+SENT: Ah, I understand now.
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ pron<4:5> LBL: h4 ARG0: x3 [ x PERS: 1 NUM: sg IND: + PT: std ] ]
+ [ pronoun_q<4:5> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ]
+ [ _understand_v_by<6:16> LBL: h1 ARG0: e2 ARG1: x3 ARG2: i8 ]
+ [ loc_nonsp<17:21> LBL: h1 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x10 [ x PERS: 3 NUM: sg ] ]
+ [ time_n<17:20> LBL: h11 ARG0: x10 ]
+ [ def_implicit_q<17:20> LBL: h12 ARG0: x10 RSTR: h13 BODY: h14 ]
+ [ _now_a_1<17:20> LBL: h11 ARG0: e15 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x10 ] >
+HCONS: < h0 qeq h1 h6 qeq h4 h13 qeq h11 >
+ICONS: < > ]
+
+
+SENT: Ah! It's good to be back home!
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: tensed MOOD: indicative ]
+RELS: < [ implicit_conj<0:30> LBL: h1 ARG0: e2 ARG1: e4 [ e SF: prop-or-ques TENSE: tensed MOOD: indicative ] ARG2: e5 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ]
+ [ unknown<0:3> LBL: h6 ARG0: e4 ARG: u7 ]
+ [ _good_a_at-for-of<9:13> LBL: h1 ARG0: e5 ARG1: h8 ARG2: i9 ]
+ [ loc_nonsp<20:30> LBL: h10 ARG0: e11 [ e SF: prop-or-ques TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: i9 ARG2: x12 [ x PERS: 3 NUM: sg ] ]
+ [ place_n<20:24> LBL: h13 ARG0: x12 ]
+ [ def_implicit_q<20:24> LBL: h14 ARG0: x12 RSTR: h15 BODY: h16 ]
+ [ _back_p<20:24> LBL: h13 ARG0: e17 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x12 ]
+ [ loc_nonsp<25:30> LBL: h13 ARG0: e18 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x12 ARG2: x19 [ x PERS: 3 NUM: sg GEND: n ] ]
+ [ place_n<25:29> LBL: h20 ARG0: x19 ]
+ [ def_implicit_q<25:29> LBL: h21 ARG0: x19 RSTR: h22 BODY: h23 ]
+ [ _home_p<25:29> LBL: h20 ARG0: e24 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x19 ] >
+HCONS: < h0 qeq h1 h8 qeq h10 h15 qeq h13 h22 qeq h20 >
+ICONS: < > ]
+
+
+SENT: Ah, the flowers of spring.
+[ LTOP: h0
+INDEX: e2 [ e SF: prop ]
+RELS: < [ unknown<0:26> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: pl IND: + ] ]
+ [ _the_q<4:7> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]
+ [ _flower_n_1<8:15> LBL: h8 ARG0: x4 ]
+ [ _of_p<16:18> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: sg GEND: n IND: - ] ]
+ [ udef_q<19:26> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]
+ [ season<19:25> LBL: h14 CARG: "spring" ARG0: x10 ] >
+HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 >
+ICONS: < > ]
+
+
+SKIP: Boy don't try to front, uh, I Know just, just, what you are, ah, ah.
+
+
+SENT: the crowd's oohs and ahs at the fireworks
+[ LTOP: h0
+INDEX: e2 [ e SF: prop-or-ques ]
+RELS: < [ unknown<0:41> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 ] ]
+ [ _the_q<0:3> LBL: h5 ARG0: x6 [ x PERS: 3 NUM: sg IND: + ] RSTR: h7 BODY: h8 ]
+ [ _crowd_n_of<4:9> LBL: h9 ARG0: x6 ]
+ [ def_explicit_q<9:11> LBL: h10 ARG0: x4 RSTR: h11 BODY: h12 ]
+ [ poss<9:11> LBL: h13 ARG0: e14 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x6 ]
+ [ udef_q<12:16> LBL: h15 ARG0: x16 [ x PERS: 3 NUM: pl IND: + ] RSTR: h17 BODY: h18 ]
+ [ _oohs/NNS_u_unknown<12:16> LBL: h19 ARG0: x16 ]
+ [ udef_q<17:24> LBL: h20 ARG0: x21 [ x PERS: 3 NUM: pl IND: + ] RSTR: h22 BODY: h23 ]
+ [ _and_c<17:20> LBL: h13 ARG0: x4 ARG1: x16 ARG2: x21 ]
+ [ _ahs/NNS_u_unknown<21:24> LBL: h24 ARG0: x21 ]
+ [ _at_p_loc<25:27> LBL: h13 ARG0: e25 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x26 [ x PERS: 3 NUM: pl IND: + ] ]
+ [ _the_q<28:31> LBL: h27 ARG0: x26 RSTR: h28 BODY: h29 ]
+ [ _fireworks_n_1<32:41> LBL: h30 ARG0: x26 ] >
+HCONS: < h0 qeq h1 h7 qeq h9 h11 qeq h13 h17 qeq h19 h22 qeq h24 h28 qeq h30 >
+ICONS: < > ]
+
+
+SENT: Mother and dad oohed and ahed over Cindy. 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: past MOOD: indicative PROG: - PERF: - ]
+RELS: < [ udef_q<0:14> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: pl ] RSTR: h5 BODY: h6 ]
+ [ proper_q<0:6> LBL: h7 ARG0: x8 [ x PERS: 3 NUM: sg IND: + ] RSTR: h9 BODY: h10 ]
+ [ named<0:6> LBL: h11 CARG: "Mother" ARG0: x8 ]
+ [ _and_c<7:10> LBL: h13 ARG0: x3 ARG1: x8 ARG2: x14 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<11:14> LBL: h15 ARG0: x14 RSTR: h16 BODY: h17 ]
+ [ named<11:14> LBL: h18 CARG: "Dad" ARG0: x14 ]
+ [ _oohed/VBD_u_unknown<15:20> LBL: h1 ARG0: e20 [ e SF: prop TENSE: past MOOD: indicative PROG: - PERF: - ] ARG1: x3 ARG2: i21 ]
+ [ _and_c<21:24> LBL: h1 ARG0: e2 ARG1: e20 ARG2: e22 [ e SF: prop TENSE: past MOOD: indicative PROG: - PERF: - ] ]
+ [ _ahed/VBD_u_unknown<25:29> LBL: h1 ARG0: e22 ARG1: x3 ARG2: i23 ]
+ [ _over_p_state<30:34> LBL: h1 ARG0: e24 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x25 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<35:41> LBL: h26 ARG0: x25 RSTR: h27 BODY: h28 ]
+ [ named<35:40> LBL: h29 CARG: "Cindy" ARG0: x25 ] >
+HCONS: < h0 qeq h1 h5 qeq h13 h9 qeq h11 h16 qeq h18 h27 qeq h29 >
+ICONS: < > ]
+
+
+SKIP: She was only two months old but already was developing her personality.
+
+
+SKIP: Blame the Ah-Neh race again, just like what they did to the former president who is now in Canada.
+
+
+SENT: some 'ah-neh' stole my hp! 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: past MOOD: indicative PROG: - PERF: - ]
+RELS: < [ _some_q_indiv<0:4> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg ] RSTR: h5 BODY: h6 ]
+ [ fw_seq<5:13> LBL: h7 ARG0: x3 ARG1: i8 ARG2: i9 ]
+ [ quoted<6:8> LBL: h7 CARG: "ah" ARG0: i8 ]
+ [ quoted<9:12> LBL: h7 CARG: "neh" ARG0: i9 ]
+ [ _steal_v_from<14:19> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x12 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ def_explicit_q<20:22> LBL: h13 ARG0: x12 RSTR: h14 BODY: h15 ]
+ [ poss<20:22> LBL: h16 ARG0: e17 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x12 ARG2: x18 [ x PERS: 1 NUM: sg PT: std ] ]
+ [ pronoun_q<20:22> LBL: h19 ARG0: x18 RSTR: h20 BODY: h21 ]
+ [ pron<20:22> LBL: h22 ARG0: x18 ]
+ [ named<23:25> LBL: h16 CARG: "HP" ARG0: x12 ] >
+HCONS: < h0 qeq h1 h5 qeq h7 h14 qeq h16 h20 qeq h22 >
+ICONS: < > ]
+
+
+SKIP: not tt i'm a racist but i saw this indian or dunno bhangra walking near me on the way to the mrt stn and din realise tt i lost my hp till i got on the train at jurong east to look for it.
+
+
+SKIP: Well, the locals who contributed to the current prosperity of Singapore, who sacrificed their most productive years to serve the army, who allowed their kampong homes to be acquired by the government, etc etc, are being slowly sidelined in favor of the foreigners -- ah nehs, ah bengs, ah pinoys and others.
+
+
+SKIP: My SIL had the POLICE visiting her home bcos of ah neh wash. 
+
+
+SKIP: Apparently the ah neh is an overstayer. 
+
+
+SKIP: And the police track all the ah neh's HP contacts and got to her house. 
+
+
+SKIP: Luckily BIL was clever and said they were enquiring only but never engage ah neh service.
+
+
+SKIP: But what will happen when these ahnehs flee Singapore when they are asked to do NS?
+
+
+SKIP: We dont owe the ah neh a career or life here. 
+
+
+SKIP: They come in with their discriminatory practices and think the sinkies owe them these privileges.
+
+
+SKIP: Oh, and if you hear people  refer to "that ah neh", they could be referring to you. 
+
+
+SENT: It's a derogatory term.
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ pron<0:2> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg GEND: n PT: std ] ]
+ [ pronoun_q<0:2> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ]
+ [ _be_v_id<2:4> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x8 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ _a_q<5:6> LBL: h9 ARG0: x8 RSTR: h10 BODY: h11 ]
+ [ _derogatory/JJ_u_unknown<7:17> LBL: h12 ARG0: e13 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x8 ]
+ [ _term_n_of<18:22> LBL: h12 ARG0: x8 ARG1: i14 ] >
+HCONS: < h0 qeq h1 h6 qeq h4 h10 qeq h12 >
+ICONS: < > ]
+
+
+SENT: Upsize or not? 
+[ LTOP: h0
+INDEX: e2 [ e SF: ques TENSE: untensed MOOD: indicative PROG: - PERF: - ]
+RELS: < [ unknown<0:14> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<0:6> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]
+ [ named<0:6> LBL: h8 CARG: "Upsize" ARG0: x4 ]
+ [ _or+not_a_1<7:13> LBL: h1 ARG0: e2 ARG1: e2 ] >
+HCONS: < h0 qeq h1 h6 qeq h8 >
+ICONS: < > ]
+
+
+SKIP: The crew member asked, but the Ah neh still give that blur look, so the crew member decide for him.
+
+
+SENT: “Aiyo! 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop ]
+RELS: < [ unknown<0:6> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<0:6> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]
+ [ named<1:5> LBL: h8 CARG: "Aiyo" ARG0: x4 ] >
+HCONS: < h0 qeq h1 h6 qeq h8 >
+ICONS: < > ]
+
+
+SENT: Nearly langgar leh! 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop ]
+RELS: < [ unknown<0:19> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg ] ]
+ [ udef_q<0:19> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]
+ [ _nearly_x_deg<0:6> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e10 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ]
+ [ _langgar/JJ_u_unknown<7:14> LBL: h8 ARG0: e10 ARG1: x4 ]
+ [ _leh/NN_u_unknown<15:18> LBL: h8 ARG0: x4 ] >
+HCONS: < h0 qeq h1 h6 qeq h8 >
+ICONS: < > ]
+
+
+SKIP: So scary ah! 
+
+
+SENT: Alamak! 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop ]
+RELS: < [ unknown<0:7> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<0:7> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]
+ [ named<0:6> LBL: h8 CARG: "Alamak" ARG0: x4 ] >
+HCONS: < h0 qeq h1 h6 qeq h8 >
+ICONS: < > ]
+
+
+SKIP: Why you go so fast!” he is heard exclaiming to a companion in his car.
+
+
+SKIP: Apart from skin colour, I have nothing in common with these Caucasians. 
+
+
+SKIP: To be honest, I have very little in common with the expatriates who live in Singapore either. 
+
+
+SKIP: For a start, most of the ang mohs that live here, particularly the ones from Britain, tend to come from the upper-middle classes.
+
+
+SKIP: Zhen decided he liked Robert, although the Englishman smiled too much. 
+
+
+SENT: Perhaps this was the ang mo way. 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: past MOOD: indicative PROG: - PERF: - ]
+RELS: < [ _perhaps_a_1<0:7> LBL: h1 ARG0: i4 ARG1: h5 ]
+ [ generic_entity<8:12> LBL: h6 ARG0: x3 [ x PERS: 3 NUM: sg GEND: n ] ]
+ [ _this_q_dem<8:12> LBL: h7 ARG0: x3 RSTR: h8 BODY: h9 ]
+ [ _be_v_id<13:16> LBL: h10 ARG0: e2 ARG1: x3 ARG2: x11 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ _the_q<17:20> LBL: h12 ARG0: x11 RSTR: h13 BODY: h14 ]
+ [ _ang/JJ_u_unknown<21:24> LBL: h15 ARG0: e16 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x11 ]
+ [ compound<25:32> LBL: h15 ARG0: e17 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x11 ARG2: x18 [ x IND: + ] ]
+ [ udef_q<25:27> LBL: h19 ARG0: x18 RSTR: h20 BODY: h21 ]
+ [ _mo_n_1<25:27> LBL: h22 ARG0: x18 ]
+ [ _way_n_of<28:31> LBL: h15 ARG0: x11 ARG1: i23 ] >
+HCONS: < h0 qeq h1 h5 qeq h10 h8 qeq h6 h13 qeq h15 h20 qeq h22 >
+ICONS: < > ]
+
+
+SKIP: In China, if a man smiled too much he was considered effeminate, but Zhen noticed that Baba Tan was completely at ease with them and laughed and smiled more in their company than when he was with the Chinese.
+
+
+SKIP: Suyin recognized him immediately—the tall, uncomfortable-looking white man, the ang moh standing guard by the only unoccupied table in the cafe.
+
+
+SKIP: [H]e attracted the attention of a food vendor and pointed at a pot consisting of different cuts of meat stewed in a dark soy sauce broth, served with flat rice noodles on the side. 
+
+
+SKIP: The food vendors, or hawkers, smiled at each other beatifically while ladling out the hot soup and meat in a bowl. 
+
+
+SKIP: They were probably thinking something on the lines of, "The stupid angmoh doesn't know what he is about to eat!" 
+
+
+SKIP: Angmoh, literally meaning "red hair," is the Hokkien Chinese collective term for Caucasians.
+
+
+SKIP: With my kind of career and background, I have the best of both worlds. 
+
+
+SKIP: You can't tell me I'm that ang moh who doesn't understand. 
+
+
+SKIP: I'm the Asian who's been through the same challenges, and I would show you how to overcome them.
+
+
+SKIP: "Ang moh"  is still used today with an implicit sense of the cultural power ang mohs wield in postcolonial Singapore, whether we admit it anot.
+
+
+SKIP: Eh butok lah! 
+
+
+SKIP: Which bastard paotoh to teacher that I carry handphone to school? 
+
+
+SKIP: Now kena confiscate!
+
+
+SKIP: I saw Gary looking at his textbook during the test. 
+
+
+SENT: Wanna bao toh him?
+[ LTOP: h0
+INDEX: e2 [ e SF: ques TENSE: tensed MOOD: indicative PROG: - PERF: - ]
+RELS: < [ _want_v_1<0:5> LBL: h1 ARG0: e2 ARG1: i3 ARG2: h4 ]
+ [ _bao/RB_u_unknown<6:9> LBL: h1 ARG0: i5 ARG1: e2 ]
+ [ _toh/VB_u_unknown<10:13> LBL: h6 ARG0: e7 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: i3 ARG2: x8 [ x PERS: 3 NUM: sg GEND: m IND: + PT: std ] ]
+ [ pron<14:17> LBL: h9 ARG0: x8 ]
+ [ pronoun_q<14:17> LBL: h10 ARG0: x8 RSTR: h11 BODY: h12 ] >
+HCONS: < h0 qeq h1 h4 qeq h6 h11 qeq h9 >
+ICONS: < > ]
+
+
+SKIP: Don't pao toh me hor! 
+
+
+SKIP: Don’t bao toh me leh!
+
+
+SKIP: to blur a photograph by moving the camera while taking it
+
+
+SENT: to blur a manuscript by handling it while damp
+[ LTOP: h0
+INDEX: e2 [ e SF: prop-or-ques TENSE: untensed MOOD: indicative PROG: - PERF: - ]
+RELS: < [ _blur_v_cause<3:7> LBL: h1 ARG0: e2 ARG1: i3 ARG2: x4 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ _a_q<8:9> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]
+ [ _manuscript_n_of<10:20> LBL: h8 ARG0: x4 ARG1: i9 ]
+ [ _by_p_means<21:23> LBL: h1 ARG0: e10 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x11 ]
+ [ udef_q<24:46> LBL: h12 ARG0: x11 RSTR: h13 BODY: h14 ]
+ [ nominalization<24:46> LBL: h15 ARG0: x11 ARG1: h16 ]
+ [ _handle_v_1<24:32> LBL: h16 ARG0: e17 [ e SF: prop TENSE: untensed MOOD: indicative PROG: + PERF: - ] ARG1: i18 ARG2: x19 [ x PERS: 3 NUM: sg GEND: n PT: std ] ]
+ [ pron<33:35> LBL: h20 ARG0: x19 ]
+ [ pronoun_q<33:35> LBL: h21 ARG0: x19 RSTR: h22 BODY: h23 ]
+ [ _while_x<36:41> LBL: h16 ARG0: e24 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e17 ARG2: e25 [ e SF: prop TENSE: untensed MOOD: indicative ] ]
+ [ _damp_a_1<42:46> LBL: h16 ARG0: e25 ARG1: i26 ] >
+HCONS: < h0 qeq h1 h6 qeq h8 h13 qeq h15 h22 qeq h20 >
+ICONS: < > ]
+
+
+SENT: Her eyes are blurred with the lightning's glare.
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ def_explicit_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: pl IND: + ] RSTR: h5 BODY: h6 ]
+ [ poss<0:3> LBL: h7 ARG0: e8 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x3 ARG2: x9 [ x PERS: 3 NUM: sg GEND: f IND: + PT: std ] ]
+ [ pronoun_q<0:3> LBL: h10 ARG0: x9 RSTR: h11 BODY: h12 ]
+ [ pron<0:3> LBL: h13 ARG0: x9 ]
+ [ _eye_n_1<4:8> LBL: h7 ARG0: x3 ]
+ [ _blur_v_cause<13:20> LBL: h1 ARG0: e2 ARG1: i14 ARG2: x3 ]
+ [ _with_p<21:25> LBL: h1 ARG0: e15 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x16 [ x PERS: 3 NUM: sg ] ]
+ [ _the_q<26:29> LBL: h17 ARG0: x18 [ x PERS: 3 NUM: sg GEND: n IND: - ] RSTR: h19 BODY: h20 ]
+ [ _lightning_n_1<30:39> LBL: h21 ARG0: x18 ]
+ [ def_explicit_q<39:41> LBL: h22 ARG0: x16 RSTR: h23 BODY: h24 ]
+ [ poss<39:41> LBL: h25 ARG0: e26 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x16 ARG2: x18 ]
+ [ _glare_n_1<42:47> LBL: h25 ARG0: x16 ] >
+HCONS: < h0 qeq h1 h5 qeq h7 h11 qeq h13 h19 qeq h21 h23 qeq h25 >
+ICONS: < e2 topic x3 > ]
+
+
+SKIP: Then give this box focus to blur the first one:  […]
+
+
+SKIP: These form elements need to have an onFocus event handler to blur the current focus.
+
+
+SKIP: Blurring one window and focusing on another window yields the same result of sending the window to the back of the pile.
+
+
+SKIP: A manual way to blur a text object is to press the Tab key, which advances focus to the next field in order and removes it from the current field .
+
+
+SKIP: Maccario, it was evident, did not care to take the risk of blundering upon a picket, and a man led them by twisting paths until at last the hacienda rose blackly before them. 
+
+
+SKIP: Appleby could see it dimly, a blur of shadowy buildings with the ridge of roof parapet alone cutting hard and sharp against the clearing sky.
+
+
+SKIP: The fightback when it came was in the [Roger] Federer fashion: unfussy, filled with classy strokes from the back with perfectly timed interventions at the net that confounded his opponent. 
+
+
+SKIP: The third set passed in a bit of a blur, the fourth, which led to the second tie-break, was the most dramatic of the match.
+
+
+SKIP: Lest she  […]  will with her railing set a great blur on mine honesty and good name.
+
+
+SKIP: In Singapore, there is no choice being one of the world’s twenty smallest countries.
+
+
+SKIP: Boh pien ah.
+
+
+SKIP: Eh, if cannot finish the work then bo bian must stay back
+
+
+SKIP: I have been sleep deprived for the past few days, and a friend who knows about it just sent me an online message: “Notti  ah…still don’t sleep.” 
+
+
+SENT: Bobian , I’m a workaholic…
+[ LTOP: h0
+INDEX: i2
+RELS: < [ addressee<0:8> LBL: h1 ARG0: i2 ARG1: x4 [ x PERS: 3 NUM: sg IND: + ] ARG2: e5 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ]
+ [ proper_q<0:8> LBL: h6 ARG0: x4 RSTR: h7 BODY: h8 ]
+ [ named<0:6> LBL: h9 CARG: "Bobian" ARG0: x4 ]
+ [ pron<9:10> LBL: h11 ARG0: x3 [ x PERS: 1 NUM: sg IND: + PT: std ] ]
+ [ pronoun_q<9:10> LBL: h12 ARG0: x3 RSTR: h13 BODY: h14 ]
+ [ _be_v_id<10:12> LBL: h1 ARG0: e5 ARG1: x3 ARG2: x15 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ _a_q<13:14> LBL: h16 ARG0: x15 RSTR: h17 BODY: h18 ]
+ [ _workaholic_n_1<15:25> LBL: h19 ARG0: x15 ] >
+HCONS: < h0 qeq h1 h7 qeq h9 h13 qeq h11 h17 qeq h19 >
+ICONS: < > ]
+
+
+SKIP: He already paid for my ticket so even if I was busy, boh pien, I would have to go.
+
+
+SKIP: Wa Lao William Tan, Why you Bo Jio Me to eat Domino’s Pizza?
+
+
+SKIP: When we asked you for your favourite Singlish Slang, alamak, all the kiasu people rushed to share their favourites! 
+
+
+SENT: Some won prizes. 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop ]
+RELS: < [ unknown<0:16> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: pl IND: + ] ]
+ [ _some_q<0:4> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]
+ [ _win_v_1<5:8> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: i10 ARG2: x4 ]
+ [ _prize_n_for<9:15> LBL: h8 ARG0: x4 ARG1: i11 ] >
+HCONS: < h0 qeq h1 h6 qeq h8 >
+ICONS: < e9 topic x4 > ]
+
+
+SENT: That could have been you.
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: tensed MOOD: indicative PROG: - PERF: + ]
+RELS: < [ generic_entity<0:4> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg GEND: n ] ]
+ [ _that_q_dem<0:4> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ]
+ [ _could_v_modal<5:10> LBL: h1 ARG0: e2 ARG1: h8 ]
+ [ _be_v_id<16:20> LBL: h9 ARG0: e10 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: + ] ARG1: x3 ARG2: x11 [ x PERS: 2 IND: + PT: std ] ]
+ [ pron<21:24> LBL: h12 ARG0: x11 ]
+ [ pronoun_q<21:24> LBL: h13 ARG0: x11 RSTR: h14 BODY: h15 ] >
+HCONS: < h0 qeq h1 h6 qeq h4 h8 qeq h9 h14 qeq h12 >
+ICONS: < > ]
+
+
+SKIP: We hope next time you wouldn’t paiseh and join in the fun. 
+
+
+SKIP: Don’t say we bojio hor.
+
+
+SENT: Don’t say we bo jio you to use JIO.
+[ LTOP: h0
+INDEX: e2 [ e SF: comm TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ pronoun_q<0:5> LBL: h4 ARG0: x5 [ x PERS: 2 PT: zero ] RSTR: h6 BODY: h7 ]
+ [ pron<0:5> LBL: h8 ARG0: x5 ]
+ [ neg<0:5> LBL: h1 ARG0: i9 ARG1: h10 ]
+ [ _say_v_to<6:9> LBL: h11 ARG0: e2 ARG1: x5 ARG2: h12 ARG3: i13 ]
+ [ appos<10:15> LBL: h14 ARG0: e15 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x16 [ x PERS: 1 NUM: pl IND: + PT: std ] ARG2: x17 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ pron<10:12> LBL: h18 ARG0: x16 ]
+ [ pronoun_q<10:12> LBL: h19 ARG0: x16 RSTR: h20 BODY: h21 ]
+ [ proper_q<13:15> LBL: h22 ARG0: x17 RSTR: h23 BODY: h24 ]
+ [ named<13:15> LBL: h25 CARG: "Bo" ARG0: x17 ]
+ [ _jio/VB_u_unknown<16:19> LBL: h14 ARG0: e27 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x16 ARG2: x28 [ x PERS: 2 IND: + PT: std ] ]
+ [ pron<20:23> LBL: h29 ARG0: x28 ]
+ [ pronoun_q<20:23> LBL: h30 ARG0: x28 RSTR: h31 BODY: h32 ]
+ [ _in+order+to_x<24:26> LBL: h33 ARG0: e34 [ e SF: prop TENSE: untensed MOOD: indicative ] ARG1: h35 ARG2: h36 ]
+ [ _use_v_1<27:30> LBL: h37 ARG0: e38 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: i39 ARG2: x40 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<31:35> LBL: h41 ARG0: x40 RSTR: h42 BODY: h43 ]
+ [ named<31:34> LBL: h44 CARG: "JIO" ARG0: x40 ] >
+HCONS: < h0 qeq h1 h6 qeq h8 h10 qeq h11 h12 qeq h33 h20 qeq h18 h23 qeq h25 h31 qeq h29 h35 qeq h14 h36 qeq h37 h42 qeq h44 >
+ICONS: < > ]
+
+
+SENT: Why got free barbecue 'bo jio'?
+[ LTOP: h0
+INDEX: e2 [ e SF: ques TENSE: past MOOD: indicative PROG: - PERF: - ]
+RELS: < [ udef_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg ] RSTR: h5 BODY: h6 ]
+ [ nominalization<0:3> LBL: h7 ARG0: x3 ARG1: h8 ]
+ [ generic_verb<0:3> LBL: h9 ARG0: e10 [ e SF: prop ] ]
+ [ _why_x<0:3> LBL: h8 ARG0: e11 [ e SF: ques ] ARG1: h12 ]
+ [ _get_v_1<4:7> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x13 [ x PERS: 3 NUM: sg ] ]
+ [ udef_q<8:31> LBL: h14 ARG0: x13 RSTR: h15 BODY: h16 ]
+ [ compound<8:31> LBL: h17 ARG0: e18 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x13 ARG2: x19 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<8:25> LBL: h20 ARG0: x19 RSTR: h21 BODY: h22 ]
+ [ compound<8:25> LBL: h23 ARG0: e24 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x19 ARG2: x25 ]
+ [ udef_q<8:21> LBL: h26 ARG0: x25 RSTR: h27 BODY: h28 ]
+ [ _free_a_of<8:12> LBL: h29 ARG0: e30 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x25 ]
+ [ _barbecue_n_1<13:21> LBL: h29 ARG0: x25 ]
+ [ named<23:25> LBL: h23 CARG: "Bo" ARG0: x19 ]
+ [ _jio/NN_u_unknown<26:29> LBL: h17 ARG0: x13 ] >
+HCONS: < h0 qeq h1 h5 qeq h7 h12 qeq h9 h15 qeq h17 h21 qeq h23 h27 qeq h29 >
+ICONS: < > ]
+
+
+SKIP: This boy damn act cute, I buay tank.
+
+
+SKIP: Sorry I really buay tank my eyes are closing, head spinning I need to sleep haha.
+
+
+SENT: Lonely mudpie for lonely people. 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop ]
+RELS: < [ unknown<0:32> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg ] ]
+ [ udef_q<0:32> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]
+ [ _lonely_a_1<0:6> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x4 ]
+ [ _mudpie/NN_u_unknown<7:13> LBL: h8 ARG0: x4 ]
+ [ _for_p<14:17> LBL: h8 ARG0: e10 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x11 [ x PERS: 3 NUM: pl IND: + ] ]
+ [ udef_q<18:32> LBL: h12 ARG0: x11 RSTR: h13 BODY: h14 ]
+ [ _lonely_a_1<18:24> LBL: h15 ARG0: e16 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x11 ]
+ [ _people_n_of<25:31> LBL: h15 ARG0: x11 ARG1: i17 ] >
+HCONS: < h0 qeq h1 h6 qeq h8 h13 qeq h15 >
+ICONS: < > ]
+
+
+SENT: Going to watch Ah Boys to Men at 6:05pm. 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: tensed MOOD: indicative PROG: + PERF: - ]
+RELS: < [ _going+to_v_qmodal<0:5> LBL: h1 ARG0: e2 ARG1: h4 ]
+ [ _watch_v_1<9:14> LBL: h5 ARG0: e6 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: i3 ARG2: x7 [ x PERS: 3 NUM: sg IND: + ] ARG3: h8 ]
+ [ proper_q<15:22> LBL: h9 ARG0: x7 RSTR: h10 BODY: h11 ]
+ [ compound<15:22> LBL: h12 ARG0: e13 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x7 ARG2: x14 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<15:17> LBL: h15 ARG0: x14 RSTR: h16 BODY: h17 ]
+ [ named<15:17> LBL: h18 CARG: "Ah" ARG0: x14 ]
+ [ named<18:22> LBL: h12 CARG: "Boys" ARG0: x7 ]
+ [ _to_p<23:25> LBL: h21 ARG0: e22 [ e SF: prop TENSE: untensed MOOD: indicative ] ARG1: x7 ARG2: x23 [ x PERS: 3 NUM: pl IND: + ] ]
+ [ udef_q<26:29> LBL: h24 ARG0: x23 RSTR: h25 BODY: h26 ]
+ [ _man_n_1<26:29> LBL: h27 ARG0: x23 ]
+ [ _at_p_temp<30:32> LBL: h5 ARG0: e28 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e6 ARG2: x29 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ basic_numbered_hour<33:39> LBL: h30 CARG: "6:05pm" ARG0: x29 ]
+ [ def_implicit_q<33:39> LBL: h32 ARG0: x29 RSTR: h33 BODY: h34 ] >
+HCONS: < h0 qeq h1 h4 qeq h5 h8 qeq h21 h10 qeq h12 h16 qeq h18 h25 qeq h27 h33 qeq h30 >
+ICONS: < > ]
+
+
+SKIP: Really buay tank the loneliness here.
+
+
+SENT: Oh well, cheers to a better day ahead. 
+[ LTOP: h0
+INDEX: e2 [ e SF: comm TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ _oh_a_1<0:2> LBL: h1 ARG0: i4 ARG1: h5 ]
+ [ _well_a_1<3:7> LBL: h6 ARG0: i7 ARG1: h8 ]
+ [ pronoun_q<9:38> LBL: h9 ARG0: x3 [ x PERS: 2 PT: zero ] RSTR: h10 BODY: h11 ]
+ [ pron<9:38> LBL: h12 ARG0: x3 ]
+ [ _cheers_v_1<9:15> LBL: h13 ARG0: e2 ARG1: x3 ]
+ [ _to_p_state<16:18> LBL: h13 ARG0: e14 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x15 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ _a_q<19:20> LBL: h16 ARG0: x15 RSTR: h17 BODY: h18 ]
+ [ _good_a_at-for-of<21:27> LBL: h19 ARG0: e20 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x15 ]
+ [ more_comp<21:27> LBL: h19 ARG0: e21 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e20 ARG2: u22 ]
+ [ _day_n_of<28:31> LBL: h19 ARG0: x15 ARG1: i23 ]
+ [ _ahead_p<32:37> LBL: h13 ARG0: e24 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ] >
+HCONS: < h0 qeq h1 h5 qeq h6 h8 qeq h13 h10 qeq h12 h17 qeq h19 >
+ICONS: < > ]
+
+
+SKIP: I’m freezing now. I buay tank, I need to go hide in my blanket now.
+
+
+SENT: Singapore’s star awards – the most shameless show. 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ proper_q<0:9> LBL: h4 ARG0: x5 [ x PERS: 3 NUM: sg IND: + ] RSTR: h6 BODY: h7 ]
+ [ named<0:9> LBL: h8 CARG: "Singapore" ARG0: x5 ]
+ [ def_explicit_q<9:11> LBL: h10 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h11 BODY: h12 ]
+ [ poss<9:11> LBL: h13 ARG0: e14 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x3 ARG2: x5 ]
+ [ _star_n_1<12:16> LBL: h13 ARG0: x3 ]
+ [ _award_v_1<17:23> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x15 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ _the_q<26:29> LBL: h16 ARG0: x15 RSTR: h17 BODY: h18 ]
+ [ superl<30:34> LBL: h19 ARG0: e20 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e21 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ]
+ [ _shameless/JJ_u_unknown<35:44> LBL: h19 ARG0: e21 ARG1: x15 ]
+ [ _show_n_of<45:49> LBL: h19 ARG0: x15 ARG1: i22 ] >
+HCONS: < h0 qeq h1 h6 qeq h8 h11 qeq h13 h17 qeq h19 >
+ICONS: < > ]
+
+
+SKIP: Buay tank how they shamelessly give awards to themselves for being the best. 
+
+
+SENT: Please. 
+[ LTOP: h0
+INDEX: e2 [ e SF: comm TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ pronoun_q<0:7> LBL: h4 ARG0: x3 [ x PERS: 2 PT: zero ] RSTR: h5 BODY: h6 ]
+ [ pron<0:7> LBL: h7 ARG0: x3 ]
+ [ _please_v_1<0:6> LBL: h1 ARG0: e2 ARG1: x3 ARG2: i8 ] >
+HCONS: < h0 qeq h1 h5 qeq h7 >
+ICONS: < > ]
+
+
+SKIP: If you are the only one running in the race, and you get champion, may I know what’s there to be happy about?
+
+
+SKIP: Being someone who doesn't understand Hokkien, I catch no ball as to what you say.
+
+
+SKIP: From the way he described population trend, he may well be right. 
+
+
+SKIP: He mentioned something about expo something function. 
+
+
+SENT: Boy, we all catch no balls.
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ _boy_a_1<0:3> LBL: h1 ARG0: i4 ARG1: h5 ]
+ [ pron<5:7> LBL: h6 ARG0: x3 [ x PERS: 1 NUM: pl IND: + PT: std ] ]
+ [ pronoun_q<5:7> LBL: h7 ARG0: x3 RSTR: h8 BODY: h9 ]
+ [ _all_a_1<8:11> LBL: h10 ARG0: i11 ARG1: e2 ]
+ [ _catch_v_1<12:17> LBL: h10 ARG0: e2 ARG1: x3 ARG2: x12 [ x PERS: 3 NUM: pl IND: + ] ]
+ [ _no_q<18:20> LBL: h13 ARG0: x12 RSTR: h14 BODY: h15 ]
+ [ _ball_n_of<21:26> LBL: h16 ARG0: x12 ARG1: i17 ] >
+HCONS: < h0 qeq h1 h5 qeq h10 h8 qeq h6 h14 qeq h16 >
+ICONS: < > ]
+
+
+SENT: Ah! I see the problem. 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: tensed MOOD: indicative ]
+RELS: < [ implicit_conj<0:22> LBL: h1 ARG0: e2 ARG1: e4 [ e SF: prop-or-ques TENSE: tensed MOOD: indicative ] ARG2: e5 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ]
+ [ unknown<0:3> LBL: h6 ARG0: e4 ARG: u7 ]
+ [ pron<4:5> LBL: h8 ARG0: x9 [ x PERS: 1 NUM: sg IND: + PT: std ] ]
+ [ pronoun_q<4:5> LBL: h10 ARG0: x9 RSTR: h11 BODY: h12 ]
+ [ _see_v_1<6:9> LBL: h1 ARG0: e5 ARG1: x9 ARG2: x13 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ _the_q<10:13> LBL: h14 ARG0: x13 RSTR: h15 BODY: h16 ]
+ [ _problem_n_of<14:21> LBL: h17 ARG0: x13 ARG1: i18 ] >
+HCONS: < h0 qeq h1 h11 qeq h8 h15 qeq h17 >
+ICONS: < > ]
+
+
+SENT: Fearless is only semi-literate. 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ proper_q<0:8> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]
+ [ named<0:8> LBL: h7 CARG: "Fearless" ARG0: x3 ]
+ [ _only_x_deg<12:16> LBL: h1 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e10 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ]
+ [ _semi_a_1<17:22> LBL: h1 ARG0: e10 ARG1: e2 ]
+ [ _literate_a_1<22:30> LBL: h1 ARG0: e2 ARG1: x3 ] >
+HCONS: < h0 qeq h1 h5 qeq h7 >
+ICONS: < > ]
+
+
+SKIP: In which case, I can understand why he catch no ball. 
+
+
+SKIP: I guess we must ALL show patience to the slow-witted.
+
+
+SENT: Infini... what? 
+[ LTOP: h0
+INDEX: e2 [ e SF: ques TENSE: tensed MOOD: indicative ]
+RELS: < [ implicit_conj<0:15> LBL: h1 ARG0: e2 ARG1: e4 [ e SF: prop-or-ques TENSE: tensed MOOD: indicative ] ARG2: e5 [ e SF: ques ] ]
+ [ unknown<0:7> LBL: h1 ARG0: e4 ARG: x6 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<0:7> LBL: h7 ARG0: x6 RSTR: h8 BODY: h9 ]
+ [ named<0:6> LBL: h10 CARG: "Infini" ARG0: x6 ]
+ [ unknown<10:15> LBL: h1 ARG0: e5 ARG: x12 ]
+ [ thing<10:14> LBL: h13 ARG0: x12 ]
+ [ which_q<10:14> LBL: h14 ARG0: x12 RSTR: h15 BODY: h16 ] >
+HCONS: < h0 qeq h1 h8 qeq h10 h15 qeq h13 >
+ICONS: < > ]
+
+
+SENT: Sorry, I catch no ball. 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ subord<0:6> LBL: h1 ARG0: e4 [ e SF: prop ] ARG1: h5 ARG2: h6 ]
+ [ _sorry_a_for<0:5> LBL: h7 ARG0: e8 [ e SF: prop TENSE: untensed MOOD: indicative ] ARG1: i9 ARG2: u10 ]
+ [ pron<7:8> LBL: h11 ARG0: x3 [ x PERS: 1 NUM: sg IND: + PT: std ] ]
+ [ pronoun_q<7:8> LBL: h12 ARG0: x3 RSTR: h13 BODY: h14 ]
+ [ _catch_v_1<9:14> LBL: h15 ARG0: e2 ARG1: x3 ARG2: x16 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ _no_q<15:17> LBL: h17 ARG0: x16 RSTR: h18 BODY: h19 ]
+ [ _ball_n_of<18:22> LBL: h20 ARG0: x16 ARG1: i21 ] >
+HCONS: < h0 qeq h1 h5 qeq h15 h6 qeq h7 h13 qeq h11 h18 qeq h20 >
+ICONS: < > ]
+
+
+SENT: Again, please.
+[ LTOP: h0
+INDEX: e2 [ e SF: comm TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ pronoun_q<0:14> LBL: h4 ARG0: x3 [ x PERS: 2 PT: zero ] RSTR: h5 BODY: h6 ]
+ [ pron<0:14> LBL: h7 ARG0: x3 ]
+ [ _again_a_1<0:5> LBL: h1 ARG0: i8 ARG1: e2 ]
+ [ _please_v_1<7:13> LBL: h1 ARG0: e2 ARG1: x3 ARG2: i9 ] >
+HCONS: < h0 qeq h1 h5 qeq h7 >
+ICONS: < > ]
+
+
+SENT: Infinitessimal - small, small winnings, Chin
+[ LTOP: h0
+INDEX: e2 [ e SF: comm TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ subord<0:23> LBL: h1 ARG0: e4 [ e SF: prop ] ARG1: h5 ARG2: h6 ]
+ [ compound<0:23> LBL: h7 ARG0: e8 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e9 [ e SF: prop TENSE: untensed MOOD: indicative ] ARG2: x10 [ x IND: + ] ]
+ [ udef_q<0:16> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]
+ [ named<0:14> LBL: h14 CARG: "Infinitessimal" ARG0: x10 ]
+ [ _small_a_1<17:22> LBL: h7 ARG0: e9 ARG1: i16 ]
+ [ udef_q<24:39> LBL: h17 ARG0: x18 [ x PERS: 3 NUM: pl IND: + ] RSTR: h19 BODY: h20 ]
+ [ _small_a_1<24:29> LBL: h21 ARG0: e22 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x18 ]
+ [ _winnings_n_1<30:38> LBL: h21 ARG0: x18 ]
+ [ pronoun_q<40:44> LBL: h23 ARG0: x3 [ x PERS: 2 PT: zero ] RSTR: h24 BODY: h25 ]
+ [ pron<40:44> LBL: h26 ARG0: x3 ]
+ [ _chin_v_1<40:44> LBL: h27 ARG0: e2 ARG1: x3 ARG2: x18 ] >
+HCONS: < h0 qeq h1 h5 qeq h27 h6 qeq h7 h12 qeq h14 h19 qeq h21 h24 qeq h26 >
+ICONS: < e2 focus x18 > ]
+
+
+SKIP: The sense of meaning halal should debated on either symbolic reminder of hygiene also define the level of hygiene to the level of a stomach ache or death that is what make sense!
+
+
+SENT: Huh? 
+[ LTOP: h0
+INDEX: e2 [ e SF: ques ]
+RELS: < [ unknown<0:4> LBL: h4 ARG0: e2 ARG: u5 ]
+ [ _huh_a_1<0:3> LBL: h1 ARG0: i6 ARG1: h7 ] >
+HCONS: < h0 qeq h1 h7 qeq h4 >
+ICONS: < > ]
+
+
+SENT: What kind of English is this?
+[ LTOP: h0
+INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ _which_q<0:4> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]
+ [ _kind_n_of-n<5:9> LBL: h7 ARG0: x3 ARG1: x8 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<13:20> LBL: h9 ARG0: x8 RSTR: h10 BODY: h11 ]
+ [ named<13:20> LBL: h12 CARG: "English" ARG0: x8 ]
+ [ _be_v_id<21:23> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x14 [ x PERS: 3 NUM: sg GEND: n ] ]
+ [ generic_entity<24:28> LBL: h15 ARG0: x14 ]
+ [ _this_q_dem<24:28> LBL: h16 ARG0: x14 RSTR: h17 BODY: h18 ] >
+HCONS: < h0 qeq h1 h5 qeq h7 h10 qeq h12 h17 qeq h15 >
+ICONS: < > ]
+
+
+SENT: Catch no ball....LOL.
+[ LTOP: h0
+INDEX: e2 [ e SF: comm TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ pronoun_q<0:21> LBL: h4 ARG0: x3 [ x PERS: 2 PT: zero ] RSTR: h5 BODY: h6 ]
+ [ pron<0:21> LBL: h7 ARG0: x3 ]
+ [ _catch_v_1<0:5> LBL: h1 ARG0: e2 ARG1: x3 ARG2: i8 ]
+ [ mod<6:14> LBL: h1 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x10 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ _no_q<6:8> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]
+ [ _ball_n_of<9:13> LBL: h14 ARG0: x10 ARG1: i15 ]
+ [ _LOL_a_1<17:20> LBL: h1 ARG0: e16 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ] >
+HCONS: < h0 qeq h1 h5 qeq h7 h12 qeq h14 >
+ICONS: < > ]
+
+
+SKIP: THE ‘CATCH NO BALL BUT WILL KEEP TRYING’ AWARD INCEPTION Only the incomparable Christopher Nolan, after reviving the superhero genre, could have had the cojones to convince a tightfisted big movie studio to greenlight a movie as ridiculously convoluted and richly layered as this.
+
+
+SKIP: And now you cry...go lah...sleep with that old man...for what? 
+
+
+SENT: Nothing! 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop ]
+RELS: < [ unknown<0:8> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg ] ]
+ [ thing<0:7> LBL: h5 ARG0: x4 ]
+ [ _no_q<0:7> LBL: h6 ARG0: x4 RSTR: h7 BODY: h8 ] >
+HCONS: < h0 qeq h1 h7 qeq h5 >
+ICONS: < > ]
+
+
+SENT: Totally liak Bo Kiu!
+[ LTOP: h0
+INDEX: e2 [ e SF: comm TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ pronoun_q<0:20> LBL: h4 ARG0: x3 [ x PERS: 2 PT: zero ] RSTR: h5 BODY: h6 ]
+ [ pron<0:20> LBL: h7 ARG0: x3 ]
+ [ _total_a_1<0:7> LBL: h1 ARG0: e8 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ]
+ [ _liak/VB_u_unknown<8:12> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x9 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<13:20> LBL: h10 ARG0: x9 RSTR: h11 BODY: h12 ]
+ [ compound<13:20> LBL: h13 ARG0: e14 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x9 ARG2: x15 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<13:15> LBL: h16 ARG0: x15 RSTR: h17 BODY: h18 ]
+ [ named<13:15> LBL: h19 CARG: "Bo" ARG0: x15 ]
+ [ named<16:19> LBL: h13 CARG: "Kiu" ARG0: x9 ] >
+HCONS: < h0 qeq h1 h5 qeq h7 h11 qeq h13 h17 qeq h19 >
+ICONS: < > ]
+
+
+SENT: Meaning her action was incomprehensible.
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: past MOOD: indicative PROG: - PERF: - ]
+RELS: < [ udef_q<0:18> LBL: h4 ARG0: x3 RSTR: h5 BODY: h6 ]
+ [ nominalization<0:18> LBL: h7 ARG0: x3 ARG1: h8 ]
+ [ _mean_v_1<0:7> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: + PERF: - ] ARG1: i10 ARG2: x11 [ x PERS: 3 NUM: sg ] ]
+ [ def_explicit_q<8:11> LBL: h12 ARG0: x11 RSTR: h13 BODY: h14 ]
+ [ poss<8:11> LBL: h15 ARG0: e16 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x11 ARG2: x17 [ x PERS: 3 NUM: sg GEND: f IND: + PT: std ] ]
+ [ pronoun_q<8:11> LBL: h18 ARG0: x17 RSTR: h19 BODY: h20 ]
+ [ pron<8:11> LBL: h21 ARG0: x17 ]
+ [ _action_n_1<12:18> LBL: h15 ARG0: x11 ]
+ [ _incomprehensible_a_1<23:39> LBL: h1 ARG0: e2 ARG1: x3 ] >
+HCONS: < h0 qeq h1 h5 qeq h7 h13 qeq h15 h19 qeq h21 >
+ICONS: < > ]
+
+
+SKIP: Catch no ball of what you're talking and saying in your content. 
+
+
+SKIP: Talking and saying, and writing are different ways of expressions. 
+
+
+SENT: They are not the same.
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ pron<0:4> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: pl IND: + PT: std ] ]
+ [ pronoun_q<0:4> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ]
+ [ neg<9:12> LBL: h1 ARG0: e8 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: h9 ]
+ [ _the+same_a_as<13:21> LBL: h10 ARG0: e2 ARG1: x3 ARG2: u11 ] >
+HCONS: < h0 qeq h1 h6 qeq h4 h9 qeq h10 >
+ICONS: < > ]
+
+
+SENT: I chao keng. 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop ]
+RELS: < [ unknown<0:12> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg ] ]
+ [ udef_q<0:12> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]
+ [ compound<0:12> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<0:1> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]
+ [ named<0:1> LBL: h14 CARG: "I" ARG0: x10 ]
+ [ _chao/JJ_u_unknown<2:6> LBL: h8 ARG0: e16 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x4 ]
+ [ _keng/NN_u_unknown<7:11> LBL: h8 ARG0: x4 ] >
+HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 >
+ICONS: < > ]
+
+
+SENT: I idle. 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ pron<0:1> LBL: h4 ARG0: x3 [ x PERS: 1 NUM: sg IND: + PT: std ] ]
+ [ pronoun_q<0:1> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ]
+ [ _idle_v_1<2:6> LBL: h1 ARG0: e2 ARG1: x3 ] >
+HCONS: < h0 qeq h1 h6 qeq h4 >
+ICONS: < > ]
+
+
+SENT: What is pride?
+[ LTOP: h0
+INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ thing<0:4> LBL: h4 ARG0: x5 ]
+ [ which_q<0:4> LBL: h6 ARG0: x5 RSTR: h7 BODY: h8 ]
+ [ _be_v_id<5:7> LBL: h1 ARG0: e2 ARG1: x3 [ x PERS: 3 NUM: sg ] ARG2: x5 ]
+ [ udef_q<8:14> LBL: h9 ARG0: x3 RSTR: h10 BODY: h11 ]
+ [ _pride_n_1<8:13> LBL: h12 ARG0: x3 ] >
+HCONS: < h0 qeq h1 h7 qeq h4 h10 qeq h12 >
+ICONS: < > ]
+
+
+SKIP: That said, going back for reservist training would without a doubt be a pain — digging up all your old gear, your uniform and your dusty field pack once a year is enough to make you wish you chao kenged during your NSF days.
+
+
+SKIP: I couldn't actually bring myself to chao keng, but though it was only 4 km, that march was one of the tougher evolutions we've done.
+
+
+SKIP: I would argue that those who 'slack' or 'chao keng' are probably more a threat to our national security than a defaulter who has postponed his NS, but done well while in NS.
+
+
+SKIP: I'm willing to bet all of us have tried to chao keng our way out of work sometime in the past, myself included.
+
+
+SKIP: For the longest time, there’s existed the rampant problem of soldiers malingering, or more colloquially “chao keng”, to excuse themselves from training. 
+
+
+SKIP: This has led to the deep-seated mistrust of soldiers who report sick or declare themselves unfit.
+
+
+SKIP: You might consider it too cheem and arty farty but just pick up any journal on cultural studies and you'll find more cheem and arty farty stuff in them
+
+
+SENT: Postmodernist discourse is not cheem.
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ udef_q<0:23> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg ] RSTR: h5 BODY: h6 ]
+ [ compound<0:23> LBL: h7 ARG0: e8 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x3 ARG2: x9 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<0:13> LBL: h10 ARG0: x9 RSTR: h11 BODY: h12 ]
+ [ named<0:13> LBL: h13 CARG: "Postmodernist" ARG0: x9 ]
+ [ _discourse_n_1<14:23> LBL: h7 ARG0: x3 ]
+ [ neg<27:30> LBL: h1 ARG0: e15 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: h16 ]
+ [ _cheem/JJ_u_unknown<31:36> LBL: h17 ARG0: e2 ARG1: x3 ] >
+HCONS: < h0 qeq h1 h5 qeq h7 h11 qeq h13 h16 qeq h17 >
+ICONS: < > ]
+
+
+SENT: You know what’s cheem? 
+[ LTOP: h0
+INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ pron<0:3> LBL: h4 ARG0: x3 [ x PERS: 2 IND: + PT: std ] ]
+ [ pronoun_q<0:3> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ]
+ [ _know_v_1<4:8> LBL: h1 ARG0: e2 ARG1: x3 ARG2: h8 ]
+ [ thing<9:13> LBL: h9 ARG0: x10 [ x PERS: 3 NUM: sg ] ]
+ [ which_q<9:13> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]
+ [ _cheem/JJ_u_unknown<16:21> LBL: h14 ARG0: e15 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x10 ] >
+HCONS: < h0 qeq h1 h6 qeq h4 h8 qeq h14 h12 qeq h9 >
+ICONS: < > ]
+
+
+SENT: Our CPF is cheem.
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ def_explicit_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]
+ [ poss<0:3> LBL: h7 ARG0: e8 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x3 ARG2: x9 [ x PERS: 1 NUM: pl PT: std ] ]
+ [ pronoun_q<0:3> LBL: h10 ARG0: x9 RSTR: h11 BODY: h12 ]
+ [ pron<0:3> LBL: h13 ARG0: x9 ]
+ [ named<4:7> LBL: h7 CARG: "CPF" ARG0: x3 ]
+ [ _cheem/JJ_u_unknown<11:16> LBL: h1 ARG0: e2 ARG1: x3 ] >
+HCONS: < h0 qeq h1 h5 qeq h7 h11 qeq h13 >
+ICONS: < > ]
+
+
+SENT: Scoot from just $8? 
+[ LTOP: h0
+INDEX: e2 [ e SF: ques TENSE: tensed MOOD: indicative PROG: - PERF: - ]
+RELS: < [ _scoot_v_1<0:5> LBL: h1 ARG0: e2 ARG1: i3 ]
+ [ _from_p_state<6:10> LBL: h1 ARG0: e4 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x5 [ x PERS: 3 NUM: pl IND: + ] ]
+ [ _just_x_deg<11:15> LBL: h6 ARG0: e7 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: u8 ]
+ [ udef_q<16:19> LBL: h6 ARG0: x5 RSTR: h9 BODY: h10 ]
+ [ _dollar_n_1<16:17> LBL: h11 ARG0: x5 ]
+ [ card<17:18> LBL: h11 CARG: "8" ARG0: e13 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x5 ] >
+HCONS: < h0 qeq h1 h9 qeq h11 >
+ICONS: < > ]
+
+
+SENT: Chiong Ah! 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop ]
+RELS: < [ unknown<0:10> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<0:10> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]
+ [ compound<0:10> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<0:6> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]
+ [ named<0:6> LBL: h14 CARG: "Chiong" ARG0: x10 ]
+ [ named<7:9> LBL: h8 CARG: "Ah" ARG0: x4 ] >
+HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 >
+ICONS: < > ]
+
+
+SKIP: From 11 to 13 July only, grab flights around Asia and Australia from just $8!
+
+
+SENT: DON'T SAY GOT GOOD NEWS BO JIO! 
+[ LTOP: h0
+INDEX: e2 [ e SF: comm TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ pronoun_q<0:5> LBL: h4 ARG0: x5 [ x PERS: 2 PT: zero ] RSTR: h6 BODY: h7 ]
+ [ pron<0:5> LBL: h8 ARG0: x5 ]
+ [ neg<0:5> LBL: h1 ARG0: i9 ARG1: h10 ]
+ [ _say_v_1<6:9> LBL: h11 ARG0: e2 ARG1: x5 ARG2: x12 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<10:31> LBL: h13 ARG0: x12 RSTR: h14 BODY: h15 ]
+ [ compound<10:31> LBL: h16 ARG0: e17 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x12 ARG2: x18 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<10:26> LBL: h19 ARG0: x18 RSTR: h20 BODY: h21 ]
+ [ compound<10:26> LBL: h22 ARG0: e23 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x18 ARG2: x24 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<10:23> LBL: h25 ARG0: x24 RSTR: h26 BODY: h27 ]
+ [ compound<10:23> LBL: h28 ARG0: e29 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x24 ARG2: x30 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<10:18> LBL: h31 ARG0: x30 RSTR: h32 BODY: h33 ]
+ [ compound<10:18> LBL: h34 ARG0: e35 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x30 ARG2: x36 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<10:13> LBL: h37 ARG0: x36 RSTR: h38 BODY: h39 ]
+ [ named<10:13> LBL: h40 CARG: "GOT" ARG0: x36 ]
+ [ named<14:18> LBL: h34 CARG: "GOOD" ARG0: x30 ]
+ [ named<19:23> LBL: h28 CARG: "NEWS" ARG0: x24 ]
+ [ named<24:26> LBL: h22 CARG: "Bo" ARG0: x18 ]
+ [ named<27:30> LBL: h16 CARG: "JIO" ARG0: x12 ] >
+HCONS: < h0 qeq h1 h6 qeq h8 h10 qeq h11 h14 qeq h16 h20 qeq h22 h26 qeq h28 h32 qeq h34 h38 qeq h40 >
+ICONS: < > ]
+
+
+SKIP: Aussie dollar sibeh low now, chiong ah!
+
+
+SKIP: If the general view is declining Coe price because supply increasing steadily, then why chiong to showroom now?
+
+
+SKIP: Semesteral project still currently ‘gone case’, and I am so prepared to get hell from the teacher tomorrow..
+
+
+SENT: so, I’m already in hell…
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ _so_a_thus<0:2> LBL: h1 ARG0: i4 ARG1: h5 ]
+ [ pron<4:5> LBL: h6 ARG0: x3 [ x PERS: 1 NUM: sg IND: + PT: std ] ]
+ [ pronoun_q<4:5> LBL: h7 ARG0: x3 RSTR: h8 BODY: h9 ]
+ [ _already_a_1<8:15> LBL: h10 ARG0: i11 ARG1: e2 ]
+ [ _in_p_loc<16:18> LBL: h10 ARG0: e2 ARG1: x3 ARG2: x12 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<19:24> LBL: h13 ARG0: x12 RSTR: h14 BODY: h15 ]
+ [ named<19:23> LBL: h16 CARG: "Hell" ARG0: x12 ] >
+HCONS: < h0 qeq h1 h5 qeq h10 h8 qeq h6 h14 qeq h16 >
+ICONS: < > ]
+
+
+SENT: CHIONG AH!!!
+[ LTOP: h0
+INDEX: e2 [ e SF: prop ]
+RELS: < [ unknown<0:12> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<0:12> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]
+ [ compound<0:12> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<0:6> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]
+ [ named<0:6> LBL: h14 CARG: "CHIONG" ARG0: x10 ]
+ [ named<7:9> LBL: h8 CARG: "AH" ARG0: x4 ] >
+HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 >
+ICONS: < > ]
+
+
+SENT: These few days really chiong my work like siao! 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop ]
+RELS: < [ _these_q_dem<0:5> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: pl IND: + ] RSTR: h5 BODY: h6 ]
+ [ little-few_a<6:9> LBL: h7 ARG0: e8 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x3 ]
+ [ _day_n_of<10:14> LBL: h7 ARG0: x3 ARG1: i9 ]
+ [ _really_a_1<15:21> LBL: h1 ARG0: e2 ARG1: h10 ]
+ [ _chiong/VB_u_unknown<22:28> LBL: h11 ARG0: e12 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x3 ARG2: x13 [ x PERS: 3 NUM: sg ] ]
+ [ def_explicit_q<29:31> LBL: h14 ARG0: x13 RSTR: h15 BODY: h16 ]
+ [ poss<29:31> LBL: h17 ARG0: e18 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x13 ARG2: x19 [ x PERS: 1 NUM: sg PT: std ] ]
+ [ pronoun_q<29:31> LBL: h20 ARG0: x19 RSTR: h21 BODY: h22 ]
+ [ pron<29:31> LBL: h23 ARG0: x19 ]
+ [ _work_n_1<32:36> LBL: h17 ARG0: x13 ]
+ [ _like_p<37:41> LBL: h11 ARG0: e24 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e12 ARG2: x25 [ x PERS: 3 NUM: sg ] ]
+ [ udef_q<42:47> LBL: h26 ARG0: x25 RSTR: h27 BODY: h28 ]
+ [ _siao/NN_u_unknown<42:46> LBL: h29 ARG0: x25 ] >
+HCONS: < h0 qeq h1 h5 qeq h7 h10 qeq h11 h15 qeq h17 h21 qeq h23 h27 qeq h29 >
+ICONS: < > ]
+
+
+SKIP: Cos i'm one kind; if i can't finish my work, i won't be able to sleep well at night, no matter is what kind of work. 
+
+
+SKIP: Just as long as it's something i should complete, i must complete.
+
+
+SENT: Break time! 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop ]
+RELS: < [ unknown<0:11> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg GEND: n ] ]
+ [ udef_q<0:11> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]
+ [ compound<0:11> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 ]
+ [ udef_q<0:5> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]
+ [ _break_n_1<0:5> LBL: h14 ARG0: x10 ]
+ [ _time_n_of<6:10> LBL: h8 ARG0: x4 ] >
+HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 >
+ICONS: < > ]
+
+
+SENT: Our block tests will be starting in 3 days! 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: fut MOOD: indicative PROG: + PERF: - ]
+RELS: < [ def_explicit_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: pl IND: + ] RSTR: h5 BODY: h6 ]
+ [ poss<0:3> LBL: h7 ARG0: e8 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x3 ARG2: x9 [ x PERS: 1 NUM: pl PT: std ] ]
+ [ pronoun_q<0:3> LBL: h10 ARG0: x9 RSTR: h11 BODY: h12 ]
+ [ pron<0:3> LBL: h13 ARG0: x9 ]
+ [ compound<4:15> LBL: h7 ARG0: e14 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x3 ARG2: x15 [ x IND: + ] ]
+ [ udef_q<4:9> LBL: h16 ARG0: x15 RSTR: h17 BODY: h18 ]
+ [ _block_n_of<4:9> LBL: h19 ARG0: x15 ARG1: i20 ]
+ [ _test_n_of<10:15> LBL: h7 ARG0: x3 ARG1: i21 ]
+ [ _start_v_1<24:32> LBL: h1 ARG0: e2 ARG1: x3 ]
+ [ _in_p_temp<33:35> LBL: h1 ARG0: e22 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x23 [ x PERS: 3 NUM: pl IND: + ] ]
+ [ udef_q<36:37> LBL: h24 ARG0: x23 RSTR: h25 BODY: h26 ]
+ [ card<36:37> LBL: h27 CARG: "3" ARG0: e29 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x23 ]
+ [ _day_n_of<38:42> LBL: h27 ARG0: x23 ARG1: i30 ] >
+HCONS: < h0 qeq h1 h5 qeq h7 h11 qeq h13 h17 qeq h19 h25 qeq h27 >
+ICONS: < > ]
+
+
+SKIP: For those of you who have not been spending much time on studying, IT’S TIME TO START.
+
+
+SENT: Can recommend places go chiong/clubbing?
+[ LTOP: h0
+INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ _can_v_modal<0:3> LBL: h1 ARG0: e2 ARG1: h4 ]
+ [ _recommend_v_to<4:13> LBL: h5 ARG0: e6 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: i3 ARG2: h7 ARG3: i8 ]
+ [ udef_q<14:20> LBL: h9 ARG0: x10 [ x PERS: 3 NUM: pl IND: + ] RSTR: h11 BODY: h12 ]
+ [ _place_n_of<14:20> LBL: h13 ARG0: x10 ARG1: i14 ]
+ [ _go_v_1<21:23> LBL: h15 ARG0: e16 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x10 ]
+ [ subord<24:40> LBL: h17 ARG0: e18 [ e SF: prop ] ARG1: h19 ARG2: h20 ]
+ [ _chiong/JJ_u_unknown<24:30> LBL: h21 ARG0: e22 [ e SF: prop TENSE: untensed MOOD: indicative PROG: + PERF: - ] ARG1: i23 ]
+ [ _and_c<30:31> LBL: h21 ARG0: e24 [ e SF: prop TENSE: untensed MOOD: indicative PROG: + PERF: - ] ARG1: e22 ARG2: e25 [ e SF: prop TENSE: untensed MOOD: indicative PROG: + PERF: - ] ]
+ [ _club_v_1<31:39> LBL: h21 ARG0: e25 ARG1: i23 ARG2: i26 ] >
+HCONS: < h0 qeq h1 h4 qeq h5 h7 qeq h17 h11 qeq h13 h19 qeq h15 h20 qeq h21 >
+ICONS: < > ]
+
+
+SKIP: Today Friday, my bookout day; Sushi, Or-Luah then buffet; 
+
+
+SENT: After that go chiong all night
+[ LTOP: h0
+INDEX: e2 [ e SF: comm TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ _after_p<0:5> LBL: h1 ARG0: e4 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x5 [ x PERS: 3 NUM: sg GEND: n ] ]
+ [ generic_entity<6:10> LBL: h6 ARG0: x5 ]
+ [ _that_q_dem<6:10> LBL: h7 ARG0: x5 RSTR: h8 BODY: h9 ]
+ [ pronoun_q<11:30> LBL: h10 ARG0: x3 [ x PERS: 2 PT: zero ] RSTR: h11 BODY: h12 ]
+ [ pron<11:30> LBL: h13 ARG0: x3 ]
+ [ _go_v_state<11:13> LBL: h1 ARG0: e2 ARG1: x3 ARG2: h14 ]
+ [ _chiong/VB_u_unknown<14:20> LBL: h15 ARG0: e16 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x3 ARG2: i17 ]
+ [ loc_nonsp<21:30> LBL: h15 ARG0: e18 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e16 ARG2: x19 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ def_implicit_q<21:24> LBL: h20 ARG0: x19 RSTR: h21 BODY: h22 ]
+ [ _all_a_1<21:24> LBL: h23 ARG0: i24 ARG1: x19 ]
+ [ _night_n_of<25:30> LBL: h23 ARG0: x19 ] >
+HCONS: < h0 qeq h1 h8 qeq h6 h11 qeq h13 h14 qeq h15 h21 qeq h23 >
+ICONS: < e2 focus e4 > ]
+
+
+SENT: When I wake up my wallet damn light-ah
+[ LTOP: h0
+INDEX: e2 [ e SF: prop-or-ques TENSE: tensed MOOD: indicative ]
+RELS: < [ implicit_conj<0:38> LBL: h1 ARG0: e2 ARG1: e4 [ e SF: prop TENSE: tensed MOOD: indicative ] ARG2: e5 [ e SF: prop-or-ques ] ]
+ [ _when_x_subord<0:4> LBL: h1 ARG0: e4 ARG1: h6 ARG2: h7 ]
+ [ pron<5:6> LBL: h8 ARG0: x9 [ x PERS: 1 NUM: sg IND: + PT: std ] ]
+ [ pronoun_q<5:6> LBL: h10 ARG0: x9 RSTR: h11 BODY: h12 ]
+ [ _wake_v_up<7:11> LBL: h13 ARG0: e14 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x9 ARG2: x15 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ def_explicit_q<15:17> LBL: h16 ARG0: x15 RSTR: h17 BODY: h18 ]
+ [ poss<15:17> LBL: h19 ARG0: e20 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x15 ARG2: x21 [ x PERS: 1 NUM: sg PT: std ] ]
+ [ pronoun_q<15:17> LBL: h22 ARG0: x21 RSTR: h23 BODY: h24 ]
+ [ pron<15:17> LBL: h25 ARG0: x21 ]
+ [ compound<18:29> LBL: h19 ARG0: e26 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x15 ARG2: x27 [ x IND: + ] ]
+ [ udef_q<18:24> LBL: h28 ARG0: x27 RSTR: h29 BODY: h30 ]
+ [ _wallet_n_1<18:24> LBL: h31 ARG0: x27 ]
+ [ _damn_n_1<25:29> LBL: h19 ARG0: x15 ]
+ [ pronoun_q<30:36> LBL: h32 ARG0: x33 [ x PERS: 2 PT: zero ] RSTR: h34 BODY: h35 ]
+ [ pron<30:36> LBL: h36 ARG0: x33 ]
+ [ _light_v_1<30:35> LBL: h37 ARG0: e38 [ e SF: comm TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x33 ]
+ [ unknown<36:38> LBL: h39 ARG0: e5 ARG: u40 ] >
+HCONS: < h0 qeq h1 h6 qeq h37 h7 qeq h13 h11 qeq h8 h17 qeq h19 h23 qeq h25 h29 qeq h31 h34 qeq h36 >
+ICONS: < > ]
+
+
+SENT: Where are you going to chiong tonight?
+[ LTOP: h0
+INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: + PERF: - ]
+RELS: < [ loc_nonsp<0:5> LBL: h4 ARG0: e5 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e6 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG2: x7 [ x PERS: 3 NUM: sg ] ]
+ [ place_n<0:5> LBL: h8 ARG0: x7 ]
+ [ which_q<0:5> LBL: h9 ARG0: x7 RSTR: h10 BODY: h11 ]
+ [ pron<10:13> LBL: h12 ARG0: x3 [ x PERS: 2 IND: + PT: std ] ]
+ [ pronoun_q<10:13> LBL: h13 ARG0: x3 RSTR: h14 BODY: h15 ]
+ [ _going+to_v_qmodal<14:19> LBL: h1 ARG0: e2 ARG1: h16 ]
+ [ _chiong/VB_u_unknown<23:29> LBL: h4 ARG0: e6 ARG1: x3 ARG2: i17 ]
+ [ loc_nonsp<30:38> LBL: h4 ARG0: e18 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e6 ARG2: x19 [ x PERS: 3 NUM: sg ] ]
+ [ time_n<30:37> LBL: h20 ARG0: x19 ]
+ [ def_implicit_q<30:37> LBL: h21 ARG0: x19 RSTR: h22 BODY: h23 ]
+ [ _tonight_a_1<30:37> LBL: h20 ARG0: e24 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x19 ] >
+HCONS: < h0 qeq h1 h10 qeq h8 h14 qeq h12 h16 qeq h4 h22 qeq h20 >
+ICONS: < > ]
+
+
+SENT: Defcon's fastest chiongster is out!!!
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ proper_q<0:6> LBL: h4 ARG0: x5 [ x PERS: 3 NUM: sg IND: + ] RSTR: h6 BODY: h7 ]
+ [ named<0:6> LBL: h8 CARG: "Defcon" ARG0: x5 ]
+ [ def_explicit_q<6:8> LBL: h10 ARG0: x3 [ x PERS: 3 NUM: sg ] RSTR: h11 BODY: h12 ]
+ [ poss<6:8> LBL: h13 ARG0: e14 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x3 ARG2: x5 ]
+ [ _fast_a_1<9:16> LBL: h13 ARG0: e15 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x3 ]
+ [ superl<9:16> LBL: h13 ARG0: e16 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e15 ]
+ [ _chiongster/NN_u_unknown<17:27> LBL: h13 ARG0: x3 ]
+ [ _out_p<31:34> LBL: h1 ARG0: e2 ARG1: x3 ] >
+HCONS: < h0 qeq h1 h6 qeq h8 h11 qeq h13 >
+ICONS: < > ]
+
+
+SKIP: Regular partygoers are often referred to as “chiongsters”.
+
+
+SKIP: You can be sure that all of that above will have been done by a chiongster.
+
+
+SKIP: We should have a Chiongsters section in HWZ where Chiongsters can chit chat about their favorite places and person.
+
+
+SKIP: The locals like to say 'someone choot pattern' meaning to say someone is being difficult.
+
+
+SKIP: Actually, the term seems more Hokkien that Singlish - "chut pattern, liao".
+
+
+SENT: Many boyfriends going to chut pattern tonight!
+[ LTOP: h0
+INDEX: e2 [ e SF: prop ]
+RELS: < [ unknown<0:46> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: pl IND: + ] ]
+ [ udef_q<0:46> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]
+ [ much-many_a<0:4> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ]
+ [ _boyfriend_n_1<5:15> LBL: h8 ARG0: x4 ]
+ [ _go_v_1<16:21> LBL: h10 ARG0: e11 [ e SF: prop TENSE: untensed MOOD: indicative PROG: + PERF: - ] ARG1: x4 ]
+ [ _in+order+to_x<22:24> LBL: h8 ARG0: e12 [ e SF: prop TENSE: untensed MOOD: indicative ] ARG1: h13 ARG2: h14 ]
+ [ _chut/VB_u_unknown<25:29> LBL: h15 ARG0: e16 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: i17 ARG2: x18 [ x PERS: 3 NUM: sg ] ]
+ [ udef_q<30:37> LBL: h19 ARG0: x18 RSTR: h20 BODY: h21 ]
+ [ _pattern_n_1<30:37> LBL: h22 ARG0: x18 ]
+ [ loc_nonsp<38:46> LBL: h8 ARG0: e23 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x24 [ x PERS: 3 NUM: sg ] ]
+ [ time_n<38:45> LBL: h25 ARG0: x24 ]
+ [ def_implicit_q<38:45> LBL: h26 ARG0: x24 RSTR: h27 BODY: h28 ]
+ [ _tonight_a_1<38:45> LBL: h25 ARG0: e29 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x24 ] >
+HCONS: < h0 qeq h1 h6 qeq h8 h13 qeq h10 h14 qeq h15 h20 qeq h22 h27 qeq h25 >
+ICONS: < > ]
+
+
+SKIP: A fulfilling relationship is a wondrous thing to have but it does take effort to maintain and that entails the occasional chut pattern.
+
+
+SKIP: If we really want to talk about people or organisations that chut pattern, one cannot leave The New Paper out.
+
+
+SKIP: IF DR CHEE SAYS HE IS SECOND WHEN IT COMES TO ‘CHU PATTERN’, NO ONE ELSE WOULD DARE TO CLAIM FIRST.
+
+
+SKIP: When we say a person ‘chut pattern’, it talks about someone full of antics.
+
+
+SKIP: These include announcements on, say, duty-free sales
+
+
+SKIP: Later we'll also be coming around for duty free.
+
+
+SKIP: If you haven't buy from the airport yet, then you can buy from us lah. 
+
+
+SKIP: All same price, confirm plus chop.
+
+
+SKIP: 5 basic bro-type handphone addicts you can confirm plus chop find in S'pore
+
+
+SKIP: Moreover, they don't go for lunch but "Da Bao" and keep working during lunch break.
+
+
+SKIP: though one thing - can we move the place to bedok instead? 
+
+
+SKIP: all the famous hawker food in katong kind of close at night, but bedok block 85 bak chor mee + sambal stingray + orh luah + aboling only open at night. 
+
+
+SENT: anyone strongly objects to that? 
+[ LTOP: h0
+INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ person<0:6> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg ] ]
+ [ _any_q<0:6> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ]
+ [ _strong_a_1<7:15> LBL: h1 ARG0: e8 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ]
+ [ _object_v_to<16:23> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x9 [ x PERS: 3 NUM: sg GEND: n ] ]
+ [ generic_entity<27:31> LBL: h10 ARG0: x9 ]
+ [ _that_q_dem<27:31> LBL: h11 ARG0: x9 RSTR: h12 BODY: h13 ] >
+HCONS: < h0 qeq h1 h6 qeq h4 h12 qeq h10 >
+ICONS: < > ]
+
+
+SKIP: tapao something for me?
+
+
+SKIP: This isn't meant to shame people, just to kind of remind them that sometimes, little things like take-aways from the canteen aren't always necessary, and that by not da-baoing for a change, we can make a positive contribution to the environment .
+
+
+SENT: You impudent muppet, diu lay! 
+[ LTOP: h0
+INDEX: i2
+RELS: < [ addressee<0:20> LBL: h1 ARG0: i2 ARG1: x4 [ x PERS: 2 NUM: sg IND: + PT: std ] ARG2: e5 [ e SF: prop TENSE: past MOOD: indicative PROG: - PERF: - ] ]
+ [ pron<0:3> LBL: h6 ARG0: x4 ]
+ [ pronoun_q<0:3> LBL: h7 ARG0: x4 RSTR: h8 BODY: h9 ]
+ [ appos<0:3> LBL: h6 ARG0: e10 [ e SF: prop TENSE: untensed MOOD: indicative ] ARG1: x4 ARG2: x11 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ udef_q<-1:-1> LBL: h12 ARG0: x11 RSTR: h13 BODY: h14 ]
+ [ _impudent_a_1<4:12> LBL: h15 ARG0: e16 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x11 ]
+ [ _muppet_n_1<13:19> LBL: h15 ARG0: x11 ]
+ [ udef_q<21:24> LBL: h17 ARG0: x3 [ x PERS: 3 NUM: sg ] RSTR: h18 BODY: h19 ]
+ [ _diu/NN_u_unknown<21:24> LBL: h20 ARG0: x3 ]
+ [ _lie_v_2<25:28> LBL: h1 ARG0: e5 ARG1: x3 ] >
+HCONS: < h0 qeq h1 h8 qeq h6 h13 qeq h15 h18 qeq h20 >
+ICONS: < > ]
+
+
+SKIP: You may be able to hoodwink people over in the UK, but not those of us over here.
+
+
+SENT: Btw, finally saw fat fat here....wahahaha. 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: past MOOD: indicative PROG: - PERF: - ]
+RELS: < [ _btw_a_1<0:3> LBL: h1 ARG0: i4 ARG1: h5 ]
+ [ _final_a_1<5:12> LBL: h6 ARG0: i7 ARG1: h8 ]
+ [ implicit_conj<13:42> LBL: h9 ARG0: e2 ARG1: e10 [ e SF: prop-or-ques TENSE: past MOOD: indicative PROG: - PERF: - ] ARG2: e11 [ e SF: prop ] ]
+ [ _see_v_1<13:16> LBL: h9 ARG0: e10 ARG1: i12 ARG2: x13 [ x PERS: 3 NUM: sg ] ]
+ [ udef_q<17:24> LBL: h14 ARG0: x13 RSTR: h15 BODY: h16 ]
+ [ _fat_a_1<17:20> LBL: h17 ARG0: e18 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x13 ]
+ [ _fat_n_1<21:24> LBL: h17 ARG0: x13 ]
+ [ loc_nonsp<25:30> LBL: h9 ARG0: e19 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e10 ARG2: x20 [ x PERS: 3 NUM: sg ] ]
+ [ place_n<25:29> LBL: h21 ARG0: x20 ]
+ [ def_implicit_q<25:29> LBL: h22 ARG0: x20 RSTR: h23 BODY: h24 ]
+ [ _here_a_1<25:29> LBL: h21 ARG0: e25 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x20 ]
+ [ unknown<33:42> LBL: h9 ARG0: e11 ARG: x26 [ x PERS: 3 NUM: sg ] ]
+ [ udef_q<33:42> LBL: h27 ARG0: x26 RSTR: h28 BODY: h29 ]
+ [ _wahahaha/NN_u_unknown<33:41> LBL: h30 ARG0: x26 ] >
+HCONS: < h0 qeq h1 h5 qeq h6 h8 qeq h9 h15 qeq h17 h23 qeq h21 h28 qeq h30 >
+ICONS: < > ]
+
+
+SENT: Diu nei, plane last time.
+[ LTOP: h0
+INDEX: e2 [ e SF: prop ]
+RELS: < [ unknown<0:25> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg ] ]
+ [ appos<0:25> LBL: h1 ARG0: e5 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x6 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ udef_q<9:25> LBL: h7 ARG0: x6 RSTR: h8 BODY: h9 ]
+ [ udef_q<0:8> LBL: h10 ARG0: x4 RSTR: h11 BODY: h12 ]
+ [ compound<0:8> LBL: h13 ARG0: e14 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x15 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<0:3> LBL: h16 ARG0: x15 RSTR: h17 BODY: h18 ]
+ [ named<0:3> LBL: h19 CARG: "Diu" ARG0: x15 ]
+ [ _nei/NN_u_unknown<4:7> LBL: h13 ARG0: x4 ]
+ [ _plane_n_1<9:14> LBL: h21 ARG0: x6 ]
+ [ loc_nonsp<15:25> LBL: h21 ARG0: e22 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x6 ARG2: x23 [ x PERS: 3 NUM: sg GEND: n ] ]
+ [ def_implicit_q<15:19> LBL: h24 ARG0: x23 RSTR: h25 BODY: h26 ]
+ [ _last_a_1<15:19> LBL: h27 ARG0: i28 ARG1: x23 ]
+ [ _time_n_of<20:24> LBL: h27 ARG0: x23 ] >
+HCONS: < h0 qeq h1 h8 qeq h21 h11 qeq h13 h17 qeq h19 h25 qeq h27 >
+ICONS: < > ]
+
+
+SKIP: But I'm like Diu lei sit your ass back down.
+
+
+SKIP: Diu Lei, koki, can you don't send food link before bed time?
+
+
+SENT: “操你老妈啊 !” I shouted in Cantonese.
+[ LTOP: h0
+INDEX: i2
+RELS: < [ addressee<0:9> LBL: h1 ARG0: i2 ARG1: x4 [ x PERS: 3 NUM: sg IND: + ] ARG2: e5 [ e SF: prop TENSE: past MOOD: indicative PROG: - PERF: - ] ]
+ [ proper_q<0:9> LBL: h6 ARG0: x4 RSTR: h7 BODY: h8 ]
+ [ named<1:6> LBL: h9 CARG: "操你老妈啊" ARG0: x4 ]
+ [ pron<10:11> LBL: h11 ARG0: x3 [ x PERS: 1 NUM: sg IND: + PT: std ] ]
+ [ pronoun_q<10:11> LBL: h12 ARG0: x3 RSTR: h13 BODY: h14 ]
+ [ _shout_v_1<12:19> LBL: h1 ARG0: e5 ARG1: x3 ARG2: i15 ]
+ [ _in_p_state<20:22> LBL: h1 ARG0: e16 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e5 ARG2: x17 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<23:33> LBL: h18 ARG0: x17 RSTR: h19 BODY: h20 ]
+ [ named<23:32> LBL: h21 CARG: "Cantonese" ARG0: x17 ] >
+HCONS: < h0 qeq h1 h7 qeq h9 h13 qeq h11 h19 qeq h21 >
+ICONS: < > ]
+
+
+SENT: Yes! 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop ]
+RELS: < [ unknown<0:4> LBL: h4 ARG0: e2 ARG: u5 ]
+ [ _yes_a_1<0:3> LBL: h1 ARG0: i6 ARG1: h7 ] >
+HCONS: < h0 qeq h1 h7 qeq h4 >
+ICONS: < > ]
+
+
+SENT: Hantu! 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop ]
+RELS: < [ unknown<0:6> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<0:6> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]
+ [ named<0:5> LBL: h8 CARG: "Hantu" ARG0: x4 ] >
+HCONS: < h0 qeq h1 h6 qeq h8 >
+ICONS: < > ]
+
+
+SENT: Ghots! 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop ]
+RELS: < [ unknown<0:6> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: pl IND: + ] ]
+ [ udef_q<0:6> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]
+ [ _ghots/NNS_u_unknown<0:5> LBL: h8 ARG0: x4 ] >
+HCONS: < h0 qeq h1 h6 qeq h8 >
+ICONS: < > ]
+
+
+SENT: Mangroves and snakes!
+[ LTOP: h0
+INDEX: e2 [ e SF: prop ]
+RELS: < [ unknown<0:21> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: pl ] ]
+ [ udef_q<0:21> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]
+ [ udef_q<0:9> LBL: h8 ARG0: x9 [ x PERS: 3 NUM: pl IND: + ] RSTR: h10 BODY: h11 ]
+ [ _mangroves/NNS_u_unknown<0:9> LBL: h12 ARG0: x9 ]
+ [ _and_c<10:13> LBL: h13 ARG0: x4 ARG1: x9 ARG2: x14 [ x PERS: 3 NUM: pl IND: + ] ]
+ [ udef_q<14:21> LBL: h15 ARG0: x14 RSTR: h16 BODY: h17 ]
+ [ _snake_n_1<14:20> LBL: h18 ARG0: x14 ] >
+HCONS: < h0 qeq h1 h6 qeq h13 h10 qeq h12 h16 qeq h18 >
+ICONS: < > ]
+
+
+SENT: Mong! 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop ]
+RELS: < [ unknown<0:5> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<0:5> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]
+ [ named<0:4> LBL: h8 CARG: "Mong" ARG0: x4 ] >
+HCONS: < h0 qeq h1 h6 qeq h8 >
+ICONS: < > ]
+
+
+SENT: Stupid! 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop ]
+RELS: < [ unknown<0:7> LBL: h1 ARG0: e2 ARG: u4 ]
+ [ _stupid_a_1<0:6> LBL: h1 ARG0: e5 [ e SF: prop ] ARG1: u4 ] >
+HCONS: < h0 qeq h1 >
+ICONS: < > ]
+
+
+SENT: Diu lei loh mo! 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop ]
+RELS: < [ unknown<0:15> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ udef_q<0:15> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]
+ [ compound<0:7> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e10 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG2: x11 [ x IND: + ] ]
+ [ udef_q<0:3> LBL: h12 ARG0: x11 RSTR: h13 BODY: h14 ]
+ [ named<0:3> LBL: h15 CARG: "Diu" ARG0: x11 ]
+ [ _lei/JJ_u_unknown<4:7> LBL: h8 ARG0: e10 ARG1: x4 ]
+ [ compound<8:15> LBL: h8 ARG0: e17 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x18 ]
+ [ udef_q<8:11> LBL: h19 ARG0: x18 RSTR: h20 BODY: h21 ]
+ [ _loh/NN_u_unknown<8:11> LBL: h22 ARG0: x18 ]
+ [ _mo_n_1<12:14> LBL: h8 ARG0: x4 ] >
+HCONS: < h0 qeq h1 h6 qeq h8 h13 qeq h15 h20 qeq h22 >
+ICONS: < > ]
+
+
+SENT: F ... your mother! 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: tensed MOOD: indicative ]
+RELS: < [ implicit_conj<0:18> LBL: h1 ARG0: e2 ARG1: e4 [ e SF: prop-or-ques TENSE: tensed MOOD: indicative ] ARG2: e5 [ e SF: prop ] ]
+ [ unknown<0:3> LBL: h1 ARG0: e4 ARG: x6 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<0:3> LBL: h7 ARG0: x6 RSTR: h8 BODY: h9 ]
+ [ named<0:1> LBL: h10 CARG: "F" ARG0: x6 ]
+ [ unknown<6:18> LBL: h1 ARG0: e5 ARG: x12 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ def_explicit_q<6:10> LBL: h13 ARG0: x12 RSTR: h14 BODY: h15 ]
+ [ poss<6:10> LBL: h16 ARG0: e17 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x12 ARG2: x18 [ x PERS: 2 PT: std ] ]
+ [ pronoun_q<6:10> LBL: h19 ARG0: x18 RSTR: h20 BODY: h21 ]
+ [ pron<6:10> LBL: h22 ARG0: x18 ]
+ [ _mother_n_of<11:17> LBL: h16 ARG0: x12 ARG1: i23 ] >
+HCONS: < h0 qeq h1 h8 qeq h10 h14 qeq h16 h20 qeq h22 >
+ICONS: < > ]
+
+
+SKIP: That is why it has been chosen; and the name Hantu helps keep people away. 
+
+
+SKIP: Probably like you they fear the devil,” said Ah Cheong, hurling more expletives at his underling before returning back to the house.
+
+
+SKIP: “Diu lei chau hai ge mo, fuck your smelly mother's cunt,” Spencer said under his breath and belted the bloody skull with his foot, sending splatters of tissue and bone flying around the room.
+
+
+SKIP: He skips 500 times a day and runs three kilometers a day to chase away his fatty bom bom blues.
+
+
+SKIP: “My family and friends were quite upset for me when they read it, but I don’t take it seriously,” said the 79kg heavyweight, who told us there were worse disparages like a “Go Home, Fatty Bom Bom” message posted on the Talentime forum.
+
+
+SKIP: I remember, too, a ditty: "Fatty, fatty bom bom, curi curi jagung; mata-mata tangkap, masuk dalam lokap" 
+
+
+SKIP: (the fat one steals the corn, gets arrested by police and is thrown into the lock-up.
+
+
+SKIP: I particularly liked: Fatty bom bom, meaning a fat bottomed person.
+
+
+SKIP: Soon, there were all sorts of derivatives - fatty, fatso, fatty bom bom, Trim and Fit club  - so much so that by the time someone reaches adulthood, the term had become a source of deep emotional pain.
+
+
+SKIP: “Fatty bom bom” refers to an Ah Pui; “bom bom”, as the sound a heavy, wobbling body makes, dramatizes fatness.
+
+
+SKIP: Who like army. 
+
+
+SENT: No freedom and NCOs always shout. 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ _no_a_1<0:2> LBL: h1 ARG0: i4 ARG1: h5 ]
+ [ udef_q<3:19> LBL: h6 ARG0: x3 [ x PERS: 3 NUM: pl ] RSTR: h7 BODY: h8 ]
+ [ udef_q<3:10> LBL: h9 ARG0: x10 [ x PERS: 3 NUM: sg ] RSTR: h11 BODY: h12 ]
+ [ _freedom_n_1<3:10> LBL: h13 ARG0: x10 ]
+ [ _and_c<11:14> LBL: h14 ARG0: x3 ARG1: x10 ARG2: x15 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<15:19> LBL: h16 ARG0: x15 RSTR: h17 BODY: h18 ]
+ [ named<15:19> LBL: h19 CARG: "NCOs" ARG0: x15 ]
+ [ _always_a_1<20:26> LBL: h21 ARG0: i22 ARG1: e2 ]
+ [ _shout_v_1<27:32> LBL: h21 ARG0: e2 ARG1: x3 ARG2: i23 ] >
+HCONS: < h0 qeq h1 h5 qeq h21 h7 qeq h14 h11 qeq h13 h17 qeq h19 >
+ICONS: < > ]
+
+
+SENT: They have loud voices. 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ pron<0:4> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: pl IND: + PT: std ] ]
+ [ pronoun_q<0:4> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ]
+ [ _have_v_1<5:9> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x8 [ x PERS: 3 NUM: pl IND: + ] ]
+ [ udef_q<10:22> LBL: h9 ARG0: x8 RSTR: h10 BODY: h11 ]
+ [ _loud_a_1<10:14> LBL: h12 ARG0: e13 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x8 ]
+ [ _voice_n_1<15:21> LBL: h12 ARG0: x8 ] >
+HCONS: < h0 qeq h1 h6 qeq h4 h10 qeq h12 >
+ICONS: < > ]
+
+
+SENT: They shout only we gabra .
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ pron<0:4> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: pl IND: + PT: std ] ]
+ [ pronoun_q<0:4> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ]
+ [ _shout_v_1<5:10> LBL: h1 ARG0: e2 ARG1: x3 ARG2: h8 ARG3: i9 ]
+ [ _only_x_deg<11:15> LBL: h10 ARG0: e11 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: u12 ]
+ [ pron<16:18> LBL: h13 ARG0: x14 [ x PERS: 1 NUM: pl IND: + PT: std ] ]
+ [ pronoun_q<16:18> LBL: h10 ARG0: x14 RSTR: h15 BODY: h16 ]
+ [ _gabra/VB_u_unknown<19:24> LBL: h17 ARG0: e18 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x14 ARG2: i19 ] >
+HCONS: < h0 qeq h1 h6 qeq h4 h8 qeq h17 h15 qeq h13 >
+ICONS: < > ]
+
+
+SKIP: In the sports field, the nervous little boy who is drafted into the squad to make up a full team gets all “gabra”  when he receives the ball and “cocks up” the match resulting in his team’s defeat.
+
+
+SENT: Just poke fun only you gabra.... 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ _just_x_deg<0:4> LBL: h4 ARG0: e5 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: u6 ]
+ [ udef_q<5:13> LBL: h4 ARG0: x7 [ x PERS: 3 NUM: sg GEND: n IND: - ] RSTR: h8 BODY: h9 ]
+ [ compound<5:13> LBL: h10 ARG0: e11 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x7 ARG2: x12 [ x IND: + ] ]
+ [ udef_q<5:9> LBL: h13 ARG0: x12 RSTR: h14 BODY: h15 ]
+ [ _poke_n_1<5:9> LBL: h16 ARG0: x12 ]
+ [ _fun_n_1<10:13> LBL: h10 ARG0: x7 ]
+ [ _only_x_deg<14:18> LBL: h17 ARG0: e18 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: u19 ]
+ [ pron<19:22> LBL: h20 ARG0: x3 [ x PERS: 2 IND: + PT: std ] ]
+ [ pronoun_q<19:22> LBL: h17 ARG0: x3 RSTR: h21 BODY: h22 ]
+ [ _gabra/VB_u_unknown<23:28> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x7 ] >
+HCONS: < h0 qeq h1 h8 qeq h10 h14 qeq h16 h21 qeq h20 >
+ICONS: < e2 focus x7 > ]
+
+
+SENT: how to survive like that?
+[ LTOP: h0
+INDEX: e2 [ e SF: ques TENSE: untensed MOOD: indicative PROG: - PERF: - ]
+RELS: < [ unspec_manner<0:3> LBL: h1 ARG0: e4 [ e SF: prop ] ARG1: e2 ARG2: x5 ]
+ [ which_q<0:3> LBL: h6 ARG0: x5 RSTR: h7 BODY: h8 ]
+ [ manner<0:3> LBL: h9 ARG0: x5 ]
+ [ _survive_v_1<7:14> LBL: h1 ARG0: e2 ARG1: i3 ARG2: i10 ]
+ [ _like_p<15:19> LBL: h1 ARG0: e11 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x12 [ x PERS: 3 NUM: sg GEND: n ] ]
+ [ generic_entity<20:24> LBL: h13 ARG0: x12 ]
+ [ _that_q_dem<20:24> LBL: h14 ARG0: x12 RSTR: h15 BODY: h16 ] >
+HCONS: < h0 qeq h1 h7 qeq h9 h15 qeq h13 >
+ICONS: < > ]
+
+
+SKIP: Without doubt, gahmen must medically subsidise the lowest 10% of the population.
+
+
+SENT: Physics test today was out of the world…
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ udef_q<0:7> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: pl IND: + ] RSTR: h5 BODY: h6 ]
+ [ named<0:7> LBL: h7 CARG: "Physics" ARG0: x3 ]
+ [ _test_v_1<8:12> LBL: h1 ARG0: e2 ARG1: x3 ARG2: h9 ]
+ [ time_n<13:18> LBL: h10 ARG0: x11 [ x PERS: 3 NUM: sg ] ]
+ [ def_implicit_q<13:18> LBL: h12 ARG0: x11 RSTR: h13 BODY: h14 ]
+ [ _today_a_1<13:18> LBL: h10 ARG0: e15 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x11 ]
+ [ _out+of_p<23:29> LBL: h16 ARG0: e17 [ e SF: prop TENSE: past MOOD: indicative PROG: - PERF: - ] ARG1: x11 ARG2: x18 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ _the_q<30:33> LBL: h19 ARG0: x18 RSTR: h20 BODY: h21 ]
+ [ _world_n_of<34:39> LBL: h22 ARG0: x18 ARG1: i23 ] >
+HCONS: < h0 qeq h1 h5 qeq h7 h9 qeq h16 h13 qeq h10 h20 qeq h22 >
+ICONS: < > ]
+
+
+SKIP: Honestly I think I’m going to fail big time…
+
+
+SENT: I didn’t know I had to study statics! 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: past MOOD: indicative PROG: - PERF: - ]
+RELS: < [ pron<0:1> LBL: h4 ARG0: x3 [ x PERS: 1 NUM: sg IND: + PT: std ] ]
+ [ pronoun_q<0:1> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ]
+ [ neg<2:8> LBL: h1 ARG0: e2 ARG1: h8 ]
+ [ _know_v_1<9:13> LBL: h9 ARG0: e10 [ e SF: prop TENSE: past MOOD: indicative PROG: - PERF: - ] ARG1: x3 ARG2: h11 ]
+ [ pron<14:15> LBL: h12 ARG0: x13 [ x PERS: 1 NUM: sg IND: + PT: std ] ]
+ [ pronoun_q<14:15> LBL: h14 ARG0: x13 RSTR: h15 BODY: h16 ]
+ [ _have_v_qmodal-2<16:19> LBL: h17 ARG0: e18 [ e SF: prop TENSE: past MOOD: indicative PROG: - PERF: - ] ARG1: h19 ]
+ [ _study_v_1<23:28> LBL: h20 ARG0: e21 [ e SF: prop-or-ques TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x13 ARG2: x22 [ x PERS: 3 NUM: pl IND: + ] ]
+ [ udef_q<29:37> LBL: h23 ARG0: x22 RSTR: h24 BODY: h25 ]
+ [ _statics/NNS_u_unknown<29:36> LBL: h26 ARG0: x22 ] >
+HCONS: < h0 qeq h1 h6 qeq h4 h8 qeq h9 h11 qeq h17 h15 qeq h12 h19 qeq h20 h24 qeq h26 >
+ICONS: < > ]
+
+
+SKIP: What’s the point in testing LAST year’s work? 
+
+
+SENT: Like wtf lawl…
+[ LTOP: h0
+INDEX: e2 [ e SF: prop-or-ques ]
+RELS: < [ unknown<0:14> LBL: h1 ARG0: e2 ARG: u4 ]
+ [ _wtf/JJ_u_unknown<5:8> LBL: h5 ARG0: e6 [ e SF: prop ] ARG1: u4 ]
+ [ subord<9:14> LBL: h1 ARG0: e7 [ e SF: prop ] ARG1: h8 ARG2: h9 ]
+ [ _lawl/JJ_u_unknown<9:13> LBL: h10 ARG0: e11 [ e SF: prop TENSE: untensed MOOD: indicative ] ARG1: i12 ] >
+HCONS: < h0 qeq h1 h8 qeq h5 h9 qeq h10 >
+ICONS: < > ]
+
+
+SENT: So i think I flung that section…
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ _so_a_thus<0:2> LBL: h1 ARG0: i4 ARG1: h5 ]
+ [ pron<3:4> LBL: h6 ARG0: x3 [ x PERS: 1 NUM: sg IND: + PT: std ] ]
+ [ pronoun_q<3:4> LBL: h7 ARG0: x3 RSTR: h8 BODY: h9 ]
+ [ _think_v_1<5:10> LBL: h10 ARG0: e2 ARG1: x3 ARG2: h11 ARG3: i12 ]
+ [ pron<11:12> LBL: h13 ARG0: x14 [ x PERS: 1 NUM: sg IND: + PT: std ] ]
+ [ pronoun_q<11:12> LBL: h15 ARG0: x14 RSTR: h16 BODY: h17 ]
+ [ _fling_v_1<13:18> LBL: h18 ARG0: e19 [ e SF: prop TENSE: past MOOD: indicative PROG: - PERF: - ] ARG1: x14 ARG2: x20 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ _that_q_dem<19:23> LBL: h21 ARG0: x20 RSTR: h22 BODY: h23 ]
+ [ _section_n_of<24:31> LBL: h24 ARG0: x20 ARG1: i25 ] >
+HCONS: < h0 qeq h1 h5 qeq h10 h8 qeq h6 h11 qeq h18 h16 qeq h13 h22 qeq h24 >
+ICONS: < > ]
+
+
+SENT: GG liao lor…
+[ LTOP: h0
+INDEX: e2 [ e SF: prop-or-ques ]
+RELS: < [ unknown<0:12> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg ] ]
+ [ udef_q<0:12> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]
+ [ compound<0:7> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e10 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG2: x11 [ x IND: + ] ]
+ [ udef_q<0:2> LBL: h12 ARG0: x11 RSTR: h13 BODY: h14 ]
+ [ named<0:2> LBL: h15 CARG: "gg" ARG0: x11 ]
+ [ _liao/JJ_u_unknown<3:7> LBL: h8 ARG0: e10 ARG1: x4 ]
+ [ _lor/NN_u_unknown<8:11> LBL: h8 ARG0: x4 ] >
+HCONS: < h0 qeq h1 h6 qeq h8 h13 qeq h15 >
+ICONS: < > ]
+
+
+SENT: Liverpool GG liao la. 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop ]
+RELS: < [ unknown<0:21> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<0:21> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]
+ [ compound<0:21> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 ]
+ [ udef_q<0:17> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]
+ [ compound<0:17> LBL: h14 ARG0: e15 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x10 ARG2: x16 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<0:12> LBL: h17 ARG0: x16 RSTR: h18 BODY: h19 ]
+ [ compound<0:12> LBL: h20 ARG0: e21 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x16 ARG2: x22 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<0:9> LBL: h23 ARG0: x22 RSTR: h24 BODY: h25 ]
+ [ named<0:9> LBL: h26 CARG: "Liverpool" ARG0: x22 ]
+ [ named<10:12> LBL: h20 CARG: "gg" ARG0: x16 ]
+ [ _liao/NN_u_unknown<13:17> LBL: h14 ARG0: x10 ]
+ [ named<18:20> LBL: h8 CARG: "LA" ARG0: x4 ] >
+HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 h18 qeq h20 h24 qeq h26 >
+ICONS: < > ]
+
+
+SENT: Steven Jialat hamstring problem. 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop ]
+RELS: < [ unknown<0:32> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ udef_q<0:32> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]
+ [ compound<0:32> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<0:13> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]
+ [ compound<0:13> LBL: h14 ARG0: e15 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x10 ARG2: x16 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<0:6> LBL: h17 ARG0: x16 RSTR: h18 BODY: h19 ]
+ [ named<0:6> LBL: h20 CARG: "Steven" ARG0: x16 ]
+ [ named<7:13> LBL: h14 CARG: "Jialat" ARG0: x10 ]
+ [ compound<14:32> LBL: h8 ARG0: e23 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x24 [ x IND: + ] ]
+ [ udef_q<14:23> LBL: h25 ARG0: x24 RSTR: h26 BODY: h27 ]
+ [ _hamstring_n_1<14:23> LBL: h28 ARG0: x24 ]
+ [ _problem_n_of<24:31> LBL: h8 ARG0: x4 ARG1: i29 ] >
+HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 h18 qeq h20 h26 qeq h28 >
+ICONS: < > ]
+
+
+SENT: Dirk Kuyt ankle problem. 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop ]
+RELS: < [ unknown<0:24> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ udef_q<0:24> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]
+ [ compound<0:24> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<0:9> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]
+ [ compound<0:9> LBL: h14 ARG0: e15 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x10 ARG2: x16 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<0:4> LBL: h17 ARG0: x16 RSTR: h18 BODY: h19 ]
+ [ named<0:4> LBL: h20 CARG: "Dirk" ARG0: x16 ]
+ [ named<5:9> LBL: h14 CARG: "Kuyt" ARG0: x10 ]
+ [ compound<10:24> LBL: h8 ARG0: e23 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x24 [ x IND: + ] ]
+ [ udef_q<10:15> LBL: h25 ARG0: x24 RSTR: h26 BODY: h27 ]
+ [ _ankle_n_1<10:15> LBL: h28 ARG0: x24 ]
+ [ _problem_n_of<16:23> LBL: h8 ARG0: x4 ARG1: i29 ] >
+HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 h18 qeq h20 h26 qeq h28 >
+ICONS: < > ]
+
+
+SKIP: take west ham win this saturday.
+
+
+SENT: GG liao.. 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop ]
+RELS: < [ unknown<0:9> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg ] ]
+ [ udef_q<0:9> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]
+ [ compound<0:9> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x10 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<0:2> LBL: h11 ARG0: x10 RSTR: h12 BODY: h13 ]
+ [ named<0:2> LBL: h14 CARG: "gg" ARG0: x10 ]
+ [ _liao./NN_u_unknown<3:8> LBL: h8 ARG0: x4 ] >
+HCONS: < h0 qeq h1 h6 qeq h8 h12 qeq h14 >
+ICONS: < > ]
+
+
+SENT: I can't get in to my account liao ... 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ pron<0:1> LBL: h4 ARG0: x3 [ x PERS: 1 NUM: sg IND: + PT: std ] ]
+ [ pronoun_q<0:1> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ]
+ [ neg<2:7> LBL: h1 ARG0: e8 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h9 ]
+ [ _can_v_modal<2:7> LBL: h10 ARG0: e2 ARG1: h11 ]
+ [ _get_v_1<8:11> LBL: h12 ARG0: e13 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x3 ]
+ [ _in_p_loc<12:14> LBL: h12 ARG0: e14 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e13 ARG2: u15 ]
+ [ _to_p<15:17> LBL: h12 ARG0: e16 [ e SF: prop TENSE: untensed MOOD: indicative ] ARG1: e14 ARG2: x17 [ x PERS: 3 NUM: sg ] ]
+ [ def_explicit_q<18:20> LBL: h18 ARG0: x17 RSTR: h19 BODY: h20 ]
+ [ poss<18:20> LBL: h21 ARG0: e22 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x17 ARG2: x23 [ x PERS: 1 NUM: sg PT: std ] ]
+ [ pronoun_q<18:20> LBL: h24 ARG0: x23 RSTR: h25 BODY: h26 ]
+ [ pron<18:20> LBL: h27 ARG0: x23 ]
+ [ compound<21:35> LBL: h21 ARG0: e28 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x17 ARG2: x29 [ x IND: + ] ]
+ [ udef_q<21:28> LBL: h30 ARG0: x29 RSTR: h31 BODY: h32 ]
+ [ _account_n_of<21:28> LBL: h33 ARG0: x29 ARG1: i34 ]
+ [ _liao/NN_u_unknown<29:33> LBL: h21 ARG0: x17 ] >
+HCONS: < h0 qeq h1 h6 qeq h4 h11 qeq h12 h9 qeq h10 h19 qeq h21 h25 qeq h27 h31 qeq h33 >
+ICONS: < > ]
+
+
+SENT: Keep say someone inside...
+[ LTOP: h0
+INDEX: e2 [ e SF: comm TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ pronoun_q<0:24> LBL: h4 ARG0: x3 [ x PERS: 2 PT: zero ] RSTR: h5 BODY: h6 ]
+ [ pron<0:24> LBL: h7 ARG0: x3 ]
+ [ _keep_v_unspec<0:4> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x8 [ x PERS: 3 NUM: sg ] ]
+ [ person<9:16> LBL: h9 ARG0: x8 ]
+ [ _some_q<9:16> LBL: h10 ARG0: x8 RSTR: h11 BODY: h12 ]
+ [ loc_nonsp<17:24> LBL: h1 ARG0: e13 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x14 [ x PERS: 3 NUM: sg ] ]
+ [ place_n<17:23> LBL: h15 ARG0: x14 ]
+ [ def_implicit_q<17:23> LBL: h16 ARG0: x14 RSTR: h17 BODY: h18 ]
+ [ _inside_p<17:23> LBL: h15 ARG0: e19 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x14 ] >
+HCONS: < h0 qeq h1 h5 qeq h7 h11 qeq h9 h17 qeq h15 >
+ICONS: < > ]
+
+
+SKIP: Gg liao moi go Malaysia forgot to off my data roaming Den i check singtel app saying 1mb data roaming = $25.
+
+
+SENT: wah lau, you damn 'gian peng'.
+[ LTOP: h0
+INDEX: i2
+RELS: < [ addressee<0:8> LBL: h1 ARG0: i2 ARG1: x4 [ x PERS: 3 NUM: sg ] ARG2: e5 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ]
+ [ udef_q<0:8> LBL: h6 ARG0: x4 RSTR: h7 BODY: h8 ]
+ [ _wah/JJ_u_unknown<0:3> LBL: h9 ARG0: e10 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x4 ]
+ [ _lau/NN_u_unknown<4:7> LBL: h9 ARG0: x4 ]
+ [ pron<9:12> LBL: h11 ARG0: x3 [ x PERS: 2 IND: + PT: std ] ]
+ [ pronoun_q<9:12> LBL: h12 ARG0: x3 RSTR: h13 BODY: h14 ]
+ [ _damn_v_to<13:17> LBL: h1 ARG0: e5 ARG1: x3 ARG2: x15 [ x PERS: 3 NUM: sg ] ]
+ [ proper_q<18:30> LBL: h16 ARG0: x15 RSTR: h17 BODY: h18 ]
+ [ fw_seq<18:30> LBL: h19 ARG0: x15 ARG1: i20 ARG2: i21 ]
+ [ quoted<19:23> LBL: h19 CARG: "gian" ARG0: i20 ]
+ [ quoted<24:28> LBL: h19 CARG: "peng" ARG0: i21 ] >
+HCONS: < h0 qeq h1 h7 qeq h9 h13 qeq h11 h17 qeq h19 >
+ICONS: < > ]
+
+
+SENT: singtel give free, you want to sell.
+[ LTOP: h0
+INDEX: e2 [ e SF: prop ]
+RELS: < [ implicit_conj<0:36> LBL: h1 ARG0: e2 ARG1: e4 [ e SF: comm TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG2: e5 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ]
+ [ pronoun_q<0:18> LBL: h6 ARG0: x7 [ x PERS: 2 PT: zero ] RSTR: h8 BODY: h9 ]
+ [ pron<0:18> LBL: h10 ARG0: x7 ]
+ [ _singtel/RB_u_unknown<0:7> LBL: h1 ARG0: i11 ARG1: e4 ]
+ [ _give_v_yield<8:12> LBL: h12 ARG0: e4 ARG1: x7 ]
+ [ subord<13:18> LBL: h1 ARG0: e13 [ e SF: prop ] ARG1: h14 ARG2: h15 ]
+ [ _free_a_of<13:17> LBL: h16 ARG0: e17 [ e SF: prop TENSE: untensed MOOD: indicative ] ARG1: i18 ARG2: u19 ]
+ [ pron<19:22> LBL: h20 ARG0: x21 [ x PERS: 2 IND: + PT: std ] ]
+ [ pronoun_q<19:22> LBL: h22 ARG0: x21 RSTR: h23 BODY: h24 ]
+ [ _want_v_1<23:27> LBL: h1 ARG0: e5 ARG1: x21 ARG2: h25 ]
+ [ _sell_v_1<31:35> LBL: h26 ARG0: e27 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x21 ARG2: i28 ] >
+HCONS: < h0 qeq h1 h8 qeq h10 h14 qeq h12 h15 qeq h16 h23 qeq h20 h25 qeq h26 >
+ICONS: < > ]
+
+
+SKIP: For the benefit of those who do not understand the Hokien dialect, "Gian Png" literally means "hungry for rice" or if I may, "needs more money to survive".
+
+
+SKIP: The author is a very Gian Peng person always eyeing for promotions, freebies, etc.
+
+
+SKIP: If you not so gian peng, you no need to wait the 15 minutes... 
+
+
+SKIP: See that auntie / uncle use lame excuse to say like they die die must wait 15 minutes….
+
+
+SKIP: Hence, its ill-repute of shoddiness and unreliability, as one is criticised for “half-past six work” or and organisation being labelled as a “half-past six company.”
+
+
+SKIP: Lately there has been a lot of talk by politicans about our being a “half-past-six” nation.
+
+
+SKIP: Nah...for such shoddy half past six work...i will stick to my own camera, Tey or Snap-Attack.com!
+
+
+SKIP: A RESPECTABLE statesman once said if a country surrenders its sovereignty, it may become a half-past-six country.
+
+
+SKIP: Whatever Mahathir's shortcomings were, he cannot be accused of being a half-past six leader. 
+
+
+SKIP: The problem with Pak Lah […] is that all the kings’ horses and all the kings’ men cannot prove that he is not one.
+
+
+SKIP: At best, it was just so-so – nothing like what we would cook for ourselves at home. 
+
+
+SKIP: It was not “hiam” enough probably from the lack of ginger or ginger juice and there was insufficient wine.
+
+
+SENT: It's ten o'clock already.
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ pron<0:2> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg GEND: n PT: std ] ]
+ [ pronoun_q<0:2> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ]
+ [ _be_v_id<2:4> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x8 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ plus_c<-1:-1> LBL: h9 ARG0: x8 ARG1: x10 [ x PERS: 3 NUM: sg IND: + ] ARG2: x11 ]
+ [ udef_q<-1:-1> LBL: h12 ARG0: x8 RSTR: h13 BODY: h14 ]
+ [ minute_n<-1:-1> LBL: h15 ARG0: x11 ]
+ [ def_implicit_q<-1:-1> LBL: h16 ARG0: x11 RSTR: h17 BODY: h18 ]
+ [ basic_numbered_hour<5:8> LBL: h19 CARG: "10" ARG0: x10 ]
+ [ def_implicit_q<5:8> LBL: h21 ARG0: x10 RSTR: h22 BODY: h23 ]
+ [ card<9:16> LBL: h15 CARG: "00" ARG0: i25 ARG1: x11 ]
+ [ _already_a_1<17:24> LBL: h1 ARG0: e26 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ] >
+HCONS: < h0 qeq h1 h6 qeq h4 h27 qeq h9 h13 qeq h9 h17 qeq h15 h22 qeq h19 >
+ICONS: < > ]
+
+
+SENT: Is it?
+[ LTOP: h0
+INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ ellipsis_ref<0:2> LBL: h1 ARG0: e2 ARG1: x3 [ x PERS: 3 NUM: sg GEND: n PT: std ] ]
+ [ pron<3:5> LBL: h4 ARG0: x3 ]
+ [ pronoun_q<3:5> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ] >
+HCONS: < h0 qeq h1 h6 qeq h4 >
+ICONS: < > ]
+
+
+SENT: I'm feeling tired.
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: + PERF: - ]
+RELS: < [ pron<0:1> LBL: h4 ARG0: x3 [ x PERS: 1 NUM: sg IND: + PT: std ] ]
+ [ pronoun_q<0:1> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ]
+ [ _feel_v_seem-about<4:11> LBL: h1 ARG0: e2 ARG1: x3 ARG2: h8 ARG3: i9 ]
+ [ _tired_a_of<12:17> LBL: h10 ARG0: e11 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x3 ARG2: u12 ] >
+HCONS: < h0 qeq h1 h6 qeq h4 h8 qeq h10 >
+ICONS: < > ]
+
+
+SKIP: Thou shalt not express your shock at the fact that Sharon got off with Brad at the club last night by saying "is it?"
+
+
+SKIP: A jakun tourist’s worst nightmare…is an idiot who simply cannot see that people want to take photographs & simply stands right in front of the object jakun tourists want to photograph, & lingers around it.
+
+
+SKIP: Yes, it was one of the many jakun moments I had while in Singapore.
+
+
+SKIP: And it’s popular foods in Korean culture that apparently so many of our readers are familiar with it all! 
+
+
+SENT: But of course, we all jakun lah LOL.
+[ LTOP: h0
+INDEX: e2 [ e SF: prop ]
+RELS: < [ unknown<0:36> LBL: h4 ARG0: e2 ARG: x5 [ x PERS: 1 NUM: pl IND: + PT: std ] ]
+ [ _but_c<0:3> LBL: h1 ARG0: e6 [ e SF: prop ] ARG1: u7 ARG2: e2 ]
+ [ _of+course_a_1<4:13> LBL: h1 ARG0: i8 ARG1: h9 ]
+ [ appos<15:36> LBL: h4 ARG0: e10 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x5 ARG2: x11 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ pron<15:17> LBL: h12 ARG0: x5 ]
+ [ pronoun_q<15:17> LBL: h13 ARG0: x5 RSTR: h14 BODY: h15 ]
+ [ appos<15:17> LBL: h12 ARG0: e16 [ e SF: prop TENSE: untensed MOOD: indicative ] ARG1: x5 ARG2: x17 [ x PERS: 3 NUM: pl ] ]
+ [ _all_q<18:21> LBL: h18 ARG0: x17 RSTR: h19 BODY: h20 ]
+ [ generic_entity<18:21> LBL: h21 ARG0: x17 ]
+ [ proper_q<22:36> LBL: h22 ARG0: x11 RSTR: h23 BODY: h24 ]
+ [ _jakun/JJ_u_unknown<22:27> LBL: h25 ARG0: e26 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x11 ]
+ [ compound<28:36> LBL: h25 ARG0: e27 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x11 ARG2: x28 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<28:31> LBL: h29 ARG0: x28 RSTR: h30 BODY: h31 ]
+ [ named<28:31> LBL: h32 CARG: "lah" ARG0: x28 ]
+ [ named<32:35> LBL: h25 CARG: "LOL" ARG0: x11 ] >
+HCONS: < h0 qeq h1 h9 qeq h4 h14 qeq h12 h19 qeq h21 h23 qeq h25 h30 qeq h32 >
+ICONS: < > ]
+
+
+SKIP: Sorry so jakun, need to post a picture of my Uber because it looks like a Bentley.
+
+
+SKIP: I was so jakun with the pen thingy and this happened hehe I feel like a kid.
+
+
+SENT: wah lao...... jialat ahhhh you.
+[ LTOP: h0
+INDEX: e2 [ e SF: comm TENSE: tensed MOOD: indicative ]
+RELS: < [ implicit_conj<0:31> LBL: h1 ARG0: e2 ARG1: e4 [ e SF: prop-or-ques TENSE: tensed MOOD: indicative ] ARG2: e5 [ e SF: comm TENSE: pres MOOD: indicative PROG: - PERF: - ] ]
+ [ unknown<0:8> LBL: h1 ARG0: e4 ARG: x6 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<0:8> LBL: h7 ARG0: x6 RSTR: h8 BODY: h9 ]
+ [ _wah/JJ_u_unknown<0:3> LBL: h10 ARG0: e11 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x6 ]
+ [ named<4:7> LBL: h10 CARG: "Lao" ARG0: x6 ]
+ [ pronoun_q<14:31> LBL: h13 ARG0: x14 [ x PERS: 2 PT: zero ] RSTR: h15 BODY: h16 ]
+ [ pron<14:31> LBL: h17 ARG0: x14 ]
+ [ _jialat/RB_u_unknown<14:20> LBL: h1 ARG0: i18 ARG1: e5 ]
+ [ _ahhhh/VB_u_unknown<21:26> LBL: h1 ARG0: e5 ARG1: x14 ARG2: x19 [ x PERS: 2 IND: + PT: std ] ]
+ [ pron<27:30> LBL: h20 ARG0: x19 ]
+ [ pronoun_q<27:30> LBL: h21 ARG0: x19 RSTR: h22 BODY: h23 ] >
+HCONS: < h0 qeq h1 h8 qeq h10 h15 qeq h17 h22 qeq h20 >
+ICONS: < > ]
+
+
+SKIP: None of the economists polled expect the economy to contract - be it a technical recession or a real recession - and hit the alamak and jialat ranges.
+
+
+SKIP: According to his doctors, every minute he had remained unconscious would have added to his life being in danger. 
+
+
+SKIP: "If it were 10 minutes... jialat !" he said.
+
+
+SENT: Hey hey two different matters okay? 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop-or-ques ]
+RELS: < [ _hey_a_1<0:3> LBL: h1 ARG0: i4 ARG1: h5 ]
+ [ unknown<4:29> LBL: h6 ARG0: e2 ARG: x7 [ x PERS: 3 NUM: pl IND: + ] ]
+ [ _hey_a_1<4:7> LBL: h8 ARG0: i9 ARG1: h10 ]
+ [ udef_q<8:11> LBL: h11 ARG0: x7 RSTR: h12 BODY: h13 ]
+ [ card<8:11> LBL: h14 CARG: "2" ARG0: e16 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x7 ]
+ [ _different_a_than-from<12:21> LBL: h14 ARG0: e17 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x7 ]
+ [ comp<12:21> LBL: h14 ARG0: e18 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e17 ARG2: u19 ]
+ [ _matter_n_of<22:29> LBL: h14 ARG0: x7 ARG1: i20 ]
+ [ _okay_a_1<30:34> LBL: h21 ARG0: i22 ARG1: h23 ] >
+HCONS: < h0 qeq h1 h5 qeq h21 h10 qeq h6 h12 qeq h14 h23 qeq h8 >
+ICONS: < > ]
+
+
+SENT: Our SM already paid so why you so kaypoh?
+[ LTOP: h0
+INDEX: e2 [ e SF: ques ]
+RELS: < [ def_explicit_q<0:3> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]
+ [ poss<0:3> LBL: h7 ARG0: e8 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x3 ARG2: x9 [ x PERS: 1 NUM: pl PT: std ] ]
+ [ pronoun_q<0:3> LBL: h10 ARG0: x9 RSTR: h11 BODY: h12 ]
+ [ pron<0:3> LBL: h13 ARG0: x9 ]
+ [ named<4:6> LBL: h7 CARG: "SM" ARG0: x3 ]
+ [ _already_a_1<7:14> LBL: h1 ARG0: i15 ARG1: e2 ]
+ [ _pay_v_for<15:19> LBL: h16 ARG0: e17 [ e SF: prop TENSE: past MOOD: indicative PROG: - PERF: - ] ARG1: x3 ARG2: x18 [ x PERS: 2 IND: + PT: std ] ARG3: i19 ]
+ [ _so_x<20:22> LBL: h20 ARG0: e2 ARG1: h21 ARG2: h22 ]
+ [ generic_verb<23:26> LBL: h23 ARG0: e24 [ e SF: prop ] ]
+ [ _why_x<23:26> LBL: h25 ARG0: e26 [ e SF: prop TENSE: tensed MOOD: indicative ] ARG1: h27 ]
+ [ pron<27:30> LBL: h28 ARG0: x18 ]
+ [ pronoun_q<27:30> LBL: h29 ARG0: x18 RSTR: h30 BODY: h31 ]
+ [ subord<31:41> LBL: h1 ARG0: e32 [ e SF: prop ] ARG1: h33 ARG2: h34 ]
+ [ _so_x_comp<31:33> LBL: h35 ARG0: e36 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e37 [ e SF: prop TENSE: untensed MOOD: indicative ] ]
+ [ _kaypoh/JJ_u_unknown<34:40> LBL: h35 ARG0: e37 ARG1: i38 ] >
+HCONS: < h0 qeq h1 h5 qeq h7 h11 qeq h13 h21 qeq h16 h22 qeq h25 h27 qeq h23 h30 qeq h28 h33 qeq h20 h34 qeq h35 >
+ICONS: < > ]
+
+
+SKIP: My elder sister and mother don’t like me doing this. 
+
+
+SENT: They would scold me and say I’m kaypoh.
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: tensed MOOD: indicative PROG: - PERF: - ]
+RELS: < [ pron<0:4> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: pl IND: + PT: std ] ]
+ [ pronoun_q<0:4> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ]
+ [ _would_v_modal<5:10> LBL: h1 ARG0: e2 ARG1: h8 ]
+ [ _scold_v_1<11:16> LBL: h9 ARG0: e10 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x3 ARG2: x11 [ x PERS: 1 NUM: sg IND: + PT: std ] ]
+ [ pron<17:19> LBL: h12 ARG0: x11 ]
+ [ pronoun_q<17:19> LBL: h13 ARG0: x11 RSTR: h14 BODY: h15 ]
+ [ _and_c<20:23> LBL: h9 ARG0: e16 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e10 ARG2: e17 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ]
+ [ _say_v_to<24:27> LBL: h9 ARG0: e17 ARG1: x3 ARG2: h18 ARG3: i19 ]
+ [ pron<28:29> LBL: h20 ARG0: x21 [ x PERS: 1 NUM: sg IND: + PT: std ] ]
+ [ pronoun_q<28:29> LBL: h22 ARG0: x21 RSTR: h23 BODY: h24 ]
+ [ _be_v_id<29:31> LBL: h25 ARG0: e26 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x21 ARG2: x27 [ x PERS: 3 NUM: sg ] ]
+ [ udef_q<32:39> LBL: h28 ARG0: x27 RSTR: h29 BODY: h30 ]
+ [ _kaypoh/NN_u_unknown<32:38> LBL: h31 ARG0: x27 ] >
+HCONS: < h0 qeq h1 h6 qeq h4 h8 qeq h9 h14 qeq h12 h18 qeq h25 h23 qeq h20 h29 qeq h31 >
+ICONS: < > ]
+
+
+SKIP: The slightest noise eg. me opening an envelope, will have him running up to investigate, being very kaypoh by nature.
+
+
+SKIP: To get problems rectified, Lim who admits to being a “kaypoh” , would hassle the relevant authorities.
+
+
+SKIP: I thought through every angle, then Jesus decides to kaypoh and mess everything up.
+
+
+SENT: Don't kaypoh so much. 
+[ LTOP: h0
+INDEX: e2 [ e SF: comm TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ pronoun_q<0:5> LBL: h4 ARG0: x5 [ x PERS: 2 PT: zero ] RSTR: h6 BODY: h7 ]
+ [ pron<0:5> LBL: h8 ARG0: x5 ]
+ [ neg<0:5> LBL: h1 ARG0: i9 ARG1: h10 ]
+ [ _kaypoh/VB_u_unknown<6:12> LBL: h11 ARG0: e2 ARG1: x5 ARG2: i12 ]
+ [ _so_x_comp<13:15> LBL: h11 ARG0: e13 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e14 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ]
+ [ _much_a_1<16:20> LBL: h11 ARG0: e14 ARG1: e2 ] >
+HCONS: < h0 qeq h1 h6 qeq h8 h10 qeq h11 >
+ICONS: < > ]
+
+
+SKIP: Locked door, not allowed to go inside, means don't go—understand?
+
+
+SKIP: Puay Sim interrupted, clacking her chopsticks decisively over a slice of fried fish. 
+
+
+SKIP: If you don't know them, don't kaypoh, Mum.
+
+
+SENT: Teacher mark your paper also kee siao. 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop ]
+RELS: < [ unknown<0:38> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ appos<0:38> LBL: h1 ARG0: e5 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x6 [ x PERS: 3 NUM: sg ] ]
+ [ proper_q<0:12> LBL: h7 ARG0: x4 RSTR: h8 BODY: h9 ]
+ [ compound<0:12> LBL: h10 ARG0: e11 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x12 [ x IND: + ] ]
+ [ udef_q<0:7> LBL: h13 ARG0: x12 RSTR: h14 BODY: h15 ]
+ [ _teacher_n_of<0:7> LBL: h16 ARG0: x12 ARG1: i17 ]
+ [ named<8:12> LBL: h10 CARG: "Mark" ARG0: x4 ]
+ [ def_explicit_q<13:17> LBL: h19 ARG0: x6 RSTR: h20 BODY: h21 ]
+ [ poss<13:17> LBL: h22 ARG0: e23 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x6 ARG2: x24 [ x PERS: 2 PT: std ] ]
+ [ pronoun_q<13:17> LBL: h25 ARG0: x24 RSTR: h26 BODY: h27 ]
+ [ pron<13:17> LBL: h28 ARG0: x24 ]
+ [ compound<18:38> LBL: h22 ARG0: e29 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x6 ARG2: x30 [ x PERS: 3 NUM: sg IND: - ] ]
+ [ udef_q<18:23> LBL: h31 ARG0: x30 RSTR: h32 BODY: h33 ]
+ [ _paper_n_1<18:23> LBL: h34 ARG0: x30 ]
+ [ _also_a_1<24:28> LBL: h22 ARG0: e35 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: h36 ]
+ [ _kee/JJ_u_unknown<29:32> LBL: h37 ARG0: e38 [ e SF: prop ] ARG1: x6 ]
+ [ _siao/NN_u_unknown<33:37> LBL: h22 ARG0: x6 ] >
+HCONS: < h0 qeq h1 h8 qeq h10 h14 qeq h16 h20 qeq h22 h26 qeq h28 h32 qeq h34 h36 qeq h37 >
+ICONS: < > ]
+
+
+SKIP: "He's a kee siao guy," Ridhuan said. 
+
+
+SENT: that's why many getting kee siao...
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ generic_entity<0:4> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg GEND: n ] ]
+ [ _that_q_dem<0:4> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ]
+ [ _be_v_id<4:6> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x8 ]
+ [ udef_q<7:33> LBL: h9 ARG0: x8 RSTR: h10 BODY: h11 ]
+ [ udef_q<7:15> LBL: h12 ARG0: x13 [ x PERS: 3 NUM: sg ] RSTR: h14 BODY: h15 ]
+ [ nominalization<7:15> LBL: h16 ARG0: x13 ARG1: h17 ]
+ [ generic_verb<7:10> LBL: h18 ARG0: e19 [ e SF: prop ] ]
+ [ _why_x<7:10> LBL: h17 ARG0: e20 [ e SF: ques ] ARG1: h21 ARG2: x22 [ x PERS: 3 NUM: pl ] ]
+ [ generic_entity<11:15> LBL: h23 ARG0: x22 ]
+ [ udef_q<11:15> LBL: h24 ARG0: x22 RSTR: h25 BODY: h26 ]
+ [ much-many_a<11:15> LBL: h23 ARG0: e27 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x22 ]
+ [ nominalization<16:33> LBL: h28 ARG0: x8 ARG1: h29 ]
+ [ _get_v_1<16:23> LBL: h29 ARG0: e30 [ e SF: prop TENSE: untensed MOOD: indicative PROG: + PERF: - ] ARG1: x13 ARG2: x31 [ x PERS: 3 NUM: sg ] ]
+ [ udef_q<24:33> LBL: h32 ARG0: x31 RSTR: h33 BODY: h34 ]
+ [ compound<24:33> LBL: h35 ARG0: e36 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x31 ARG2: x37 ]
+ [ udef_q<24:27> LBL: h38 ARG0: x37 RSTR: h39 BODY: h40 ]
+ [ _kee/NN_u_unknown<24:27> LBL: h41 ARG0: x37 ]
+ [ _siao/NN_u_unknown<28:32> LBL: h35 ARG0: x31 ] >
+HCONS: < h0 qeq h1 h6 qeq h4 h10 qeq h28 h14 qeq h16 h21 qeq h18 h25 qeq h23 h33 qeq h35 h39 qeq h41 >
+ICONS: < > ]
+
+
+SKIP: “Wah piang! I’m shocked, are these Japanese kee siao or what?” said Mrs Elaine Ong, a mother of two from Sungei Kadut.
+
+
+SKIP: He kena fine of $10.
+
+
+SKIP: My job application kena rejected.
+
+
+SENT: Why are you so kiasi? 
+[ LTOP: h0
+INDEX: e2 [ e SF: ques TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ _for_p<0:3> LBL: h1 ARG0: e4 [ e SF: prop ] ARG1: e2 ARG2: x5 ]
+ [ which_q<0:3> LBL: h6 ARG0: x5 RSTR: h7 BODY: h8 ]
+ [ reason<0:3> LBL: h9 ARG0: x5 ]
+ [ pron<8:11> LBL: h10 ARG0: x3 [ x PERS: 2 IND: + PT: std ] ]
+ [ pronoun_q<8:11> LBL: h11 ARG0: x3 RSTR: h12 BODY: h13 ]
+ [ _so_x_comp<12:14> LBL: h1 ARG0: e14 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ]
+ [ _kiasi/JJ_u_unknown<15:20> LBL: h1 ARG0: e2 ARG1: x3 ] >
+HCONS: < h0 qeq h1 h7 qeq h9 h12 qeq h10 >
+ICONS: < > ]
+
+
+SKIP: You won't die from getting a small cut on the finger.
+
+
+SKIP: If everyone dares to bungee jump, why can't you do the same? 
+
+
+SENT: Are you kiasi or what?
+[ LTOP: h0
+INDEX: e2 [ e SF: prop-or-ques TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ _be_v_nv<0:3> LBL: h4 ARG0: e2 ARG1: i3 ARG2: h5 ]
+ [ pron<4:7> LBL: h6 ARG0: x7 [ x PERS: 2 IND: + PT: std ] ]
+ [ pronoun_q<4:7> LBL: h8 ARG0: x7 RSTR: h9 BODY: h10 ]
+ [ _kiasi/VB_u_unknown<8:13> LBL: h5 ARG0: e11 [ e SF: prop-or-ques TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x7 ARG2: i12 ]
+ [ _or+what_a_2<14:21> LBL: h1 ARG0: i13 ARG1: h14 ] >
+HCONS: < h0 qeq h1 h9 qeq h6 h14 qeq h4 >
+ICONS: < > ]
+
+
+SKIP: When you are anxious to make the right travel arrangements, you sometimes cannot help but be inquisitive. 
+
+
+SKIP: For those in the travel business, these whines should be a common affair. 
+
+
+SKIP: But when does being "inquisitive" translate into "irritating", or "anxious" into "kiasi"  […]
+
+
+SKIP: Do not be alarmed if you have received this yellow cylinder which looks like a stick of dynamite and even had the word "explosive" on it. 
+
+
+SKIP: Last week, one "kiasi" fellow was so alarmed that he called the police  […]
+
+
+SENT: No lubang, so teruk. 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop ]
+RELS: < [ unknown<0:20> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg ] ]
+ [ _no_q<0:2> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]
+ [ _lubang/NN_u_unknown<3:9> LBL: h8 ARG0: x4 ]
+ [ _so_x_comp<11:13> LBL: h1 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ]
+ [ _teruk/JJ_u_unknown<14:19> LBL: h1 ARG0: e2 ARG1: u10 ] >
+HCONS: < h0 qeq h1 h6 qeq h8 >
+ICONS: < > ]
+
+
+SENT: Kiasu cannot lose, 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ proper_q<0:5> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]
+ [ named<0:5> LBL: h7 CARG: "Kiasu" ARG0: x3 ]
+ [ neg<6:12> LBL: h1 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h10 ]
+ [ _can_v_modal<6:12> LBL: h11 ARG0: e2 ARG1: h12 ]
+ [ _lose_v_1<13:17> LBL: h13 ARG0: e14 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x3 ARG2: i15 ] >
+HCONS: < h0 qeq h1 h5 qeq h7 h12 qeq h13 h10 qeq h11 >
+ICONS: < > ]
+
+
+SENT: Kiasi cannot die;
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ proper_q<0:5> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: sg IND: + ] RSTR: h5 BODY: h6 ]
+ [ named<0:5> LBL: h7 CARG: "Kiasi" ARG0: x3 ]
+ [ neg<6:12> LBL: h1 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: h10 ]
+ [ _can_v_modal<6:12> LBL: h11 ARG0: e2 ARG1: h12 ]
+ [ _die_v_1<13:16> LBL: h13 ARG0: e14 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x3 ] >
+HCONS: < h0 qeq h1 h5 qeq h7 h12 qeq h13 h10 qeq h11 >
+ICONS: < > ]
+
+
+SENT: machiam machiam words 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop-or-ques ]
+RELS: < [ unknown<0:21> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: pl IND: + ] ]
+ [ udef_q<0:21> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]
+ [ _machiam/JJ_u_unknown<0:7> LBL: h8 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x4 ]
+ [ _machiam/JJ_u_unknown<8:15> LBL: h8 ARG0: e10 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x4 ]
+ [ _word_n_of<16:21> LBL: h8 ARG0: x4 ARG1: i11 ] >
+HCONS: < h0 qeq h1 h6 qeq h8 >
+ICONS: < > ]
+
+
+SENT: We also try. 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop ]
+RELS: < [ pron<0:2> LBL: h4 ARG0: x3 [ x PERS: 1 NUM: pl IND: + PT: std ] ]
+ [ pronoun_q<0:2> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ]
+ [ _also_a_1<3:7> LBL: h1 ARG0: e2 ARG1: h8 ]
+ [ _try_v_1<8:11> LBL: h9 ARG0: e10 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x3 ARG2: i11 ] >
+HCONS: < h0 qeq h1 h6 qeq h4 h8 qeq h9 >
+ICONS: < > ]
+
+
+SENT: Proper English? So lecheh, 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop-or-ques ]
+RELS: < [ unknown<0:26> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ appos<0:26> LBL: h1 ARG0: e5 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x6 [ x PERS: 3 NUM: sg ] ]
+ [ udef_q<16:26> LBL: h7 ARG0: x6 RSTR: h8 BODY: h9 ]
+ [ proper_q<0:15> LBL: h10 ARG0: x4 RSTR: h11 BODY: h12 ]
+ [ compound<0:15> LBL: h13 ARG0: e14 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x4 ARG2: x15 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<0:6> LBL: h16 ARG0: x15 RSTR: h17 BODY: h18 ]
+ [ named<0:6> LBL: h19 CARG: "Proper" ARG0: x15 ]
+ [ named<7:14> LBL: h13 CARG: "English" ARG0: x4 ]
+ [ compound<16:26> LBL: h22 ARG0: e23 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x6 ARG2: x24 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<16:18> LBL: h25 ARG0: x24 RSTR: h26 BODY: h27 ]
+ [ named<16:18> LBL: h28 CARG: "So" ARG0: x24 ]
+ [ _lecheh/NN_u_unknown<19:25> LBL: h22 ARG0: x6 ] >
+HCONS: < h0 qeq h1 h8 qeq h22 h11 qeq h13 h17 qeq h19 h26 qeq h28 >
+ICONS: < > ]
+
+
+SENT: So correct, so actsy for what? 
+[ LTOP: h0
+INDEX: e2 [ e SF: ques ]
+RELS: < [ unknown<0:30> LBL: h1 ARG0: e2 ARG: u4 ]
+ [ _so_x_comp<0:2> LBL: h5 ARG0: e6 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e7 [ e SF: prop ] ARG2: h8 ]
+ [ _correct_a_1<3:10> LBL: h5 ARG0: e7 ARG1: u4 ]
+ [ ellipsis<12:14> LBL: h8 ARG0: e9 [ e SF: prop ] ARG1: u10 ]
+ [ subord<15:20> LBL: h1 ARG0: e11 [ e SF: prop ] ARG1: h12 ARG2: h13 ]
+ [ _actsy/JJ_u_unknown<15:20> LBL: h14 ARG0: e15 [ e SF: prop TENSE: untensed MOOD: indicative ] ARG1: i16 ]
+ [ _for_p<21:24> LBL: h1 ARG0: e17 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e7 ARG2: x18 ]
+ [ thing<25:29> LBL: h19 ARG0: x18 ]
+ [ which_q<25:29> LBL: h20 ARG0: x18 RSTR: h21 BODY: h22 ] >
+HCONS: < h0 qeq h1 h12 qeq h5 h13 qeq h14 h21 qeq h19 >
+ICONS: < > ]
+
+
+SKIP: Too often you hear about Singaporeans with the "K syndrome", meaning kiasu , kiasi , kiabor .
+
+
+SKIP: Apart from the kiasis and kiasus, there are also Singaporeans at the other end of the scale – the healthcare workers who put their lives at risk.
+
+
+SKIP: The kiasi who insist on seeing a doctor for the most minor complaint such as "my baby sneezed this morning leh".
+
+
+SKIP: No wonder the parents acted that way, she said. 
+
+
+SENT: They were just being kia-su.
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: past MOOD: indicative PROG: + PERF: - ]
+RELS: < [ pron<0:4> LBL: h4 ARG0: x3 [ x PERS: 3 NUM: pl IND: + PT: std ] ]
+ [ pronoun_q<0:4> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ]
+ [ _just_a_1<10:14> LBL: h1 ARG0: i8 ARG1: e2 ]
+ [ _be_v_id<15:20> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x9 [ x PERS: 3 NUM: sg ] ]
+ [ udef_q<21:28> LBL: h10 ARG0: x9 RSTR: h11 BODY: h12 ]
+ [ compound<21:28> LBL: h13 ARG0: e14 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x9 ARG2: x15 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ proper_q<21:25> LBL: h16 ARG0: x15 RSTR: h17 BODY: h18 ]
+ [ named<21:24> LBL: h19 CARG: "Kia" ARG0: x15 ]
+ [ _su/NN_u_unknown<25:27> LBL: h13 ARG0: x9 ] >
+HCONS: < h0 qeq h1 h6 qeq h4 h11 qeq h13 h17 qeq h19 >
+ICONS: < > ]
+
+
+SKIP: The kia-si/kia-su attitude of the Totalisator Boards in Malaysia and Singapore is deplorable.
+
+
+SKIP: We often see a bus with commuters practically spilling out of the front door and crowding at the exit door. 
+
+
+SKIP: But beyond that, a vacuum prevails, says a reader. 
+
+
+SKIP: The kia-su attitude is the reason for this, says the reader, and most of the culprits are students from secondary schools and junior colleges.
+
+
+SKIP: The story now going around is that the distributors of Suzuki cars will take over the failed distributorship of Korea's Kia cars. 
+
+
+SKIP: According to one wag, the new distributorship could call itself "Kia-Su Motors". 
+
+
+SKIP: For the uninitiated, kiasu means "afraid to lose" in the Hokkien dialect.
+
+
+SENT: No lubang, so teruk. 
+[ LTOP: h0
+INDEX: e2 [ e SF: prop ]
+RELS: < [ unknown<0:20> LBL: h1 ARG0: e2 ARG: x4 [ x PERS: 3 NUM: sg ] ]
+ [ _no_q<0:2> LBL: h5 ARG0: x4 RSTR: h6 BODY: h7 ]
+ [ _lubang/NN_u_unknown<3:9> LBL: h8 ARG0: x4 ]
+ [ _so_x_comp<11:13> LBL: h1 ARG0: e9 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ]
+ [ _teruk/JJ_u_unknown<14:19> LBL: h1 ARG0: e2 ARG1: u10 ] >
+HCONS: < h0 qeq h1 h6 qeq h8 >
+ICONS: < > ]
+
+
+SKIP: So, Singaporeans, don't conform to what society labels you to be. 
+
+
+SENT: Be kiasu in making a difference!
+[ LTOP: h0
+INDEX: e2 [ e SF: comm TENSE: pres MOOD: indicative PROG: - PERF: - ]
+RELS: < [ pronoun_q<0:32> LBL: h4 ARG0: x3 [ x PERS: 2 PT: zero ] RSTR: h5 BODY: h6 ]
+ [ pron<0:32> LBL: h7 ARG0: x3 ]
+ [ _be_v_id<0:2> LBL: h1 ARG0: e2 ARG1: x3 ARG2: x8 [ x PERS: 3 NUM: sg ] ]
+ [ udef_q<3:8> LBL: h9 ARG0: x8 RSTR: h10 BODY: h11 ]
+ [ _kiasu/NN_u_unknown<3:8> LBL: h12 ARG0: x8 ]
+ [ _in_p_state<9:11> LBL: h1 ARG0: e13 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e2 ARG2: x14 ]
+ [ udef_q<12:32> LBL: h15 ARG0: x14 RSTR: h16 BODY: h17 ]
+ [ nominalization<12:32> LBL: h18 ARG0: x14 ARG1: h19 ]
+ [ _make_v_1<12:18> LBL: h19 ARG0: e20 [ e SF: prop TENSE: untensed MOOD: indicative PROG: + PERF: - ] ARG1: i21 ARG2: x22 [ x PERS: 3 NUM: sg IND: + ] ]
+ [ _a_q<19:20> LBL: h23 ARG0: x22 RSTR: h24 BODY: h25 ]
+ [ _difference_n_1<21:31> LBL: h26 ARG0: x22 ] >
+HCONS: < h0 qeq h1 h5 qeq h7 h10 qeq h12 h16 qeq h18 h24 qeq h26 >
+ICONS: < > ]
+
+
+SKIP: Shell's FuelSave saw Singaporeans' kiasu spirit come to the fore. 
+
+
+SKIP: I noted that most vehicles in the queue had their engines in idle and air-conditioners on, hence releasing air pollutants.
+
+
+SKIP: Whenever I meet Meng Seng, he is always trying to sell me his koyok and recruit me into his Party.
+
+
+SKIP: “I'm here to sell my koyok,” laughed Olivia Lum as she took to the stage and began her presentation on Hyflux Limited, it turned out that the koyok was not some sales pitch trying to sell ice to Eskimos.
+
+
+SKIP: This is the reason why I get so uptight, so aggressive when someone comes along, talks very well, but sells koyok and puts our country in danger.
+
+
+SENT: I noticed standards here are super duper laoya.
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: past MOOD: indicative PROG: - PERF: - ]
+RELS: < [ pron<0:1> LBL: h4 ARG0: x3 [ x PERS: 1 NUM: sg IND: + PT: std ] ]
+ [ pronoun_q<0:1> LBL: h5 ARG0: x3 RSTR: h6 BODY: h7 ]
+ [ _notice_v_1<2:9> LBL: h1 ARG0: e2 ARG1: x3 ARG2: h8 ARG3: i9 ]
+ [ udef_q<10:24> LBL: h10 ARG0: x11 [ x PERS: 3 NUM: pl IND: + ] RSTR: h12 BODY: h13 ]
+ [ _standard_n_1<10:19> LBL: h14 ARG0: x11 ]
+ [ loc_nonsp<20:24> LBL: h14 ARG0: e15 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x11 ARG2: x16 [ x PERS: 3 NUM: sg ] ]
+ [ place_n<20:24> LBL: h17 ARG0: x16 ]
+ [ def_implicit_q<20:24> LBL: h18 ARG0: x16 RSTR: h19 BODY: h20 ]
+ [ _here_a_1<20:24> LBL: h17 ARG0: e21 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x16 ]
+ [ _be_v_id<25:28> LBL: h22 ARG0: e23 [ e SF: prop TENSE: pres MOOD: indicative PROG: - PERF: - ] ARG1: x11 ARG2: x24 [ x PERS: 3 NUM: sg ] ]
+ [ udef_q<29:47> LBL: h25 ARG0: x24 RSTR: h26 BODY: h27 ]
+ [ _super_a_1<29:34> LBL: h28 ARG0: e29 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x24 ]
+ [ _duper/JJ_u_unknown<35:40> LBL: h28 ARG0: e30 [ e SF: prop TENSE: untensed MOOD: indicative PROG: bool PERF: - ] ARG1: x24 ]
+ [ _laoya/NN_u_unknown<41:46> LBL: h28 ARG0: x24 ] >
+HCONS: < h0 qeq h1 h6 qeq h4 h8 qeq h22 h12 qeq h14 h19 qeq h17 h26 qeq h28 >
+ICONS: < > ]
+
+
+SKIP: I tried their sample cleanser, my face was popping pimples like mad and their nail polish, so laoya! 
+
+
+SENT: So I thought their products very lousy...
+[ LTOP: h0
+INDEX: e2 [ e SF: prop TENSE: past MOOD: indicative PROG: - PERF: - ]
+RELS: < [ _so_a_thus<0:2> LBL: h1 ARG0: i4 ARG1: h5 ]
+ [ pron<3:4> LBL: h6 ARG0: x3 [ x PERS: 1 NUM: sg IND: + PT: std ] ]
+ [ pronoun_q<3:4> LBL: h7 ARG0: x3 RSTR: h8 BODY: h9 ]
+ [ _think_v_1<5:12> LBL: h10 ARG0: e2 ARG1: x3 ARG2: x11 [ x PERS: 3 NUM: pl IND: + ] ARG3: h12 ]
+ [ def_explicit_q<13:18> LBL: h13 ARG0: x11 RSTR: h14 BODY: h15 ]
+ [ poss<13:18> LBL: h16 ARG0: e17 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: x11 ARG2: x18 [ x PERS: 3 NUM: pl PT: std ] ]
+ [ pronoun_q<13:18> LBL: h19 ARG0: x18 RSTR: h20 BODY: h21 ]
+ [ pron<13:18> LBL: h22 ARG0: x18 ]
+ [ _product_n_1<19:27> LBL: h16 ARG0: x11 ]
+ [ _very_x_deg<28:32> LBL: h23 ARG0: e24 [ e SF: prop TENSE: untensed MOOD: indicative PROG: - PERF: - ] ARG1: e25 [ e SF: prop TENSE: untensed MOOD: indicative ] ]
+ [ _lousy_a_1<33:38> LBL: h23 ARG0: e25 ARG1: x11 ] >
+HCONS: < h0 qeq h1 h5 qeq h10 h8 qeq h6 h12 qeq h23 h14 qeq h16 h20 qeq h22 >
+ICONS: < > ]
+
+

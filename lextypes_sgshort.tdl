@@ -413,12 +413,14 @@ cm_np-eg_that_le := sor_compl_adj_word &
 	     LKEYS.KEYREL.PRED no_rel ] ].
 
 ; 11-2-2021 ADD IN  prd + be default to stop normal adj from undergoing nocop coord
+; 16-11-2021 PRD + prevented it from acting as the adj in adj_adjn_rule which is not good
+; removed PRD + restriction <ex> the tall, uncomfortable-looking white man
 aj_-_i-er_le := reg_intrans_adj &
 """
 Adj (intersective), no comp, only -er comparative
 <ex>The big dog won.
 """
-  [ SYNSEM.LOCAL.CAT.HEAD [ PRD +,
+  [ SYNSEM.LOCAL.CAT.HEAD [ ;PRD +,
   			     MINORS [ MIN norm_adj_rel,
 				   ALTMIN comp_or_meas_rel ] ] ].
 	
@@ -716,9 +718,11 @@ sfp_type3_le := sfp_-_i-s_le &
   [ SYNSEM.LOCAL.CAT.HEAD.MINORS.MIN particle3_rel ].    
   
   
-ditrans_verb := verb_synsem & ditrans_subst & ditrans_lt &
-  [ LOCAL.CAT.VAL [ COMPS < synsem_min, synsem >,
-  		     SUBJ < [OPT + ] > ] ].
+; 16-11-2021 remove this because v_bse-ilr requires its daughter to have SUBJ OPT -
+; to come back to this later to find out how to do implement singlish's opt subj
+;ditrans_verb := verb_synsem & ditrans_subst & ditrans_lt &
+;  [ LOCAL.CAT.VAL [ COMPS < synsem_min, synsem >,
+;  		     SUBJ < [OPT + ] > ] ].
 
 ; 8-7-2021 supertype to add in the dialect value  		     
 ;singlish_lex := sign &

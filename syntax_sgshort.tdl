@@ -1130,21 +1130,26 @@ run_on_coord_comma_rule := basic_run_on_coord_rule &
 ; 21-10-2021 changed udef_q_rel to udef_a_q_rel so that when generating 
 ; from singlish.dat to english.dat, <ex>cat sleeps can generate "a cat sleeps"
 ; somehow it is not able to take def_udef_a_q_rel to generate "the cat sleeps"
+;  17-11-2021 added in args INDEX, SPR.FIRST and synsem SPEC
 reg_bare_np_phrase-sg := norm_bare_np_phrase &
   [ INFLECTD +,
     SYNSEM [ LOCAL [ CAT [ HEAD.MINORS.ALTMIN implicit_q_rel,
 			   VAL.SPR < synsem > ],
-		     AGR.DIV #div ],
+		     AGR #agr & [ DIV #div ] ],
              MODIFD #modif ],
     ARGS < [ INFLECTD +,
-             SYNSEM [ LOCAL [ AGR.DIV #div,
-                              CAT.VAL.SPR.FIRST synsem ],
+             SYNSEM [ LOCAL [ AGR #agr & [ DIV #div ],
+                              CAT.VAL.SPR.FIRST synsem &
+					    [ --MIN abstr_def_or_udef_q_rel ],
+                              CONT.HOOK.INDEX nonconj_ref-ind ],
 		      MODIFD #modif ] ] >,
     C-CONT.RELS <! [ PRED def_udef_a_q_rel, ARG0 ref-ind ] !> ].
 
 ; 20-10-2021 add in new barenp just for bare nouns that are underspecified for number
 ; <ex> he ate apple.
 ; for number to remain underspecified   
+; 17-11-2021 #toadd in SYNSEM value of daughter (count_noun_synsem) to prevent sentences like
+; <ex> sleep is important to undergo both this and hdn_bnp_c 
 bare_np_underspec_phrase := reg_bare_np_phrase-sg &
   [ SYNSEM.LOCAL.AGR #agr & [ DIV + ],
     ARGS < [ SYNSEM [ LOCAL [ CAT [ HEAD noun_or_nomger,
