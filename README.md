@@ -25,5 +25,10 @@ And to generate in another grammar:
 * cat [mrs] | ace -g [grammar2].dat -e
 * to change the generation root, add "-r [root]" to the command
 * and add "--disable-subsumption-test" for easier generation
+### Data
+Data was extracted from examples on Wiktionary pages with words that were marked to be Singlish. It includes also the other non-Singlish definitions and usages of the words. The example sentences include some that are offensive and racist but they not taken out as it reflects how this variety is used.
 
+To parse the data using ace (parts in brackets are optional)
+* To parse with only top tree: cat wikiexamples_next300.txt | ace (--max-words=20) -g singlish.dat -Tf1(> output.txt)
+* To remove lines starting with "#": grep -vP "^#" wikiexamples_next300.txt | ace...
 
