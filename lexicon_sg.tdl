@@ -220,7 +220,7 @@ singlish_n1 := n_-_pn-sg_le &
             PHON.ONSET con ] ].
             
 one_pr-rel := n_-_pr-rel-one_le &
- [ ORTH < "onesg" >,
+ [ ORTH < "one" >,
    SYNSEM.PHON.ONSET con ].
    
 one_entity_n1 := n_poss_one_lexent &
@@ -303,7 +303,7 @@ what_x_sfp := sfp_type2a_le &
             PHON.ONSET con ] ].
             
 one_x_sfp := sfp_type3_le &
- [ ORTH < "onesg" >,
+ [ ORTH < "one" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_one_particle_rel",
             PHON.ONSET con ] ].  
             
