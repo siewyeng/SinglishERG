@@ -1,6 +1,6 @@
 # SinglishERG
 
-A branch of the English Resource Grammar (ERG) that is used for Singlish. Created as a Master's Research project.
+A branch of the English Resource Grammar (ERG) that is used for Singlish. Created as a Master's Research project. It is published under the same license as the ERG, the MIT license.
 
 These are the files that have been changed since they have been cloned from the ERG trunk.
 Refer to config and singlish.tdl to see which files are in use.
