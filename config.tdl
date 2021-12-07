@@ -172,7 +172,7 @@ index-accessibility-filtering := enabled.
 extra-erg-dag-stash := enabled.
 
 ;; part of speech tagging
-english-pos-tagger := enabled.
+ english-pos-tagger := enabled.
 
 ;; ERG peculiarity: after generating a passive edge, set its top-level type 
 ;; to 'sign' during forest creation.  this results in improved packing at 

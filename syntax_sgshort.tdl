@@ -15,6 +15,8 @@
 ;;;  Chow Siew Yeng 2020, 2021
 
 ; CSY - changed HEAD basic_verb_or_frag to v_or_a for adj to head sentence
+; changing the HEAD type of different types of clauses and phrases
+; so for adjectives to be also be able to head them
 basic_decl_phrase := basic_non_rel_clause & phrasal &
   [ SYNSEM.LOCAL.CAT [ HEAD v_or_a &
                             [ INV - ],
@@ -116,13 +118,6 @@ For sentences like
                      CONT.HOOK [ INDEX.SF #pred ] ],
 	     NONLOC.SLASH 0-dlist,
              PUNCT.RPUNCT.PSF #pred ] ].
-
-; CSY 10-12-2020 two nonmc rules: one for verb headed and one for adj headed clauses
-;     5-1-2020 - since adj now have vform, this can apply to both types of clauses
-;                there's no need for the special adj daughter
-subjh_nonmc_rule := subjh_rule_decl & head_subj_phrase &
-  [ SYNSEM.LOCAL.CAT [ HEAD.VFORM fin_or_bse_or_prp,
-		       MC - ] ].
 
 ; CSY 3-12-2020 - take away INV + to allow sentences like
 ; <ex>what you want?
@@ -498,8 +493,8 @@ filler_head_finprp_np_rel_rule := basic_filler_head_finprp_rel_rule &
 	   [ SYNSEM.NONLOC.SLASH <! [ CAT.HEAD noun_or_nomger,
 				      CONT.HOOK.XARG #xarg ] !> ] > ].		
 
-; 9-3-2021 - a pumping rule that takes an RC with 'one' as the relpro and turns it into an NP
-; or N that can take spr 'the'
+; 9-3-2021 - This is a pumping rule that takes an RC with 'one' as the relpro 
+; and turns it into an Nbar that can take spr 'the'
 ; based on the basic_generic_bare_np_phrase
 ; introduced empty MOD to prevent a sentence like 'eat cake one is happy' 
 ; from becoming aj-hd_scp_c
@@ -515,6 +510,9 @@ filler_head_finprp_np_rel_rule := basic_filler_head_finprp_rel_rule &
 ; 17-5-2021 add in PT onerelpro into INDEX of head daughter 
 ; to prevent other phrases from becoming this hdn_onenp_c (but does not work)
 ; 20-5-2021 add in HS-LEX in ARGS so that S formed via hd-aj_scp_c cannot undergo this
+; 25-11-2021 moved CONT information in ARGS into C-CONT
+; the ARGS inside ARGS help constraint this. Without it, almost everything can undergo this rule
+; PT alone is not enough to limit the ARGS because many phrases as PT as prontype 
 basic_pron_np_one_phrase := basic_unary_phrase &
   [ INFLECTD #infl,
     SYNSEM nonlex_or_lex_phr_synsem &
@@ -540,15 +538,16 @@ basic_pron_np_one_phrase := basic_unary_phrase &
     ARGS < [ INFLECTD #infl,
 	     SYNSEM 
              [ LOCAL [ CAT [ HEAD v_or_a & 
-             			  [ MOD.FIRST.--SIND.PT onerelpro ],
+             			  [ MOD.FIRST [ LOCAL.CONT.HOOK #hook,
+             			  		--SIND #nindex & [PT onerelpro] ] ],
                              HC-LEX #hclex,
                              HS-LEX +,
                              VAL [ SUBJ < >,
                                    COMPS < >,
                                    SPR < > ] ],
                        CONJ #conj & cnil,
-                       CONT [ HOOK [ LTOP #nhand,
-                                     INDEX #index & [ PT onerelpro ] ] ],
+                       CONT [ HOOK [ LTOP #ltop,	;INDEX #index & [ PT onerelpro ] 
+                       	] ],
 		       CTXT #ctxt ],
                LEX #lex,				     
                NONLOC #nonloc,
@@ -557,17 +556,19 @@ basic_pron_np_one_phrase := basic_unary_phrase &
 		ARGS < [ SYNSEM.LOCAL.CAT.HEAD v_or_a ], 
 			[ SYNSEM.--MIN pron_nonlocal_one_rel ] > ] >,
     ORTH [ FROM #from, TO #to ],
-    C-CONT [ HOOK [ INDEX #nindex ],
-             RELS <! [ LBL #splbl,
-                       PRED quant_rel,
-                       ARG0 #index,
-                       RSTR #rhand,
-		       CFROM #from, CTO #to ],
+    C-CONT [ HOOK #hook & [ INDEX #nindex & [ PT onerelpro ],
+    		    		LTOP #ltop ],
+             RELS <! ;[ LBL #splbl,
+                     ;  PRED quant_rel,
+                     ;  ARG0 #index,
+                     ;  RSTR #rhand,
+		      ; CFROM #from, CTO #to ],
 		       [ PRED generic_entity_rel,
-		         ARG0 #nindex & [ PNG.PN 3 ] ] !>,
-             HCONS <! qeq &
-		     [ HARG #rhand,
-		       LARG #nhand ] !>,
+		         ARG0 #nindex & [ PNG.PN 3 ],
+		         LBL #ltop ] !>,
+             ;HCONS <! qeq &
+		;     [ HARG #rhand,
+		 ;      LARG #nhand ] !>,
 	     ICONS <! !> ] ].
 
 ; 15-3-2021 make sure what the one RC mods is the generic_entity_rel that is introduced
@@ -576,7 +577,7 @@ basic_pron_np_one_phrase := basic_unary_phrase &
 ; through this. eg 'who is hungry' with who1 instead of who2.
 pron_np_one_phrase :=  basic_pron_np_one_phrase &
   [ ARGS < [ SYNSEM.LOCAL.CAT.HEAD.MOD < synsem & [ --SIND #mod ] > ] >,
-    C-CONT.RELS <! [ PRED quant_rel ],
+    C-CONT.RELS <! ;[ PRED quant_rel ],
     		     [ ARG0 #mod ] !> ].
 
 ; 9-3-2021 based on bare_np_phrase and reg_bare_np_phrase
@@ -775,8 +776,9 @@ gonp_mod_phrase := basic_gonp_mod_phrase &
 ; 19-4-2021 to add 'one' as a possible SPEC value
 ; cannot just add SPEC to basic_n_proper_lexent 
 ; because of noun_nocomp_synsem which inherits from ref_synsem
+; 23-11-2021 Try changing named_np_rel in MIN to norm_nom_rel to extend this rule to other nouns
 basic_n-spr_proper_phrase := nonrs-hm & basic_noun_word &
-  [ SYNSEM [ LOCAL [ CAT [ HEAD det & [ MINORS [ MIN named_np_rel,
+  [ SYNSEM [ LOCAL [ CAT [ HEAD det & [ MINORS [ MIN norm_nom_rel,
                                        ALTMIN abstract_q_rel ] ],
                            VAL [ SPR < [ --MIN abstract_q_rel,
                                          NONLOC.QUE #que ] >,
@@ -890,6 +892,9 @@ pn-spr_one_phrase-edit := basic_pn-spr_phrase &
 			      	 	HCONS <! !> ] ],
 		      LEX luk ] ] > ].		      
 
+; 23-11-2021 Try changing named_np_rel in MIN of ARGS to norm_nom_rel to extend this rule to other nouns
+; and changed PRED from proper_q_rel to quant_rel, change MIN or ARGS from proper_np_rel to reg_nom_rel 
+; to take norm_nom_rel also
 pn-spr_one_phrase := basic_pn-spr_phrase &
   [ SYNSEM [ LOCAL [ CAT 
 	       	[ HEAD [ POSS +,
@@ -921,8 +926,8 @@ pn-spr_one_phrase := basic_pn-spr_phrase &
 		 HCONS <! qeq & [ HARG #rstr3,
 		 		 LARG #posslbl ] !> ],
 	     
-    ARGS < [ SYNSEM [ LOCAL [ CAT.HEAD [ MINORS.MIN named_np_rel ],
-    				CONT.RELS <! #rels1 & [ PRED proper_q_rel,
+    ARGS < [ SYNSEM [ LOCAL [ CAT.HEAD [ MINORS.MIN reg_nom_rel ],
+    				CONT.RELS <! #rels1 & [ PRED quant_rel,
     							 ARG0 #possarg2 ], 
 			      		     #relsnamed !> ],
 		      LEX luk ] ] > ].		      
@@ -1152,7 +1157,7 @@ reg_bare_np_phrase-sg := norm_bare_np_phrase &
 ; <ex> sleep is important to undergo both this and hdn_bnp_c 
 bare_np_underspec_phrase := reg_bare_np_phrase-sg &
   [ SYNSEM.LOCAL.AGR #agr & [ DIV + ],
-    ARGS < [ SYNSEM [ LOCAL [ CAT [ HEAD noun_or_nomger,
+    ARGS < [ SYNSEM count_noun_synsem & [ LOCAL [ CAT [ HEAD noun_or_nomger,
 				    VAL.SPR [ FIRST [ OPT -,
 						      LOCAL.AGR.DIV - ],
 					      REST *olist* ] ],

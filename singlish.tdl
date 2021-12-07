@@ -103,6 +103,10 @@
 :begin :instance :status lex-entry.
 :include "lexicon".
 :include "singlish/lexicon_sg.tdl".
+<<<<<<< HEAD
+;:include "singlish/lexicon_goldtrees.tdl".
+=======
+>>>>>>> f4d9b33698c99db68ad01650333f76150b132a58
 :include "lexicon-rbst".
 :include "ple".
 :end :instance.

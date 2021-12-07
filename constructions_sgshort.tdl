@@ -167,6 +167,8 @@ and sfadverb-headed sentences. Can be followed by sfp2
 
 ; 20-10-2021 for nouns after going through singlish infl
 ; so that they don't need specifiers
+; If I take away the DIV - constraint in singlish_noun, those nouns can pass through
+; the regular hdn_bnp_c also..
 ; #temporarily commented out to reduce overgeneration
 hdn_bnp-unsp_c := bare_np_unspec_rule &
 """

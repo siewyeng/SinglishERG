@@ -423,37 +423,13 @@ Adj (intersective), no comp, only -er comparative
   [ SYNSEM.LOCAL.CAT.HEAD [ ;PRD +,
   			     MINORS [ MIN norm_adj_rel,
 				   ALTMIN comp_or_meas_rel ] ] ].
-	
-; 8-3-2021 - for Singlish, only changed LPERIPH + to -		
-basic_n_rel_pro_sg_lexent := noncqs-hm & basic_pronoun_word & 
-  [ SYNSEM pronominal_synsem &
-	 [ LOCAL [ CAT [ HEAD.MINORS.ALTMIN pronoun_q_rel,
-			 VAL [ SUBJ < >,
-			       SPR < unexpressed & 
-				     [ OPT - ] >,
-			       COMPS < > ] ],
-                   AGR #index,
-		   CONT [ HOOK [ LTOP #hand,
-                                 INDEX #index & basic_non_expl,
-                                 XARG #xarg ],
-			  RELS <! !>,
-			  HCONS <! !>,
-			  ICONS <! !> ] ],
-	   MODIFD.RPERIPH +,
-           LKEYS [ KEYREL [ LBL #hand,
-                            PRED no_rel ],
-                   ALTKEYREL relation ],
-           NONLOC.REL 1-dlist &
-		         [ LIST < [ LTOP #hand,
-				    INDEX #index,
-                                    XARG #xarg ] > ] ] ].
 			
 ; 8-3-2021 for the relative pronoun 'one'
 ; has POSTHD + but doesn't seem to make an impact
 ; modeled on n_-_pr-rel-nwh_le but with different MIN
 ; 8-4-2021 - add PT value that was newly created in order to distinguish the different RCs
 ; since this value will be passed up and will not contradict the locality assumption
-n_-_pr-rel-one_le := basic_n_rel_pro_sg_lexent &
+n_-_pr-rel-one_le := basic_n_rel_pro_lexent &
 """
 Relative pro at the end of the NP, only `one'
 only takes predicates in base form
@@ -771,9 +747,12 @@ sf_adverb_i-s_le := sf_adverb_word &
 sf_adverb_compl_le := sf_adverb_i-s_le &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL.CAT.HEAD.TAM [ TENSE past,
   							  ASPECT completive_aspect ] ] > ].	
-  
+
+;20-11-2021 add in the COMP head type verb since the inceptive meaning would not
+; be possible for adjective headed sentences  
 sf_adverb_incep_le := sf_adverb_i-s_le &
-  [ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL.CAT.HEAD.TAM.ASPECT incep_aspect ] > ].
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL.CAT.HEAD verb &
+  					[ TAM.ASPECT incep_aspect ] ] > ].
   	    	     
 sf_adverb_incho_le := sf_adverb_i-s_le &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL.CAT.HEAD.TAM.ASPECT incho_aspect ] > ].

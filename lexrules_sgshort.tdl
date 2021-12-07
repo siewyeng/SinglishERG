@@ -49,8 +49,10 @@ optional SUBJ, took away person number
 
 ; 30-7-2021 add in the change in 3SGINFL value so that verbs that pass through this can 
 ; be distinguished from verbs that pass through v_3s-fin_inflrule
-v_n3s-bse_inflrule := lex_rule_infl_affixed &
-  [ SYNSEM.LOCAL.CAT.HEAD.3SGINFL 3sg_unk ].
+; this was used for the opt subject because I wanted 3sg inflected verbs to not be able to have opt Subj
+; but it is not currently implemented well in this grammar and should probably be commented out
+;v_n3s-bse_inflrule := lex_rule_infl_affixed &
+;  [ SYNSEM.LOCAL.CAT.HEAD.3SGINFL 3sg_unk ].
   
 ; CSY 29-12-2020 for the count nouns that don't need specifier in Singlish
 ; DIV value not specified. Even though this allows for unusual NPs like "much cats"
