@@ -19,7 +19,7 @@
 ;;
 
 :include "fundamentals".
-:include "singlish/fundamentals_sgshort".
+:include "singlish/fundamentals_sg".
 
 ;;
 ;;  Lexical types (i.e., primitive word classes)
@@ -29,7 +29,7 @@
 
 
 :include "lextypes".
-:include "singlish/lextypes_sgshort".
+:include "singlish/lextypes_sg".
 
 ;;
 ;; token mapping: manipulate the token lattice prior to lexical look-up
@@ -69,16 +69,16 @@
 ;;
 
 :include "syntax".
-:include "singlish/syntax_sgshort".
+:include "singlish/syntax_sg".
 :include "ctype".
-:include "singlish/ctype_sgshort".
+:include "singlish/ctype_sg".
 
 ;;
 ;;  Lexical rules
 ;;
 
 :include "lexrules".
-:include "singlish/lexrules_sgshort".
+:include "singlish/lexrules_sg".
 
 ;; Dependency annotation support for rule types
 
@@ -92,7 +92,7 @@
 :include "auxverbs".
 
 :include "letypes".
-:include "singlish/letypes_sgshort".
+:include "singlish/letypes_sg".
 
 :end :type.
 
@@ -119,15 +119,15 @@
 
 :begin :instance :status rule.
 :include "constructions".
-:include "singlish/constructions_sgshort".
+:include "singlish/constructions_sg".
 ;:include "bridges".
 :end :instance.
 
 :begin :instance :status lex-rule.
 :include "inflr".
-:include "singlish/inflr_sgshort".
+:include "singlish/inflr_sg".
 :include "lexrinst".
-:include "singlish/lexrinst_sgshort".
+:include "singlish/lexrinst_sg".
 :include "lexrinst-tok".
 :end :instance.
 
@@ -146,7 +146,7 @@
 
 :begin :instance.
 :include "roots".
-:include "singlish/roots_sgshort".
+:include "singlish/roots_sg".
 :end :instance.
 
 
