@@ -75,23 +75,18 @@ singlish_count_noun := sing_or_plur_noun &
 ; prevents over-generation
 ; 11-12-2020 - add nonloc and inherit semantics instead of syntax
 ; 9-1-2021 - replaced DTR's SYNSEM norm_adj_synsem to try to allow it to apply to aj_pp_i-er_le
-; other adjs like 'happy' can go through the rule when the COMPS value is not passed up           
+; other adjs like 'happy' can go through the rule when the COMPS value is not passed up          
 pred_adj_subj_lexrule:= norm_lex_rule & aj_nocop_i-prd_le &
-; [ ORTH #orth,
-;    SYNSEM.LOCAL.CAT.VAL [ SUBJ < #arg1 & synsem_min >,
-;			   COMPS #comps ],
-;    DTR norm_adj_word & [ ORTH #orth,
-;			  SYNSEM norm_adj_synsem &
-;				[ LOCAL.CAT [ HEAD.MOD < #arg1 & synsem_min >,
-;					      VAL.COMPS #comps ] ] ] ].
   [ ORTH #orth,
-    SYNSEM.LOCAL.CAT.VAL [ SUBJ < synsem_min & [ LOCAL.CONT.HOOK.LTOP #ltop,
+    SYNSEM.LOCAL.CAT [ HEAD.MINORS #minors,
+    			VAL [ SUBJ < synsem_min & [ LOCAL.CONT.HOOK.LTOP #ltop,
 					  	 NONLOC #nonloc ] >,
-			   COMPS #comps ],
+			   COMPS #comps ] ],
     DTR norm_adj_word & [ ORTH #orth,
 			  SYNSEM adj_synsem &
-				[ LOCAL.CAT [ HEAD.MOD < [ LOCAL.CONT.HOOK.LTOP #ltop,
-							   NONLOC #nonloc & non-local_none ] >,
+				[ LOCAL.CAT [ HEAD [ MINORS #minors, 
+						    MOD < [ LOCAL.CONT.HOOK.LTOP #ltop,
+							   NONLOC #nonloc & non-local_none ] > ],
 					      VAL.COMPS #comps ] ] ] ].
 					      
 ; 2-11-2021 #test to try to implement the pumping rule for pred adj to fin VP
@@ -118,22 +113,7 @@ nocop_pred_lexrule:= norm_lex_rule &
 							   NONLOC #nonloc & non-local_none ] > ],
    			  		       VAL [ COMPS < > ] ],
    			  		  CONT #cont ] ] ] ].
-					      
-; 20-4-2021 - rule for converting pn into stuff that can take SPEC
-; 29-4-2021 -  remove "norm_lex_rule" from supertype cos it will become a det
-; in this pumping rule. and not use this anymore cos it's shouldn't be a lexrule
-; moved to syntax instead
-;pn_spec_lexrule := basic_pn-spr_phrase &
-;  [ ORTH #orth,
-;    SYNSEM.LOCAL.CAT [ HEAD det,
-;    			VAL [ COMPS #comps ] ],
-;    DTR n_-_pn_le & [ ORTH #orth,
-;			  SYNSEM [ LOCAL.CAT [ HEAD #head,
-;			  			VAL.COMPS #comps ] ] ] ].
-			  			
-; 21-4-2021 to use the inflr for the possessive one
-; one_poss := sing_or_plur_noun &
-
+					     
 
 ; CSY 18-3-2021 - supertype of lex_rule_affixed that the prp_verb will inherit from
 ; supertype without 0-dlist, so that VPs headed by prp verbs can undergo hd_xsb-finprp_c
@@ -177,7 +157,7 @@ n_singlish_inflrule := lex_rule_infl_affixed &
 ;		[ LOCAL prp_verb & 
 ;	  		CAT.VAL.COMPS #comps ] ] ].
 
-; 28-7-2021 needs to change the 3sginfl value to 3sg_plus
+; 28-7-2021 need to change the 3sginfl value to 3sg_plus
 ; but the basic_lex_rule_infl_affixed ensures that the daughter and mother have the
 ; same SYNSEM values. 
 ; 29-7-2021 - branch the basic_lex_rule into 2 and change one such that every part of SYNSEM except 3SGINFL is inherited
@@ -267,6 +247,6 @@ basic_lex_rule_infl_affixed := basic_lex_rule_infl_affixed_super &
 ;  [ SYNSEM.LOCAL.CAT.HEAD.3SGINFL 3sg_plus ].
 
 ;16-11-2021 #temporary
-v_3s-fin_inflrule := lex_rule_infl_affixed &
-  [ SYNSEM.LOCAL.CAT.HEAD.3SGINFL 3sg_plus ].
+;v_3s-fin_inflrule := lex_rule_infl_affixed &
+;  [ SYNSEM.LOCAL.CAT.HEAD.3SGINFL 3sg_plus ].
 

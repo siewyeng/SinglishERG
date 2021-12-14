@@ -1,22 +1,11 @@
 ;;; -*- Mode: tdl; Coding: utf-8; -*-
 
-;bse_singlish_ilr := lex_rule_infl_affixed &
-;"""
-;CSY 17-9-2020 for singlish, no inflection verbs
-;<ex>he eat already.
-;"""
-;[ ND-AFF -,
-;  ORTH #stem,
-;  DTR  [ ORTH #stem ],
-;  SYNSEM.LOCAL bse_singlish_verb,
-;  RNAME lvns ].
-
 ; CSY 6-1-2020 - removed (not needed for Singlish) so that 
 ;                the num is always underspec if the noun is in it's original form
 n_sg_ilr := never_unify_rule.
 
 
-; CSY 29-12-2020 for nouns that underspec for number and don't need SPR
+; CSY 29-12-2020 for nouns in the base form that are unspecified for number
 ;     5-1-2020 added in MIN nonpro so the rule cannot apply to pronouns?
 ;              test: not sure if that is necessary
 ; 2-3-2021 - find a way to add nonc-hm into the input such that proper names cannot undergo this
@@ -44,7 +33,7 @@ base form verb for all including 3sg
   SYNSEM.LOCAL bse_or_fin_verb,
   RNAME lvns ].
 
-; remove this to avoid overgeneration
+; remove this non third singular inflr to avoid overgeneration
 v_n3s-bse_ilr := never_unify_rule.
 
 ; 8-7-2021 - added DIALECT us into this so that the specifically Singlish words will not
@@ -53,7 +42,7 @@ v_n3s-bse_ilr := never_unify_rule.
 v_3s-fin_olr :=
 %suffix (!s !ss) (!ss !ssses) (ss sses) (!ty !ties) (ch ches) (sh shes) (x xes) (z zes)
 """
-Third-singular present verb      
+Third-singular present finie verb      
 <ex>admires                    
 """
 v_3s-fin_inflrule &

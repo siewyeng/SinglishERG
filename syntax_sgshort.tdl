@@ -165,8 +165,7 @@ filler_head_rule_wh_mc := filler_head_rule_wh_super &
 ;				      CONT.HOOK.XARG #xarg ] !> ] > ].
 
 ; CSY 19-10-2020 - a parallel of the verbal coord rule to use of predicative (nocop) adj for Singlish
-; CSY 31-10-2020 - take away intrans_nocop_pred_adj_synsem from the rconj
-;     12-1-2021 - removed intrans
+; 31-10-2020 - removed intrans_nocop_pred_adj_synsem from the rconj
 ; 12-2-2021 - removed 'nocop_pred_adj_synsem' from LCONJ because this prevented the adj from 
 ; going through necessary optcomp rule first
 basic_basic_adj_coord_phr := gen_coord_phr &
@@ -187,11 +186,15 @@ basic_basic_adj_coord_phr := gen_coord_phr &
 
 ; CSY 19-10-2020 - nocop adj version
 basic_adj_nocop_coord_phr := basic_basic_adj_coord_phr &
-  [ SYNSEM.LOCAL.CAT.HEAD.PRD #prd,
-    LCONJ-DTR.SYNSEM.LOCAL.CAT.HEAD.PRD #prd,
-    RCONJ-DTR.SYNSEM.LOCAL.CAT.HEAD.PRD #prd ].
+  [ SYNSEM.LOCAL.CAT [ HEAD.PRD #prd,
+  			VAL #val ],
+    LCONJ-DTR.SYNSEM.LOCAL.CAT [ HEAD.PRD #prd,
+    				  VAL #val ],
+    RCONJ-DTR.SYNSEM.LOCAL.CAT [ HEAD.PRD #prd,
+    				  VAL #val ] ].
 
-; CSY 19-10-2020 - nocop adj version, to allow "she pretty and smart."
+; CSY 19-10-2020 - nocop adj version 
+; <ex>she pretty and smart.
 nocop_adj_coord_phr := basic_adj_nocop_coord_phr & norm_coord_phr.
 
 ; CSY 19-10-2020 to allow for coordination of nocop adj (Singlish)
@@ -231,17 +234,6 @@ a_nocop_coord_phr := basic_a_coord_phr & nocop_adj_coord_phr &
   [ SYNSEM.LOCAL.CAT.HEAD adj,
     LCONJ-DTR.SYNSEM.LOCAL.CAT.HEAD adj,
     RCONJ-DTR.SYNSEM.LOCAL.CAT.HEAD adj ].
-
-
-; CSY 31-10-2020 - for the nocop adj coord
-;basic_a_coord_phr_fin := basic_a_coord_phr &
-;  [ SYNSEM.LOCAL [ CAT.HEAD adj,
-;		   CONT.HOOK.INDEX.E #tam ],
-;    LCONJ-DTR.SYNSEM.LOCAL.CAT.HEAD adj,
-;    RCONJ-DTR.SYNSEM.LOCAL [ CAT.HEAD adj &
-;				      [ --ADDIN [ ADDTAM #rtam,
-;						  ADDPN #pn ] ],
-;			     AGR.PNG.PN #pn ] ].
 
 ; CSY 31-10-2020 nocop_coord that prevents overgeneration
 ; CSY 2-11-2020 add in COMPS <>
@@ -639,7 +631,7 @@ head_spec_phrase := basic_head_spec_phrase &
     C-CONT.HOOK #hook ].
 
 ; 20-4-2021 just for the possessive 'one', change the NH-DTR from a det 
-; trying out with named NP rel for now. Should expand to certain possessive pn like "my" later   
+; trying out with named NP rel for now. Should expand to certain possessive pn like "my" later  
 head_spec_one_phrase := basic_head_spec_phrase &
   [ SYNSEM.LOCAL.CAT.VAL [ SPEC #spec,
 			   SUBJ *olist*,
@@ -664,44 +656,6 @@ head_spec_one_phrase := basic_head_spec_phrase &
     C-CONT.HOOK #hook ].
     
 hspec_one_rule := binary_rule_right_to_left & head_spec_phrase.
-	          
-; 16-3-2021 for possessive Singlish 'one'
-; based on partitive_intadj_phrase but change SPR
-; and to change ARGS such that only the Singlish 'one' can fit in
-;partitive_intadj_one_phrase := basic_partitive_num_phrase &
-;  [ SYNSEM [ LOCAL [ CAT [ HEAD [ MINORS.ALTMIN explicit_q_rel,
-;				  CASE #case ],
-;                           VAL [ SPR < canonical_synsem &
-;				     [ LOCAL.CAT.HEAD noun & [ MINORS.MIN proper_q_rel ],
-;				       NONLOC.QUE #que,
-;				       OPT - ] >,
-;				 SPCMPS < > ],
-;			   HS-LEX - ],
-;		     CONT.HOOK.INDEX.PNG #png,
-;                     AGR #agr & [ PNG #png ] ],
-;             NONLOC.QUE #que,
-;	     MODIFD notmod ],
-;    ARGS < [ SYNSEM [ LOCAL [ CAT [ HEAD adj_or_intadj &
-;					 [ MOD < [ LOCAL.AGR #agr ] >,
-;					   MINORS.ALTMIN comp_or_superl_rel,
-;					   CASE #case ],
-;				    VAL [ SPEC < anti_synsem_min >,
-;					  SPR *anti_list* ] ],
-;			      CONT.HOOK.INDEX non_conj_event ],
-;		      MODIFD [ LPERIPH na_or_+ ] ] ] >,
-;    C-CONT [ HOOK.LTOP #nhand,
-;             RELS <! [ LBL #nhand ] !>,
-;	     HCONS <! !>,
-;	     ICONS <! !> ] ].
-	     
-	     
-; partitive_nocomp_phrase only for the Singlish 'one'
-;partitive_intadj_nocomp_phrase := partitive_intadj_one_phrase &
-;                                  basic_partitive_num_nocomp_phrase &
-;  [ SYNSEM.LOCAL [ CAT.HEAD.MINORS [ MIN part_nc_rel,
-;				     ALTMIN abstract_q_rel ],
-;		   CONT.HOOK.INDEX.SORT basic-entity-or-event ],
-;    ARGS < [ SYNSEM.LOCAL.CAT.HEAD intadj ] > ].
 
 ; 23-4-2021 - for locative NPs that can act as complements of 'go'
 ; making a rule that is similar to npadv_mod but except I don't want it to become an adv/pp
@@ -1132,9 +1086,8 @@ run_on_coord_comma_rule := basic_run_on_coord_rule &
    GENRE nonformal ].
 
 
-; 21-10-2021 changed udef_q_rel to udef_a_q_rel so that when generating 
-; from singlish.dat to english.dat, <ex>cat sleeps can generate "a cat sleeps"
-; somehow it is not able to take def_udef_a_q_rel to generate "the cat sleeps"
+; 21-10-2021 changed udef_q_rel to def_udef_a_q_rel so that when generating 
+; from singlish.dat to english.dat, <ex>cat sleeps can generate "a/the cat sleeps"
 ;  17-11-2021 added in args INDEX, SPR.FIRST and synsem SPEC
 reg_bare_np_phrase-sg := norm_bare_np_phrase &
   [ INFLECTD +,
@@ -1163,6 +1116,7 @@ bare_np_underspec_phrase := reg_bare_np_phrase-sg &
 					      REST *olist* ] ],
 			      AGR #agr ] ] ] > ].
 
+;;; start changes made (but not used) for prodrop ;;;;
 ; 10-6-2021 exclude VFORM fin for radical pro drop
 ;basic_prodrop_phrase := basic_unary_phrase &
 ;  [ INFLECTD #infl,
@@ -1209,16 +1163,8 @@ frag_vp_fin_rule := frag_vp_rule &
 		      MODIFD notmod_or_rmod ] ] >,
     C-CONT [ HOOK #hook & [ XARG.SORT entity ],
              RELS <! !> ] ].
-             
-;prodrop_phrase := basic_prodrop_phrase &
-;  [ SYNSEM nonlex_synsem,
- ; 	[ LOCAL [ CAT [ HEAD v_or_a &
- ; 		  	      [ VFORM bse ] ] ] ],
-  ;  HD-DTR.SYNSEM.LOCAL.CAT.VAL.SUBJ < synsem_min > ].
- 
-;prodrop_rule := rule & prodrop_phrase.
-
-; 23-5-2021 #totest whether the binary_rule_right_to_left should be used instead  				
+;;;; end changes for prodrop ;;;;
+ 				
 comph_rule := binary_rule_left_to_right & comp_head_phrase. 
 comph_sfpi_rule := binary_rule_left_to_right & comp_head_sfpi_phrase.  
 comph_sfp2b_rule := binary_rule_left_to_right & comp_head_sfp2b_phrase.
