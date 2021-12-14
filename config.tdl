@@ -1,15 +1,15 @@
 ;;; files to load
 
-grammar-top               := "../singlish.tdl".
-variable-property-mapping := "../singlish/semi_sg.vpm".
+grammar-top               := "singlish.tdl".
+variable-property-mapping := "semi_sg.vpm".
 maxent-model              := "../redwoods.mem".
 preprocessor              := "../rpp/tokenizer.rpp".
 preprocessor-modules      := ../rpp/xml.rpp ../rpp/ascii.rpp ../rpp/lgt.rpp ../rpp/quotes.rpp ../rpp/wiki.rpp ../rpp/gml.rpp ../rpp/html.rpp.
 generation-ignore-lexemes := "../lkb/nogen-lex.set".
 generation-ignore-rules   := "../lkb/nogen-rules.set".
-parse-node-labels         := "../singlish/parse-nodes_sg.tdl".
+parse-node-labels         := "parse-nodes_sg.tdl".
 generation-trigger-rules  := "../trigger.mtr".
-version                   := "../singlish/Version.lsp".
+version                   := "Version.lsp".
 
 semantic-interface-2016   := "../etc/erg.smi".
 semantic-interface-top-type := top.
