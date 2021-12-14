@@ -250,9 +250,9 @@ one_poss_rel := place_norm_nom_rel.
 _pnspr_q_rel := def_explicit_q_rel & dofw_or_poss_or_def_q_rel.
 
 ;4-5-2021 for kinship terms
-diadic_nom_super_rel := reg_diadic_nom_rel & norm_nom_rel.
-diadic_nom_rel := diadic_nom_super_rel.
-kinship_nom_rel := diadic_nom_super_rel.
+;diadic_nom_super_rel := reg_diadic_nom_rel & norm_nom_rel.
+;diadic_nom_rel := diadic_nom_super_rel.
+;kinship_nom_rel := diadic_nom_super_rel.
 
 ; 23-5-2021 add in particle_rel as a sister of adv_rel
 particle_rel := abstr_adv_dim_rel.
@@ -267,8 +267,8 @@ particle3_sfadv_rel := particle2_super_rel.
 particle3_rel := particle3_sfadv_rel.
 sfadverb_rel := particle3_sfadv_rel.
 
-; 27-7-2021 for the new prodrop fragments
-unknown_super_rel := v_event_rel.
-unknown_rel := unknown_super_rel.
-unknown_sg_rel := unknown_super_rel.
+; 27-7-2021 for the new prodrop fragments (unused)
+;unknown_super_rel := v_event_rel.
+;unknown_rel := unknown_super_rel.
+;unknown_sg_rel := unknown_super_rel.
 
