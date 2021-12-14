@@ -785,59 +785,6 @@ basic_pn-spr_phrase := basic_unary_phrase & phrasal &
 ; to get rid of the sp-hd_n_c being the head of hd-cmp_u_c
 ; 24-9-2021 add in constraints from basic_det_poss_lexent
 ; such that the index of something like "Kim one" is indexed to the arg1 in the poss_rel
-pn-spr_one_phrase_original := basic_pn-spr_phrase &
-  [ SYNSEM [ LOCAL [ CAT 
-	       	[ HEAD [ POSS +,
-	       	 	MINORS [ MIN _pnspr_q_rel,
-	       		  	ALTMIN poss_rel ],
-				MOD < > ],
-		 	VAL [ SPR < anti_synsem_min >,
-		 		SPCMPS < >,
-		 		SPEC < [ --MIN one_poss_rel ] > ] ] ],
-	     MODIFD notmod_or_lmod & [ LPERIPH na ] ],
-    ARGS < [ SYNSEM [ LOCAL.CAT.HEAD [ MINORS.MIN named_np_rel ],
-		      LEX luk ] ] > ].
-		      
-pn-spr_one_phrase-edit := basic_pn-spr_phrase &
-  [ SYNSEM [ LOCAL [ CAT 
-	       	[ HEAD [ POSS +,
-	       	 	MINORS [ MIN _pnspr_q_rel,
-	       		  	ALTMIN poss_rel ],
-				MOD < > ],
-		 	VAL [ SPR < anti_synsem_min >,
-		 		SPCMPS < >,
-		 		SPEC < [ --MIN one_poss_rel,
-		 			 LOCAL.CONT.HOOK [ INDEX #possarg1,
-		 			 		    LTOP #posslbl ] ] > ] ] ],
-	     MODIFD notmod_or_lmod & [ LPERIPH na ] ],
-    C-CONT [ HOOK #hook & [ INDEX nonconj_ref-ind,
-    		     LTOP handle ],
-    		RELS <! abstract_quant_relation & 
-		 				   [ PRED def_explicit_q_rel,
-		 				     ARG0 #possarg1,
-		 				      CFROM #from,
-		 				      CTO #to,
-		 				      RSTR #rstr3 ], 
-		 			prep_relation & [ PRED poss_rel,
-		 				      LBL #posslbl,
-		 				      ARG0 ;#possarg0 & 
-		 				      	[ E [ TENSE no_tense,
-			                             ASPECT no_aspect ] ],
-		 				      ARG1 #possarg1,
-		 				      ARG2 #possarg2,
-		 				      CFROM #from,
-		 				      CTO #to ] !>,
-		HCONS <! qeq & [ HARG #rstr3,
-		 		  LARG #posslbl ] !>,
-		 ICONS <! !> ],
-    ARGS < [ SYNSEM [ LOCAL [ CAT.HEAD [ MINORS.MIN named_np_rel ],
-    				
-    				CONT [ HOOK #hook,
-    					RELS <! [ PRED proper_q_rel,
-    							 ARG0 #possarg2 ], 
-			      		     relation !>,
-			      	 	HCONS <! !> ] ],
-		      LEX luk ] ] > ].		      
 
 ; 23-11-2021 Try changing named_np_rel in MIN of ARGS to norm_nom_rel to extend this rule to other nouns
 ; and changed PRED from proper_q_rel to quant_rel, change MIN or ARGS from proper_np_rel to reg_nom_rel 
@@ -880,18 +827,18 @@ pn-spr_one_phrase := basic_pn-spr_phrase &
 		      LEX luk ] ] > ].		      
 ; 27-9-2021 probably will abandon this in favour of overgenerating and 
 ; maybe allowing a proper noun to undergo this with all nouns		      
-pn-spr_kin_phrase := basic_pn-spr_phrase &
-  [ SYNSEM [ LOCAL.CAT 
-	       [ HEAD [ POSS +,
-	       	 MINORS [ MIN _pnspr_q_rel,
-	       		  ALTMIN poss_rel ],
-			MOD < > ],
-		 VAL [ SPR < anti_synsem_min >,
-		 	SPCMPS < >,
-		 	SPEC < [ --MIN kinship_nom_rel ] > ] ],
-	     MODIFD notmod_or_lmod & [ LPERIPH na ] ],
-    ARGS < [ SYNSEM [ LOCAL.CAT.HEAD [ MINORS.MIN named_np_rel ],
-		      LEX luk ] ] > ].
+;pn-spr_kin_phrase := basic_pn-spr_phrase &
+;  [ SYNSEM [ LOCAL.CAT 
+;	       [ HEAD [ POSS +,
+;	       	 MINORS [ MIN _pnspr_q_rel,
+;	       		  ALTMIN poss_rel ],
+;			MOD < > ],
+;		 VAL [ SPR < anti_synsem_min >,
+;		 	SPCMPS < >,
+;		 	SPEC < [ --MIN kinship_nom_rel ] > ] ],
+;	     MODIFD notmod_or_lmod & [ LPERIPH na ] ],
+ ;   ARGS < [ SYNSEM [ LOCAL.CAT.HEAD [ MINORS.MIN named_np_rel ],
+;		      LEX luk ] ] > ].
 		      
 ; 23-5-2021 - comp_head for the opposite of hd-cmp_u_c but only for particles taking
 ; sentences as complements

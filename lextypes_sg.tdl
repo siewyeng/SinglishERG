@@ -560,14 +560,19 @@ n_poss_one_lexent := basic_n_poss_one_lexent &
 
 ; 4-5-2021 making a supertype so that can separate n_pp_c-of_le for kinship terms
 ; and for the rest. In order to do things like "Kim father" with the pn-spr			     
-n_pp_c-of_super_le := norm_noun_empty_ppcomp_word &
-"""
-Cn, PP-of                        
-<ex>B's the winner of the race
-"""
-  [ SYNSEM [ ;LOCAL.CAT.HEAD.MINORS.MIN diadic_nom_rel,
-             LKEYS [ KEYREL reg_diadic_nom_relation,
-                     --COMPKEY _of_p_sel_rel ] ] ].	
+;n_pp_c-of_super_le := norm_noun_empty_ppcomp_word &
+;"""
+;Cn, PP-of                        
+;<ex>B's the winner of the race
+;"""
+;  [ SYNSEM [ ;LOCAL.CAT.HEAD.MINORS.MIN diadic_nom_rel,
+;             LKEYS [ KEYREL reg_diadic_nom_relation,
+;                     --COMPKEY _of_p_sel_rel ] ] ].	
+                  
+;n_pp_c-of_le := n_pp_c-of_super_le &
+;  [ SYNSEM.LOCAL.CAT.HEAD.MINORS.MIN diadic_nom_rel ].
+;n_kinship-of_le := n_pp_c-of_super_le &
+;  [ SYNSEM.LOCAL.CAT.HEAD.MINORS.MIN kinship_nom_rel ].
 
 ; 5-5-2021 changed to LEX luk to allow SPR to be LEX - <ex>Kim one
 ; this adds ambiguity                     
@@ -582,13 +587,8 @@ basic_unsp_common_noun_synsem := basic_noun_synsem & lex_synsem &
                                 LEX luk,
 				OPT - ] >,
                         COMPS #comps,
-                        SPEC < anti_synsem_min > ] ] ] ]. 	
-                     
-n_pp_c-of_le := n_pp_c-of_super_le &
-  [ SYNSEM.LOCAL.CAT.HEAD.MINORS.MIN diadic_nom_rel ].
-n_kinship-of_le := n_pp_c-of_super_le &
-  [ SYNSEM.LOCAL.CAT.HEAD.MINORS.MIN kinship_nom_rel ].
-  
+                        SPEC < anti_synsem_min > ] ] ] ]. 
+                          
 ; 28-9-2021 change subconj_synsem for 'if' constructions and the like from HEAD 'verb' 
 ; to be able to take adj headed COMPS 
 ; <ex> He will come if he happy.
