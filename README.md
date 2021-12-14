@@ -32,3 +32,4 @@ To parse the data using ace (parts in brackets are optional)
 * To parse with only top tree: cat wikiexamples_next300.txt | ace (--max-words=20) -g singlish.dat -Tf1(> output.txt)
 * To remove lines starting with "#": grep -vP "^#" wikiexamples_next300.txt | ace...
 
+*lexicon_goldtrees.tdl* contains the words added to the standard English lexicon when parsing the 30 Singlish sentences from *skeletons/treebankset*. 
