@@ -515,8 +515,7 @@ basic_pron_np_one_phrase := basic_unary_phrase &
                                  SPR < synsem_min &
 				       [ --MIN abstract_q_rel,
                                          LOCAL [ CAT [ ;HEAD adv,
-						       VAL.SPR *unexplist* ],
-                                                 CONT.HOOK.LTOP #splbl ],
+						       VAL.SPR *unexplist* ] ],
                                          OPT + ] > ],
                            MC na,
 			   NEGPOL - ],
@@ -538,8 +537,7 @@ basic_pron_np_one_phrase := basic_unary_phrase &
                                    COMPS < >,
                                    SPR < > ] ],
                        CONJ #conj & cnil,
-                       CONT [ HOOK [ LTOP #ltop,	;INDEX #index & [ PT onerelpro ] 
-                       	] ],
+                       CONT [ HOOK [ LTOP #ltop ] ],
 		       CTXT #ctxt ],
                LEX #lex,				     
                NONLOC #nonloc,
@@ -547,15 +545,10 @@ basic_pron_np_one_phrase := basic_unary_phrase &
 		     [ LPUNCT lital_or_pair_or_comma_or_no_punct ] ],
 		ARGS < [ SYNSEM.LOCAL.CAT.HEAD v_or_a ], 
 			[ SYNSEM.--MIN pron_nonlocal_one_rel ] > ] >,
-    ORTH [ FROM #from, TO #to ],
+    ;ORTH [ FROM #from, TO #to ],
     C-CONT [ HOOK #hook & [ INDEX #nindex & [ PT onerelpro ],
     		    		LTOP #ltop ],
-             RELS <! ;[ LBL #splbl,
-                     ;  PRED quant_rel,
-                     ;  ARG0 #index,
-                     ;  RSTR #rhand,
-		      ; CFROM #from, CTO #to ],
-		       [ PRED generic_entity_rel,
+             RELS <! [ PRED generic_entity_rel,
 		         ARG0 #nindex & [ PNG.PN 3 ],
 		         LBL #ltop ] !>,
              ;HCONS <! qeq &
@@ -881,9 +874,9 @@ pn-spr_one_phrase := basic_pn-spr_phrase &
 		 		 LARG #posslbl ] !> ],
 	     
     ARGS < [ SYNSEM [ LOCAL [ CAT.HEAD [ MINORS.MIN reg_nom_rel ],
-    				CONT.RELS <! #rels1 & [ PRED quant_rel,
+    				CONT.RELS <! relation & [ PRED quant_rel,
     							 ARG0 #possarg2 ], 
-			      		     #relsnamed !> ],
+			      		     relation !> ],
 		      LEX luk ] ] > ].		      
 ; 27-9-2021 probably will abandon this in favour of overgenerating and 
 ; maybe allowing a proper noun to undergo this with all nouns		      
@@ -994,7 +987,7 @@ basic_comp_head_phrase := basic_comp_or_marker_head_phrase & head_final &
 				    HS-LEX #hslex ] ],
 		      MODIFD #modifd,
                       PUNCT [ LPUNCT comma_or_hyphen_or_pair_or_no_punct,
-                              RPUNCT comma_or_rbc_or_colon_or_pair_or_no_punct,
+                              RPUNCT comma_or_clause,
                               PNCTPR ppair ] ] ],
     NH-DTR [ INFLECTD +,
 	     SYNSEM.LOCAL.CAT [ MC #mc,
