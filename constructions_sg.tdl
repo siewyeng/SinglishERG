@@ -199,4 +199,5 @@ np_nb-frg_c := never_unify_rule.
 ; esp those with adj
 j_frg_c := never_unify_rule.
 hd_xsb-fin_c := never_unify_rule.
+hdn_bnp-prd_c := never_unify_rule.
 

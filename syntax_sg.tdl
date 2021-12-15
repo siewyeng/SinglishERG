@@ -1132,3 +1132,7 @@ gomod_rule := rule & gonp_mod_phrase.
 bare_np_unspec_rule := rule & bare_np_underspec_phrase.
 
 frag_r_mod_np_adj_rule := never_unify_rule.
+; 15-12-2021 because of the new bare_np_unspec_rule, and the singlish nominal ilr
+; a count noun can undergo both NP rules with no real meaningful distinction. 
+; (although the prd rule allows is plural)
+bare_np_prd_rule := never_unify_rule.
