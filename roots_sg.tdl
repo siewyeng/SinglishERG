@@ -10,10 +10,11 @@
 ; CSY 20-09-2020 new root for singlish that allows adj as HEAD
 ;     25-11-2020 added in DIALECT
 ; 8-3-2020 change HEAD type from non_noun to reduce overgeneration (not sure if undergenerates now)
+; 15-12-2021 - remove p from HEAD
 root_lepak := phrase &
   [ INFLECTD +,
     SYNSEM basic_root_synsem &
-             [ LOCAL [ CAT [ HEAD non_noun,
+             [ LOCAL [ CAT [ HEAD v_or_a_or_part,
 			     MC + ] ] ],
     ORTH root_orth,
     DIALECT sgp ].
@@ -22,10 +23,11 @@ root_lepak := phrase &
 ;		 added GENRE edited to get rid of weird reduplication of pronouns
 ;     25-11-2020 added in DIALECT
 ;     19-5-2021 change HEAD from non_noun
+; 15-12-2021 - remove p from HEAD
 root_gen_lepak := phrase &
   [ INFLECTD +,
     SYNSEM basic_root_phr_synsem &
-             [ LOCAL [ CAT [ HEAD v_or_a_or_p_or_part &
+             [ LOCAL [ CAT [ HEAD v_or_a_or_part &
 				[ TAM indic_tam ],
 			     MC + ],
 		       CONT.ICONS.LIST *nonfocuslist* ],
