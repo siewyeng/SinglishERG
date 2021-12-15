@@ -757,6 +757,24 @@ sf_adverb_incep_le := sf_adverb_i-s_le &
 sf_adverb_incho_le := sf_adverb_i-s_le &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL.CAT.HEAD.TAM.ASPECT incho_aspect ] > ].
   
-; 12-8-2021 to add in the aspectual meaning of 'already'  		    	   
+; 12-8-2021 to add in the aspectual meaning of 'already'  		      
 ; sf_already_i-s_le := sf_adverb_i-s_le &
   		    	                            
+; 8-7-2021 supertype to add in the dialect value  		     
+singlish_lexent := sign &
+ [ DIALECT sgp ].
+
+;; These new types copy contraints from leaf types defined in letypes.tdl, to
+;; allow multiple inheritance with parent singlish_lexent
+;;
+v_np_lexent := main_verb & 
+  [ SYNSEM np_trans_verb &
+	   [ LOCAL.CAT [ VAL.COMPS < [ OPT - ] > ] ] ].
+v_prd_seq-va_lexent := main_verb_mliszt & 
+  [ SYNSEM subj_equi_prd_v_a_verb ].
+v_np*_lexent := main_verb & 
+  [ SYNSEM np_trans_verb ].
+
+v_np_le-sg := v_np_lexent & singlish_lexent.
+v_prd_seq-val-sg := v_prd_seq-va_lexent & singlish_lexent.
+v_np*-sg := v_np*_lexent & singlish_lexent.

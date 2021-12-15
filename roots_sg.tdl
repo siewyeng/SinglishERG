@@ -15,7 +15,8 @@ root_lepak := phrase &
   [ INFLECTD +,
     SYNSEM basic_root_synsem &
              [ LOCAL [ CAT [ HEAD v_or_a_or_part,
-			     MC + ] ] ],
+			     MC + ],
+			CONJ cnil ] ],
     ORTH root_orth,
     DIALECT sgp ].
 

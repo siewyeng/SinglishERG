@@ -2,7 +2,7 @@
 
 ;;Transitive;;
 
-agak_v1 := v_np*_le & singlish_le & 
+agak_v1 := v_np*-sg & 
 """
 to estimate
 <ex> agak the water enough or not.
@@ -12,7 +12,7 @@ to estimate
             PHON.ONSET con ],
    DIALECT sgp ].
    
-;agak-agak_v1 := v_np*_le & singlish_le & 
+;agak-agak_v1 := v_np*-sg & 
 ;"""
 ;to estimate (same as agak)
 ;<ex> I just agak agak only.
@@ -22,7 +22,7 @@ to estimate
 ;            PHON.ONSET con ],
 ;   DIALECT sgp ].
 
-arrow_v1 := v_np_le & singlish_le & 
+arrow_v1 := v_np_le-sg & 
 """
 to 'nominate' someone, usually negative
 """
@@ -31,7 +31,7 @@ to 'nominate' someone, usually negative
             PHON.ONSET con ],
    DIALECT sgp ].
 
-sabo_v1 := v_np_le & singlish_le & 
+sabo_v1 := v_np_le-sg & 
 """
 short for sabotage
 """
@@ -40,7 +40,7 @@ short for sabotage
             PHON.ONSET con ]
      ].
 
-kacau_v1 := v_np_le & singlish_le & 
+kacau_v1 := v_np_le-sg & 
 """
 to disturb
 """
@@ -49,7 +49,7 @@ to disturb
             PHON.ONSET con ] ].
             
 ; preliminary version... maybe make it passive in the future             
-kena_v1 := v_np_le & singlish_le & 
+kena_v1 := v_np_le-sg & 
 """
 to be struck by or receive something unpleasant
 <ex> They kena bad luck.
@@ -58,7 +58,7 @@ to be struck by or receive something unpleasant
    SYNSEM [ LKEYS.KEYREL.PRED "_kena_v_1_rel",
             PHON.ONSET con ] ].               
             
-kena_prd_va_v1 := v_prd_seq-va_le & singlish_le & 
+kena_prd_va_v1 := v_prd_seq-val-sg &
 """
 to be struck by or receive something unpleasant
 <ex> They kena scolded.
@@ -68,7 +68,7 @@ to be struck by or receive something unpleasant
    SYNSEM [ LKEYS.KEYREL.PRED "_kena_v_state_rel",
             PHON.ONSET con ] ].                        
 
-tahan_v1 := v_np*_le & singlish_le & 
+tahan_v1 := v_np*-sg & 
 """
 to tolerate someone/something
 very commonly used with the negator 'buay'
@@ -335,7 +335,7 @@ anot_x_sfp := sfp_qtype2b_le &
 ;;;;;;;;;;;; Additions for gold trees ;;;;;;;;;;;;;;
 ;;; words that were already added are: kaypoh.
 ;;verbs
-tio_prd_v1 := v_prd_seq-va_le & singlish_le &
+tio_prd_v1 := v_prd_seq-val-sg &
 """
 similar to kena
 <ex>I tio banned
@@ -345,7 +345,7 @@ similar to kena
             PHON.ONSET con ],
    DIALECT sgp ].
 ;#added in for goldtrees
-tio_v2 := v_np_le & singlish_le &
+tio_v2 := v_np_le-sg &
 """
 similar to kena
 """
@@ -354,7 +354,7 @@ similar to kena
             PHON.ONSET con ],
    DIALECT sgp ].
    
-bojio_v1 := v_np*_le & singlish_le &
+bojio_v1 := v_np*-sg &
 """
 to not invite
 can also be 'bojio'
@@ -364,7 +364,7 @@ can also be 'bojio'
             PHON.ONSET con ],
    DIALECT sgp ].
    
-bojio_v2 := v_np-vp_oeq_le & ;singlish_le &
+bojio_v2 := v_np-vp_oeq_le &
 """
 to not invite
 can also be 'bojio'
@@ -380,7 +380,7 @@ subsidize_uk_v1 := v_np_le &
    SYNSEM [ LKEYS.KEYREL.PRED "_subsidize_v_1_rel",
             PHON.ONSET con ] ].
    
-gabra_v1 := v_-_le & ;singlish_le &
+gabra_v1 := v_-_le &
 """
 panick 
 From Malay
@@ -390,7 +390,7 @@ From Malay
             PHON.ONSET con ],
    DIALECT sgp ].
             
-paktor_v1 := v_pp*_dir_le & ;singlish_le &
+paktor_v1 := v_pp*_dir_le &
 """
 to date. From Cantonese
 <ex> We want to paktor too.
@@ -401,7 +401,7 @@ to date. From Cantonese
             PHON.ONSET con ],
    DIALECT sgp ].
 
-lepak_v1 := v_-_le & ;singlish_le &
+lepak_v1 := v_-_le &
 """
 to loiter casually, hang out
 from Malay
@@ -411,7 +411,7 @@ from Malay
             PHON.ONSET con ],
    DIALECT sgp ]. 
    
-catchnoball_v1 := v_-_le & ;singlish_le &
+catchnoball_v1 := v_-_le &
 """
 to fail to understand
 """
@@ -420,7 +420,7 @@ to fail to understand
             PHON.ONSET con ],
    DIALECT sgp ].
    
-chaokeng_v1 := v_-_le & ;singlish_le &
+chaokeng_v1 := v_-_le &
 """
 to skive, to shirk one's duties particularly military ones
 """
@@ -429,7 +429,7 @@ to skive, to shirk one's duties particularly military ones
             PHON.ONSET con ],
    DIALECT sgp ].   
    
-chutpattern_v1 := v_-_le & ;singlish_le &
+chutpattern_v1 := v_-_le &
 """
 to inconvenience or disturb; to make a fuss; to act up
 """
@@ -439,7 +439,7 @@ to inconvenience or disturb; to make a fuss; to act up
    DIALECT sgp ]. 
 
 ;#probably remove after parsing   
-dun_v1 := v_vp_do-f-n_le & ;singlish_le &
+dun_v1 := v_vp_do-f-n_le &
 """
 text spelling of "don't"
 """
@@ -447,7 +447,7 @@ text spelling of "don't"
    SYNSEM.PHON.ONSET con,
    DIALECT sgp ]. 
    
-makan_v1 := v_np*_le & singlish_le &
+makan_v1 := v_np*-sg &
 """
 to eat
 From Malay
@@ -458,7 +458,7 @@ From Malay
    DIALECT sgp ].
    
 ;; adjectives
-keesiao_a1 := aj_-_i_le & ;singlish_le &
+keesiao_a1 := aj_-_i_le &
 """
 crazy. Like "siao"
 <ex>Teacher mark your paper also kee siao.
@@ -468,7 +468,7 @@ crazy. Like "siao"
             PHON.ONSET con ],
    DIALECT sgp ].
    
-shiok_a1 := aj_-_i_le & ;singlish_le &
+shiok_a1 := aj_-_i_le &
 """
 great, pleasurable. From Malay "syok"
 <ex>Taste shiok right?
@@ -478,7 +478,7 @@ great, pleasurable. From Malay "syok"
             PHON.ONSET con ],
    DIALECT sgp ].
    
-paiseh_a1 := aj_-_i_le & ;singlish_le &
+paiseh_a1 := aj_-_i_le &
 """
 shy, embarrassing
 """
@@ -488,7 +488,7 @@ shy, embarrassing
    DIALECT sgp ].
 
 ; should probably create separate lexical entries for each word   
-buaytank_a1 := aj_-_i_le & ;singlish_le &
+buaytank_a1 := aj_-_i_le &
 """
 cannot handle. Can be separated into two words
 """
@@ -497,7 +497,7 @@ cannot handle. Can be separated into two words
             PHON.ONSET con ],
    DIALECT sgp ].
    
-cheem_a1 := aj_-_i-er_le & ;singlish_le &
+cheem_a1 := aj_-_i-er_le &
 """
 deep, profound. From Hokkien
 """
@@ -506,7 +506,7 @@ deep, profound. From Hokkien
             PHON.ONSET con ],
    DIALECT sgp ].   
 
-gabra_a1 := aj_-_i_le & ;singlish_le &
+gabra_a1 := aj_-_i_le &
 """
 panicky, confused, From Malay
 """
@@ -515,7 +515,7 @@ panicky, confused, From Malay
             PHON.ONSET con ],
    DIALECT sgp ].
    
-GG_a1 := aj_-_i_le & ;singlish_le &
+GG_a1 := aj_-_i_le &
 """
 Doomed, likely to have undesireable outcome
 """
@@ -524,7 +524,7 @@ Doomed, likely to have undesireable outcome
             PHON.ONSET con ],
    DIALECT sgp ].
    
-jakun_a1 := aj_-_i_le & ;singlish_le &
+jakun_a1 := aj_-_i_le &
 """
 fascinated with things that seem ordinary to others
 Extended from Malay
@@ -534,7 +534,7 @@ Extended from Malay
             PHON.ONSET con ],
    DIALECT sgp ].
    
-kiasi_a1 := aj_-_i_le & ;singlish_le &
+kiasi_a1 := aj_-_i_le &
 """
 Cowardly, afraid to die
 from Hokkien
@@ -544,7 +544,7 @@ from Hokkien
             PHON.ONSET con ],
    DIALECT sgp ].
    
-laoya_a1 := aj_-_i_le & ;singlish_le &
+laoya_a1 := aj_-_i_le &
 """
 Lousy
 """
@@ -553,7 +553,7 @@ Lousy
             PHON.ONSET con ],
    DIALECT sgp ].   
    
-mampus_a1 := aj_-_i_le & ;singlish_le &
+mampus_a1 := aj_-_i_le &
 """
 Finished, kaput
 From Malay
@@ -564,7 +564,7 @@ From Malay
    DIALECT sgp ].  
    
 ; #temporary   
-samasama_a1 := av_-_i-vp_le & ;singlish_le &
+samasama_a1 := av_-_i-vp_le &
 """
 same
 Reduplication of Malay sama. Can also be spelt as two separate words without '-'

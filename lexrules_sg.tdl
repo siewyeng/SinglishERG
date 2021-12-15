@@ -14,16 +14,6 @@
 ;;;  $Id: lexrules.tdl 7479 2010-02-21 23:11:30Z danf $
 ;;;  Chow Siew Yeng 2020, 2021
 
-
-; CSY 9-11-2020 take away PRD + for Singlish, to allow "he eating"
-verb_participle_affix := local &
-  [ CAT [ HEAD verb, ;& [ PRD + ],
-	  VAL.SUBJ < synsem &
-		     [ LOCAL.AGR #agr,
-		       NONLOC.SLASH 0-dlist ] >,
-	  HC-LEX - ],
-    AGR #agr ].
-
 ; 18-4-2021 - should the VFORM be changed to just fin #totest
 ; 10-6-2021 change subject OPT
 ; 6-10-2021 remove present tense in ADDTAM
@@ -115,10 +105,12 @@ nocop_pred_lexrule:= norm_lex_rule &
    			  		  CONT #cont ] ] ] ].
 					     
 
-; CSY 18-3-2021 - supertype of lex_rule_affixed that the prp_verb will inherit from
-; supertype without 0-dlist, so that VPs headed by prp verbs can undergo hd_xsb-finprp_c
+; CSY 9-11-2020 Don't assign PRD + for Singlish, to allow "he eating"
+; CSY 18-3-2021 - supertype of lex_rule_affixed that the prp_verb will inherit 
+; from supertype without SLASH 0-dlist, so that VPs headed by prp verbs can 
+; undergo hd_xsb-finprp_c
 verb_participle_super_affix := local &
-  [ CAT [ HEAD verb, ; & [ PRD + ],
+  [ CAT [ HEAD verb,
 	  VAL.SUBJ < synsem &
 		     [ LOCAL.AGR #agr ] >,
 	  HC-LEX - ],
