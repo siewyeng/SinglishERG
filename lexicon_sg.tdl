@@ -630,7 +630,7 @@ alternate spelling of lah
    SYNSEM [ LKEYS.KEYREL.PRED "_lah_particle_rel",
             PHON.ONSET con ] ].          
 ;;;Removed Items;;;
-;already_adv3 := never_unify_le & [ ORTH < "_never_unify_" > ].
+already_adv3 := never_unify_le & [ ORTH < "_never_unify_" > ].
 
 ; CSY 2-12-2020 - remove ever_adv1 cos it occurs at the same places as ever_exp_adv, seems like an overgeneration
 ever_adv1 := never_unify_le & [ ORTH < "_never_unify_" > ].

@@ -935,7 +935,7 @@ basic_comp_head_phrase := basic_comp_or_marker_head_phrase & head_final &
 				    HS-LEX #hslex ] ],
 		      MODIFD #modifd,
                       PUNCT [ LPUNCT comma_or_hyphen_or_pair_or_no_punct,
-                              RPUNCT comma_or_clause,
+                              RPUNCT comma_or_clause_or_no_punct,
                               PNCTPR ppair ] ] ],
     NH-DTR [ INFLECTD +,
 	     SYNSEM.LOCAL.CAT [ MC #mc,
