@@ -115,47 +115,47 @@ cmp-hd_u_c := comph_rule &
 ; verbal attachments in the future maybe
 ;cmp-mrkr_u_c := compm_rule &
 ;"""
-; Complement-marker that is only used on adverbs markiing verbs where the verb remains the head
+; Complement-marker that is only used on adverbs marking verbs where the verb remains the head
 ; Probably to try in the future if analysis makes sense for this example.
 ; <ex>The person finish already the homework. 
 ; """
 ;   [ RNAME cpm ].
   
-cmp-hd_sfpi_c := comph_sfpi_rule &
-"""
-Complement-head that is only used on particle1_rel particles 
-and particle-headed sentences 
+;cmp-hd_sfpi_c := comph_sfpi_rule &
+;"""
+;Complement-head that is only used on particle1_rel particles 
+;and particle-headed sentences 
 
-<ex>The person admires me lah hah. 
-"""
-  [ RNAME cphp ].  
+;<ex>The person admires me lah hah. 
+;"""
+;  [ RNAME cphp ].  
   
-cmp-hd_sfp2b_c := comph_sfp2b_rule &
-"""
-Complement-head that is only used on particle2b_rel particles 
-and particle-headed sentences. Cannot be followed by sfpi
+;cmp-hd_sfp2b_c := comph_sfp2b_rule &
+;"""
+;Complement-head that is only used on particle2b_rel particles 
+;and particle-headed sentences. Cannot be followed by sfpi
 
-<ex>The person admires me one sia. 
-"""
-  [ RNAME cphb ].  
+;<ex>The person admires me one sia. 
+;"""
+;  [ RNAME cphb ].  
   
-cmp-hd_sfp2a_c := comph_sfp2a_rule &
-"""
-Complement-head that is only used on particle2a_rel particles 
-and particle-headed sentences. Can be followed by sfpi
+;cmp-hd_sfp2a_c := comph_sfp2a_rule &
+;"""
+;Complement-head that is only used on particle2a_rel particles 
+;and particle-headed sentences. Can be followed by sfpi
 
-<ex>The person admires me one lah. 
-"""
-  [ RNAME cpha ]. 
+;<ex>The person admires me one lah. 
+;"""
+;  [ RNAME cpha ]. 
   
-cmp-hd_sfp3_c := comph_sfp3_rule &
-"""
-Complement-head that is only used on particle3_rel particles 
-and sfadverb-headed sentences. Can be followed by sfp2
+;cmp-hd_sfp3_c := comph_sfp3_rule &
+;"""
+;Complement-head that is only used on particle3_rel particles 
+;and sfadverb-headed sentences. Can be followed by sfp2
 
-<ex>The person eat already one. 
-"""
-  [ RNAME cpha ]. 
+;<ex>The person eat already one. 
+;"""
+;  [ RNAME cpha ]. 
   
 ;pro-drp_c := prodrop_rule &
 ;"""

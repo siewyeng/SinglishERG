@@ -953,9 +953,12 @@ basic_comp_head_phrase := basic_comp_or_marker_head_phrase & head_final &
 ; and add in new phrase for sfp3 to join to sfa
 comp_head_phrase := basic_comp_head_phrase & comp_or_marker_head_phrase &
   [ HD-DTR [ SYNSEM.LOCAL.CAT.HEAD basic_particle_or_sfa &
-  				[ MINORS.MIN abstr_adv_dim_rel ] ],
-    NH-DTR.SYNSEM.LOCAL.CAT.HEAD v_or_a ].
-  				
+  				[ MINORS.MIN event_arg_dim_v_or_a_or_part_rel ] ],
+    NH-DTR.SYNSEM.LOCAL.CAT.HEAD v_or_a_or_part ].
+
+
+;; 16-12-2021 commenting out these rules/phrases in favour of using MIN constraints
+; in lextypes  				
 ; 29-5-2021 - for the new cmp-hd that is only for particles taking other particle headed stuff
 comp_head_sfpi_phrase :=  basic_comp_head_phrase & comp_or_marker_head_phrase &
   [ HD-DTR [ SYNSEM.LOCAL.CAT.HEAD basic_particle &
@@ -1113,12 +1116,14 @@ frag_vp_fin_rule := frag_vp_rule &
 adj_attr_coord_phr :+
   [ SYNSEM.LOCAL.CAT.VAL.SUBJ #subj,
     LCONJ-DTR.SYNSEM.LOCAL.CAT.VAL.SUBJ #subj ].
- 				
+
+; 16-12-2021 commented out all all the other rules after moving constraints
+; out from the rules into lextypes 				
 comph_rule := binary_rule_left_to_right & comp_head_phrase. 
-comph_sfpi_rule := binary_rule_left_to_right & comp_head_sfpi_phrase.  
-comph_sfp2b_rule := binary_rule_left_to_right & comp_head_sfp2b_phrase.
-comph_sfp2a_rule := binary_rule_left_to_right & comp_head_sfp2a_phrase. 	
-comph_sfp3_rule := binary_rule_left_to_right & comp_head_sfp3_phrase. 		
+;comph_sfpi_rule := binary_rule_left_to_right & comp_head_sfpi_phrase.  
+;comph_sfp2b_rule := binary_rule_left_to_right & comp_head_sfp2b_phrase.
+;comph_sfp2a_rule := binary_rule_left_to_right & comp_head_sfp2a_phrase. 	
+;comph_sfp3_rule := binary_rule_left_to_right & comp_head_sfp3_phrase. 		
 	      
 compm_rule := binary_rule_left_to_right & comp_marker_phrase. 
 	      

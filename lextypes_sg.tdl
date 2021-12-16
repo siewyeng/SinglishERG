@@ -632,7 +632,7 @@ basic_particle_word := noncrs-nab &
 ; The HEAD value of COMPS is instead specified in the lextype                                
 basic_part_s_lexent := basic_particle_word &
   [ SYNSEM.LOCAL.CAT [ HEAD basic_particle & 
-                           [ MINORS.MIN particle_rel ],
+                           [ MINORS.MIN event_arg_dim_v_or_a_or_part_rel ],
                        POSTHD + ] ].                                    
 
 ; 17-5-2021 add in SPR and SPEC < > for now to stop overgeneration
@@ -672,7 +672,8 @@ sentence-final particle
 ; where type 1 can take all the rest as COMPS, type 2 can only take type 3 
 ; and type 3 can only take S
 sfp_type1_le := sfp_-_i-s_le &
-  [ SYNSEM.LOCAL.CAT.HEAD.MINORS.MIN particle1_rel ].
+  [ SYNSEM.LOCAL.CAT [ HEAD.MINORS.MIN particle1_rel,
+  			VAL.COMPS < [ --MIN particle2_super_rel ] > ] ].
 
 ; used for hor2
 ; <ex> you like ice cream hor?
@@ -682,16 +683,19 @@ sfp_qtype1_le := sfp_type1_le &
   		   CONT.HOOK.INDEX.SF ques ] ].   
   
 sfp_type2a_le := sfp_-_i-s_le &
-  [ SYNSEM.LOCAL.CAT.HEAD.MINORS.MIN particle2_rel ].
+  [ SYNSEM.LOCAL.CAT [ HEAD.MINORS.MIN particle2_rel,
+  			VAL.COMPS < [ --MIN particle3_sfadv_rel ] > ] ].
   
 sfp_type2b_le := sfp_-_i-s_le &
-  [ SYNSEM.LOCAL.CAT.HEAD.MINORS.MIN particle2b_rel ].
+  [ SYNSEM.LOCAL.CAT [ HEAD.MINORS.MIN particle2b_rel,
+  			VAL.COMPS < [ --MIN particle3_sfadv_rel ] > ] ].
   
 sfp_qtype2b_le := sfp_type2b_le &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.SF ques ].     
     
 sfp_type3_le := sfp_-_i-s_le &
-  [ SYNSEM.LOCAL.CAT.HEAD.MINORS.MIN particle3_rel ].    
+  [ SYNSEM.LOCAL.CAT [ HEAD.MINORS.MIN particle3_rel,
+  			VAL.COMPS < [ --MIN sfadverb_va_rel ] > ] ].    
   
   
 ; 16-11-2021 remove this because v_bse-ilr requires its daughter to have SUBJ OPT -
@@ -720,7 +724,7 @@ sf_adverb_word := basic_adverb_word &
   [ SYNSEM.LOCAL.CAT [ HEAD basic_sfa & 
                            [ MINORS.MIN sfadverb_rel ],
                        POSTHD +,
-                       VAL.COMPS < [ LOCAL.CAT.HEAD v_or_a ] > ] ].
+                       VAL.COMPS < [ LOCAL.CAT [ HEAD v_or_a ] ] > ] ].
 
 ; copy the same content as sfp_-_i-s_le to prevent overgeneration                       
 sf_adverb_i-s_le := sf_adverb_word &

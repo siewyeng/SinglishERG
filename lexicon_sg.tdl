@@ -439,7 +439,7 @@ to inconvenience or disturb; to make a fuss; to act up
    DIALECT sgp ]. 
 
 ;#probably remove after parsing   
-dun_v1 := v_vp_do-f-n_le &
+dun_v2 := v_vp_do-f-n_le &
 """
 text spelling of "don't"
 """

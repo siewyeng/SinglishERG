@@ -11,10 +11,10 @@ onp := ctype. ;; hdn_onenp_c
 pradj := ctype. ;; nocop_c
 
 cph := ctype & [ -CTYPE- "CMP-HD" ]. ;; cmp-hd_u_c
-cphp := ctype & [ -CTYPE- "CMP-HD" ]. ;; cmp-hd_sfpi_c
-cphb := ctype & [ -CTYPE- "CMP-HD" ]. ;; cmp-hd_sfp2b_c
-cpha := ctype & [ -CTYPE- "CMP-HD" ]. ;; cmp-hd_sfp2a_c
-cpm := ctype & [ -CTYPE- "CMP-MRKR" ]. ;; cmp-mrkr_u_c
+;cphp := ctype & [ -CTYPE- "CMP-HD" ]. ;; cmp-hd_sfpi_c
+;cphb := ctype & [ -CTYPE- "CMP-HD" ]. ;; cmp-hd_sfp2b_c
+;cpha := ctype & [ -CTYPE- "CMP-HD" ]. ;; cmp-hd_sfp2a_c
+;cpm := ctype & [ -CTYPE- "CMP-MRKR" ]. ;; cmp-mrkr_u_c
 
 
 bnun := unary_ctype. ;; hdn_bnp-unsp_c

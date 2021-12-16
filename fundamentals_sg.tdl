@@ -254,21 +254,46 @@ _pnspr_q_rel := def_explicit_q_rel & dofw_or_poss_or_def_q_rel.
 ;diadic_nom_rel := diadic_nom_super_rel.
 ;kinship_nom_rel := diadic_nom_super_rel.
 
+;;; moving these rels to a higher node in an attempt to get rid of the many particle
+;;; head comp rules
 ; 23-5-2021 add in particle_rel as a sister of adv_rel
-particle_rel := abstr_adv_dim_rel.
-; 11-8-2021 add in sfadverb_rel as sister of adv_rel instead of just using adv_rel to prevent it
-; from hd-aj_int-unsl? no change to sister of particle 3
-; sfadverb_rel := abstr_adv_dim_rel.
-particle1_rel := particle_rel.
-particle2_super_rel := particle_rel.
-particle2b_rel := particle_rel.
-particle2_rel := particle2_super_rel.
-particle3_sfadv_rel := particle2_super_rel.
-particle3_rel := particle3_sfadv_rel.
-sfadverb_rel := particle3_sfadv_rel.
+;particle_rel := abstr_adv_dim_rel.
+;; 11-8-2021 add in sfadverb_rel as sister of adv_rel instead of just using adv_rel to prevent it
+;; from hd-aj_int-unsl? no change to sister of particle 3
+;; sfadverb_rel := abstr_adv_dim_rel.
+;particle1_rel := particle_rel.
+;particle2_super_rel := particle_rel.
+;particle2b_rel := particle_rel.
+;particle2_rel := particle2_super_rel.
+;particle3_sfadv_rel := particle2_super_rel.
+;particle3_rel := particle3_sfadv_rel.
+;sfadverb_rel := particle3_sfadv_rel.
 
 ; 27-7-2021 for the new prodrop fragments *unused*
 ;unknown_super_rel := v_event_rel.
 ;unknown_rel := unknown_super_rel.
 ;unknown_sg_rel := unknown_super_rel.
+
+; 15-12-2021 to group MIN of all verbs and adjectives together
+; so that the SFPs can select their complements through MIN instead of 
+; through many separate rules for the different particles in the hierarchy
+event_arg_dim_rel_super := event_mod_rel & basic_event_dim_rel.
+;event_arg_dim_v_or_a_rel := event_arg_dim_rel_super.
+event_arg_dim_rel := event_arg_dim_rel_super.
+abstr_adj_rel := event_arg_dim_v_or_a_rel & adj_or_card_or_much_rel.
+v_event_rel := verb_aspect_rel & event_arg_dim_v_or_a_rel.
+
+; to make particle rels not sisters of adv_rel but a daughter of event_arg_dim_rel_super
+; so that particles can be grouped together with verbs and adj through a common MIN value
+; in this case, all the super_rels contain verbs and adj
+event_arg_dim_v_or_a_or_part_rel := event_arg_dim_rel_super.
+particle1_rel := event_arg_dim_v_or_a_or_part_rel.
+particle2_super_rel := event_arg_dim_v_or_a_or_part_rel.
+particle2b_rel := event_arg_dim_v_or_a_or_part_rel.
+particle2_rel := particle2_super_rel.
+particle3_sfadv_rel := particle2_super_rel.
+particle3_rel := particle3_sfadv_rel.
+sfadverb_va_rel := particle3_sfadv_rel.
+sfadverb_rel := sfadverb_va_rel.
+event_arg_dim_v_or_a_rel := sfadverb_va_rel.
 
