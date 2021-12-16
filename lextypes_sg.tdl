@@ -21,23 +21,23 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-; CSY 18-12-2020 - new type to allow for both adj and verbal heads
-; #testing removed all properties
-s_cat_unspec_sg := cat.; &
-;  [ HEAD adverbee,
-;    VAL [ SUBJ *olist*,
-;	  COMPS < > ] ].
+; CSY 18-12-2020 - replacement type to allow for both adj and verbal heads
+s_cat_unspec := cat &
+  [ HEAD adverbee,
+    VAL [ SUBJ *olist*,
+	  COMPS < > ] ].
+
 
 ; CSY 18-12-2020 - type that does not inherit from s_cat_unspec
-basic_s_cat_sg_v_c := s_cat_unspec_sg &
-  [ VAL.SPR *olist*,
-    MC bool ].
+;basic_s_cat_v_c := s_cat_unspec &
+;  [ VAL.SPR *olist*,
+;    MC bool ].
 
 ; CSY 18-12-2020 - type that allows for adj in addition to verbs
-s_cat_sg_v_c := basic_s_cat_sg_v_c &
-  [ HEAD.INV -,
-    VAL.SUBJ *olist*,
-    MC - ].
+;s_cat_sg_v_c := basic_s_cat_sg_v_c &
+;  [ HEAD.INV -,
+;    VAL.SUBJ *olist*,
+;    MC - ].
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; SUBCATEGORIZATIONS -- synsems for verbs, adjectives, prepositions, nouns
@@ -102,11 +102,12 @@ cp_intrans_subst_sg := basic_cp_intrans_subst_super & cp_addin_tam_pn.; &
 ;		    COMPS < [ LOCAL.CAT basic_s_cat_sg_v_c ] > ] ].
 
 ; CSY 19-12-2020 - create a supertype that accepts both verbal and adjectives
-basic_cp_prop+ques_verb_super := norm_basic_verb_synsem &
-  [ LOCAL [ CAT.VAL.KCMP [ ;LOCAL.CAT.HEAD adverbee,
+basic_cp_prop+ques_verb := norm_basic_verb_synsem &
+  [ LOCAL [ CAT.VAL.KCMP [ LOCAL.CAT.HEAD adverbee,
                            OPT - ],
             CONT.RELS.LIST < relation, ... > ] ].
 
+#|
 ; CSY 18-12-2020 - change KCMP from s_cat_unspec and cp_intrans_subst to newly
 ; created cp_intrans_subst_sg
 ; allows for constructions <ex>Kim knows Abrams pretty.
@@ -117,6 +118,7 @@ basic_cp_intrans_verb := basic_cp_prop+ques_verb_super & basic_cp_intrans_subst_
 					  [ VFORM fin_or_imp,
 			                    TAM indic_tam ] ],
 			 --SIND.E.MOOD ind_or_modal_subj ] ].
+|#
 
 ; CSY 16-12-2020 - to allow verbs that take CP to be headed by adj as well change CAT.VAL.COMPS
 ;              LOCAL.CAT.HEAD from verbal
@@ -126,7 +128,7 @@ pp_cp_fin_prop_verb := basic_pp_cp_fin_verb &
 <ex>Kim knows the cat pretty.
 """
   [ LOCAL [ CAT.VAL.COMPS < [ ],
-			    [ LOCAL.CAT.HEAD v_or_a,
+			    [ LOCAL.CAT.HEAD adverbee,
 			      --SIND.SF prop ] >,
 	    CONT.RELS <! relation !> ] ].
 
@@ -598,7 +600,8 @@ subconj_synsem := subconj_cp_synsem &
 					  MC - ],
 				    CONT.HOOK.INDEX.SF prop-or-comm ],
 			    --SIND.E.TENSE real_tense ] > ].
-     			    
+
+;     			    
   
 ; 16-5-2021 for sentence final particles
 ; modelled after basic_adv_int_vp_lexent
