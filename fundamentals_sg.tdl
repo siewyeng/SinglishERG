@@ -283,6 +283,8 @@ event_arg_dim_rel := event_arg_dim_rel_super.
 abstr_adj_rel := event_arg_dim_v_or_a_rel & adj_or_card_or_much_rel.
 v_event_rel := verb_aspect_rel & event_arg_dim_v_or_a_rel.
 
+
+;; to move to HEAD types
 ; to make particle rels not sisters of adv_rel but a daughter of event_arg_dim_rel_super
 ; so that particles can be grouped together with verbs and adj through a common MIN value
 ; in this case, all the super_rels contain verbs and adj

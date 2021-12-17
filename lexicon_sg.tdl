@@ -634,3 +634,4 @@ already_adv3 := never_unify_le & [ ORTH < "_never_unify_" > ].
 
 ; CSY 2-12-2020 - remove ever_adv1 cos it occurs at the same places as ever_exp_adv, seems like an overgeneration
 ever_adv1 := never_unify_le & [ ORTH < "_never_unify_" > ].
+not_deg := never_unify_le & [ ORTH < "_never_unify_" > ].

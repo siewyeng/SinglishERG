@@ -479,7 +479,7 @@ basic_filler_head_finprp_rel_rule := filler_head_rel_rule &
 ; in order to prevent rel-pronoun 'one' from being part of this
 ; 25-3-2021 change rule to allow for prp also
 filler_head_finprp_np_rel_rule := basic_filler_head_finprp_rel_rule &
-  [ SYNSEM.LOCAL.CAT.HEAD.MOD.FIRST.LOCAL.CONT.HOOK.XARG #xarg,
+  [ SYNSEM.LOCAL.CAT.HEAD.MOD.FIRST.LOCAL.CONT.HOOK.XARG #xarg, 		
     ARGS < [ SYNSEM.LOCAL.CAT [ HEAD.MINORS.MIN pron_nonlocal_rel,
     				 VAL.SPR *olist*,
     				 POSTHD - ] ],
@@ -579,7 +579,8 @@ one_np_phrase := pron_np_one_phrase &
 			   VAL.SPR < synsem > ],
 		     AGR [ DIV +,
 		           PNG.PN 3 ] ],
-	     MODIFD notmod ] ].
+	     MODIFD notmod ],
+   ARGS.FIRST.SYNSEM.LOCAL.CONT.HOOK.INDEX non_conj_event ].
 		           
 ; 9-3-2021 rule to convert 'one' RC into NP
 ; based on bare_np_rule

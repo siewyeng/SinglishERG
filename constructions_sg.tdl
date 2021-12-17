@@ -188,6 +188,12 @@ into a finite VP
 """
   [ RNAME pradj ].
 |#
+
+; 17-12-2021 to stop nocop adjectives from acting as head 
+;
+hd-aj_scp_c :+ 
+  [ HD-DTR.SYNSEM.LOCAL.CAT.VAL.SUBJ < > ].
+
 ;;;;;;;;;;;;; the never unifies ;;;;;;;;;;;;;;;;;;
   
 flr-hd_rel-fin_c := never_unify_rule. 
