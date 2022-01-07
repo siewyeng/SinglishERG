@@ -674,31 +674,51 @@ sentence-final particle
 ; 30-5-2021 add in particles according to my hierarchy
 ; where type 1 can take all the rest as COMPS, type 2 can only take type 3 
 ; and type 3 can only take S
+; 7-1-2021 reversed order to match thesis more! 1 is now the one that takes S and sfa
+#|
 sfp_type1_le := sfp_-_i-s_le &
-  [ SYNSEM.LOCAL.CAT [ HEAD.MINORS.MIN particle1_rel,
+  [ SYNSEM.LOCAL.CAT [ HEAD particle1,
+  			VAL.COMPS < [ LOCAL.CAT.HEAD particle2_super ] > ] ].
+|#
+sfp_type3_le := sfp_-_i-s_le &
+  [ SYNSEM.LOCAL.CAT [ HEAD.MINORS.MIN particle3_rel,
   			VAL.COMPS < [ --MIN particle2_super_rel ] > ] ].
-
+  			
 ; used for hor2
 ; <ex> you like ice cream hor?
 ; 19-10-2021 add SF restriction for COMPS  
-sfp_qtype1_le := sfp_type1_le &
+sfp_qtype3_le := sfp_type3_le &
   [ SYNSEM.LOCAL [ CAT.VAL.COMPS < [ LOCAL.CONT.HOOK.INDEX.SF prop ] >, 
   		   CONT.HOOK.INDEX.SF ques ] ].   
-  
+#|  
+sfp_type2a_le := sfp_-_i-s_le &
+  [ SYNSEM.LOCAL.CAT [ HEAD particle2,
+  			VAL.COMPS < [ LOCAL.CAT.HEAD particle3_sfadv ] > ] ].
+|#
 sfp_type2a_le := sfp_-_i-s_le &
   [ SYNSEM.LOCAL.CAT [ HEAD.MINORS.MIN particle2_rel,
-  			VAL.COMPS < [ --MIN particle3_sfadv_rel ] > ] ].
+  			VAL.COMPS < [ --MIN particle1_sfadv_rel ] > ] ].
   
+#|  
+sfp_type2b_le := sfp_-_i-s_le &
+  [ SYNSEM.LOCAL.CAT [ HEAD particle2b,
+  			VAL.COMPS < [ LOCAL.CAT.HEAD particle3_sfadv ] > ] ].
+|#
 sfp_type2b_le := sfp_-_i-s_le &
   [ SYNSEM.LOCAL.CAT [ HEAD.MINORS.MIN particle2b_rel,
-  			VAL.COMPS < [ --MIN particle3_sfadv_rel ] > ] ].
+  			VAL.COMPS < [ --MIN particle1_sfadv_rel ] > ] ].
   
 sfp_qtype2b_le := sfp_type2b_le &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.SF ques ].     
-    
+
+#|    
 sfp_type3_le := sfp_-_i-s_le &
-  [ SYNSEM.LOCAL.CAT [ HEAD.MINORS.MIN particle3_rel,
-  			VAL.COMPS < [ --MIN sfadverb_va_rel ] > ] ].    
+  [ SYNSEM.LOCAL.CAT [ HEAD particle3,
+  			VAL.COMPS < [ LOCAL.CAT.HEAD sfadverb_va ] > ] ].    
+|#
+sfp_type1_le := sfp_-_i-s_le &
+  [ SYNSEM.LOCAL.CAT [ HEAD.MINORS.MIN particle1_rel,
+  			VAL.COMPS < [ --MIN sfadverb_va_rel ] > ] ].     
   
   
 ; 16-11-2021 remove this because v_bse-ilr requires its daughter to have SUBJ OPT -

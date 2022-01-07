@@ -284,17 +284,17 @@ leh-21-_x_sfp := sfp_type2b_le &
    SYNSEM [ LKEYS.KEYREL.PRED "_leh_particle_rel",
             PHON.ONSET con ] ].
             
-hah2_x_sfp := sfp_type1_le &
+hah2_x_sfp := sfp_type3_le &
  [ ORTH < "hah" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_hah2_particle_rel",
             PHON.ONSET con ] ].
             
-hor2_x_sfp := sfp_qtype1_le &
+hor2_x_sfp := sfp_qtype3_le &
  [ ORTH < "hor" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_hor2_particle_rel",
             PHON.ONSET con ] ].            
            
-ah2_x_sfp := sfp_type1_le &
+ah2_x_sfp := sfp_type3_le &
 """
 ah with a rising tone
 """
@@ -317,7 +317,7 @@ what_x_sfp := sfp_type2a_le &
    SYNSEM [ LKEYS.KEYREL.PRED "_what_particle_rel",
             PHON.ONSET con ] ].
             
-one_x_sfp := sfp_type3_le &
+one_x_sfp := sfp_type1_le &
  [ ORTH < "one" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_one_particle_rel",
             PHON.ONSET con ] ].  

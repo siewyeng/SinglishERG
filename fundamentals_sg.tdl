@@ -195,6 +195,22 @@ a_or_part := v_or_a_or_part.
 adj_or_intadj := v_or_a & a_or_p & adverbee & nominal_or_verbal &
 		 a_or_adv & intsort & a_or_part.
 
+#|
+; 17-12-2021 trying to use head types for constraining sfp complements
+particle1 := v_or_a_or_part.
+particle2_super := v_or_a_or_part.
+particle2b := v_or_a_or_part.
+particle2 := particle2_super.
+particle3_sfadv := particle2_super.
+particle3 := particle3_sfadv.
+sfadverb_va := particle3_sfadv.
+sfadverb := sfadverb_va.
+v_or_a := v_or_g_or_a & n_or_v_or_a & verbal_or_a_or_p & sfadverb_va.
+
+basic_particle := particle1 & particle2b & particle2 & particle3.
+particle := basic_particle.
+basic_particle_or_sfa := basic_particle & sfadverb.
+|#
 
 ; 11-8-2021 add in sentence final adverbs
 basic_particle_or_sfa := a_or_part & mobile.
@@ -289,13 +305,12 @@ v_event_rel := verb_aspect_rel & event_arg_dim_v_or_a_rel.
 ; so that particles can be grouped together with verbs and adj through a common MIN value
 ; in this case, all the super_rels contain verbs and adj
 event_arg_dim_v_or_a_or_part_rel := event_arg_dim_rel_super.
-particle1_rel := event_arg_dim_v_or_a_or_part_rel.
+particle3_rel := event_arg_dim_v_or_a_or_part_rel.
 particle2_super_rel := event_arg_dim_v_or_a_or_part_rel.
 particle2b_rel := event_arg_dim_v_or_a_or_part_rel.
 particle2_rel := particle2_super_rel.
-particle3_sfadv_rel := particle2_super_rel.
-particle3_rel := particle3_sfadv_rel.
-sfadverb_va_rel := particle3_sfadv_rel.
+particle1_sfadv_rel := particle2_super_rel.
+particle1_rel := particle1_sfadv_rel.
+sfadverb_va_rel := particle1_sfadv_rel.
 sfadverb_rel := sfadverb_va_rel.
 event_arg_dim_v_or_a_rel := sfadverb_va_rel.
-

@@ -395,11 +395,11 @@ adv4-2 := label &
     LNAME "ADV-C" ].
     
 ; 11-8-2021 add in for sentence final adverbs like 'already' and possibly 'only'
-adv_sf := label &
-  [ SYNSEM.LOCAL [ CAT [ HEAD basic_sfa ],
-		   CONJ cnil ],
-    INFLECTD +,
-    LNAME "ADV-F" ].
+;adv_sf := label &
+;  [ SYNSEM.LOCAL [ CAT [ HEAD basic_sfa ],
+;		   CONJ cnil ],
+;    INFLECTD +,
+;    LNAME "ADV-F" ].
 
 n := label &
   [ SYNSEM.LOCAL.CAT [ HEAD nominal,

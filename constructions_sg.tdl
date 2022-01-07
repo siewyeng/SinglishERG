@@ -190,7 +190,7 @@ into a finite VP
 |#
 
 ; 17-12-2021 to stop nocop adjectives from acting as head 
-;
+; for example in the <ex> *who does Devito manages and Chiang works for?
 hd-aj_scp_c :+ 
   [ HD-DTR.SYNSEM.LOCAL.CAT.VAL.SUBJ < > ].
 
