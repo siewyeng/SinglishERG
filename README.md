@@ -57,3 +57,34 @@ To parse the data using ace (parts in brackets are optional)
 
 
 *lexicon_goldtrees.tdl* contains the words added to the standard English lexicon when parsing the 30 Singlish sentences from *skeletons/treebankset*. 
+
+### Testsuite
+A testsuite first had to be made. Go to the folder containing make_item:
+```
+$ ./make_item –map translat i-comment [rawtestsuitename] item
+```
+Transfer the item that was made (and renamed) into the skeletons directory. And make a testsuite in the trees folder
+```
+$ delphin mkprof -s tsdb/skeletons/[testsuitename]/ trees/[name of newfolder]
+```
+```
+$ delphin process -g [grammar].dat trees/[name of newfolder]
+```
+Note that delphin has to be accessible.
+#### Viewing results
+To view selected combinations of results, use this line with different combination of 'i-wf' and 'readings' values. This line, for example, selects false negatives (sentences that should parse but give no readings)
+```
+$ delphin select ‘i-id readings i-input where i-wf = 1 and readings = 0’ trees/[name of newfolder]
+```
+#### Treebanking
+```
+$ art -f -a ‘ace - -disable-generalization -g [grammar].dat -O’ trees/[name of newfolder]
+```
+The next line of code launches the browser so the treebanking can be done.
+```
+$ fftb -g [grammar].dat - -browser - -webdir ~/bin/acetools-x86-0.9.30/assets/ tree/[name of newfolder]
+```
+To transfer gold trees for example from testsuite.16 to testsuite.17:
+```
+$ fftb -g [grammar].dat - -browser - -webdir ~/bin/acetools-x86-0.9.30/assets/ --gold tree/testsuite.16 trees/testsuite.17 - -auto
+```
