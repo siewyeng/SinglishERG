@@ -12,8 +12,8 @@ To compile this grammar using LKB most conveniently:
 * Load the ERG as usual, via the Load--Complete Grammar on the LKB Top menu: ``trunk/lkb/script``
 
 To compile this grammar using ace:
-* In the ERG directory
-$ ace -G singlish.dat -g ace/config-singlish.tdl
+* In the ERG directory ```
+$ ace -G singlish.dat -g ace/config-singlish.tdl ```
 
 To check the semantics:
 
@@ -41,6 +41,7 @@ When merged with the ERG, there are a few places outside the
 
 * `../singlish.tdl` is in the trunk top level directory
 * `../lkb/script` has the feature `:singlish`
+   * To compile with lkb, open go to options > expand menu followed by advanced > Evaluate quick Lisp expression > ```(push :singlish *features*)```
 * `../ace/config-singlish.tdl` contains the config for ace
 * there are testsuites at `../tsdb/skeletons/singlish`
 * there are gold trees at `../tsdb/gold/singlish`
