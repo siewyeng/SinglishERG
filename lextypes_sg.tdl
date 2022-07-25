@@ -720,6 +720,9 @@ sfp_type1_le := sfp_-_i-s_le &
   [ SYNSEM.LOCAL.CAT [ HEAD.MINORS.MIN particle1_rel,
   			VAL.COMPS < [ --MIN sfadverb_va_rel ] > ] ].     
   
+; 24-4-2022 including more specific lexical types to illustrate the SF constraints of COMPS
+lah_le := sfp_type2a_le &
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL.CONT.HOOK.INDEX.SF prop-or-comm ] > ].
   
 ; 16-11-2021 remove this because v_bse-ilr requires its daughter to have SUBJ OPT -
 ; to come back to this later to find out how to do implement singlish's opt subj

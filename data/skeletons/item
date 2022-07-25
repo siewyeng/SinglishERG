@@ -68,13 +68,18 @@
 68@siew yeng@@@1@agr,auxiliary@The cat can sleeps.@@@@0@4@'The cat can sleep.'@siew yeng@2020-02-21
 69@siew yeng@@@1@agr,auxiliary@The cat can sleep.@@@@1@4@'The cat can sleep.'@siew yeng@2020-02-21
 70@siew yeng@@@1@copulaomission,adjective@The cat pretty.@@@@1@3@'The cat is pretty.'@siew yeng@2020-02-21
-71@siew yeng@@@1@copulaomission,neg@The cat not pretty.@@@@1@4@'The cat is not pretty.'@siew yeng@2020-02-21
-72@siew yeng@@@1@copulaomission,specifier@The cat very pretty.@@@@1@4@'The cat is very pretty.'@siew yeng@2020-02-21
-73@siew yeng@@@1@copulaomission,specifier@The cat beautiful very.@@@@0@4@'The cat is very beautiful.'@siew yeng@2020-02-21
-74@siew yeng@@@1@copulaomission@The cat fat and beautiful.@@@@1@5@'The cat is fat and beautiful.'@siew yeng@2020-02-21
-75@siew yeng@@@1@aspect@The cat fat already.@@@@1@4@'The cat has gotten fat (inchoative).'@siew yeng@2020-02-21
-76@siew yeng@@@1@aspect@The cat sleeping already.@@@@1@4@'The cat is sleeping (inchoative).'@siew yeng@2020-02-21
-77@siew yeng@@@1@aspect@The cat already sleep.@@@@1@4@'The cat has slept.'@siew yeng@2020-02-21
-78@siew yeng@@@1@aspect@The cat ever sleep.@@@@1@4@'The cat has ever slept.'@siew yeng@2020-02-21
-79@siew yeng@@@1@aspect@The cat ever sleeps.@@@@0@4@'The cat has ever slept.'@siew yeng@2020-02-21
-80@siew yeng@@@1@aspect@The cat sleep ever.@@@@0@4@'The cat has ever slept.'@siew yeng@2020-02-21
+71@siew yeng@@@1@copulaomission,adjective@They pretty.@@@@1@2@'They are pretty.'@siew yeng@2020-02-21
+72@siew yeng@@@1@copulaomission,neg@The cat not pretty.@@@@1@4@'The cat is not pretty.'@siew yeng@2020-02-21
+73@siew yeng@@@1@copulaomission,neg@They not pretty.@@@@1@3@'They are not pretty.'@siew yeng@2020-02-21
+74@siew yeng@@@1@copulaomission,adverb@The cat very pretty.@@@@1@4@'The cat is very pretty.'@siew yeng@2020-02-21
+75@siew yeng@@@1@copulaomission,adverb@They very pretty.@@@@1@3@'They are very pretty.'@siew yeng@2020-02-21
+76@siew yeng@@@1@copulaomission,specifier@The cat beautiful very.@@@@0@4@'The cat is very beautiful.'@siew yeng@2020-02-21
+77@siew yeng@@@1@copulaomission@The cat fat and beautiful.@@@@1@5@'The cat is fat and beautiful.'@siew yeng@2020-02-21
+78@siew yeng@@@1@aspect@The cat fat already.@@@@1@4@'The cat has gotten fat (inchoative).'@siew yeng@2020-02-21
+79@siew yeng@@@1@aspect@The cat sleeping already.@@@@1@4@'The cat is sleeping (inchoative).'@siew yeng@2020-02-21
+80@siew yeng@@@1@aspect@The cat already sleep.@@@@1@4@'The cat has slept.'@siew yeng@2020-02-21
+81@siew yeng@@@1@aspect@The cat ever sleep.@@@@1@4@'The cat has ever slept.'@siew yeng@2020-02-21
+82@siew yeng@@@1@aspect@The cat ever sleeps.@@@@0@4@'The cat has ever slept.'@siew yeng@2020-02-21
+83@siew yeng@@@1@aspect@The cat sleep ever.@@@@0@4@'The cat has ever slept.'@siew yeng@2020-02-21
+84@siew yeng@@@1@adjcoord@The cat fat and pretty.@@@@1@5@'The cat is fat and pretty.'@siew yeng@2020-02-21
+85@siew yeng@@@1@adjcoord@They fat and pretty.@@@@1@4@'They are fat and pretty.'@siew yeng@2020-02-21

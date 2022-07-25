@@ -221,7 +221,7 @@ singlish_n1 := n_-_pn-sg_le &
             PHON.ONSET con ] ].
             
 one_pr-rel := n_-_pr-rel-one_le &
- [ ORTH < "one" >,
+ [ ORTH < "onesg" >,
    SYNSEM.PHON.ONSET con ].
    
 one_entity_n1 := n_poss_one_lexent &
@@ -269,6 +269,9 @@ literally: your father (Hokkien)
 ;            PHON.ONSET voc ] ].
 
 ;;;Particles;;;
+;;; for particles which are spelt the same e.g., lah3 and lah4, and have the same lexical type
+;;; one of them would be commented out to reduce over generation.
+;;; They can be included back into the grammar when necessary
 sia_x_sfp := sfp_type2b_le &
  [ ORTH < "sia" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_sia_particle_rel",
@@ -279,10 +282,15 @@ meh-55-_x_sfp := sfp_qtype2b_le &
    SYNSEM [ LKEYS.KEYREL.PRED "_meh_particle_rel",
             PHON.ONSET con ] ].            
 
-leh-21-_x_sfp := sfp_type2b_le &
+leh1-_x_sfp := sfp_type2b_le &
  [ ORTH < "leh" >,
-   SYNSEM [ LKEYS.KEYREL.PRED "_leh_particle_rel",
+   SYNSEM [ LKEYS.KEYREL.PRED "_leh1_particle_rel",
             PHON.ONSET con ] ].
+          
+;leh4-_x_sfp := sfp_type2b_le &
+; [ ORTH < "leh4" >,
+;   SYNSEM [ LKEYS.KEYREL.PRED "_leh4_particle_rel",
+;            PHON.ONSET con ] ].
             
 hah2_x_sfp := sfp_type3_le &
  [ ORTH < "hah" >,
@@ -302,12 +310,20 @@ ah with a rising tone
    SYNSEM [ LKEYS.KEYREL.PRED "_ah2_particle_rel",
             PHON.ONSET con ] ].
             
-lah4_x_sfp := sfp_type2a_le &
+ah3_x_sfp := sfp_type2a_le &
+"""
+ah with low tone
+"""
+ [ ORTH < "ah" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_ah3_particle_rel",
+            PHON.ONSET con ] ].
+            
+lah4_x_sfp := lah_le &
  [ ORTH < "lah" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_lah4_particle_rel",
             PHON.ONSET con ] ]. 
             
-;lah3_x_sfp := sfp_type2a_le &
+;lah3_x_sfp := lah_le &
 ; [ ORTH < "lah" >,
 ;   SYNSEM [ LKEYS.KEYREL.PRED "_lah3_particle_rel",
 ;            PHON.ONSET con ] ].             
@@ -364,6 +380,15 @@ can also be 'bojio'
             PHON.ONSET con ],
    DIALECT sgp ].
    
+bojio_v1_word := v_np*-sg &
+"""
+to not invite
+"""
+ [ ORTH < "bojio" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_bojio_v_1_rel",
+            PHON.ONSET con ],
+   DIALECT sgp ].
+   
 bojio_v2 := v_np-vp_oeq_le &
 """
 to not invite
@@ -371,6 +396,16 @@ can also be 'bojio'
 <ex> Don't say I bojio you to eat buffet.
 """
  [ ORTH < "bo", "jio" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_bojio_v_1_rel",
+            PHON.ONSET con ],
+   DIALECT sgp ].
+   
+bojio_v2_word := v_np-vp_oeq_le &
+"""
+to not invite
+<ex> Don't say I bojio you to eat buffet.
+"""
+ [ ORTH < "bojio" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_bojio_v_1_rel",
             PHON.ONSET con ],
    DIALECT sgp ].
@@ -457,6 +492,26 @@ From Malay
             PHON.ONSET con ],
    DIALECT sgp ].
    
+chiong_v1 := v_np*-sg &
+"""
+to eat
+From Malay
+"""
+ [ ORTH < "makan" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_makan_v_1_rel",
+            PHON.ONSET con ],
+   DIALECT sgp ].
+   
+tumpang_v1 := v_np*-sg &
+"""
+to carry with. From Malay
+also spelt "tompang"
+"""
+ [ ORTH < "tumpang" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_tumpang_v_1_rel",
+            PHON.ONSET con ],
+   DIALECT sgp ].
+   
 ;; adjectives
 keesiao_a1 := aj_-_i_le &
 """
@@ -468,6 +523,15 @@ crazy. Like "siao"
             PHON.ONSET con ],
    DIALECT sgp ].
    
+gianpeng_a1 := aj_-_i_le &
+"""
+greedy. From Hokkien
+"""
+ [ ORTH < "gian", "peng" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_gianpeng_a_1_rel",
+            PHON.ONSET con ],
+   DIALECT sgp ].
+   
 shiok_a1 := aj_-_i_le &
 """
 great, pleasurable. From Malay "syok"
@@ -475,6 +539,16 @@ great, pleasurable. From Malay "syok"
 """
  [ ORTH < "shiok" >,
    SYNSEM [ LKEYS.KEYREL.PRED "_shiok_a_1_rel",
+            PHON.ONSET con ],
+   DIALECT sgp ].
+   
+cheem_a1 := aj_-_i_le &
+"""
+Deep, profound. From Min nan
+Also 'chim'
+"""
+ [ ORTH < "cheem" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_cheem_a_1_rel",
             PHON.ONSET con ],
    DIALECT sgp ].
    
@@ -562,6 +636,12 @@ From Malay
    SYNSEM [ LKEYS.KEYREL.PRED "_mampus_a_1_rel",
             PHON.ONSET con ],
    DIALECT sgp ].  
+   
+superduper_deg := av_-_dg-v_le &
+ [ ORTH < "super", "duper" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_superduper_x_deg_rel",
+            PHON.ONSET voc ] ].
+
    
 ; #temporary   
 samasama_a1 := av_-_i-vp_le &

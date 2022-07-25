@@ -1111,12 +1111,17 @@ frag_vp_fin_rule := frag_vp_rule &
     C-CONT [ HOOK #hook & [ XARG.SORT entity ],
              RELS <! !> ] ].
              
-         
+                  
 ;;;; end changes for prodrop ;;;;
 
 adj_attr_coord_phr :+
   [ SYNSEM.LOCAL.CAT.VAL.SUBJ #subj,
     LCONJ-DTR.SYNSEM.LOCAL.CAT.VAL.SUBJ #subj ].
+
+; 17-12-2021 to stop nocop adjectives from acting as head 
+; for example in the <ex> *who does Devito manages and Chiang works for?
+hadj_s_nopair_rule :+ [ HD-DTR.SYNSEM.LOCAL.CAT.VAL.SUBJ < > ].
+
 
 ; 16-12-2021 commented out all all the other rules after moving constraints
 ; out from the rules into lextypes 				

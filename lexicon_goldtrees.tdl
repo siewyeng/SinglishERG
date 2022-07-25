@@ -1,7 +1,9 @@
 ;;;;;;;;;;;; Additions for Singlish wiki gold trees ;;;;;;;;;;;;;;
 ;;; commented out those with lexical types that don't exist in trunk
+;;;;;;;;;;;; Additions for gold trees ;;;;;;;;;;;;;;
+;;; words that were already added are: kaypoh.
 ;;verbs
-tio_prd_v1 := v_prd_seq-va_le & ;singlish_le &
+tio_prd_v1 := v_prd_seq-val-sg &
 """
 similar to kena
 <ex>I tio banned
@@ -11,7 +13,7 @@ similar to kena
             PHON.ONSET con ],
    DIALECT sgp ].
 ;#added in for goldtrees
-tio_v2 := v_np_le & ;singlish_le &
+tio_v2 := v_np_le-sg &
 """
 similar to kena
 """
@@ -20,7 +22,7 @@ similar to kena
             PHON.ONSET con ],
    DIALECT sgp ].
    
-bojio_v1 := v_np*_le & ;singlish_le &
+bojio_v1 := v_np*-sg &
 """
 to not invite
 can also be 'bojio'
@@ -30,7 +32,16 @@ can also be 'bojio'
             PHON.ONSET con ],
    DIALECT sgp ].
    
-bojio_v2 := v_np-vp_oeq_le & ;singlish_le &
+bojio_v1_word := v_np*-sg &
+"""
+to not invite
+"""
+ [ ORTH < "bojio" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_bojio_v_1_rel",
+            PHON.ONSET con ],
+   DIALECT sgp ].
+   
+bojio_v2 := v_np-vp_oeq_le &
 """
 to not invite
 can also be 'bojio'
@@ -41,7 +52,22 @@ can also be 'bojio'
             PHON.ONSET con ],
    DIALECT sgp ].
    
-gabra_v1 := v_-_le & ;singlish_le &
+bojio_v2_word := v_np-vp_oeq_le &
+"""
+to not invite
+<ex> Don't say I bojio you to eat buffet.
+"""
+ [ ORTH < "bojio" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_bojio_v_1_rel",
+            PHON.ONSET con ],
+   DIALECT sgp ].
+
+subsidize_uk_v1 := v_np_le &
+ [ ORTH < "subsidise" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_subsidize_v_1_rel",
+            PHON.ONSET con ] ].
+   
+gabra_v1 := v_-_le &
 """
 panick 
 From Malay
@@ -51,7 +77,7 @@ From Malay
             PHON.ONSET con ],
    DIALECT sgp ].
             
-paktor_v1 := v_pp*_dir_le & ;singlish_le &
+paktor_v1 := v_pp*_dir_le &
 """
 to date. From Cantonese
 <ex> We want to paktor too.
@@ -61,35 +87,8 @@ to date. From Cantonese
    SYNSEM [ LKEYS.KEYREL.PRED "_paktor_v_1_rel",
             PHON.ONSET con ],
    DIALECT sgp ].
-   
-catchnoball_v1 := v_-_le & ;singlish_le &
-"""
-to fail to understand
-"""
- [ ORTH < "catch","no","ball" >,
-   SYNSEM [ LKEYS.KEYREL.PRED "_catchnoball_v_1_rel",
-            PHON.ONSET con ],
-   DIALECT sgp ].
-   
-chaokeng_v1 := v_-_le & ;singlish_le &
-"""
-to skive, to shirk one's duties particularly military ones
-"""
- [ ORTH < "chao", "keng" >,
-   SYNSEM [ LKEYS.KEYREL.PRED "_chaokeng_v_1_rel",
-            PHON.ONSET con ],
-   DIALECT sgp ].   
-   
-chutpattern_v1 := v_-_le & ;singlish_le &
-"""
-to inconvenience or disturb; to make a fuss; to act up
-"""
- [ ORTH < "chut", "pattern" >,
-   SYNSEM [ LKEYS.KEYREL.PRED "_chutpattern_v_1_rel",
-            PHON.ONSET con ],
-   DIALECT sgp ]. 
 
-lepak_v1 := v_-_le & ;singlish_le &
+lepak_v1 := v_-_le &
 """
 to loiter casually, hang out
 from Malay
@@ -99,8 +98,35 @@ from Malay
             PHON.ONSET con ],
    DIALECT sgp ]. 
    
+catchnoball_v1 := v_-_le &
+"""
+to fail to understand
+"""
+ [ ORTH < "catch","no","ball" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_catchnoball_v_1_rel",
+            PHON.ONSET con ],
+   DIALECT sgp ].
+   
+chaokeng_v1 := v_-_le &
+"""
+to skive, to shirk one's duties particularly military ones
+"""
+ [ ORTH < "chao", "keng" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_chaokeng_v_1_rel",
+            PHON.ONSET con ],
+   DIALECT sgp ].   
+   
+chutpattern_v1 := v_-_le &
+"""
+to inconvenience or disturb; to make a fuss; to act up
+"""
+ [ ORTH < "chut", "pattern" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_chutpattern_v_1_rel",
+            PHON.ONSET con ],
+   DIALECT sgp ]. 
+
 ;#probably remove after parsing   
-dun_v1 := v_vp_do-f-n_le & ;singlish_le &
+dun_v2 := v_vp_do-f-n_le &
 """
 text spelling of "don't"
 """
@@ -108,7 +134,7 @@ text spelling of "don't"
    SYNSEM.PHON.ONSET con,
    DIALECT sgp ]. 
    
-makan_v1 := v_np*_le & ;singlish_le &
+makan_v1 := v_np*-sg &
 """
 to eat
 From Malay
@@ -117,14 +143,29 @@ From Malay
    SYNSEM [ LKEYS.KEYREL.PRED "_makan_v_1_rel",
             PHON.ONSET con ],
    DIALECT sgp ].
-
-subsidize_uk_v1 := v_np_le &
- [ ORTH < "subsidise" >,
-   SYNSEM [ LKEYS.KEYREL.PRED "_subsidize_v_1_rel",
-            PHON.ONSET con ] ].
+   
+chiong_v1 := v_np*-sg &
+"""
+to eat
+From Malay
+"""
+ [ ORTH < "makan" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_makan_v_1_rel",
+            PHON.ONSET con ],
+   DIALECT sgp ].
+   
+tumpang_v1 := v_np*-sg &
+"""
+to carry with. From Malay
+also spelt "tompang"
+"""
+ [ ORTH < "tumpang" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_tumpang_v_1_rel",
+            PHON.ONSET con ],
+   DIALECT sgp ].
    
 ;; adjectives
-keesiao_a1 := aj_-_i_le & ;singlish_le &
+keesiao_a1 := aj_-_i_le &
 """
 crazy. Like "siao"
 <ex>Teacher mark your paper also kee siao.
@@ -134,7 +175,16 @@ crazy. Like "siao"
             PHON.ONSET con ],
    DIALECT sgp ].
    
-shiok_a1 := aj_-_i_le & ;singlish_le &
+gianpeng_a1 := aj_-_i_le &
+"""
+greedy. From Hokkien
+"""
+ [ ORTH < "gian", "peng" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_gianpeng_a_1_rel",
+            PHON.ONSET con ],
+   DIALECT sgp ].
+   
+shiok_a1 := aj_-_i_le &
 """
 great, pleasurable. From Malay "syok"
 <ex>Taste shiok right?
@@ -144,7 +194,17 @@ great, pleasurable. From Malay "syok"
             PHON.ONSET con ],
    DIALECT sgp ].
    
-paiseh_a1 := aj_-_i_le & ;singlish_le &
+cheem_a1 := aj_-_i_le &
+"""
+Deep, profound. From Min nan
+Also 'chim'
+"""
+ [ ORTH < "cheem" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_cheem_a_1_rel",
+            PHON.ONSET con ],
+   DIALECT sgp ].
+   
+paiseh_a1 := aj_-_i_le &
 """
 shy, embarrassing
 """
@@ -154,7 +214,7 @@ shy, embarrassing
    DIALECT sgp ].
 
 ; should probably create separate lexical entries for each word   
-buaytank_a1 := aj_-_i_le & ;singlish_le &
+buaytank_a1 := aj_-_i_le &
 """
 cannot handle. Can be separated into two words
 """
@@ -163,7 +223,7 @@ cannot handle. Can be separated into two words
             PHON.ONSET con ],
    DIALECT sgp ].
    
-cheem_a1 := aj_-_i-er_le & ;singlish_le &
+cheem_a1 := aj_-_i-er_le &
 """
 deep, profound. From Hokkien
 """
@@ -172,7 +232,7 @@ deep, profound. From Hokkien
             PHON.ONSET con ],
    DIALECT sgp ].   
 
-gabra_a1 := aj_-_i_le & ;singlish_le &
+gabra_a1 := aj_-_i_le &
 """
 panicky, confused, From Malay
 """
@@ -181,7 +241,7 @@ panicky, confused, From Malay
             PHON.ONSET con ],
    DIALECT sgp ].
    
-GG_a1 := aj_-_i_le & ;singlish_le &
+GG_a1 := aj_-_i_le &
 """
 Doomed, likely to have undesireable outcome
 """
@@ -190,7 +250,7 @@ Doomed, likely to have undesireable outcome
             PHON.ONSET con ],
    DIALECT sgp ].
    
-jakun_a1 := aj_-_i_le & ;singlish_le &
+jakun_a1 := aj_-_i_le &
 """
 fascinated with things that seem ordinary to others
 Extended from Malay
@@ -200,7 +260,7 @@ Extended from Malay
             PHON.ONSET con ],
    DIALECT sgp ].
    
-kiasi_a1 := aj_-_i_le & ;singlish_le &
+kiasi_a1 := aj_-_i_le &
 """
 Cowardly, afraid to die
 from Hokkien
@@ -210,7 +270,7 @@ from Hokkien
             PHON.ONSET con ],
    DIALECT sgp ].
    
-laoya_a1 := aj_-_i_le & ;singlish_le &
+laoya_a1 := aj_-_i_le &
 """
 Lousy
 """
@@ -219,7 +279,7 @@ Lousy
             PHON.ONSET con ],
    DIALECT sgp ].   
    
-mampus_a1 := aj_-_i_le & ;singlish_le &
+mampus_a1 := aj_-_i_le &
 """
 Finished, kaput
 From Malay
@@ -228,19 +288,15 @@ From Malay
    SYNSEM [ LKEYS.KEYREL.PRED "_mampus_a_1_rel",
             PHON.ONSET con ],
    DIALECT sgp ].  
+   
+superduper_deg := av_-_dg-v_le &
+ [ ORTH < "super", "duper" >,
+   SYNSEM [ LKEYS.KEYREL.PRED "_superduper_x_deg_rel",
+            PHON.ONSET voc ] ].
 
-kaypoh_a1 := aj_-_i_le &
-"""
-Busybody, used a bit like a verb also
-<ex> He always kaypoh one.
-<ex> Don't kaypoh so much.
-"""
- [ ORTH < "kaypoh" >,
-   SYNSEM [ LKEYS.KEYREL.PRED "_kaypo_a_1_rel",
-            PHON.ONSET con ] ].
-               
+   
 ; #temporary   
-samasama_a1 := av_-_i-vp_le & ;singlish_le &
+samasama_a1 := av_-_i-vp_le &
 """
 same
 Reduplication of Malay sama. Can also be spelt as two separate words without '-'
@@ -276,27 +332,10 @@ From Hokkien
    SYNSEM [ LKEYS.KEYREL.PRED "_sai_n_1_rel",
             PHON.ONSET con ] ].
 
-ang-moh_n1 := n_-_c_le &
-"""
-literally: red hair (hokkien)
-used to refer to Caucasians
-"""
- [ ORTH < "ang","moh" >,
-   SYNSEM [ LKEYS.KEYREL.PRED "_ang-moh_n_1_rel",
-            PHON.ONSET voc ] ].
-
 liverpool := n_-_pn_le &
  [ ORTH < "Liverpool" >,
    SYNSEM [ LKEYS.KEYREL.CARG "Liverpool",
             PHON.ONSET con ] ].
-
-limpeh_n1 := n_-_pr-he_lexent &
-"""
-A reference to oneself in the third person (rude)
-literally: your father (Hokkien)
-"""
- [ ORTH < "limpeh" >,
-   SYNSEM [ PHON.ONSET con ] ].  
              
 ;;; particles          
 ;sibo_x_sfp := sfp_qtype2b_le &
