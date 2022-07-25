@@ -72,6 +72,9 @@ $ delphin mkprof -s tsdb/skeletons/[testsuitename]/ trees/[name of newfolder]
 $ delphin process -g [grammar].dat trees/[name of newfolder]
 ```
 Note that delphin has to be accessible.
+
+The testsuite that was used for development is contained in `data/constructed_singlish_testsuite` and the one that was used for testing (mentioned in the paper) can be found at `data/skeletons/treebankset`. The parses (with decision trees) of the treebankset are contained in `data/trees`.
+
 #### Viewing results
 To view selected combinations of results, use this line with different combination of 'i-wf' and 'readings' values. This line, for example, selects false negatives (sentences that should parse but give no readings)
 ```
