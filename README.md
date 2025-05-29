@@ -1,5 +1,5 @@
 # SinglishERG
-
+### Information
 A branch of the [English Resource Grammar (ERG)](https://github.com/delph-in/erg) that is used for Singlish. It is published under the same license as the ERG, the MIT license.
 
 The singlish subdirectory contains the files that have been added or in the
@@ -47,6 +47,20 @@ When merged with the ERG, there are a few places outside the
 * there are gold trees at `../tsdb/gold/singlish`
 
 In the github repository these are all local (ignore the `../`).
+
+### Features
+The following are the current features added into SinglishERG:
+* Optional copula
+  * For adjectives e.g., `He very good` by allowing sentences to be headed by adjectives and extending VFORM to adjectives
+  * In progressive verb phrases e.g., `They swimming` by allowing prp in Subject Head Main Clause Rule
+* Aspect marking with "already" and "ever" e.g., `She eat already`
+* Flexible verb agreement with verbs in base form e.g., `He always go there`
+* Flexible number for nouns in base form e.g., `I want to use computer.` by introducing unspecified bare NP rule
+* Particles with 4 levels of hierarchy e.g., `It’s like that làh háh` by adding hierarchy to sentences
+* One as a relative pronoun e.g., `The cake I always buy one no more already.`
+* One as nominaliser e.g., `The computer I buy one.`
+* One with a possessive meaning e.g., `That is Kim one`
+  
 
 ### Data
 Data was extracted from examples on Wiktionary pages with words that were marked to be Singlish. It includes also the other non-Singlish definitions and usages of the words. The example sentences include some that are offensive and racist but they not taken out as it reflects how this variety is used.
